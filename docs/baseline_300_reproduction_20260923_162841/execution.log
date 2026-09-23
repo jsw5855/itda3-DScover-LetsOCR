@@ -1,0 +1,399 @@
+C:\Users\jsw58\Desktop\itda-ocr\ocr_pipeline.py:43: UserWarning: `lang` and `ocr_version` will be ignored when model names or model directories are not `None`.
+  return PaddleOCR(
+Creating model: ('PP-OCRv6_medium_det', 'C:\\Users\\jsw58\\Desktop\\itda-ocr\\weights\\paddleocr\\PP-OCRv6_medium_det', None)
+INFO: Could not find files for the given pattern(s).
+C:\Users\jsw58\Desktop\itda-ocr\.venv\lib\site-packages\paddle\utils\cpp_extension\extension_utils.py:718: UserWarning: No ccache found. Please be aware that recompiling all source files may be required. You can download and install ccache from: https://github.com/ccache/ccache/blob/master/doc/INSTALL.md
+  warnings.warn(warning_message)
+WARNING: OMP_NUM_THREADS set to 2, not 1. The computation speed will not be optimized if you use data parallel. It will fail if this PaddlePaddle binary is compiled with OpenBlas since OpenBlas does not support multi-threads.
+PLEASE USE OMP_NUM_THREADS WISELY.
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+I0923 16:28:54.778646 29132 onednn_context.cc:81] oneDNN v3.6.2
+Creating model: ('korean_PP-OCRv5_mobile_rec', 'C:\\Users\\jsw58\\Desktop\\itda-ocr\\weights\\paddleocr\\korean_PP-OCRv5_mobile_rec', None)
+ReduceMeanCheckIfOneDNNSupport
+ReduceMeanCheckIfOneDNNSupport
+ReduceMeanCheckIfOneDNNSupport
+ReduceMeanCheckIfOneDNNSupport
+ReduceMeanCheckIfOneDNNSupport
+[1/300] 000018.jpg: original_512 1.873s
+[2/300] 000026.jpg: original_512 1.344s
+[3/300] 000030.jpg: original_512 2.593s
+[4/300] 000060.jpg: original_512 0.861s
+[5/300] 000075.jpg: original_512 1.261s
+[6/300] 000124.jpg: original_512 0.846s
+[7/300] 000137.jpg: original_512 1.896s
+[8/300] 000139.jpg: original_512 0.818s
+[9/300] 000157.jpg: original_no_candidate 4.220s
+[10/300] 000189.jpg: original_512 1.887s
+[11/300] 000194.jpg: original_512 1.919s
+[12/300] 000245.jpg: original_512 1.653s
+[13/300] 000268.jpg: original_512 0.817s
+[14/300] 000280.jpg: original_512 1.081s
+[15/300] 000321.jpg: original_512 0.762s
+[16/300] 000331.jpg: original_512 0.974s
+[17/300] 000352.jpg: original_512 1.265s
+[18/300] 000366.jpg: original_512 1.714s
+[19/300] 000383.jpg: original_512 2.040s
+[20/300] 000438.jpg: original_no_candidate 6.133s
+[21/300] 000447.jpg: original_512 1.014s
+[22/300] 000462.jpg: original_512 1.981s
+[23/300] 000463.jpg: original_512 1.664s
+[24/300] 000485.jpg: original_512 0.892s
+[25/300] 000493.jpg: original_512 1.781s
+[26/300] 000515.jpg: rotation_270 2.657s
+[27/300] 000548.jpg: original_512 1.244s
+[28/300] 000561.jpg: rotation_270 2.429s
+[29/300] 000612.jpg: original_512 1.159s
+[30/300] 000645.jpg: original_512 0.952s
+[31/300] 000653.jpg: original_512 0.551s
+[32/300] 000658.jpg: original_512 0.441s
+[33/300] 000678.jpg: original_512 0.781s
+[34/300] 000715.jpg: original_no_candidate 4.174s
+[35/300] 000725.jpg: original_512 0.574s
+[36/300] 000729.jpg: rotation_270 1.942s
+[37/300] 000763.jpg: original_no_candidate 5.405s
+[38/300] 000789.jpeg: original_no_candidate 6.374s
+[39/300] 000820.jpeg: original_no_candidate 11.216s
+[40/300] 000853.jpeg: original_512 0.795s
+[41/300] 000879.jpg: original_512 4.597s
+[42/300] 000912.jpg: original_512 2.141s
+[43/300] 000922.jpg: highres_1024 3.055s
+[44/300] 000957.jpg: original_512 1.540s
+[45/300] 000967.jpg: original_512 1.650s
+[46/300] 001014.jpg: original_512 1.310s
+[47/300] 001034.jpg: original_512 2.575s
+[48/300] 001075.jpg: original_512 2.945s
+[49/300] 001108.jpg: original_512 1.015s
+[50/300] 001113.jpg: original_512 1.404s
+[51/300] 001157.jpg: original_512 0.901s
+[52/300] 001173.jpg: original_512 1.991s
+[53/300] 001175.jpg: highres_1024 8.097s
+[54/300] 001205.jpg: original_no_candidate 5.017s
+[55/300] 001214.jpg: original_no_candidate 8.604s
+[56/300] 001225.jpg: original_512 2.122s
+[57/300] 001277.jpg: original_512 1.608s
+[58/300] 001321.jpg: original_512 2.602s
+[59/300] 001380.jpg: original_512 1.608s
+[60/300] 001393.jpg: original_512 2.714s
+[61/300] 001394.jpg: original_512 1.622s
+[62/300] 001399.jpg: original_512 3.062s
+[63/300] 001406.jpg: original_512 1.048s
+[64/300] 001426.jpg: original_512 1.757s
+[65/300] 001427.jpg: original_512 2.687s
+[66/300] 001450.jpg: original_512 2.436s
+[67/300] 001472.jpg: original_512 1.064s
+[68/300] 001515.jpg: original_512 1.183s
+[69/300] 001525.jpg: original_512 2.295s
+[70/300] 001528.jpg: original_512 0.950s
+[71/300] 001554.jpg: original_no_candidate 3.987s
+[72/300] 001572.jpg: original_512 1.101s
+[73/300] 001587.jpg: original_512 0.762s
+[74/300] 001642.jpg: original_512 0.905s
+[75/300] 001683.jpg: original_512 0.738s
+[76/300] 001741.jpg: original_512 0.913s
+[77/300] 001742.jpg: original_512 1.405s
+[78/300] 001752.jpg: original_512 0.817s
+[79/300] 001780.jpg: original_512 2.117s
+[80/300] 001782.jpg: original_512 1.475s
+[81/300] 001812.jpg: original_512 1.046s
+[82/300] 001818.jpg: original_512 1.693s
+[83/300] 001851.jpg: original_no_candidate 4.927s
+[84/300] 001857.jpg: rotation_270 3.531s
+[85/300] 001942.jpg: original_512 0.975s
+[86/300] 002003.jpg: original_512 1.128s
+[87/300] 002011.jpg: original_no_candidate 3.604s
+[88/300] 002019.jpg: original_no_candidate 3.677s
+[89/300] 002041.jpg: original_512 2.118s
+[90/300] 002062.jpg: original_512 1.007s
+[91/300] 002080.jpg: original_512 1.163s
+[92/300] 002090.jpg: original_512 0.999s
+[93/300] 002113.jpg: original_512 0.716s
+[94/300] 002162.jpg: highres_1024 6.318s
+[95/300] 002186.jpg: original_512 2.630s
+[96/300] 002247.jpg: original_512 0.965s
+[97/300] 002248.jpg: original_512 1.331s
+[98/300] 002276.jpg: original_512 0.788s
+[99/300] 002278.jpg: original_no_candidate 4.249s
+[100/300] 002328.jpg: original_512 1.463s
+[101/300] 002364.jpg: original_512 2.213s
+[102/300] 002405.jpg: original_512 0.741s
+[103/300] 002424.jpg: rotation_270 1.409s
+[104/300] 002443.jpg: original_512 0.844s
+[105/300] 002466.jpg: original_512 2.432s
+[106/300] 002480.jpg: original_512 0.830s
+[107/300] 002492.jpg: original_no_candidate 7.848s
+[108/300] 002510.jpg: original_512 1.060s
+[109/300] 002529.jpg: original_512 1.556s
+[110/300] 002615.jpg: original_512 0.830s
+[111/300] 002620.jpg: original_512 0.895s
+[112/300] 002622.jpg: original_512 1.159s
+[113/300] 002628.jpg: original_512 0.986s
+[114/300] 002642.jpg: original_512 2.785s
+[115/300] 002659.jpg: original_512 1.821s
+[116/300] 002674.jpg: original_512 0.809s
+[117/300] 002691.jpg: original_512 1.384s
+[118/300] 002714.jpg: original_512 1.141s
+[119/300] 002726.jpg: rotation_270 1.548s
+[120/300] 002728.jpg: original_512 1.749s
+[121/300] 002767.jpg: original_512 1.169s
+[122/300] 002802.jpg: original_512 1.322s
+[123/300] 002814.jpg: original_no_candidate 3.800s
+[124/300] 002835.jpg: original_512 0.907s
+[125/300] 002846.jpg: original_512 1.937s
+[126/300] 002847.jpg: original_512 2.009s
+[127/300] 002892.jpg: original_512 1.677s
+[128/300] 002899.jpg: clahe 4.150s
+[129/300] 002900.jpg: original_512 0.709s
+[130/300] 002944.jpg: original_512 0.735s
+[131/300] 002981.jpg: original_512 1.597s
+[132/300] 003004.jpg: original_512 1.782s
+[133/300] 003006.jpg: original_512 0.773s
+[134/300] 003014.jpg: original_no_candidate 4.634s
+[135/300] 003017.jpg: original_512 1.814s
+[136/300] 003090.jpg: original_512 1.822s
+[137/300] 003132.jpg: original_512 0.847s
+[138/300] 003136.jpg: original_512 1.253s
+[139/300] 003158.jpg: original_512 0.907s
+[140/300] 003185.jpg: highres_1024 3.100s
+[141/300] 003201.jpg: original_512 1.647s
+[142/300] 003218.jpg: original_512 2.802s
+[143/300] 003222.jpg: original_512 1.111s
+[144/300] 003238.jpg: original_512 1.286s
+[145/300] 003290.jpg: original_512 0.846s
+[146/300] 003311.jpg: original_512 0.754s
+[147/300] 003312.jpg: clahe 3.738s
+[148/300] 003326.jpg: original_no_candidate 6.023s
+[149/300] 003340.jpg: clahe 6.912s
+[150/300] 3350.jpeg: original_no_candidate 7.448s
+[151/300] 000007.jpg: original_512 3.066s
+[152/300] 000021.jpg: original_512 0.983s
+[153/300] 000058.jpg: original_512 2.671s
+[154/300] 000099.jpg: original_512 1.864s
+[155/300] 000110.jpg: original_512 1.125s
+[156/300] 000131.jpg: original_512 0.934s
+[157/300] 000148.jpg: original_512 0.986s
+[158/300] 000225.jpg: original_512 1.336s
+[159/300] 000227.jpg: original_512 1.682s
+[160/300] 000250.jpg: original_512 1.726s
+[161/300] 000266.jpg: original_512 1.045s
+[162/300] 000287.jpg: original_512 3.387s
+[163/300] 000292.jpg: original_512 0.711s
+[164/300] 000299.jpg: original_512 2.305s
+[165/300] 000324.jpg: original_512 2.387s
+[166/300] 000327.jpg: original_512 2.643s
+[167/300] 000378.jpg: original_512 1.174s
+[168/300] 000382.jpg: original_512 1.324s
+[169/300] 000384.jpg: original_512 0.889s
+[170/300] 000400.jpg: original_512 1.591s
+[171/300] 000416.jpg: original_512 0.956s
+[172/300] 000422.jpg: original_512 0.854s
+[173/300] 000426.jpg: original_512 1.126s
+[174/300] 000469.jpg: original_512 0.666s
+[175/300] 000512.jpg: original_512 2.085s
+[176/300] 000582.jpg: highres_1024 3.326s
+[177/300] 000634.jpg: original_512 0.827s
+[178/300] 000677.jpg: original_512 0.867s
+[179/300] 000684.jpg: original_512 0.699s
+[180/300] 000690.jpg: original_512 1.279s
+[181/300] 000694.jpg: original_no_candidate 7.491s
+[182/300] 000707.jpg: original_512 0.722s
+[183/300] 000726.jpg: original_512 0.688s
+[184/300] 000749.jpg: original_no_candidate 4.990s
+[185/300] 000775.jpeg: original_512 1.060s
+[186/300] 000778.jpeg: original_512 1.053s
+[187/300] 000845.jpeg: original_512 1.467s
+[188/300] 000893.jpg: original_no_candidate 4.545s
+[189/300] 000901.jpg: original_512 2.283s
+[190/300] 000907.jpg: original_512 0.795s
+[191/300] 000909.jpg: original_512 0.856s
+[192/300] 000954.jpg: original_512 1.407s
+[193/300] 000978.jpg: original_no_candidate 7.163s
+[194/300] 001055.jpg: original_512 1.079s
+[195/300] 001061.jpg: original_512 1.472s
+[196/300] 001084.jpg: clahe 4.602s
+[197/300] 001097.jpg: original_512 1.768s
+[198/300] 001104.jpg: original_512 0.967s
+[199/300] 001141.jpg: original_512 1.658s
+[200/300] 001184.jpg: original_512 0.686s
+[201/300] 001185.jpg: original_512 0.993s
+[202/300] 001188.jpg: original_512 1.077s
+[203/300] 001189.jpg: original_512 1.949s
+[204/300] 001197.jpg: original_512 0.947s
+[205/300] 001231.jpg: original_512 0.674s
+[206/300] 001248.jpg: clahe 8.091s
+[207/300] 001289.jpg: original_512 0.759s
+[208/300] 001290.jpg: original_512 0.989s
+[209/300] 001294.jpg: original_512 1.096s
+[210/300] 001295.jpg: original_512 0.858s
+[211/300] 001315.jpg: original_512 1.273s
+[212/300] 001317.jpg: original_512 1.700s
+[213/300] 001384.jpg: original_512 0.965s
+[214/300] 001409.jpg: original_512 2.539s
+[215/300] 001428.jpg: original_512 2.566s
+[216/300] 001438.jpg: original_512 0.996s
+[217/300] 001455.jpg: original_512 2.953s
+[218/300] 001471.jpg: original_512 1.741s
+[219/300] 001500.jpg: original_512 0.927s
+[220/300] 001502.jpg: original_512 1.604s
+[221/300] 001529.jpg: original_512 0.896s
+[222/300] 001539.jpg: original_no_candidate 6.864s
+[223/300] 001623.jpg: original_512 0.846s
+[224/300] 001646.jpg: original_no_candidate 2.834s
+[225/300] 001657.jpg: original_512 1.530s
+[226/300] 001665.jpg: original_512 1.037s
+[227/300] 001705.jpg: original_512 1.242s
+[228/300] 001746.jpg: original_512 2.988s
+[229/300] 001747.jpg: original_512 3.207s
+[230/300] 001800.jpg: original_512 2.481s
+[231/300] 001815.jpg: original_512 1.398s
+[232/300] 001823.jpg: original_512 0.952s
+[233/300] 001869.jpg: original_512 1.034s
+[234/300] 001898.jpg: original_512 1.022s
+[235/300] 001955.jpg: original_no_candidate 16.360s
+[236/300] 001977.jpg: original_512 3.451s
+[237/300] 001980.jpg: original_512 0.721s
+[238/300] 001982.jpg: original_512 0.656s
+[239/300] 002033.jpg: original_512 1.522s
+[240/300] 002034.jpg: original_512 1.006s
+[241/300] 002037.jpg: original_512 0.717s
+[242/300] 002042.jpg: original_512 2.287s
+[243/300] 002066.jpg: original_512 1.657s
+[244/300] 002133.jpg: original_512 0.905s
+[245/300] 002134.jpg: original_512 3.078s
+[246/300] 002141.jpg: original_512 0.696s
+[247/300] 002146.jpg: original_512 1.596s
+[248/300] 002197.jpg: original_512 0.908s
+[249/300] 002221.jpg: original_512 2.686s
+[250/300] 002233.jpg: highres_1024 3.609s
+[251/300] 002245.jpg: clahe 4.170s
+[252/300] 002251.jpg: original_no_candidate 6.870s
+[253/300] 002258.jpg: highres_1024 3.701s
+[254/300] 002284.jpg: original_512 1.421s
+[255/300] 002306.jpg: original_512 0.557s
+[256/300] 002327.jpg: original_512 1.375s
+[257/300] 002370.jpg: original_512 0.894s
+[258/300] 002376.jpg: original_512 1.151s
+[259/300] 002387.jpg: original_512 0.762s
+[260/300] 002404.jpg: original_no_candidate 3.918s
+[261/300] 002428.jpg: original_512 1.190s
+[262/300] 002436.jpg: clahe 10.379s
+[263/300] 002504.jpg: original_512 1.318s
+[264/300] 002521.jpg: original_512 1.027s
+[265/300] 002522.jpg: original_512 0.994s
+[266/300] 002586.jpg: original_no_candidate 11.495s
+[267/300] 002611.jpg: original_512 1.016s
+[268/300] 002634.jpg: original_512 2.129s
+[269/300] 002651.jpg: original_512 0.816s
+[270/300] 002740.jpg: original_512 1.464s
+[271/300] 002747.jpg: original_512 1.991s
+[272/300] 002752.jpg: original_512 0.970s
+[273/300] 002765.jpg: highres_1024 4.725s
+[274/300] 002790.jpg: original_512 1.166s
+[275/300] 002823.jpg: original_512 1.453s
+[276/300] 002831.jpg: highres_1024 3.490s
+[277/300] 002857.jpg: original_512 0.898s
+[278/300] 002859.jpg: original_512 0.613s
+[279/300] 002860.jpg: original_512 0.845s
+[280/300] 002870.jpg: original_512 1.160s
+[281/300] 002877.jpg: original_512 1.269s
+[282/300] 002917.jpg: original_512 1.823s
+[283/300] 002927.jpg: original_no_candidate 5.917s
+[284/300] 002963.jpg: original_512 0.924s
+[285/300] 002990.jpg: rotation_270 1.808s
+[286/300] 002994.jpg: original_512 1.174s
+[287/300] 003010.jpg: original_512 2.188s
+[288/300] 003020.jpg: original_512 2.019s
+[289/300] 003043.jpg: original_512 0.869s
+[290/300] 003078.jpg: original_512 1.146s
+[291/300] 003087.jpg: original_512 0.675s
+[292/300] 003129.jpg: original_512 0.869s
+[293/300] 003148.jpg: original_512 1.272s
+[294/300] 003206.jpg: original_512 0.967s
+[295/300] 003228.jpg: original_512 0.754s
+[296/300] 003277.jpg: original_no_candidate 6.998s
+[297/300] 003280.jpg: original_512 2.472s
+[298/300] 003310.jpg: original_512 0.975s
+[299/300] 003313.jpg: highres_1024 6.656s
+[300/300] 003338.jpg: original_no_candidate 9.571s
+{
+  "status": "complete",
+  "new_inferences": 300,
+  "sample_fingerprint": "e18eea9b832ca3d7a2fe97d9d8752f80660989221bfed5b8b410b40a0fd731df",
+  "cached_inferences": 0,
+  "metrics": {
+    "count": 300,
+    "year_accuracy": 0.8733333333333333,
+    "month_accuracy": 0.8733333333333333,
+    "day_accuracy": 0.85,
+    "final_date_accuracy": 0.8233333333333334
+  },
+  "by_truth_group": {
+    "complete": {
+      "count": 282,
+      "year_accuracy": 0.8829787234042553,
+      "month_accuracy": 0.8971631205673759,
+      "day_accuracy": 0.8581560283687943,
+      "final_date_accuracy": 0.8439716312056738
+    },
+    "partial_none": {
+      "count": 18,
+      "year_accuracy": 0.7222222222222222,
+      "month_accuracy": 0.5,
+      "day_accuracy": 0.7222222222222222,
+      "final_date_accuracy": 0.5
+    },
+    "all_none": {
+      "count": 0,
+      "year_accuracy": null,
+      "month_accuracy": null,
+      "day_accuracy": null,
+      "final_date_accuracy": null
+    }
+  },
+  "init_sec": 12.827814100000069,
+  "infer_sec": 644.1326663000091,
+  "avg_sec_per_image": 2.147108887666697,
+  "submission_csv_sec": 0.0038204000002224348,
+  "evaluation_csv_sec": 0.007873499999732303,
+  "script_entry_through_submission_csv_sec": 658.1913516000004,
+  "estimated_3352_init_and_infer_min": 120.16561342597946,
+  "timing_note": "Projection excludes 3352-row CSV and other overhead; not proof of the 2400-second limit. Script clock starts at entry, excludes interpreter startup, includes validation setup and JSONL diagnostics. Full submission requires external wall-clock timing through final CSV replacement.",
+  "methods": {
+    "original_512": {
+      "count": 245
+    },
+    "rotation_270": {
+      "count": 7
+    },
+    "highres_1024": {
+      "count": 10
+    },
+    "clahe": {
+      "count": 7
+    },
+    "original_no_candidate": {
+      "count": 31
+    }
+  },
+  "stage_predict_timings": {
+    "original_512": {
+      "attempt_count": 300,
+      "total_sec": 400.4136400000025,
+      "avg_sec": 1.3347121333333416
+    },
+    "rotation_270": {
+      "attempt_count": 55,
+      "total_sec": 62.587723200002074,
+      "avg_sec": 1.1379586036364013
+    },
+    "highres_1024": {
+      "attempt_count": 48,
+      "total_sec": 115.7945748000011,
+      "avg_sec": 2.412386975000023
+    },
+    "clahe": {
+      "attempt_count": 38,
+      "total_sec": 46.92129769999883,
+      "avg_sec": 1.2347709921052323
+    }
+  }
+}

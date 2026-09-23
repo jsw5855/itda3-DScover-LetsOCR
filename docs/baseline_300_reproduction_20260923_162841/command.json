@@ -1,0 +1,17 @@
+[
+  "C:\\Users\\jsw58\\Desktop\\itda-ocr\\.venv\\Scripts\\python.exe",
+  "-B",
+  "-u",
+  "scripts/evaluate_current_validation_300.py",
+  "--run",
+  "--dataset-mode",
+  "baseline",
+  "--labels",
+  "labels/labels_300.csv",
+  "--images",
+  "data",
+  "--cpu-threads",
+  "2",
+  "--output",
+  "C:\\Users\\jsw58\\Desktop\\itda-ocr\\docs\\baseline_300_reproduction_20260923_162841\\evaluation"
+]
