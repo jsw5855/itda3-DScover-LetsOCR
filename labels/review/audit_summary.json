@@ -1,0 +1,55 @@
+{
+  "sources": {
+    "existing_300": {
+      "path": "C:\\Users\\jsw58\\Desktop\\itda-ocr\\labels\\labels_300.csv",
+      "sha256": "c74d24a45b747eb9f64514ee877ed6aaf69e9be1885dfd3952da59461c501cfc",
+      "schema": [
+        "file_name",
+        "image_id",
+        "year",
+        "month",
+        "day",
+        "final_date",
+        "notes",
+        "Unnamed: 7"
+      ],
+      "rows": 300,
+      "unique_images": 300
+    },
+    "incoming_432": {
+      "path": "C:\\Users\\jsw58\\Downloads\\labelling data.csv",
+      "sha256": "c5cd3f6617f6c609dfbe5175522bdc76aa8d7853d5f6d63fb2219b7fac2298a6",
+      "schema": [
+        "image_id",
+        "year",
+        "month",
+        "day",
+        "final_date"
+      ],
+      "rows": 432,
+      "unique_images": 432
+    }
+  },
+  "source_rows": 732,
+  "unique_images": 701,
+  "cross_source_overlap": 31,
+  "review_reason_counts": {
+    "all_none": 1,
+    "ocr_visual_review": 8,
+    "ambiguous_date_order": 10,
+    "label_conflict": 3,
+    "partial_none": 51,
+    "component_final_mismatch": 4,
+    "unusual_year": 1
+  },
+  "status_counts": {
+    "ready_for_review": 639,
+    "pending": 62
+  },
+  "master_exported": false,
+  "ambiguity_scope": "Source conflicts, partial month/day swaps, documented cases; not exhaustive image interpretation",
+  "normalization_year_bounds": [
+    2015,
+    2040
+  ]
+}

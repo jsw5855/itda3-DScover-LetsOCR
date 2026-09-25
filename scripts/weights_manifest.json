@@ -1,0 +1,43 @@
+{
+  "source": "PaddleX 3.7.2 official_models.py _BosModelHoster; SHA256 pinned from downloaded official artifacts, not publisher-signed checksums",
+  "models": [
+    {
+      "model_name": "PP-OCRv6_medium_det",
+      "url": "https://paddle-model-ecology.bj.bcebos.com/paddlex/official_inference_model/paddle3.0.0/PP-OCRv6_medium_det_infer.tar",
+      "archive_sha256": "144d0621e059566e5086e228829171591c144c2deb07b2dad4962214fbabfcf7",
+      "files": {
+        "inference.json": {
+          "bytes": 312150,
+          "sha256": "0f1a7ec35da36173529c7a60238b7f7919e3831929c3f700ad90ad4896adecd5"
+        },
+        "inference.pdiparams": {
+          "bytes": 61960476,
+          "sha256": "85218d2e3d98f5a21c58b4220627be923a97aee5db3cc71f39536ab31ac53960"
+        },
+        "inference.yml": {
+          "bytes": 886,
+          "sha256": "7298d5ead546584af2504d03355f881ac7a7bc0eb1e282d3e159277c1d0af871"
+        }
+      }
+    },
+    {
+      "model_name": "korean_PP-OCRv5_mobile_rec",
+      "url": "https://paddle-model-ecology.bj.bcebos.com/paddlex/official_inference_model/paddle3.0.0/korean_PP-OCRv5_mobile_rec_infer.tar",
+      "archive_sha256": "a6261f800ad335aa6ef77b6f7c4dcedfd5e11b95f4d70982d41ee31c2ace5e66",
+      "files": {
+        "inference.pdiparams": {
+          "bytes": 13342671,
+          "sha256": "cac3e5f12cf04aaa77f6a5bc704e4e736ef2908476551891d84b41b4e9090462"
+        },
+        "inference.json": {
+          "bytes": 217724,
+          "sha256": "562404e3c590c50c93778d5f0a94df21b47b5ab8f3ea6d47c7f8a7930c3bc844"
+        },
+        "inference.yml": {
+          "bytes": 96039,
+          "sha256": "f757fa1c40e99edcf27e9cce879b93eb2a51fa46f5ef39095689b8c37dd75998"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "status": "complete",
+  "new_inferences": 300,
+  "sample_fingerprint": "e18eea9b832ca3d7a2fe97d9d8752f80660989221bfed5b8b410b40a0fd731df",
+  "cached_inferences": 0,
+  "metrics": {
+    "count": 300,
+    "year_accuracy": 0.8733333333333333,
+    "month_accuracy": 0.8733333333333333,
+    "day_accuracy": 0.85,
+    "final_date_accuracy": 0.8233333333333334
+  },
+  "by_truth_group": {
+    "complete": {
+      "count": 282,
+      "year_accuracy": 0.8829787234042553,
+      "month_accuracy": 0.8971631205673759,
+      "day_accuracy": 0.8581560283687943,
+      "final_date_accuracy": 0.8439716312056738
+    },
+    "partial_none": {
+      "count": 18,
+      "year_accuracy": 0.7222222222222222,
+      "month_accuracy": 0.5,
+      "day_accuracy": 0.7222222222222222,
+      "final_date_accuracy": 0.5
+    },
+    "all_none": {
+      "count": 0,
+      "year_accuracy": null,
+      "month_accuracy": null,
+      "day_accuracy": null,
+      "final_date_accuracy": null
+    }
+  },
+  "init_sec": 12.827814100000069,
+  "infer_sec": 644.1326663000091,
+  "avg_sec_per_image": 2.147108887666697,
+  "submission_csv_sec": 0.0038204000002224348,
+  "evaluation_csv_sec": 0.007873499999732303,
+  "script_entry_through_submission_csv_sec": 658.1913516000004,
+  "estimated_3352_init_and_infer_min": 120.16561342597946,
+  "timing_note": "Projection excludes 3352-row CSV and other overhead; not proof of the 2400-second limit. Script clock starts at entry, excludes interpreter startup, includes validation setup and JSONL diagnostics. Full submission requires external wall-clock timing through final CSV replacement.",
+  "methods": {
+    "original_512": {
+      "count": 245
+    },
+    "rotation_270": {
+      "count": 7
+    },
+    "highres_1024": {
+      "count": 10
+    },
+    "clahe": {
+      "count": 7
+    },
+    "original_no_candidate": {
+      "count": 31
+    }
+  },
+  "stage_predict_timings": {
+    "original_512": {
+      "attempt_count": 300,
+      "total_sec": 400.4136400000025,
+      "avg_sec": 1.3347121333333416
+    },
+    "rotation_270": {
+      "attempt_count": 55,
+      "total_sec": 62.587723200002074,
+      "avg_sec": 1.1379586036364013
+    },
+    "highres_1024": {
+      "attempt_count": 48,
+      "total_sec": 115.7945748000011,
+      "avg_sec": 2.412386975000023
+    },
+    "clahe": {
+      "attempt_count": 38,
+      "total_sec": 46.92129769999883,
+      "avg_sec": 1.2347709921052323
+    }
+  }
+}

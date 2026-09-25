@@ -1,0 +1,24 @@
+{
+  "count": 300,
+  "historical_correct": 244,
+  "historical_predictions_canonical_correct": 247,
+  "fresh_predictions_historical_correct": 244,
+  "fresh_correct": 247,
+  "fresh_accuracy": 0.8233333333333334,
+  "normalization_changed_ids": [
+    "1173",
+    "2062",
+    "2480"
+  ],
+  "prediction_changed_ids": [],
+  "inference_changed_verdict_ids": [],
+  "init_sec": 12.827814100000069,
+  "infer_sec": 644.1326663000091,
+  "avg_infer_sec_per_image": 2.147108887666697,
+  "exit_code": 0,
+  "external_wall_sec": 659.0024468000001,
+  "wall_sec_per_image": 2.196674822666667,
+  "protected_unchanged": true,
+  "historical_runtime_sec": 618.895585299997,
+  "historical_timing_scope": "Inference loop only, after model initialization; not external wall time"
+}

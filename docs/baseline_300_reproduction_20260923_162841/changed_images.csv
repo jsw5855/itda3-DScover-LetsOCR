@@ -1,0 +1,4 @@
+﻿image_id,file_name,historical_prediction,fresh_prediction,historical_truth,canonical_truth,historical_correct,historical_canonical_correct,fresh_historical_truth_correct,fresh_canonical_correct,normalization_changed_verdict,inference_changed_verdict,prediction_changed,historical_method,fresh_method
+1173,001173.jpg,2021-09-NONE,2021-09-NONE,2021-09-none,2021-09-NONE,False,True,False,True,True,False,False,original_512,original_512
+2062,002062.jpg,2023-02-NONE,2023-02-NONE,2023-02-none,2023-02-NONE,False,True,False,True,True,False,False,original_512,original_512
+2480,002480.jpg,2022-07-NONE,2022-07-NONE,2022-07-none,2022-07-NONE,False,True,False,True,True,False,False,original_512,original_512

@@ -1,0 +1,6 @@
+-r requirements.txt
+# Validation notebooks and tests; not direct submission inference dependencies.
+pandas==2.3.3
+nbformat
+nbclient
+pytest>=7.0.0

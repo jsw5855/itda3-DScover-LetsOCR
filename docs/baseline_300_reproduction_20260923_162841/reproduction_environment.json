@@ -1,0 +1,31 @@
+{
+  "platform": "Windows-10-10.0.26200-SP0",
+  "processor": "Intel64 Family 6 Model 189 Stepping 1, GenuineIntel",
+  "logical_cpu_count": 8,
+  "file_sha256": {
+    "scripts\\evaluate_current_validation_300.py": "1171999dd771dbe0ca3bdab39ddd1488bca1a56541be1e9477c831e12cc52b1f",
+    "scripts\\evaluation_common.py": "1117a155ce9b6306ebc2dfd3a79b35f19b83aa375a3473577fb665b7509883a3",
+    "scripts\\benchmark_random_100.py": "68355bb517e3c07d8d22290c8c5cf061960586c0bfe822a2eb94b8f3ae50906d",
+    "scripts\\evaluate_ppocrv6_medium_300.py": "05e2fa37ca6f3f2da51a23a9473618ebfab64862d5b8bcff162755352b822d1b",
+    "weights\\paddleocr\\PP-OCRv6_medium_det\\inference.json": "0f1a7ec35da36173529c7a60238b7f7919e3831929c3f700ad90ad4896adecd5",
+    "weights\\paddleocr\\PP-OCRv6_medium_det\\inference.pdiparams": "85218d2e3d98f5a21c58b4220627be923a97aee5db3cc71f39536ab31ac53960",
+    "weights\\paddleocr\\PP-OCRv6_medium_det\\inference.yml": "7298d5ead546584af2504d03355f881ac7a7bc0eb1e282d3e159277c1d0af871",
+    "weights\\paddleocr\\korean_PP-OCRv5_mobile_rec\\inference.json": "562404e3c590c50c93778d5f0a94df21b47b5ab8f3ea6d47c7f8a7930c3bc844",
+    "weights\\paddleocr\\korean_PP-OCRv5_mobile_rec\\inference.pdiparams": "cac3e5f12cf04aaa77f6a5bc704e4e736ef2908476551891d84b41b4e9090462",
+    "weights\\paddleocr\\korean_PP-OCRv5_mobile_rec\\inference.yml": "f757fa1c40e99edcf27e9cce879b93eb2a51fa46f5ef39095689b8c37dd75998"
+  },
+  "reference": "outputs/ppocrv6_medium_300/v6_medium_300_results.csv",
+  "conditions": {
+    "processes": 1,
+    "cpu_threads": 2,
+    "mkldnn": true,
+    "recognition_batch": 6,
+    "resize": 512,
+    "fallback": [
+      "rotation_270",
+      "highres_1024",
+      "clahe"
+    ]
+  },
+  "historical_code_identity_note": "Historical result directory has no pipeline/parser hash manifest. Current code is frozen and hashed before/after this run; historical byte identity cannot be proven from that directory."
+}
