@@ -60,6 +60,8 @@ def _parse(*lines):
     (["1,350원", "20,000"], "NONE"),
     (["102021"], "NONE"),                                   # glued MMYYYY needs EXP/BB
     (["2025.10.03 2025.10.12까지"], "2025-10-12"),
+    # T8: a 4-digit year split in two by OCR.
+    (["유통기한", "20 21.09.07", "까지"], "2021-09-07"),      # 2247
 ])
 def test_final_round_cases(lines, expected):
     assert _parse(*lines) == expected

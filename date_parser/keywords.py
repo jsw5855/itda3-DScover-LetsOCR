@@ -17,7 +17,7 @@ PRIMARY_ANCHOR_KEYWORDS = ["소비기한", "사용기한"]
 
 # Marks a date as a different kind of date (manufacture/packaging), not the
 # expiration date, so it should lose to an anchor-flagged candidate nearby.
-EXCLUDE_KEYWORDS = ["제조일자", "제조년월일", "제조일", "포장일자", "포장일", "제조", "PRO", "PROD", "PRD", "MFD", "PACK", "MFG"]
+EXCLUDE_KEYWORDS = ["제조일자", "제조년월일", "제조일", "포장일자", "포장일", "산란일자", "산란일", "제조", "PRO", "PROD", "PRD", "MFD", "PACK", "MFG"]
 
 
 def has_keyword(text: str, keywords: Iterable[str]) -> bool:

@@ -277,12 +277,17 @@ _GLUED_TIME_RE = re.compile(rf"({_FULL_DATE})(?=[0-9]{{1,2}}:[0-9]{{2}})")
 _C_AS_ZERO_RE = re.compile(r"(?<=[.\-/])[Cc](?=[0-9][.\-/])")
 
 
+# "20 21.09.07": OCR split the 4-digit year in two ("2021").
+_SPLIT_YEAR_RE = re.compile(r"(?<![0-9])(20)\s+([0-9]{2})(?=[.\-/][0-9]{1,2}[.\-/][0-9]{1,2}(?![0-9]))")
+
+
 def split_glued(text: str) -> str:
     """Insert a space where OCR glued a full YYYY.MM.DD date to what follows:
     another full date ("2025.10.032025.10.12까지") or a time
     ("2026.01.2512:42"). Without the space the digit run after the day makes
     every date pattern fail."""
     text = _C_AS_ZERO_RE.sub("0", text)
+    text = _SPLIT_YEAR_RE.sub(r"\1\2", text)
     text = _GLUED_DATE_RE.sub(r"\1 ", text)
     return _GLUED_TIME_RE.sub(r"\1 ", text)
 
