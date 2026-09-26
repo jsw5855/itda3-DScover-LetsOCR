@@ -61,10 +61,4 @@ T8 제조일·산란일 등 다른 날짜 선택,2247,2021-09-07,2020-09-21,Fals
 "보류-MM/YY, 콜론 월일, 영문월 OCR 오인식",1947,2022-08-10,2022-06-NONE,False,original_512,incoming_432
 "보류-MM/YY, 콜론 월일, 영문월 OCR 오인식",1948,2022-08-10,2022-06-NONE,False,original_512,incoming_432
 "보류-MM/YY, 콜론 월일, 영문월 OCR 오인식",1900,2021-11-29,NONE,False,original_no_candidate,incoming_432
-라벨 확인 필요,127,2024-04-27,2026-04-27,False,original_512,incoming_432
-라벨 확인 필요,1142,2021-01-21,2021-06-28,False,rotation_270,incoming_432
-라벨 확인 필요,2125,2021-04-21,2021-04-24,False,original_512,incoming_432
-라벨 확인 필요,3223,2022-07-14,2022-06-14,False,original_512,incoming_432
-라벨 확인 필요,851,2026-08-09,2026-06-30,False,original_512,incoming_432
-라벨 확인 필요,1870,2020-11-26,2021-09-26,False,original_512,incoming_432
-라벨 확인 필요,1336,2021-10-26,2021-07-04,False,original_512,incoming_432
+OCR (라벨 확인 결과),2125,2021-04-21,2021-04-24,False,original_512,incoming_432

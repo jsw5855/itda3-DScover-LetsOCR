@@ -23,7 +23,7 @@
 110,2025,10,29,2025-10-29,candidate,existing_300;incoming_432
 118,2026,03,23,2026-03-23,candidate,incoming_432
 124,2026,01,02,2026-01-02,candidate,existing_300
-127,2024,04,27,2024-04-27,candidate,incoming_432
+127,2026,04,27,2026-04-27,approved,incoming_432
 129,2026,01,09,2026-01-09,candidate,incoming_432
 131,2026,08,05,2026-08-05,candidate,existing_300
 133,2025,11,25,2025-11-25,candidate,incoming_432
@@ -179,7 +179,7 @@
 845,2026,06,17,2026-06-17,candidate,existing_300
 848,2026,05,21,2026-05-21,candidate,incoming_432
 850,2026,08,09,2026-08-09,candidate,incoming_432
-851,2026,08,09,2026-08-09,candidate,incoming_432
+851,2026,06,30,2026-06-30,approved,incoming_432
 853,2026,09,24,2026-09-24,candidate,existing_300;incoming_432
 859,2021,10,20,2021-10-20,candidate,incoming_432
 862,2021,10,22,2021-10-22,candidate,incoming_432
@@ -240,7 +240,7 @@
 1123,2021,10,09,2021-10-09,candidate,incoming_432
 1131,NONE,02,12,NONE-02-12,approved,incoming_432
 1141,2022,03,14,2022-03-14,candidate,existing_300
-1142,2021,01,21,2021-01-21,candidate,incoming_432
+1142,2021,06,28,2021-06-28,approved,incoming_432
 1155,2021,09,21,2021-09-21,candidate,incoming_432
 1157,2021,02,07,2021-02-07,candidate,existing_300
 1172,2021,09,NONE,2021-09-NONE,approved,incoming_432
@@ -273,7 +273,7 @@
 1315,2021,12,09,2021-12-09,candidate,existing_300
 1317,2022,12,07,2022-12-07,candidate,existing_300
 1321,2022,02,15,2022-02-15,candidate,existing_300
-1336,2021,10,26,2021-10-26,candidate,incoming_432
+1336,2021,07,04,2021-07-04,approved,incoming_432
 1380,2021,04,09,2021-04-09,candidate,existing_300
 1384,2018,09,NONE,2018-09-NONE,approved,existing_300
 1388,2021,07,17,2021-07-17,candidate,incoming_432
@@ -385,7 +385,7 @@
 1867,2022,07,NONE,2022-07-NONE,approved,incoming_432
 1868,2022,07,NONE,2022-07-NONE,approved,incoming_432
 1869,2021,09,26,2021-09-26,candidate,existing_300
-1870,2020,11,26,2020-11-26,candidate,incoming_432
+1870,2021,09,26,2021-09-26,approved,incoming_432
 1882,2021,06,20,2021-06-20,candidate,incoming_432
 1884,2021,09,09,2021-09-09,candidate,incoming_432
 1886,2021,12,05,2021-12-05,candidate,incoming_432
@@ -457,7 +457,7 @@
 2097,2022,06,16,2022-06-16,candidate,incoming_432
 2098,2021,05,25,2021-05-25,candidate,incoming_432
 2113,2022,03,12,2022-03-12,candidate,existing_300
-2125,2021,04,21,2021-04-21,candidate,incoming_432
+2125,2021,04,21,2021-04-21,approved,incoming_432
 2133,2021,10,04,2021-10-04,candidate,existing_300
 2134,2022,11,02,2022-11-02,candidate,existing_300
 2135,2022,11,02,2022-11-02,candidate,incoming_432
@@ -680,7 +680,7 @@
 3206,2021,04,13,2021-04-13,candidate,existing_300
 3218,2021,06,16,2021-06-16,candidate,existing_300
 3222,2022,06,14,2022-06-14,candidate,existing_300
-3223,2022,07,14,2022-07-14,candidate,incoming_432
+3223,2022,06,14,2022-06-14,approved,incoming_432
 3224,2021,08,21,2021-08-21,candidate,incoming_432
 3228,2022,04,26,2022-04-26,candidate,existing_300;incoming_432
 3238,2021,10,16,2021-10-16,candidate,existing_300;incoming_432
