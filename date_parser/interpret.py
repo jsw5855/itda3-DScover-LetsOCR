@@ -120,8 +120,24 @@ def _build_candidate(
     return result, False
 
 
-def _score(fields: Sequence[RawField], perm: Tuple[str, ...]) -> float:
-    table = _MONTH_NAME_ORDER_PRIOR if any(f.kind == "month_name" for f in fields) else _ORDER_PRIOR
+# Used instead of _ORDER_PRIOR when the image itself states a day-month-year
+# reading order (see hints.py).
+_DMY_HINT_ORDER_PRIOR = {
+    ("day", "month", "year"): 3,
+    ("year", "month", "day"): 2,
+    ("month", "day", "year"): 1,
+    ("year", "month"): 3,
+    ("month", "year"): 0,
+}
+
+
+def _score(fields: Sequence[RawField], perm: Tuple[str, ...], order_hint: Optional[str] = None) -> float:
+    if any(f.kind == "month_name" for f in fields):
+        table = _MONTH_NAME_ORDER_PRIOR
+    elif order_hint == "dmy":
+        table = _DMY_HINT_ORDER_PRIOR
+    else:
+        table = _ORDER_PRIOR
     score = table.get(perm, 0)
     if "year" in perm:
         year_field = fields[perm.index("year")]
@@ -130,7 +146,12 @@ def _score(fields: Sequence[RawField], perm: Tuple[str, ...]) -> float:
     return score
 
 
-def generate_candidates(token: RawDateToken, year_min: int = DEFAULT_YEAR_MIN, year_max: int = DEFAULT_YEAR_MAX) -> List[ScoredCandidate]:
+def generate_candidates(
+    token: RawDateToken,
+    year_min: int = DEFAULT_YEAR_MIN,
+    year_max: int = DEFAULT_YEAR_MAX,
+    order_hint: Optional[str] = None,
+) -> List[ScoredCandidate]:
     """Turn one raw token into every valid (year, month, day) interpretation, scored.
 
     Fully valid (calendar-checked) candidates are always preferred. Only when
@@ -159,7 +180,7 @@ def generate_candidates(token: RawDateToken, year_min: int = DEFAULT_YEAR_MIN, y
         if key in seen:
             continue
         seen.add(key)
-        bucket.append(ScoredCandidate(candidate, _score(token.fields, perm), perm))
+        bucket.append(ScoredCandidate(candidate, _score(token.fields, perm, order_hint), perm))
 
     results = strict if strict else degraded
     results.sort(key=lambda c: -c.score)

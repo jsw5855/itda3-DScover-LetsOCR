@@ -1,11 +1,13 @@
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from datetime import date
 from typing import List, Optional, Sequence, Tuple
 
 from .crossref import apply_manufacture_constraint
-from .extract import extract_date_tokens
+from .hints import MONTH_YEAR, detect_format_hint
+from .extract import extract_date_tokens, extract_month_yy_tokens, extract_yearless_month_day_tokens
 from .interpret import DEFAULT_YEAR_MAX, DEFAULT_YEAR_MIN, ScoredCandidate, generate_candidates
 from .keywords import ANCHOR_KEYWORDS, EXCLUDE_KEYWORDS, PRIMARY_ANCHOR_KEYWORDS, bbox_center, has_keyword, min_distance
 from .types import DateResult, TextBox
@@ -33,13 +35,22 @@ def find_all_candidates(
 ) -> List[PositionedCandidate]:
     """Every date interpretation found across all OCR boxes, each keeping its position."""
     positioned: List[PositionedCandidate] = []
+    hint = detect_format_hint(box.text for box in boxes)
     for box in boxes:
         if not _has_position(box):
             continue
-        for token in extract_date_tokens(box.text):
-            scored = generate_candidates(token, year_min, year_max)
-            if not scored:
-                continue
+        scored_by_token = {}
+
+        def has_reading(token):
+            scored_by_token[token] = generate_candidates(token, year_min, year_max, order_hint=hint)
+            return bool(scored_by_token[token])
+
+        tokens = extract_date_tokens(box.text, accept=has_reading)
+        if hint == MONTH_YEAR:
+            extra = [t for t in extract_month_yy_tokens(box.text, [t.span for t in tokens]) if has_reading(t)]
+            tokens = sorted(tokens + extra, key=lambda t: t.span[0])
+        for token in tokens:
+            scored = scored_by_token[token]
             positioned.append(
                 PositionedCandidate(
                     result=scored[0].date,
@@ -48,7 +59,58 @@ def find_all_candidates(
                     candidates=scored,
                 )
             )
+    if not positioned:
+        positioned = _yearless_candidates(boxes, year_min, year_max)
     return positioned
+
+
+def _yearless_candidates(
+    boxes: Sequence[TextBox], year_min: int, year_max: int
+) -> List[PositionedCandidate]:
+    """Fallback for images with no dated candidate at all: year-less
+    month.day tokens ("01.24", "02.12까지"), reported with year NONE."""
+    positioned: List[PositionedCandidate] = []
+    for box in boxes:
+        if not _has_position(box):
+            continue
+        for token in extract_yearless_month_day_tokens(box.text):
+            scored = generate_candidates(token, year_min, year_max)
+            if not scored:
+                continue
+            year = _adjacent_year(box, boxes, year_min, year_max)
+            if year is not None:
+                month, day = scored[0].date.month, scored[0].date.day
+                try:
+                    date(year, month, day)
+                    scored = [ScoredCandidate(DateResult(year=year, month=month, day=day), scored[0].score, ("year", "month", "day"))]
+                except ValueError:
+                    pass
+            positioned.append(PositionedCandidate(
+                result=scored[0].date, center=bbox_center(box.bbox), source_text=box.text, candidates=scored,
+            ))
+    return positioned
+
+
+_YEAR_ONLY_RE = re.compile(r"^\s*(20[0-9]{2})\s*[.,]?\s*$")
+
+
+def _adjacent_year(box: TextBox, boxes: Sequence[TextBox], year_min: int, year_max: int) -> Optional[int]:
+    """A box holding only a 4-digit year right next to the month.day box
+    (OCR split "2027 04.28" into two boxes)."""
+    xs = [p[1] for p in box.bbox]
+    height = max(xs) - min(xs) or 1.0
+    center = bbox_center(box.bbox)
+    best = None
+    for other in boxes:
+        if other is box or not _has_position(other):
+            continue
+        m = _YEAR_ONLY_RE.match(other.text)
+        if not m or not (year_min <= int(m.group(1)) <= year_max):
+            continue
+        d = min_distance(center, [bbox_center(other.bbox)])
+        if d <= 3 * height and (best is None or d < best[0]):
+            best = (d, int(m.group(1)))
+    return best[1] if best else None
 
 
 def _is_closer_to(center: Tuple[float, float], own: List[Tuple[float, float]], other: List[Tuple[float, float]]) -> bool:

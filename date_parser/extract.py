@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
-from typing import List, Optional, Tuple
+from typing import Callable, List, Optional, Tuple
 
 DIGIT = r"[0-9OoUu]"
 
@@ -38,8 +38,8 @@ _NUM = RawField
 # Real OCR output sometimes has more than one separator character in a row
 # (e.g. "2021. 03.20" has a period AND a space between year and month), so
 # this allows one or more, not just exactly one.
-_SEP = r"[.\-/\s]+"
-_OPTIONAL_SEP = r"[.\-/\s]*"
+_SEP = r"[.\-/\s·×]+"
+_OPTIONAL_SEP = r"[.\-/\s·×]*"
 
 # (regex, field kinds per group, role_universe, fixed_roles)
 # fixed_roles is only used where the source text itself names the unit
@@ -77,6 +77,16 @@ _PATTERN_DEFS = [
         # strong, small anchor that can't accidentally swallow an unrelated
         # digit run.
         re.compile(rf"(?<!\d)(\d{{1,2}}){_OPTIONAL_SEP}({_MONTH_RE}){_SEP}(\d{{2,4}})(?!\d)", re.IGNORECASE),
+        ("num", "month_name", "num"),
+        ("year", "month", "day"),
+        None,
+    ),
+    (
+        # "07FEB2022" / "31JUL21": day, month name and year printed with no
+        # separator at all (common on US/EU cans and pouches). The month name
+        # fixes which run of digits is which; order between day and year is
+        # resolved by validation and the month-name prior (day first).
+        re.compile(rf"(?<!\d)({DIGIT}{{1,2}})({_MONTH_RE})({DIGIT}{{2}}|{DIGIT}{{4}})(?!\d)", re.IGNORECASE),
         ("num", "month_name", "num"),
         ("year", "month", "day"),
         None,
@@ -157,7 +167,51 @@ _PATTERN_DEFS = [
         None,
     ),
     (
-        re.compile(rf"(?<!\d)({DIGIT}{{1,4}}){_SEP}({DIGIT}{{1,4}}){_SEP}({DIGIT}{{1,4}})(?!\d)"),
+        # Two 1-2 digit groups then a 4-digit year, with the mixed or unusual
+        # separators OCR produces: "01,07 2021", "30.12,2021", "23.10·2020",
+        # "18×04>2021". The trailing 4-digit year keeps this from matching
+        # thousands separators ("1,350") or nutrition values, and it may not
+        # start inside a longer date ("2025.10.03 2025.10.12" is two dates,
+        # not "10.03 2025").
+        re.compile(r"(?<![0-9])(?<![0-9][.,/\-·×])([0-9]{1,2})\s*[.,/\-·×]\s*([0-9]{1,2})\s*[.,/\-·×>\s]\s*([0-9]{4})(?![0-9])"),
+        ("num", "num", "num"),
+        ("year", "month", "day"),
+        None,
+    ),
+    (
+        # "202006 03": year and month glued, day after a space.
+        re.compile(r"(?<![0-9])([0-9]{4})([0-9]{2})\s+([0-9]{2})(?![0-9])"),
+        ("num", "num", "num"),
+        ("year", "month", "day"),
+        ("year", "month", "day"),
+    ),
+    (
+        # "EXP:2606-2026": day and month glued, then the year. Only right
+        # after an EXP keyword - a bare 4+4 digit run is too often a code.
+        re.compile(r"(?i:EXP)[:.\s]*([0-9]{2})([0-9]{2})[\s\-./]+([0-9]{4})(?![0-9])"),
+        ("num", "num", "num"),
+        ("day", "month", "year"),
+        ("day", "month", "year"),
+    ),
+    (
+        # "EXP 102021": month and year glued, only right after EXP/BB/BBE.
+        re.compile(r"(?i:EXP|BBE|BB)[:.\s]*([0-9]{2})([0-9]{4})(?![0-9])"),
+        ("num", "num"),
+        ("month", "year"),
+        ("month", "year"),
+    ),
+    (
+        # "03112021": eight digits read as DDMMYYYY / MMDDYYYY when the
+        # YYYYMMDD reading (tried earlier) is not a valid date.
+        re.compile(r"(?<![0-9])([0-9]{2})([0-9]{2})([0-9]{4})(?![0-9])"),
+        ("num", "num", "num"),
+        ("day", "month", "year"),
+        None,
+    ),
+    (
+        # The last group must not be the hour of a following HH:MM time -
+        # "12.18. 10:41" is Dec 18 at 10:41, not 2018-12-10.
+        re.compile(rf"(?<!\d)({DIGIT}{{1,4}}){_SEP}({DIGIT}{{1,4}}){_SEP}({DIGIT}{{1,4}})(?!\d)(?!\s*:\s*\d)"),
         ("num", "num", "num"),
         ("year", "month", "day"),
         None,
@@ -176,7 +230,7 @@ _PATTERN_DEFS = [
         # 4-digit year up front, so allowing a loose separator throughout is
         # low-risk - this can't accidentally swallow an unrelated HH:MM:SS
         # timestamp since those never start with a 4-digit number.
-        re.compile(rf"(?<!\d)({DIGIT}{{4}})[:.\-/\s,()]+({DIGIT}{{2}})[:.,()]?({DIGIT}{{2}})(?!\d)"),
+        re.compile(rf"(?<!\d)({DIGIT}{{4}})[:.\-/\s,()xX×·]+({DIGIT}{{2}})[:.,()/\-\s·]?({DIGIT}{{2}})(?!\d)"),
         ("num", "num", "num"),
         ("year", "month", "day"),
         None,
@@ -213,16 +267,64 @@ _PATTERN_DEFS = [
 ]
 
 
+_FULL_DATE = r"[0-9]{4}[.\-/][0-9]{1,2}[.\-/][0-9]{2}"
+_GLUED_DATE_RE = re.compile(rf"({_FULL_DATE})(?={_FULL_DATE})")
+_GLUED_TIME_RE = re.compile(rf"({_FULL_DATE})(?=[0-9]{{1,2}}:[0-9]{{2}})")
+
+
+# "2020.C6.30", "17/C7/2021": a lone C between separators, followed by one
+# digit, is a 0 misread (dot-matrix 0 with a broken right side).
+_C_AS_ZERO_RE = re.compile(r"(?<=[.\-/])[Cc](?=[0-9][.\-/])")
+
+
+# "20 21.09.07": OCR split the 4-digit year in two ("2021").
+_SPLIT_YEAR_RE = re.compile(r"(?<![0-9])(20)\s+([0-9]{2})(?=[.\-/][0-9]{1,2}[.\-/][0-9]{1,2}(?![0-9]))")
+
+
+def split_glued(text: str) -> str:
+    """Insert a space where OCR glued a full YYYY.MM.DD date to what follows:
+    another full date ("2025.10.032025.10.12까지") or a time
+    ("2026.01.2512:42"). Without the space the digit run after the day makes
+    every date pattern fail."""
+    text = _C_AS_ZERO_RE.sub("0", text)
+    text = _SPLIT_YEAR_RE.sub(r"\1\2", text)
+    text = _GLUED_DATE_RE.sub(r"\1 ", text)
+    return _GLUED_TIME_RE.sub(r"\1 ", text)
+
+
+def _trim_trailing_noise(fields: Tuple[RawField, ...]) -> Tuple[RawField, ...]:
+    """"2026.08.267" / "2021.10.028": a 4-digit year, a month, then a 3-digit
+    "day". Dot-matrix OCR often glues one stray character (a letter or the
+    next symbol read as a digit) right after the day; a day never has three
+    digits, so keep its first two. Only applied when the token starts with a
+    4-digit year, where the year-month-day order is certain."""
+    if (
+        len(fields) == 3
+        and all(f.kind == "num" for f in fields)
+        and len(normalize_confusable(fields[0].raw)) == 4
+        and len(fields[2].raw) == 3
+    ):
+        return (fields[0], fields[1], RawField(raw=fields[2].raw[:2], kind="num"))
+    return fields
+
+
 def _overlaps(span: Tuple[int, int], claimed: List[Tuple[int, int]]) -> bool:
     return any(span[0] < end and start < span[1] for start, end in claimed)
 
 
-def extract_date_tokens(text: str) -> List[RawDateToken]:
+def extract_date_tokens(text: str, accept: Optional[Callable[[RawDateToken], bool]] = None) -> List[RawDateToken]:
     """Find date-shaped substrings in ``text`` without assuming field order.
 
     Patterns are tried most-specific-first; once a span is claimed, later
     (more generic) patterns skip anything overlapping it.
+
+    ``accept`` (optional) is asked about every match before it claims its
+    span. A match it rejects - e.g. one with no valid calendar reading, like
+    "U 2026. 01" read as 0/2026/01 via the O/U-as-zero rule - is dropped and
+    leaves its span free, so a later pattern can still find the real date
+    inside it ("2026. 01" as year+month).
     """
+    text = split_glued(text)
     claimed: List[Tuple[int, int]] = []
     tokens: List[RawDateToken] = []
     for pattern, kinds, role_universe, fixed_roles in _PATTERN_DEFS:
@@ -230,8 +332,47 @@ def extract_date_tokens(text: str) -> List[RawDateToken]:
             span = match.span()
             if _overlaps(span, claimed):
                 continue
-            fields = tuple(RawField(raw=g, kind=k) for g, k in zip(match.groups(), kinds))
-            tokens.append(RawDateToken(span=span, fields=fields, role_universe=role_universe, fixed_roles=fixed_roles))
+            fields = _trim_trailing_noise(tuple(RawField(raw=g, kind=k) for g, k in zip(match.groups(), kinds)))
+            token = RawDateToken(span=span, fields=fields, role_universe=role_universe, fixed_roles=fixed_roles)
+            if accept is not None and not accept(token):
+                continue
+            tokens.append(token)
             claimed.append(span)
     tokens.sort(key=lambda t: t.span[0])
+    return tokens
+
+
+# Month + two-digit year ("05.21" = May 2021). Never extracted by default:
+# "05.21" is just as often May 21st. Only used when the image carries a
+# month/year format hint (see hints.py).
+_MONTH_YY_RE = re.compile(r"(?<![0-9.,:])([0-9]{1,2})\s*[./\-]\s*([0-9]{2})(?![0-9.,:])")
+
+
+def extract_month_yy_tokens(text: str, taken: List[Tuple[int, int]]) -> List[RawDateToken]:
+    tokens = []
+    for match in _MONTH_YY_RE.finditer(text):
+        if _overlaps(match.span(), taken):
+            continue
+        fields = (RawField(raw=match.group(1), kind="num"), RawField(raw=match.group(2), kind="num"))
+        tokens.append(RawDateToken(span=match.span(), fields=fields, role_universe=("month", "year"), fixed_roles=("month", "year")))
+    return tokens
+
+
+# Year-less month.day ("01.24 A", "02.12까지", "03.13. 13:47"), printed on
+# Korean dairy products. Both parts must be two digits, the separator must be
+# a dot (a colon is a time) and no unit may follow ("3.60g", "12.50%").
+# find_all_candidates() only falls back to these when the image has no other
+# date candidate at all.
+_UNIT = r"(?:g|mg|kg|ml|mL|l|L|kcal|Kcal|%|원|개|cm|mm)"
+_YEARLESS_MD_RE = re.compile(
+    rf"(?<![0-9.,:])(0[1-9]|1[0-2])\s?\.\s?(0[1-9]|[12][0-9]|3[01])(?![0-9])(?!\s?{_UNIT}(?![A-Za-z]))"
+)
+
+
+def extract_yearless_month_day_tokens(text: str) -> List[RawDateToken]:
+    text = split_glued(text)
+    tokens = []
+    for match in _YEARLESS_MD_RE.finditer(text):
+        fields = (RawField(raw=match.group(1), kind="num"), RawField(raw=match.group(2), kind="num"))
+        tokens.append(RawDateToken(span=match.span(), fields=fields, role_universe=("month", "day"), fixed_roles=("month", "day")))
     return tokens
