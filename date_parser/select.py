@@ -5,7 +5,8 @@ from datetime import date
 from typing import List, Optional, Sequence, Tuple
 
 from .crossref import apply_manufacture_constraint
-from .extract import extract_date_tokens
+from .hints import MONTH_YEAR, detect_format_hint
+from .extract import extract_date_tokens, extract_month_yy_tokens
 from .interpret import DEFAULT_YEAR_MAX, DEFAULT_YEAR_MIN, ScoredCandidate, generate_candidates
 from .keywords import ANCHOR_KEYWORDS, EXCLUDE_KEYWORDS, PRIMARY_ANCHOR_KEYWORDS, bbox_center, has_keyword, min_distance
 from .types import DateResult, TextBox
@@ -33,16 +34,21 @@ def find_all_candidates(
 ) -> List[PositionedCandidate]:
     """Every date interpretation found across all OCR boxes, each keeping its position."""
     positioned: List[PositionedCandidate] = []
+    hint = detect_format_hint(box.text for box in boxes)
     for box in boxes:
         if not _has_position(box):
             continue
         scored_by_token = {}
 
         def has_reading(token):
-            scored_by_token[token] = generate_candidates(token, year_min, year_max)
+            scored_by_token[token] = generate_candidates(token, year_min, year_max, order_hint=hint)
             return bool(scored_by_token[token])
 
-        for token in extract_date_tokens(box.text, accept=has_reading):
+        tokens = extract_date_tokens(box.text, accept=has_reading)
+        if hint == MONTH_YEAR:
+            extra = [t for t in extract_month_yy_tokens(box.text, [t.span for t in tokens]) if has_reading(t)]
+            tokens = sorted(tokens + extra, key=lambda t: t.span[0])
+        for token in tokens:
             scored = scored_by_token[token]
             positioned.append(
                 PositionedCandidate(

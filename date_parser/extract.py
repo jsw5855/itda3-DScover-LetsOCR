@@ -260,3 +260,19 @@ def extract_date_tokens(text: str, accept: Optional[Callable[[RawDateToken], boo
             claimed.append(span)
     tokens.sort(key=lambda t: t.span[0])
     return tokens
+
+
+# Month + two-digit year ("05.21" = May 2021). Never extracted by default:
+# "05.21" is just as often May 21st. Only used when the image carries a
+# month/year format hint (see hints.py).
+_MONTH_YY_RE = re.compile(r"(?<![0-9.,:])([0-9]{1,2})\s*[./\-]\s*([0-9]{2})(?![0-9.,:])")
+
+
+def extract_month_yy_tokens(text: str, taken: List[Tuple[int, int]]) -> List[RawDateToken]:
+    tokens = []
+    for match in _MONTH_YY_RE.finditer(text):
+        if _overlaps(match.span(), taken):
+            continue
+        fields = (RawField(raw=match.group(1), kind="num"), RawField(raw=match.group(2), kind="num"))
+        tokens.append(RawDateToken(span=match.span(), fields=fields, role_universe=("month", "year"), fixed_roles=("month", "year")))
+    return tokens
