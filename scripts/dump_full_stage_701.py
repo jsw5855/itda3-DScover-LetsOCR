@@ -176,6 +176,15 @@ def audit_sources(images, packages, weights):
             issues.append('model weight mismatch')
         if m.get('engine', ENGINE if m.get('cpu_threads') == 2 else None) != ENGINE:
             issues.append('engine mismatch')
+        # Side length is per stage; the remaining detection options must equal ours.
+        common = {k: v for k, v in stage_metadata(STAGES[0])['predict'].items() if k != 'text_det_limit_side_len'}
+        if not isinstance(m.get('predict'), dict) or {
+                k: v for k, v in m['predict'].items() if k != 'text_det_limit_side_len'} != common:
+            issues.append('detection option mismatch')
+        # Only the inspected shadow schema meets the complete runtime provenance contract
+        # (per-image hashes, per-record identity/checksum bound to its manifest).
+        if name != 'frozen_b_shadow_independent_run1':
+            issues.append('schema lacks per-record checksum/run binding')
         if missing:
             issues.append('missing historical package versions: ' + ', '.join(sorted(missing)))
         count = 0
@@ -190,8 +199,7 @@ def audit_sources(images, packages, weights):
                 count += 1
                 if issues:
                     continue
-                # Only the inspected shadow schema meets the complete runtime provenance contract.
-                if name != 'frozen_b_shadow_independent_run1' or stage not in m['stages']:
+                if stage not in m['stages']:
                     raise ValueError('Unsupported historical schema')
                 if m['images'][key]['sha256'] != images[key]['sha256']:
                     raise ValueError(f'Historical image changed: {key}')
@@ -253,7 +261,9 @@ def preflight(output):
               'remaining_attempts': sum(remaining.values()), 'remaining_by_stage': dict(remaining),
               'cache_audit': audit, 'timing_sample_counts': {s: len(v) for s, v in measured.items()},
               'measured_historical_mean_ocr_sec': means,
-              'rough_remaining_ocr_sec': sum(remaining[s] * means[s] for s in STAGES),
+              # None when a remaining stage has no historical timing sample to estimate from.
+              'rough_remaining_ocr_sec': (None if any(remaining[s] and means[s] is None for s in STAGES)
+                                          else sum(remaining[s] * (means[s] or 0) for s in STAGES)),
               'estimate_caveat': 'Selected cohorts; OCR/conversion only, excludes init/decode/preparation/writes; not measured full-run wall time'}
     return manifest, labels, report
 

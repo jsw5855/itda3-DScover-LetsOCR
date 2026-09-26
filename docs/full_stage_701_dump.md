@@ -40,7 +40,10 @@ Rebuild a complete consolidated dump without OCR:
 .\.venv\Scripts\python.exe -B .\scripts\dump_full_stage_701.py --output .\docs\full_stage_701_run1 --consolidate-only
 ```
 
-No-OCR tests (one engine is mocked; the 701-image test uses synthetic detections):
+No-OCR tests (one engine is mocked; the 701-image test uses synthetic detections;
+a synthetic repository with 701 placeholder image files exercises the full preflight;
+the real-environment preflight test is skipped unless `data/`, `weights/` and the
+shadow run artifacts exist locally):
 
 ```powershell
 .\.venv\Scripts\python.exe -B -m unittest discover -s tests -p test_full_stage_701.py -v
@@ -71,10 +74,22 @@ The 104 early-stop, 50 correct-control, and 18 triggered-control records match
 code/weights but omit historical PaddleX/OpenCV versions. Conservatively reject
 all 172 for reuse; never infer historical package identity from today's install.
 Their valid raw timings remain useful as approximate timing samples.
-`docs/run701/ocr_dump.jsonl` is absent. Older audit/benchmark dumps are excluded:
+Every historical manifest must also match the current detection options
+(`text_det_limit_type`, `text_det_box_thresh`) and use the checksummed shadow schema;
+anything else is reported as not reusable instead of being imported.
+
+`docs/run701/ocr_dump.jsonl` (Sumin's PC, `claude/itda-ocr-github-integration-wpblqh`
+branch only; stage-1 raw OCR for all 701 plus the later stages that early stop reached)
+is **not reusable** and is deliberately not audited as a source: it records no package
+versions, model weight hashes, engine/thread settings, image hashes, run id or record
+checksums, and it came from a different machine. Older audit/benchmark dumps are excluded:
 they are outside the inspected producer allowlist and lack an established
 equivalence chain to this four-stage, two-thread schema. The official 300
 prediction JSONL does not contain raw detections and cannot supply these records.
+
+`docs/full_stage_701_preflight.json` is the report produced on Seonwoo's PC at
+`c13fb32`, before the audit hardening above. Re-run the read-only preflight before
+`--run-ocr`; the reuse count and reasons printed then are authoritative.
 
 Initial plan: maximum 2,804 stage records; 269 imported; 2,535 fresh attempts:
 506 original, 664 rotation, 664 highres, 701 CLAHE.
@@ -150,3 +165,21 @@ Filesystem atomic replacement/durability assumes normal local filesystem behavio
 it is not protection from hardware failure or malicious edits with recomputed hashes.
 The resulting 701 cohort contains development cases, so future tuning on it must
 not be reported as independent shadow validation.
+
+## Policy B `M` / `q` definition check
+
+No trigger, threshold or acceptance logic is used by this tool; this only records
+that the two analyses agree. Seonwoo's `evidence()` in
+`scripts/diagnose_correct_controls_50.py` (reused by `validate_frozen_b_shadow.py`):
+M = at least two distinct `c.result.final_date_string()` over `find_all_candidates(boxes)`;
+q = minimum confidence of the boxes whose text and bbox center equal the selected
+candidate's. Sumin's 701 estimate: M = at least two distinct `pc.result.as_strings()`
+over the same candidates; q = confidence of the first such box.
+
+- M is identical: both take each candidate's top-scoring reading (`result`), and
+  `as_strings()` tuples map one-to-one onto `final_date_string()` (an empty result is
+  one `NONE` value in both), so the distinct counts are equal.
+- q can differ only when several boxes share the selected text and exact center
+  (min vs first), and Seonwoo's version raises when no source box is found.
+- Checked on all 1,170 saved stage records of `docs/run701/ocr_dump.jsonl` with the
+  current `date_parser`: M differs 0, q differs 0; stage-1 Policy B triggers 139 in both.

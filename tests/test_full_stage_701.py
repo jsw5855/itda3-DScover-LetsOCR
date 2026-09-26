@@ -20,6 +20,23 @@ def raw():
             'ocr_sec': .1, 'stage_sec': .2}
 
 
+def make_fake_repo(root):
+    # Placeholder bytes only: preflight hashes image files but never decodes them.
+    (root / 'labels/review').mkdir(parents=True)
+    (root / 'scripts').mkdir()
+    for name in ('tmp_labels_701.csv', 'labels/review/label_review.csv', 'ocr_pipeline.py',
+                 'scripts/dump_full_stage_701.py'):
+        (root / name).write_bytes((ROOT / name).read_bytes())
+    (root / 'data').mkdir()
+    for key in dump.exact_ids(dump.csv_rows(ROOT / 'tmp_labels_701.csv')):
+        (root / 'data' / f'{key}.jpg').write_bytes(key.encode())
+    (root / 'data/999999.jpg').write_bytes(b'outside the frozen membership')
+    for model in dump.MODELS:
+        (root / 'weights/paddleocr' / model).mkdir(parents=True)
+        for name in ('inference.json', 'inference.pdiparams', 'inference.yml'):
+            (root / 'weights/paddleocr' / model / name).write_bytes(f'{model}/{name}'.encode())
+
+
 class FullStageTests(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory(dir=ROOT)
@@ -38,6 +55,9 @@ class FullStageTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 dump.exact_ids(changed)
 
+    @unittest.skipUnless((ROOT / 'data').is_dir() and (ROOT / 'weights/paddleocr').is_dir()
+                         and (ROOT / 'docs/frozen_b_shadow_independent_run1/manifest.json').is_file(),
+                         'Real preflight needs local data/, weights/ and the shadow run artifacts')
     def test_readonly_preflight_imports_no_ocr(self):
         code = """
 import pathlib, sys
@@ -55,6 +75,79 @@ assert not any(n in sys.modules for n in ('ocr_pipeline', 'paddleocr', 'paddle',
         result = subprocess.run([sys.executable, '-B', '-c', code, str(self.output)],
                                 cwd=ROOT, capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_synthetic_preflight_no_ocr_no_writes(self):
+        """Full preflight on a synthetic repository (701 placeholder image files, fake weights)."""
+        fake = Path(self.tmp.name) / 'repo'
+        make_fake_repo(fake)
+        code = """
+import importlib.metadata, pathlib, sys
+sys.path.insert(0, str(pathlib.Path(sys.argv[1]) / 'scripts'))
+import dump_full_stage_701 as d
+assert d.ROOT == pathlib.Path(sys.argv[1]).resolve()
+d.importlib.metadata.version = lambda name: '1.0'
+output = d.ROOT / 'docs/full_stage_701_run1'
+m, labels, report = d.preflight(output)
+assert report['preflight'] == 'passed' and report['image_count'] == 701, report
+assert report['maximum_attempts'] == 2804 and report['remaining_attempts'] == 2804, report
+assert report['safely_reusable_historical_attempts'] == 0, report
+assert report['rough_remaining_ocr_sec'] is None, report
+assert len(m['images']) == 701 and len(labels) == 701
+assert not output.exists()
+assert not any(n in sys.modules for n in ('ocr_pipeline', 'paddleocr', 'paddle', 'cv2', 'numpy'))
+"""
+        result = subprocess.run([sys.executable, '-B', '-c', code, str(fake)],
+                                cwd=ROOT, capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        (fake / 'data/002066.jpg').unlink()
+        result = subprocess.run([sys.executable, '-B', '-c', code, str(fake)],
+                                cwd=ROOT, capture_output=True, text=True)
+        self.assertIn('Missing images', result.stderr)
+
+    def test_historical_audit_accepts_only_matching_provenance(self):
+        fake = Path(self.tmp.name) / 'repo'
+        make_fake_repo(fake)
+        weights = {f'weights/paddleocr/{m}/{f}': dump.sha(fake / 'weights/paddleocr' / m / f)
+                   for m in dump.MODELS for f in ('inference.json', 'inference.pdiparams', 'inference.yml')}
+        images = {'000007': {'sha256': dump.sha(fake / 'data/000007.jpg')}}
+        packages = {p: '1.0' for p in dump.PACKAGES}
+        source = fake / 'docs/frozen_b_shadow_independent_run1'
+        source.mkdir(parents=True)
+
+        def build(manifest_changes=None, record_changes=None):
+            m = {'packages': packages, 'code_sha256': {}, 'weights_sha256': weights,
+                 'engine': dump.ENGINE, 'predict': {'text_det_limit_type': 'max', 'text_det_box_thresh': 0.7},
+                 'stages': ['original_512', 'rotation_270', 'highres_1024'], 'images': images,
+                 **(manifest_changes or {})}
+            dump.write(source / 'manifest.json', m)
+            r = {'image_id': '000007', 'stage': 'original_512', 'run_id': dump.digest(m), **raw()}
+            r['record_sha256'] = dump.digest(r)
+            r.update(record_changes or {})
+            dump.write(source / '000007_original_512.json', r)
+            return {'frozen_b_shadow_independent_run1': dump.sha(source / 'manifest.json')}
+
+        def audit(pins, image_sha=images['000007']['sha256']):
+            with patch.object(dump, 'ROOT', fake), patch.object(dump, 'SOURCES', pins):
+                return dump.audit_sources({'000007': {'sha256': image_sha}}, packages, weights)
+
+        accepted, reports, _ = audit(build())
+        self.assertEqual(list(accepted), ['000007_original_512'])
+        self.assertEqual(reports['frozen_b_shadow_independent_run1']['reusable'], 1)
+        for changes in ({'packages': dict(packages, paddleocr='0.9')},
+                        {'engine': dict(dump.ENGINE, cpu_threads=4)},
+                        {'predict': {'text_det_limit_type': 'max', 'text_det_box_thresh': 0.6}},
+                        {'weights_sha256': {}}):
+            accepted, reports, _ = audit(build(changes))
+            self.assertEqual(accepted, {}, changes)
+            self.assertEqual(reports['frozen_b_shadow_independent_run1']['reusable'], 0)
+        with self.assertRaisesRegex(ValueError, 'integrity'):
+            audit(build(record_changes={'ocr_sec': .05}))
+        with self.assertRaisesRegex(ValueError, 'image changed'):
+            audit(build(), image_sha='0' * 64)
+        pins = build()
+        (source / 'manifest.json').write_text('{}', encoding='utf8')
+        with self.assertRaisesRegex(ValueError, 'manifest changed'):
+            audit(pins)
 
     def test_full_701_four_stages_no_early_stop_and_consolidation(self):
         self.manifest['image_ids'] = dump.exact_ids(dump.csv_rows(ROOT / 'tmp_labels_701.csv'))
