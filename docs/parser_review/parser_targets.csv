@@ -1,0 +1,70 @@
+﻿target,image_id,truth,current_pred,correct_now,method,label_sources
+T1 형식 안내 문구 활용,2917,2021-04-30,2030-04-21,False,original_512,existing_300
+T1 형식 안내 문구 활용,1205,2021-05-NONE,NONE,False,original_no_candidate,existing_300
+T2 날짜에 붙은 시각·다른 날짜 분리,682,2026-01-25,NONE,False,original_no_candidate,incoming_432
+T2 날짜에 붙은 시각·다른 날짜 분리,198,2026-05-08,NONE,False,original_no_candidate,incoming_432
+T2 날짜에 붙은 시각·다른 날짜 분리,824,NONE-12-18,2018-12-10,False,original_512,incoming_432
+T2 날짜에 붙은 시각·다른 날짜 분리,1227,2021-01-12,2022-01-11,False,original_512,incoming_432
+T2 날짜에 붙은 시각·다른 날짜 분리,686,2025-10-12,2025-10-NONE,False,original_512,incoming_432
+T3 일(day) 뒤에 붙은 잡음 숫자,1730,2021-10-02,2021-10-28,False,original_512,incoming_432
+T3 일(day) 뒤에 붙은 잡음 숫자,1741,2022-11-01,2022-11-13,False,original_512,existing_300;incoming_432
+T3 일(day) 뒤에 붙은 잡음 숫자,2148,2022-01-03,NONE,False,original_no_candidate,incoming_432
+T3 일(day) 뒤에 붙은 잡음 숫자,2899,2021-11-09,2021-11-NONE,False,clahe,existing_300
+T3 일(day) 뒤에 붙은 잡음 숫자,384,2026-07-08,2025-07-NONE,False,original_512,existing_300
+T4 구분 기호·문자 보정,913,2021-10-19,NONE,False,original_no_candidate,incoming_432
+T4 구분 기호·문자 보정,2421,2020-10-23,NONE,False,original_no_candidate,incoming_432
+T4 구분 기호·문자 보정,2731,2021-04-18,NONE,False,original_no_candidate,incoming_432
+T4 구분 기호·문자 보정,1851,2021-12-16,NONE,False,original_no_candidate,existing_300
+T4 구분 기호·문자 보정,2011,2020-06-30,NONE,False,original_no_candidate,existing_300
+T4 구분 기호·문자 보정,2012,2020-06-30,NONE,False,original_no_candidate,incoming_432
+T4 구분 기호·문자 보정,1388,2021-07-17,2021-07-NONE,False,original_512,incoming_432
+T4 구분 기호·문자 보정,2649,2021-07-01,2021-07-NONE,False,original_512,incoming_432
+T4 구분 기호·문자 보정,2835,2021-06-30,2021-06-NONE,False,original_512,existing_300
+T4 구분 기호·문자 보정,2847,2021-12-30,2021-12-NONE,False,original_512,existing_300
+T4 구분 기호·문자 보정,1554,2020-06-03,NONE,False,original_no_candidate,existing_300
+T4 구분 기호·문자 보정,3203,2021-10-NONE,NONE,False,original_no_candidate,incoming_432
+T4 구분 기호·문자 보정,715,2026-06-26,NONE,False,original_no_candidate,existing_300;incoming_432
+T4 구분 기호·문자 보정,3011,2021-12-11,NONE,False,original_no_candidate,incoming_432
+T4 구분 기호·문자 보정,977,2021-11-03,2020-11-03,False,original_512,incoming_432
+T5 붙은 영문 날짜(DDMONYYYY/DDMONYY),892,2022-02-07,NONE,False,original_no_candidate,incoming_432
+T5 붙은 영문 날짜(DDMONYYYY/DDMONYY),893,2022-02-07,NONE,False,original_no_candidate,existing_300
+T5 붙은 영문 날짜(DDMONYYYY/DDMONYY),1757,2023-03-09,NONE,False,original_no_candidate,incoming_432
+T5 붙은 영문 날짜(DDMONYYYY/DDMONYY),1912,2021-05-21,NONE,False,original_no_candidate,incoming_432
+T5 붙은 영문 날짜(DDMONYYYY/DDMONYY),2251,2021-05-09,NONE,False,original_no_candidate,existing_300
+T5 붙은 영문 날짜(DDMONYYYY/DDMONYY),2048,2021-07-31,NONE,False,original_no_candidate,incoming_432
+T6 실패한 매칭이 진짜 날짜를 가림,515,2026-01-NONE,2022-09-22,False,rotation_270,existing_300
+T7 연도 없는 월.일(MM.DD),789,NONE-12-19,NONE,False,original_no_candidate,existing_300;incoming_432
+T7 연도 없는 월.일(MM.DD),1070,NONE-01-24,NONE,False,original_no_candidate,incoming_432
+T7 연도 없는 월.일(MM.DD),1071,NONE-01-24,NONE,False,original_no_candidate,incoming_432
+T7 연도 없는 월.일(MM.DD),1131,NONE-02-12,NONE,False,original_no_candidate,incoming_432
+T7 연도 없는 월.일(MM.DD),2051,NONE-04-14,NONE,False,original_no_candidate,incoming_432
+T7 연도 없는 월.일(MM.DD),2159,NONE-04-13,NONE,False,original_no_candidate,incoming_432
+T7 연도 없는 월.일(MM.DD),2265,NONE-03-05,NONE,False,original_no_candidate,incoming_432
+T7 연도 없는 월.일(MM.DD),2310,NONE-03-13,NONE,False,original_no_candidate,incoming_432
+T7 연도 없는 월.일(MM.DD),2345,NONE-02-12,NONE,False,original_no_candidate,incoming_432
+T7 연도 없는 월.일(MM.DD),2927,NONE-04-08,NONE,False,original_no_candidate,existing_300
+T7 연도 없는 월.일(MM.DD),3277,NONE-04-05,NONE,False,original_no_candidate,existing_300
+T8 제조일·산란일 등 다른 날짜 선택,2066,2020-04-30,2024-04-05,False,original_512,existing_300
+T8 제조일·산란일 등 다른 날짜 선택,2247,2021-09-07,2020-09-21,False,original_512,existing_300
+보류-2자리 연도 순서(안내 문구 없음),1862,2023-06-18,2018-06-23,False,original_512,incoming_432
+보류-2자리 연도 순서(안내 문구 없음),1975,2021-02-26,2026-02-21,False,clahe,incoming_432
+보류-2자리 연도 순서(안내 문구 없음),2034,2020-12-17,2017-12-20,False,original_512,existing_300
+보류-2자리 연도 순서(안내 문구 없음),2211,2023-03-20,2020-09-22,False,original_512,incoming_432
+보류-2자리 연도 순서(안내 문구 없음),2604,2023-11-17,2022-03-22,False,original_512,incoming_432
+보류-2자리 연도 순서(안내 문구 없음),2726,2022-03-17,2017-03-22,False,rotation_270,existing_300
+보류-4자리 연도 월/일 순서,143,2027-06-03,2027-03-06,False,original_512,incoming_432
+보류-4자리 연도 월/일 순서,844,2026-03-07,2026-07-03,False,original_512,incoming_432
+보류-4자리 연도 월/일 순서,1035,2021-07-10,2021-10-07,False,original_512,incoming_432
+보류-4자리 연도 월/일 순서,2829,2022-02-01,2022-01-02,False,original_512,incoming_432
+"보류-MM/YY, 콜론 월일, 영문월 OCR 오인식",2586,2022-12-NONE,NONE,False,original_no_candidate,existing_300;incoming_432
+"보류-MM/YY, 콜론 월일, 영문월 OCR 오인식",106,NONE-10-20,NONE,False,original_no_candidate,incoming_432
+"보류-MM/YY, 콜론 월일, 영문월 OCR 오인식",1947,2022-08-10,2022-06-NONE,False,original_512,incoming_432
+"보류-MM/YY, 콜론 월일, 영문월 OCR 오인식",1948,2022-08-10,2022-06-NONE,False,original_512,incoming_432
+"보류-MM/YY, 콜론 월일, 영문월 OCR 오인식",1900,2021-11-29,NONE,False,original_no_candidate,incoming_432
+라벨 확인 필요,127,2024-04-27,2026-04-27,False,original_512,incoming_432
+라벨 확인 필요,1142,2021-01-21,2021-06-28,False,rotation_270,incoming_432
+라벨 확인 필요,2125,2021-04-21,2021-04-24,False,original_512,incoming_432
+라벨 확인 필요,3223,2022-07-14,2022-06-14,False,original_512,incoming_432
+라벨 확인 필요,851,2026-08-09,2026-06-30,False,original_512,incoming_432
+라벨 확인 필요,1870,2020-11-26,2021-09-26,False,original_512,incoming_432
+라벨 확인 필요,1336,2021-10-26,2021-07-04,False,original_512,incoming_432
