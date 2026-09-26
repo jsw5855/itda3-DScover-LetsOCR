@@ -38,8 +38,8 @@ _NUM = RawField
 # Real OCR output sometimes has more than one separator character in a row
 # (e.g. "2021. 03.20" has a period AND a space between year and month), so
 # this allows one or more, not just exactly one.
-_SEP = r"[.\-/\s]+"
-_OPTIONAL_SEP = r"[.\-/\s]*"
+_SEP = r"[.\-/\s·×]+"
+_OPTIONAL_SEP = r"[.\-/\s·×]*"
 
 # (regex, field kinds per group, role_universe, fixed_roles)
 # fixed_roles is only used where the source text itself names the unit
@@ -167,6 +167,48 @@ _PATTERN_DEFS = [
         None,
     ),
     (
+        # Two 1-2 digit groups then a 4-digit year, with the mixed or unusual
+        # separators OCR produces: "01,07 2021", "30.12,2021", "23.10·2020",
+        # "18×04>2021". The trailing 4-digit year keeps this from matching
+        # thousands separators ("1,350") or nutrition values, and it may not
+        # start inside a longer date ("2025.10.03 2025.10.12" is two dates,
+        # not "10.03 2025").
+        re.compile(r"(?<![0-9])(?<![0-9][.,/\-·×])([0-9]{1,2})\s*[.,/\-·×]\s*([0-9]{1,2})\s*[.,/\-·×>\s]\s*([0-9]{4})(?![0-9])"),
+        ("num", "num", "num"),
+        ("year", "month", "day"),
+        None,
+    ),
+    (
+        # "202006 03": year and month glued, day after a space.
+        re.compile(r"(?<![0-9])([0-9]{4})([0-9]{2})\s+([0-9]{2})(?![0-9])"),
+        ("num", "num", "num"),
+        ("year", "month", "day"),
+        ("year", "month", "day"),
+    ),
+    (
+        # "EXP:2606-2026": day and month glued, then the year. Only right
+        # after an EXP keyword - a bare 4+4 digit run is too often a code.
+        re.compile(r"(?i:EXP)[:.\s]*([0-9]{2})([0-9]{2})[\s\-./]+([0-9]{4})(?![0-9])"),
+        ("num", "num", "num"),
+        ("day", "month", "year"),
+        ("day", "month", "year"),
+    ),
+    (
+        # "EXP 102021": month and year glued, only right after EXP/BB/BBE.
+        re.compile(r"(?i:EXP|BBE|BB)[:.\s]*([0-9]{2})([0-9]{4})(?![0-9])"),
+        ("num", "num"),
+        ("month", "year"),
+        ("month", "year"),
+    ),
+    (
+        # "03112021": eight digits read as DDMMYYYY / MMDDYYYY when the
+        # YYYYMMDD reading (tried earlier) is not a valid date.
+        re.compile(r"(?<![0-9])([0-9]{2})([0-9]{2})([0-9]{4})(?![0-9])"),
+        ("num", "num", "num"),
+        ("day", "month", "year"),
+        None,
+    ),
+    (
         # The last group must not be the hour of a following HH:MM time -
         # "12.18. 10:41" is Dec 18 at 10:41, not 2018-12-10.
         re.compile(rf"(?<!\d)({DIGIT}{{1,4}}){_SEP}({DIGIT}{{1,4}}){_SEP}({DIGIT}{{1,4}})(?!\d)(?!\s*:\s*\d)"),
@@ -188,7 +230,7 @@ _PATTERN_DEFS = [
         # 4-digit year up front, so allowing a loose separator throughout is
         # low-risk - this can't accidentally swallow an unrelated HH:MM:SS
         # timestamp since those never start with a 4-digit number.
-        re.compile(rf"(?<!\d)({DIGIT}{{4}})[:.\-/\s,()]+({DIGIT}{{2}})[:.,()]?({DIGIT}{{2}})(?!\d)"),
+        re.compile(rf"(?<!\d)({DIGIT}{{4}})[:.\-/\s,()xX×·]+({DIGIT}{{2}})[:.,()/\-\s·]?({DIGIT}{{2}})(?!\d)"),
         ("num", "num", "num"),
         ("year", "month", "day"),
         None,
@@ -230,11 +272,17 @@ _GLUED_DATE_RE = re.compile(rf"({_FULL_DATE})(?={_FULL_DATE})")
 _GLUED_TIME_RE = re.compile(rf"({_FULL_DATE})(?=[0-9]{{1,2}}:[0-9]{{2}})")
 
 
+# "2020.C6.30", "17/C7/2021": a lone C between separators, followed by one
+# digit, is a 0 misread (dot-matrix 0 with a broken right side).
+_C_AS_ZERO_RE = re.compile(r"(?<=[.\-/])[Cc](?=[0-9][.\-/])")
+
+
 def split_glued(text: str) -> str:
     """Insert a space where OCR glued a full YYYY.MM.DD date to what follows:
     another full date ("2025.10.032025.10.12까지") or a time
     ("2026.01.2512:42"). Without the space the digit run after the day makes
     every date pattern fail."""
+    text = _C_AS_ZERO_RE.sub("0", text)
     text = _GLUED_DATE_RE.sub(r"\1 ", text)
     return _GLUED_TIME_RE.sub(r"\1 ", text)
 
