@@ -1,0 +1,51 @@
+{
+  "preflight": "passed",
+  "ocr_imported": false,
+  "image_count": 701,
+  "maximum_attempts": 2804,
+  "existing_output_records": 0,
+  "safely_reusable_historical_attempts": 269,
+  "remaining_attempts": 2535,
+  "remaining_by_stage": {
+    "clahe": 701,
+    "original_512": 506,
+    "rotation_270": 664,
+    "highres_1024": 664
+  },
+  "cache_audit": {
+    "early_stop_26_run1": {
+      "records": 104,
+      "reusable": 0,
+      "reason": "missing historical package versions: opencv-contrib-python, paddlex"
+    },
+    "correct_controls_50_run1": {
+      "records": 50,
+      "reusable": 0,
+      "reason": "missing historical package versions: opencv-contrib-python, paddlex"
+    },
+    "triggered_correct_controls_9_run1": {
+      "records": 18,
+      "reusable": 0,
+      "reason": "missing historical package versions: opencv-contrib-python, paddlex"
+    },
+    "frozen_b_shadow_independent_run1": {
+      "records": 269,
+      "reusable": 269,
+      "reason": "matching complete provenance and validated raw schema"
+    }
+  },
+  "timing_sample_counts": {
+    "original_512": 271,
+    "rotation_270": 72,
+    "highres_1024": 72,
+    "clahe": 26
+  },
+  "measured_historical_mean_ocr_sec": {
+    "original_512": 1.481002179336046,
+    "rotation_270": 1.3078341902778954,
+    "highres_1024": 3.4272324152769014,
+    "clahe": 1.1900542769234073
+  },
+  "rough_remaining_ocr_sec": 4727.699376955733,
+  "estimate_caveat": "Selected cohorts; OCR/conversion only, excludes init/decode/preparation/writes; not measured full-run wall time"
+}
