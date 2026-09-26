@@ -36,10 +36,14 @@ def find_all_candidates(
     for box in boxes:
         if not _has_position(box):
             continue
-        for token in extract_date_tokens(box.text):
-            scored = generate_candidates(token, year_min, year_max)
-            if not scored:
-                continue
+        scored_by_token = {}
+
+        def has_reading(token):
+            scored_by_token[token] = generate_candidates(token, year_min, year_max)
+            return bool(scored_by_token[token])
+
+        for token in extract_date_tokens(box.text, accept=has_reading):
+            scored = scored_by_token[token]
             positioned.append(
                 PositionedCandidate(
                     result=scored[0].date,

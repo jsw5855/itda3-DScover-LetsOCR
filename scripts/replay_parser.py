@@ -80,6 +80,7 @@ def main():
     ap.add_argument("dump")
     ap.add_argument("labels")
     ap.add_argument("--out", help="write per-image CSV here")
+    ap.add_argument("--baseline", help="per-image CSV from an earlier --out run; lists gains and losses against it")
     args = ap.parse_args()
 
     from date_parser import parse_expiration_date
@@ -94,6 +95,19 @@ def main():
     ok = sum(r["correct"] for r in rows)
     unknown = sum(r["method"] == "unknown" for r in rows)
     print(f"correct {ok}/{n} = {100 * ok / n:.2f}%  unknown(cascade needs unsaved stage) {unknown}")
+    moved = [r for r in rows if r["method"] not in ("original_512",)]
+    print(f"images needing a later cascade stage: {len(moved)}")
+    if args.baseline:
+        with open(args.baseline, encoding="utf-8-sig", newline="") as f:
+            base = {r["image_id"]: r for r in csv.DictReader(f)}
+        gains = [r for r in rows if r["correct"] and base[r["image_id"]]["correct"] != "True"]
+        losses = [r for r in rows if not r["correct"] and base[r["image_id"]]["correct"] == "True"]
+        changed = [r for r in rows if r["pred"] != base[r["image_id"]]["pred"]]
+        print(f"vs baseline: +{len(gains)} gained, -{len(losses)} lost, {len(changed)} predictions changed")
+        for label, group in (("GAINED", gains), ("LOST", losses)):
+            for r in sorted(group, key=lambda r: int(r["image_id"])):
+                b = base[r["image_id"]]
+                print(f"  {label} {r['image_id']}: {b['pred']} -> {r['pred']} (truth {r['truth']}, {b['method']} -> {r['method']})")
     if args.out:
         with open(args.out, "w", encoding="utf-8-sig", newline="") as f:
             w = csv.DictWriter(f, fieldnames=list(rows[0]))

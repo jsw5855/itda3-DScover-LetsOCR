@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
-from typing import List, Optional, Tuple
+from typing import Callable, List, Optional, Tuple
 
 DIGIT = r"[0-9OoUu]"
 
@@ -213,15 +213,37 @@ _PATTERN_DEFS = [
 ]
 
 
+def _trim_trailing_noise(fields: Tuple[RawField, ...]) -> Tuple[RawField, ...]:
+    """"2026.08.267" / "2021.10.028": a 4-digit year, a month, then a 3-digit
+    "day". Dot-matrix OCR often glues one stray character (a letter or the
+    next symbol read as a digit) right after the day; a day never has three
+    digits, so keep its first two. Only applied when the token starts with a
+    4-digit year, where the year-month-day order is certain."""
+    if (
+        len(fields) == 3
+        and all(f.kind == "num" for f in fields)
+        and len(normalize_confusable(fields[0].raw)) == 4
+        and len(fields[2].raw) == 3
+    ):
+        return (fields[0], fields[1], RawField(raw=fields[2].raw[:2], kind="num"))
+    return fields
+
+
 def _overlaps(span: Tuple[int, int], claimed: List[Tuple[int, int]]) -> bool:
     return any(span[0] < end and start < span[1] for start, end in claimed)
 
 
-def extract_date_tokens(text: str) -> List[RawDateToken]:
+def extract_date_tokens(text: str, accept: Optional[Callable[[RawDateToken], bool]] = None) -> List[RawDateToken]:
     """Find date-shaped substrings in ``text`` without assuming field order.
 
     Patterns are tried most-specific-first; once a span is claimed, later
     (more generic) patterns skip anything overlapping it.
+
+    ``accept`` (optional) is asked about every match before it claims its
+    span. A match it rejects - e.g. one with no valid calendar reading, like
+    "U 2026. 01" read as 0/2026/01 via the O/U-as-zero rule - is dropped and
+    leaves its span free, so a later pattern can still find the real date
+    inside it ("2026. 01" as year+month).
     """
     claimed: List[Tuple[int, int]] = []
     tokens: List[RawDateToken] = []
@@ -230,8 +252,11 @@ def extract_date_tokens(text: str) -> List[RawDateToken]:
             span = match.span()
             if _overlaps(span, claimed):
                 continue
-            fields = tuple(RawField(raw=g, kind=k) for g, k in zip(match.groups(), kinds))
-            tokens.append(RawDateToken(span=span, fields=fields, role_universe=role_universe, fixed_roles=fixed_roles))
+            fields = _trim_trailing_noise(tuple(RawField(raw=g, kind=k) for g, k in zip(match.groups(), kinds)))
+            token = RawDateToken(span=span, fields=fields, role_universe=role_universe, fixed_roles=fixed_roles)
+            if accept is not None and not accept(token):
+                continue
+            tokens.append(token)
             claimed.append(span)
     tokens.sort(key=lambda t: t.span[0])
     return tokens
