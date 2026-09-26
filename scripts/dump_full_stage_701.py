@@ -326,7 +326,9 @@ def consolidate(output, manifest):
     path = output / 'raw_ocr.jsonl'
     atomic_text(path, ''.join(json.dumps(r, ensure_ascii=False, allow_nan=False) + '\n' for r in lines))
     # Read the published artifact back and verify exact order, membership and checksums.
-    loaded = [json.loads(s) for s in path.read_text(encoding='utf8').splitlines()]
+    # Split on LF only: splitlines() also breaks on U+0085/U+2028, which json.dumps
+    # leaves unescaped with ensure_ascii=False and OCR text may contain.
+    loaded = [json.loads(s) for s in path.read_text(encoding='utf8').split('\n')[:-1]]
     if loaded != lines:
         raise ValueError('Consolidation readback mismatch')
     integrity = {'records': len(lines), 'images': len(manifest['image_ids']),
