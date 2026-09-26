@@ -157,7 +157,9 @@ _PATTERN_DEFS = [
         None,
     ),
     (
-        re.compile(rf"(?<!\d)({DIGIT}{{1,4}}){_SEP}({DIGIT}{{1,4}}){_SEP}({DIGIT}{{1,4}})(?!\d)"),
+        # The last group must not be the hour of a following HH:MM time -
+        # "12.18. 10:41" is Dec 18 at 10:41, not 2018-12-10.
+        re.compile(rf"(?<!\d)({DIGIT}{{1,4}}){_SEP}({DIGIT}{{1,4}}){_SEP}({DIGIT}{{1,4}})(?!\d)(?!\s*:\s*\d)"),
         ("num", "num", "num"),
         ("year", "month", "day"),
         None,
@@ -213,6 +215,20 @@ _PATTERN_DEFS = [
 ]
 
 
+_FULL_DATE = r"[0-9]{4}[.\-/][0-9]{1,2}[.\-/][0-9]{2}"
+_GLUED_DATE_RE = re.compile(rf"({_FULL_DATE})(?={_FULL_DATE})")
+_GLUED_TIME_RE = re.compile(rf"({_FULL_DATE})(?=[0-9]{{1,2}}:[0-9]{{2}})")
+
+
+def split_glued(text: str) -> str:
+    """Insert a space where OCR glued a full YYYY.MM.DD date to what follows:
+    another full date ("2025.10.032025.10.12까지") or a time
+    ("2026.01.2512:42"). Without the space the digit run after the day makes
+    every date pattern fail."""
+    text = _GLUED_DATE_RE.sub(r"\1 ", text)
+    return _GLUED_TIME_RE.sub(r"\1 ", text)
+
+
 def _trim_trailing_noise(fields: Tuple[RawField, ...]) -> Tuple[RawField, ...]:
     """"2026.08.267" / "2021.10.028": a 4-digit year, a month, then a 3-digit
     "day". Dot-matrix OCR often glues one stray character (a letter or the
@@ -245,6 +261,7 @@ def extract_date_tokens(text: str, accept: Optional[Callable[[RawDateToken], boo
     leaves its span free, so a later pattern can still find the real date
     inside it ("2026. 01" as year+month).
     """
+    text = split_glued(text)
     claimed: List[Tuple[int, int]] = []
     tokens: List[RawDateToken] = []
     for pattern, kinds, role_universe, fixed_roles in _PATTERN_DEFS:

@@ -33,6 +33,11 @@ def _parse(*lines):
     # ...and without a hint the default year-month-day reading stays.
     (["26.04.24"], "2026-04-24"),
     (["05.21 L095 2"], "NONE"),
+    # T2: full date glued to a time or to a second date; hour is not a date field.
+    (["2026.01.2512:427m1U1"], "2026-01-25"),              # 682
+    (["2025.10.032025.10.12까지"], "2025-10-12"),           # 686
+    (["2021.10.20 13:40"], "2021-10-20"),
+    (["12.18. 10:41", "F5", "12.06. 10:41"], "NONE"),       # 824: no longer 2018-12-10
 ])
 def test_final_round_cases(lines, expected):
     assert _parse(*lines) == expected
