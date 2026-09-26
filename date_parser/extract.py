@@ -82,6 +82,16 @@ _PATTERN_DEFS = [
         None,
     ),
     (
+        # "07FEB2022" / "31JUL21": day, month name and year printed with no
+        # separator at all (common on US/EU cans and pouches). The month name
+        # fixes which run of digits is which; order between day and year is
+        # resolved by validation and the month-name prior (day first).
+        re.compile(rf"(?<!\d)({DIGIT}{{1,2}})({_MONTH_RE})({DIGIT}{{2}}|{DIGIT}{{4}})(?!\d)", re.IGNORECASE),
+        ("num", "month_name", "num"),
+        ("year", "month", "day"),
+        None,
+    ),
+    (
         re.compile(rf"(?<!\d)(\d{{2,4}}){_SEP}({_MONTH_RE}){_SEP}(\d{{1,2}})(?!\d)", re.IGNORECASE),
         ("num", "month_name", "num"),
         ("year", "month", "day"),

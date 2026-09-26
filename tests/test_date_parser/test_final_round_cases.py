@@ -38,6 +38,11 @@ def _parse(*lines):
     (["2025.10.032025.10.12까지"], "2025-10-12"),           # 686
     (["2021.10.20 13:40"], "2021-10-20"),
     (["12.18. 10:41", "F5", "12.06. 10:41"], "NONE"),       # 824: no longer 2018-12-10
+    # T5: day + month name + year with no separators.
+    (["07FEB2022 PV  07:17  2"], "2022-02-07"),             # 892
+    (["O7FEB2022 PV 07:17 2"], "2022-02-07"),               # 893
+    (["09MAR2023"], "2023-03-09"),                          # 1757
+    (["BEST BY 31JUL21"], "2021-07-31"),                    # 2048
 ])
 def test_final_round_cases(lines, expected):
     assert _parse(*lines) == expected
