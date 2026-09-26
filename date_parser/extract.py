@@ -356,3 +356,23 @@ def extract_month_yy_tokens(text: str, taken: List[Tuple[int, int]]) -> List[Raw
         fields = (RawField(raw=match.group(1), kind="num"), RawField(raw=match.group(2), kind="num"))
         tokens.append(RawDateToken(span=match.span(), fields=fields, role_universe=("month", "year"), fixed_roles=("month", "year")))
     return tokens
+
+
+# Year-less month.day ("01.24 A", "02.12까지", "03.13. 13:47"), printed on
+# Korean dairy products. Both parts must be two digits, the separator must be
+# a dot (a colon is a time) and no unit may follow ("3.60g", "12.50%").
+# find_all_candidates() only falls back to these when the image has no other
+# date candidate at all.
+_UNIT = r"(?:g|mg|kg|ml|mL|l|L|kcal|Kcal|%|원|개|cm|mm)"
+_YEARLESS_MD_RE = re.compile(
+    rf"(?<![0-9.,:])(0[1-9]|1[0-2])\s?\.\s?(0[1-9]|[12][0-9]|3[01])(?![0-9])(?!\s?{_UNIT}(?![A-Za-z]))"
+)
+
+
+def extract_yearless_month_day_tokens(text: str) -> List[RawDateToken]:
+    text = split_glued(text)
+    tokens = []
+    for match in _YEARLESS_MD_RE.finditer(text):
+        fields = (RawField(raw=match.group(1), kind="num"), RawField(raw=match.group(2), kind="num"))
+        tokens.append(RawDateToken(span=match.span(), fields=fields, role_universe=("month", "day"), fixed_roles=("month", "day")))
+    return tokens
