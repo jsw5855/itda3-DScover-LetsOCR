@@ -158,7 +158,7 @@ assert not any(n in sys.modules for n in ('ocr_pipeline', 'paddleocr', 'paddle',
         self.run_dump(fake)
         self.assertEqual(calls, [(k, s) for k in self.manifest['image_ids'] for s in dump.STAGES])
         self.assertEqual(len(calls), 2804)
-        rows = [json.loads(s) for s in (self.output / 'raw_ocr.jsonl').read_text().splitlines()]
+        rows = [json.loads(s) for s in (self.output / 'raw_ocr.jsonl').read_text(encoding='utf8').split('\n')[:-1]]
         self.assertEqual(len(rows), 2804)
         self.assertEqual(dump.read(self.output / 'integrity.json')['raw_ocr_sha256'], dump.sha(self.output / 'raw_ocr.jsonl'))
 
@@ -216,6 +216,21 @@ assert not any(n in sys.modules for n in ('ocr_pipeline', 'paddleocr', 'paddle',
         dump.write(p, original)
         with self.assertRaisesRegex(ValueError, 'manifest'):
             dump.execute(self.output, dict(self.manifest, changed=True), [], lambda *args: raw())
+
+    def test_unicode_line_separators_in_ocr_text_consolidate(self):
+        texts = ['A\x85B', 'C\u2028D', 'E\u2029F', 'G\x1cH']
+        def fake(key, stage):
+            r = raw()
+            r['detections'][0]['text'] = texts[0]
+            texts.append(texts.pop(0))
+            return r
+        self.run_dump(fake)
+        path = self.output / 'raw_ocr.jsonl'
+        with path.open(encoding='utf8') as stream:
+            rows = [json.loads(line) for line in stream]
+        self.assertEqual(len(rows), 8)
+        self.assertEqual({r['detections'][0]['text'] for r in rows}, {'A\x85B', 'C\u2028D', 'E\u2029F', 'G\x1cH'})
+        self.assertEqual(dump.read(self.output / 'integrity.json')['records'], 8)
 
     def test_invalid_raw_schema(self):
         for mutate in (lambda r: r.update(ocr_sec=float('nan')),

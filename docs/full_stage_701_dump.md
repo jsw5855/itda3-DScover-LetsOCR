@@ -51,7 +51,9 @@ shadow run artifacts exist locally):
 
 ## Stage and runtime contract
 
-One sequential CPU engine, two threads, MKLDNN enabled, recognition batch 6;
+One sequential CPU engine, two threads, MKLDNN enabled, recognition batch 6
+(two threads matches the submission worker and the retry diagnostics; the official
+300 baseline evaluation used four threads, and `initialize_engine` defaults to four);
 local `PP-OCRv6_medium_det` and `korean_PP-OCRv5_mobile_rec`. No warmup inference.
 EXIF transpose and RGB decode; shrink-only LANCZOS using current rounded dimensions.
 Every image receives original 512, PIL rotation 270 of the 512 input (expand=True),
@@ -71,8 +73,10 @@ for PaddleOCR, PaddlePaddle, NumPy, Pillow, PaddleX and OpenCV, per-image hashes
 and per-record identity/checksums. These all match the current environment.
 
 The 104 early-stop, 50 correct-control, and 18 triggered-control records match
-code/weights but omit historical PaddleX/OpenCV versions. Conservatively reject
-all 172 for reuse; never infer historical package identity from today's install.
+code/weights but are rejected for two independent reasons: their manifests omit
+historical PaddleX/OpenCV versions, and their schema has no per-record checksum
+bound to a manifest run id. Conservatively reject all 172 for reuse; never infer
+historical package identity from today's install.
 Their valid raw timings remain useful as approximate timing samples.
 Every historical manifest must also match the current detection options
 (`text_det_limit_type`, `text_det_box_thresh`) and use the checksummed shadow schema;
@@ -126,6 +130,10 @@ pixel coordinates. `manifest.json` plus the input bytes defines their transform.
 it is not a full PaddleOCR result serialization (intermediate tensors/unrecognized
 detector proposals are not retained).
 
+Read `raw_ocr.jsonl` by iterating the file or splitting on `\n` only. Do not use
+`str.splitlines()`: OCR text may contain U+0085/U+2028, which are left unescaped
+and which `splitlines()` treats as line breaks.
+
 Offline replay example:
 
 ```python
@@ -157,6 +165,18 @@ per-stage caches and progress but no complete summary/dump. Rerunning consolidat
 updates the invocation summary to zero fresh work; retained per-stage timings
 are the original measurements, not that invocation's wall time.
 
+Run the preflight and the run in the working tree that produced the shadow artifacts;
+do not re-clone. The audit pins code files by byte hash, so a fresh Windows clone that
+converts line endings to CRLF changes those hashes and the 269 records are reported as
+code drift (reuse falls to 0 - safe, but every stage is then run fresh).
+
+Do not hold `progress.json` (or other output files) open while the run is writing,
+e.g. with `Get-Content -Wait`, an editor, or file sync. On Windows the atomic replace
+can then fail with a permission error and stop the run; rerun the same command to resume.
+
+Any change to this script changes its hash in `manifest.json`, so an output directory
+must be resumed and consolidated with the same script version that started it.
+
 Do not alter inputs, producer code, packages or model files during a run. Strict
 resume also fingerprints metadata files; label edits require restoring that
 snapshot or choosing a new output directory, even though truth never influences
@@ -180,6 +200,7 @@ over the same candidates; q = confidence of the first such box.
   `as_strings()` tuples map one-to-one onto `final_date_string()` (an empty result is
   one `NONE` value in both), so the distinct counts are equal.
 - q can differ only when several boxes share the selected text and exact center
-  (min vs first), and Seonwoo's version raises when no source box is found.
+  (min vs first), and Seonwoo's version raises when no source box is found. No saved
+  record had more than one such box, so "q differs 0" does not test min vs first.
 - Checked on all 1,170 saved stage records of `docs/run701/ocr_dump.jsonl` with the
   current `date_parser`: M differs 0, q differs 0; stage-1 Policy B triggers 139 in both.
