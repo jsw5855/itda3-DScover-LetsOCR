@@ -8,7 +8,7 @@ from typing import List, Optional, Sequence, Tuple
 
 from .crossref import apply_manufacture_constraint
 from .hints import MONTH_YEAR, detect_format_hint
-from .extract import extract_date_tokens, extract_month_yy_tokens, extract_yearless_month_day_tokens, extract_hint_month_name_year_tokens
+from .extract import RawDateToken, RawField, extract_date_tokens, extract_month_yy_tokens, extract_yearless_month_day_tokens, extract_hint_month_name_year_tokens
 from .interpret import DEFAULT_YEAR_MAX, DEFAULT_YEAR_MIN, ScoredCandidate, generate_candidates
 from .keywords import ANCHOR_KEYWORDS, EXCLUDE_KEYWORDS, PRIMARY_ANCHOR_KEYWORDS, bbox_center, has_keyword, min_distance, nearest_keyword_is_exclude
 from .types import DateResult, TextBox
@@ -66,7 +66,54 @@ def find_all_candidates(
             )
     if not positioned:
         positioned = _yearless_candidates(boxes, year_min, year_max)
+    if not positioned:
+        positioned = _six_digit_candidates(boxes, year_min, year_max)
     return positioned
+
+
+# Six digits with no separator: "202812" (YYYYMM) or "271017" (YYMMDD).
+# Lot codes and barcode fragments look the same, so these are read only as a
+# last resort (no other candidate in the stage) and only with expiry evidence:
+# an expiration keyword in the same or an adjacent box, or a "까지" fragment
+# ("지", "마지") glued right after the digits. Six digits continued by a
+# separator and more digits ("202504/28") are a cut-off full date, not this.
+_SIX_DIGIT_RE = re.compile(r"(?<![0-9A-Za-z])([0-9]{6})(?![0-9])(?!\s*[./\-:]\s*[0-9])")
+_UNTIL_FRAGMENT_RE = re.compile(r"[가-힣]?지")
+
+
+def _six_digit_candidates(
+    boxes: Sequence[TextBox], year_min: int, year_max: int
+) -> List[PositionedCandidate]:
+    positioned: List[PositionedCandidate] = []
+    anchor_boxes = [b for b in boxes if _has_position(b) and has_keyword(b.text, ANCHOR_KEYWORDS)]
+    for box in boxes:
+        if not _has_position(box):
+            continue
+        for match in _SIX_DIGIT_RE.finditer(box.text):
+            if not _has_expiry_evidence(box, match.end(), anchor_boxes):
+                continue
+            digits = match.group(1)
+            for fields, roles in (
+                ((digits[:4], digits[4:]), ("year", "month")),
+                ((digits[:2], digits[2:4], digits[4:]), ("year", "month", "day")),
+            ):
+                token = RawDateToken(span=match.span(), fields=tuple(RawField(raw=f, kind="num") for f in fields),
+                                     role_universe=roles, fixed_roles=roles)
+                scored = generate_candidates(token, year_min, year_max)
+                if scored:
+                    positioned.append(PositionedCandidate(result=scored[0].date, center=bbox_center(box.bbox),
+                                                          source_text=box.text, candidates=scored, span=match.span()))
+                    break
+    return positioned
+
+
+def _has_expiry_evidence(box: TextBox, end: int, anchor_boxes: Sequence[TextBox]) -> bool:
+    if has_keyword(box.text, ANCHOR_KEYWORDS) or _UNTIL_FRAGMENT_RE.match(box.text, end):
+        return True
+    ys = [p[1] for p in box.bbox]
+    height = (max(ys) - min(ys)) or 1.0
+    center = bbox_center(box.bbox)
+    return any(min_distance(center, [bbox_center(a.bbox)]) <= 3 * height for a in anchor_boxes)
 
 
 def _yearless_candidates(

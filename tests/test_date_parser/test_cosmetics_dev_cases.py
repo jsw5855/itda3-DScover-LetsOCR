@@ -53,3 +53,23 @@ def test_nearest_keyword_is_exclude(text, span, expected):
 ])
 def test_rule2_year_never_middle(lines, expected):
     assert _parse(*lines) == expected
+
+
+# Rule 3: six digits (YYYYMM / YYMMDD) only as a last resort and only with
+# expiry evidence (keyword in the same or an adjacent box, or a glued 까지 fragment).
+@pytest.mark.parametrize("lines, expected", [
+    (["SALE", "FEB", "EXP", "202812"], "2028-12-NONE"),      # 900132
+    (["PS241018", "271017마지"], "2027-10-17"),              # 900028
+    (["271017까지"], "2027-10-17"),
+    # no evidence: lot codes and barcode fragments stay out
+    (["PS241018"], "NONE"),
+    (["8 809576 260618"], "NONE"),
+    # a cut-off full date is not a six-digit date (food 000160, original 512)
+    (["R0:202504/28", "EXP:2026/102"], "NONE"),
+    # a spaced "가지" is not a glued 까지 fragment (food 000749, OCR misread)
+    (["202602 가지스31"], "NONE"),
+    # never used when another candidate exists
+    (["EXP 2027.03.01", "202812"], "2027-03-01"),
+])
+def test_rule3_six_digit_fallback(lines, expected):
+    assert _parse(*lines) == expected
