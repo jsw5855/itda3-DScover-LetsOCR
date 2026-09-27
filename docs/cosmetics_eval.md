@@ -18,7 +18,7 @@
    - 코드 파일(`ocr_pipeline.py`, `date_parser\`, `scripts\` 등)이 최신으로 바뀐다.
    - `weights\` 폴더와 사진, 라벨은 건드리지 않는다.
 2. **파일 위치 확인**
-   - 사진: `C:\Users\user\itda_OCR\Cosmetic\900001.jpg` … `900150.jpg`
+   - 사진: `C:\Users\user\itda_OCR\Cosmetics\900001.jpg` … `900150.jpg` (설정 셀의 `IMAGE_DIR`와 같아야 함)
    - 라벨: `C:\Users\user\itda_OCR\cosmetics_labels_900001-900150.csv`
    - 모델: `C:\Users\user\itda_OCR\weights\paddleocr\PP-OCRv6_medium_det\` 와 `…\korean_PP-OCRv5_mobile_rec\`
 3. **주피터 열기**: 예전처럼 가상환경을 켠 cmd 창에서 `C:\Users\user\itda_OCR`로 이동해 `jupyter notebook`을 실행한다.
@@ -26,6 +26,7 @@
 4. **셀을 위에서부터 하나씩 실행**(`Shift+Enter`)
    - ① 설정: 경로가 맞는지 본다.
    - ② 환경 확인: "환경 확인 통과"가 나와야 한다. 라벨 오류나 모델 파일 누락이 있으면 여기서 멈춘다.
+   - ②-1 기록 점검: 중복 기록이 있으면 정리한다.
    - ③ 예상 시간: 3장만 먼저 돌려 이 PC의 장당 시간과 남은 시간을 계산한다.
    - ④ 본 실행: 진행률이 5장마다 나온다. 멈추면 이 셀만 다시 실행하면 이어서 돈다.
    - ⑤ 결과 요약
@@ -90,6 +91,10 @@
   - 코드 버전이나 코드 파일(`ocr_pipeline.py`, `date_parser\`, 이 스크립트)이 바뀜
   - 모드(full-stage/fast)나 엔진 설정이 바뀜
   - 이미 끝난 사진의 라벨이 바뀜
+
+**동시 실행 금지와 중복 기록 복구**
+- 같은 결과 폴더에 두 실행이 동시에 쓰지 못하게 잠근다(`run_<split>.lock`). 주피터를 두 개 띄워 같은 셀을 돌리면 두 번째 실행은 멈춘다.
+- 이전 버전에서 동시에 실행해 같은 사진이 두 번 기록됐다면, 노트북 2-1 셀(`repair_dump`)이 첫 기록만 남긴다. 원본은 `ocr_dump_<split>.jsonl.bak-날짜` 파일로 보관한다.
 
 ## 6. 검증용(900301~900400) 규칙
 

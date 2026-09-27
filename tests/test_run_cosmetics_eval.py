@@ -220,3 +220,25 @@ def test_real_label_checker_errors_warnings_and_empty_rows(data):
         csv.writer(stream).writerow(["900010.jpg", "900010", "2026", "13", "24", "2026-13-24", ""])  # ERROR
     with pytest.raises(ValueError, match="900010"):
         ev.run(data["images"], data["labels"], "dev", data["output"], engine=FakeEngine())
+
+
+def test_second_concurrent_run_is_refused(data):
+    output = data["output"]
+    output.mkdir(parents=True)
+    with ev.RunLock(output / "run_dev.lock"):
+        with pytest.raises(RuntimeError, match="Another run"):
+            run(data)
+    assert run(data)["processed_now"] == 6                  # lock released afterwards
+
+
+def test_repair_dump_keeps_first_of_duplicates(data):
+    run(data, limit=2)
+    path = ev.output_paths(data["output"], "dev")["dump"]
+    lines = path.read_text(encoding="utf-8").splitlines()
+    path.write_text("\n".join(lines + [lines[1]]) + "\n", encoding="utf-8")   # 900002 twice
+    with pytest.raises(ValueError, match="repair_dump"):
+        ev.read_dump(path)
+    assert ev.repair_dump(path) == {"900002": True}
+    assert sorted(dump(data)) == ["900001", "900002"]
+    assert len(list(path.parent.glob("ocr_dump_dev.jsonl.bak-*"))) == 1
+    assert run(data)["processed_now"] == 4

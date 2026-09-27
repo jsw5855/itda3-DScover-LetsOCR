@@ -254,9 +254,68 @@ def read_dump(path):
             record = json.loads(line)
             key = image_key(record["image_id"])
             if key in records:
-                raise ValueError(f"Duplicate record in dump: {key}")
+                raise ValueError(f"Duplicate record in dump: {key}. Run repair_dump(path) once, "
+                                 "then continue (the original file is kept as a backup).")
             records[key] = record
     return records, truncated
+
+
+def repair_dump(path):
+    """Keep the first record of each image and back up the original file.
+    Returns {image key: whether the duplicates had identical OCR detections}."""
+    path = Path(path)
+    lines = [line for line in path.read_text(encoding="utf-8").split("\n") if line.strip()]
+    first, kept, duplicates = {}, [], {}
+    for line in lines:
+        record = json.loads(line)
+        key = image_key(record["image_id"])
+        if key not in first:
+            first[key] = record
+            kept.append(line)
+            continue
+        same = [s["detections"] for s in record["stages"]] == [s["detections"] for s in first[key]["stages"]]
+        duplicates[key] = duplicates.get(key, True) and same
+    if duplicates:
+        backup = path.with_name(f"{path.name}.bak-{datetime.now().strftime('%Y%m%d-%H%M%S')}")
+        path.replace(backup)
+        path.write_text("".join(line + "\n" for line in kept), encoding="utf-8", newline="\n")
+    return duplicates
+
+
+class RunLock:
+    """Exclusive per-output lock so two notebooks/kernels cannot write the same dump."""
+
+    def __init__(self, path):
+        self.path = Path(path)
+        self.stream = None
+
+    def __enter__(self):
+        self.stream = self.path.open("a+b")
+        try:
+            if os.name == "nt":
+                import msvcrt
+                if self.stream.seek(0, 2) == 0:          # lock needs one byte on some Windows versions
+                    self.stream.write(b"0")
+                    self.stream.flush()
+                self.stream.seek(0)
+                msvcrt.locking(self.stream.fileno(), msvcrt.LK_NBLCK, 1)
+            else:
+                import fcntl
+                fcntl.flock(self.stream, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except OSError as error:
+            self.stream.close()
+            raise RuntimeError(f"Another run is already writing {self.path.parent} "
+                               "(another notebook tab or kernel). Stop it first.") from error
+        return self
+
+    def __exit__(self, *exc):
+        try:
+            if os.name == "nt":
+                import msvcrt
+                self.stream.seek(0)
+                msvcrt.locking(self.stream.fileno(), msvcrt.LK_UNLCK, 1)
+        finally:
+            self.stream.close()
 
 
 def append_record(path, record):
@@ -302,6 +361,11 @@ def run(image_dir, label_csvs, split, output_dir, mode="full-stage", engine=None
     matched = match_inputs(image_dir, labels)
     paths = output_paths(output_dir, split)
     paths["dump"].parent.mkdir(parents=True, exist_ok=True)
+    with RunLock(paths["dump"].with_name(f"run_{split}.lock")):
+        return _run_locked(paths, labels, matched, split, mode, engine, limit, progress)
+
+
+def _run_locked(paths, labels, matched, split, mode, engine, limit, progress):
     done, truncated = read_dump(paths["dump"])
     conditions = run_conditions(split, mode)
     check_resume(paths, conditions, done, labels)
