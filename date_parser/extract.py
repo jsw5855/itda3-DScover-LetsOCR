@@ -201,6 +201,17 @@ _PATTERN_DEFS = [
         ("month", "year"),
     ),
     (
+        # A standalone expiry-labelled slash pair ("Exp.Date: 12/22")
+        # conventionally specifies month/year, with no printed day. Keep
+        # this local to one complete OCR box: a bare pair, a dot-separated
+        # month/day, a longer date, or a code suffix is not this format.
+        # Calendar/year-range validation still happens in generate_candidates.
+        re.compile(r"\A\s*(?i:EXP(?:IRY|IRATION)?)[.\s]*(?:(?i:DATE)[.\s]*)?:?\s*([0-9]{1,2})\s*/\s*([0-9]{2})\s*\Z"),
+        ("num", "num"),
+        ("month", "year"),
+        ("month", "year"),
+    ),
+    (
         # "03112021": eight digits read as DDMMYYYY / MMDDYYYY when the
         # YYYYMMDD reading (tried earlier) is not a valid date.
         re.compile(r"(?<![0-9])([0-9]{2})([0-9]{2})([0-9]{4})(?![0-9])"),

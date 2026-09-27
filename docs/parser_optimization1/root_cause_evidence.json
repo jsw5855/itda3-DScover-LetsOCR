@@ -1,0 +1,4675 @@
+{
+  "002726": {
+    "old": {
+      "truth": "2022-03-17",
+      "metadata_truth": "2022-03-17",
+      "label_status": "candidate",
+      "baseline_prediction": "2017-03-22",
+      "baseline_stage": "rotation_270",
+      "stages": {
+        "original_512": {
+          "prediction": {
+            "year": "NONE",
+            "month": "NONE",
+            "day": "NONE",
+            "final_date": "NONE"
+          },
+          "has_candidate": false,
+          "q": null,
+          "M": false,
+          "B": null,
+          "candidate_count": 0,
+          "distinct_dates": [],
+          "interpretation_ambiguity": false,
+          "incomplete": true,
+          "expiry_keyword": false,
+          "use_by_keyword": false,
+          "ocr_sec": 1.288196200010134,
+          "selected_text": null,
+          "format_hint": null,
+          "keyword_evidence": [],
+          "candidates": []
+        },
+        "rotation_270": {
+          "prediction": {
+            "year": "2017",
+            "month": "03",
+            "day": "22",
+            "final_date": "2017-03-22"
+          },
+          "has_candidate": true,
+          "q": 0.9985642433166504,
+          "M": false,
+          "B": false,
+          "candidate_count": 1,
+          "distinct_dates": [
+            "2017-03-22"
+          ],
+          "interpretation_ambiguity": true,
+          "incomplete": false,
+          "expiry_keyword": false,
+          "use_by_keyword": false,
+          "ocr_sec": 1.1377522999973735,
+          "selected_text": "17.03.22",
+          "format_hint": null,
+          "keyword_evidence": [],
+          "candidates": [
+            {
+              "text": "17.03.22",
+              "result": "2017-03-22",
+              "readings": [
+                "2017-03-22",
+                "2022-03-17"
+              ]
+            }
+          ]
+        },
+        "highres_1024": {
+          "prediction": {
+            "year": "NONE",
+            "month": "NONE",
+            "day": "NONE",
+            "final_date": "NONE"
+          },
+          "has_candidate": false,
+          "q": null,
+          "M": false,
+          "B": null,
+          "candidate_count": 0,
+          "distinct_dates": [],
+          "interpretation_ambiguity": false,
+          "incomplete": true,
+          "expiry_keyword": false,
+          "use_by_keyword": false,
+          "ocr_sec": 3.706762899993919,
+          "selected_text": null,
+          "format_hint": null,
+          "keyword_evidence": [],
+          "candidates": []
+        },
+        "clahe": {
+          "prediction": {
+            "year": "NONE",
+            "month": "NONE",
+            "day": "NONE",
+            "final_date": "NONE"
+          },
+          "has_candidate": false,
+          "q": null,
+          "M": false,
+          "B": null,
+          "candidate_count": 0,
+          "distinct_dates": [],
+          "interpretation_ambiguity": false,
+          "incomplete": true,
+          "expiry_keyword": false,
+          "use_by_keyword": false,
+          "ocr_sec": 1.1182857999956468,
+          "selected_text": null,
+          "format_hint": null,
+          "keyword_evidence": [],
+          "candidates": []
+        }
+      },
+      "raw_detections": {
+        "original_512": [
+          {
+            "text": "orsnre",
+            "confidence": 0.395778626203537,
+            "bbox": [
+              [
+                276,
+                31
+              ],
+              [
+                360,
+                54
+              ],
+              [
+                352,
+                84
+              ],
+              [
+                268,
+                61
+              ]
+            ]
+          },
+          {
+            "text": "L0076 17.03.22",
+            "confidence": 0.9929959177970886,
+            "bbox": [
+              [
+                69,
+                334
+              ],
+              [
+                211,
+                335
+              ],
+              [
+                211,
+                352
+              ],
+              [
+                69,
+                351
+              ]
+            ]
+          },
+          {
+            "text": "04:55",
+            "confidence": 0.9983118176460266,
+            "bbox": [
+              [
+                229,
+                335
+              ],
+              [
+                279,
+                337
+              ],
+              [
+                279,
+                352
+              ],
+              [
+                229,
+                350
+              ]
+            ]
+          },
+          {
+            "text": "L007 122",
+            "confidence": 0.7293281555175781,
+            "bbox": [
+              [
+                311,
+                335
+              ],
+              [
+                359,
+                337
+              ],
+              [
+                358,
+                352
+              ],
+              [
+                310,
+                350
+              ]
+            ]
+          }
+        ],
+        "rotation_270": [
+          {
+            "text": "L0076",
+            "confidence": 0.9969401359558105,
+            "bbox": [
+              [
+                158,
+                69
+              ],
+              [
+                176,
+                69
+              ],
+              [
+                176,
+                125
+              ],
+              [
+                158,
+                125
+              ]
+            ]
+          },
+          {
+            "text": "17.03.22",
+            "confidence": 0.9985642433166504,
+            "bbox": [
+              [
+                158,
+                136
+              ],
+              [
+                175,
+                136
+              ],
+              [
+                175,
+                212
+              ],
+              [
+                158,
+                212
+              ]
+            ]
+          },
+          {
+            "text": "04:55",
+            "confidence": 0.9976932406425476,
+            "bbox": [
+              [
+                157,
+                228
+              ],
+              [
+                175,
+                228
+              ],
+              [
+                175,
+                280
+              ],
+              [
+                157,
+                280
+              ]
+            ]
+          },
+          {
+            "text": "S",
+            "confidence": 0.48575836420059204,
+            "bbox": [
+              [
+                159,
+                310
+              ],
+              [
+                175,
+                310
+              ],
+              [
+                175,
+                330
+              ],
+              [
+                159,
+                330
+              ]
+            ]
+          },
+          {
+            "text": "170022",
+            "confidence": 0.7472116351127625,
+            "bbox": [
+              [
+                160,
+                332
+              ],
+              [
+                175,
+                334
+              ],
+              [
+                172,
+                360
+              ],
+              [
+                157,
+                358
+              ]
+            ]
+          }
+        ],
+        "highres_1024": [
+          {
+            "text": "osnane",
+            "confidence": 0.34208881855010986,
+            "bbox": [
+              [
+                555,
+                63
+              ],
+              [
+                729,
+                118
+              ],
+              [
+                711,
+                176
+              ],
+              [
+                537,
+                121
+              ]
+            ]
+          },
+          {
+            "text": "L0076 17.03.22",
+            "confidence": 0.978853166103363,
+            "bbox": [
+              [
+                138,
+                672
+              ],
+              [
+                423,
+                674
+              ],
+              [
+                423,
+                701
+              ],
+              [
+                138,
+                699
+              ]
+            ]
+          },
+          {
+            "text": "04:55",
+            "confidence": 0.9977990984916687,
+            "bbox": [
+              [
+                460,
+                674
+              ],
+              [
+                559,
+                676
+              ],
+              [
+                559,
+                704
+              ],
+              [
+                460,
+                702
+              ]
+            ]
+          },
+          {
+            "text": "1007611022",
+            "confidence": 0.9058210253715515,
+            "bbox": [
+              [
+                621,
+                672
+              ],
+              [
+                731,
+                672
+              ],
+              [
+                731,
+                703
+              ],
+              [
+                621,
+                703
+              ]
+            ]
+          }
+        ],
+        "clahe": [
+          {
+            "text": "ORSTTe",
+            "confidence": 0.4103790819644928,
+            "bbox": [
+              [
+                276,
+                33
+              ],
+              [
+                361,
+                56
+              ],
+              [
+                354,
+                84
+              ],
+              [
+                269,
+                61
+              ]
+            ]
+          },
+          {
+            "text": "L0076 17.03.22",
+            "confidence": 0.9951983690261841,
+            "bbox": [
+              [
+                68,
+                334
+              ],
+              [
+                212,
+                335
+              ],
+              [
+                212,
+                352
+              ],
+              [
+                68,
+                351
+              ]
+            ]
+          },
+          {
+            "text": "04:55",
+            "confidence": 0.9975570440292358,
+            "bbox": [
+              [
+                229,
+                337
+              ],
+              [
+                280,
+                337
+              ],
+              [
+                280,
+                353
+              ],
+              [
+                229,
+                353
+              ]
+            ]
+          },
+          {
+            "text": "100717022",
+            "confidence": 0.7533714771270752,
+            "bbox": [
+              [
+                311,
+                337
+              ],
+              [
+                359,
+                337
+              ],
+              [
+                359,
+                352
+              ],
+              [
+                311,
+                352
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "new_stages": {
+      "original_512": {
+        "prediction": {
+          "year": "NONE",
+          "month": "NONE",
+          "day": "NONE",
+          "final_date": "NONE"
+        },
+        "has_candidate": false,
+        "q": null,
+        "M": false,
+        "B": null,
+        "candidate_count": 0,
+        "distinct_dates": [],
+        "interpretation_ambiguity": false,
+        "incomplete": true,
+        "expiry_keyword": false,
+        "use_by_keyword": false,
+        "ocr_sec": 1.288196200010134,
+        "selected_text": null,
+        "format_hint": null,
+        "keyword_evidence": [],
+        "candidates": []
+      },
+      "rotation_270": {
+        "prediction": {
+          "year": "2017",
+          "month": "03",
+          "day": "22",
+          "final_date": "2017-03-22"
+        },
+        "has_candidate": true,
+        "q": 0.9985642433166504,
+        "M": false,
+        "B": false,
+        "candidate_count": 1,
+        "distinct_dates": [
+          "2017-03-22"
+        ],
+        "interpretation_ambiguity": true,
+        "incomplete": false,
+        "expiry_keyword": false,
+        "use_by_keyword": false,
+        "ocr_sec": 1.1377522999973735,
+        "selected_text": "17.03.22",
+        "format_hint": null,
+        "keyword_evidence": [],
+        "candidates": [
+          {
+            "text": "17.03.22",
+            "result": "2017-03-22",
+            "readings": [
+              "2017-03-22",
+              "2022-03-17"
+            ]
+          }
+        ]
+      },
+      "highres_1024": {
+        "prediction": {
+          "year": "NONE",
+          "month": "NONE",
+          "day": "NONE",
+          "final_date": "NONE"
+        },
+        "has_candidate": false,
+        "q": null,
+        "M": false,
+        "B": null,
+        "candidate_count": 0,
+        "distinct_dates": [],
+        "interpretation_ambiguity": false,
+        "incomplete": true,
+        "expiry_keyword": false,
+        "use_by_keyword": false,
+        "ocr_sec": 3.706762899993919,
+        "selected_text": null,
+        "format_hint": null,
+        "keyword_evidence": [],
+        "candidates": []
+      },
+      "clahe": {
+        "prediction": {
+          "year": "NONE",
+          "month": "NONE",
+          "day": "NONE",
+          "final_date": "NONE"
+        },
+        "has_candidate": false,
+        "q": null,
+        "M": false,
+        "B": null,
+        "candidate_count": 0,
+        "distinct_dates": [],
+        "interpretation_ambiguity": false,
+        "incomplete": true,
+        "expiry_keyword": false,
+        "use_by_keyword": false,
+        "ocr_sec": 1.1182857999956468,
+        "selected_text": null,
+        "format_hint": null,
+        "keyword_evidence": [],
+        "candidates": []
+      }
+    }
+  },
+  "002034": {
+    "old": {
+      "truth": "2020-12-17",
+      "metadata_truth": "2020-12-17",
+      "label_status": "approved",
+      "baseline_prediction": "2017-12-20",
+      "baseline_stage": "original_512",
+      "stages": {
+        "original_512": {
+          "prediction": {
+            "year": "2017",
+            "month": "12",
+            "day": "20",
+            "final_date": "2017-12-20"
+          },
+          "has_candidate": true,
+          "q": 0.9943455457687378,
+          "M": false,
+          "B": false,
+          "candidate_count": 1,
+          "distinct_dates": [
+            "2017-12-20"
+          ],
+          "interpretation_ambiguity": true,
+          "incomplete": false,
+          "expiry_keyword": false,
+          "use_by_keyword": false,
+          "ocr_sec": 1.3725430999911623,
+          "selected_text": "17.12.20",
+          "format_hint": null,
+          "keyword_evidence": [],
+          "candidates": [
+            {
+              "text": "17.12.20",
+              "result": "2017-12-20",
+              "readings": [
+                "2017-12-20",
+                "2020-12-17"
+              ]
+            }
+          ]
+        },
+        "rotation_270": {
+          "prediction": {
+            "year": "2017",
+            "month": "12",
+            "day": "20",
+            "final_date": "2017-12-20"
+          },
+          "has_candidate": true,
+          "q": 0.9387230277061462,
+          "M": false,
+          "B": false,
+          "candidate_count": 1,
+          "distinct_dates": [
+            "2017-12-20"
+          ],
+          "interpretation_ambiguity": true,
+          "incomplete": false,
+          "expiry_keyword": false,
+          "use_by_keyword": false,
+          "ocr_sec": 1.143268400002853,
+          "selected_text": "17.12.20",
+          "format_hint": null,
+          "keyword_evidence": [],
+          "candidates": [
+            {
+              "text": "17.12.20",
+              "result": "2017-12-20",
+              "readings": [
+                "2017-12-20",
+                "2020-12-17"
+              ]
+            }
+          ]
+        },
+        "highres_1024": {
+          "prediction": {
+            "year": "2017",
+            "month": "12",
+            "day": "20",
+            "final_date": "2017-12-20"
+          },
+          "has_candidate": true,
+          "q": 0.9967722296714783,
+          "M": false,
+          "B": false,
+          "candidate_count": 1,
+          "distinct_dates": [
+            "2017-12-20"
+          ],
+          "interpretation_ambiguity": true,
+          "incomplete": false,
+          "expiry_keyword": false,
+          "use_by_keyword": false,
+          "ocr_sec": 2.388552600008552,
+          "selected_text": "17.12.20",
+          "format_hint": null,
+          "keyword_evidence": [],
+          "candidates": [
+            {
+              "text": "17.12.20",
+              "result": "2017-12-20",
+              "readings": [
+                "2017-12-20",
+                "2020-12-17"
+              ]
+            }
+          ]
+        },
+        "clahe": {
+          "prediction": {
+            "year": "2017",
+            "month": "12",
+            "day": "20",
+            "final_date": "2017-12-20"
+          },
+          "has_candidate": true,
+          "q": 0.9924829006195068,
+          "M": false,
+          "B": false,
+          "candidate_count": 1,
+          "distinct_dates": [
+            "2017-12-20"
+          ],
+          "interpretation_ambiguity": true,
+          "incomplete": false,
+          "expiry_keyword": false,
+          "use_by_keyword": false,
+          "ocr_sec": 1.4690618999884464,
+          "selected_text": "17.12.20",
+          "format_hint": null,
+          "keyword_evidence": [],
+          "candidates": [
+            {
+              "text": "17.12.20",
+              "result": "2017-12-20",
+              "readings": [
+                "2017-12-20",
+                "2020-12-17"
+              ]
+            }
+          ]
+        }
+      },
+      "raw_detections": {
+        "original_512": [
+          {
+            "text": "17.12.20",
+            "confidence": 0.9943455457687378,
+            "bbox": [
+              [
+                194,
+                82
+              ],
+              [
+                277,
+                84
+              ],
+              [
+                276,
+                105
+              ],
+              [
+                193,
+                103
+              ]
+            ]
+          },
+          {
+            "text": "L352MW.- 12:14",
+            "confidence": 0.9199637174606323,
+            "bbox": [
+              [
+                187,
+                109
+              ],
+              [
+                331,
+                114
+              ],
+              [
+                331,
+                135
+              ],
+              [
+                186,
+                130
+              ]
+            ]
+          },
+          {
+            "text": "utellai",
+            "confidence": 0.8570725321769714,
+            "bbox": [
+              [
+                0,
+                335
+              ],
+              [
+                132,
+                354
+              ],
+              [
+                122,
+                426
+              ],
+              [
+                0,
+                407
+              ]
+            ]
+          },
+          {
+            "text": "하루를 시작하는 행복한 방법",
+            "confidence": 0.9115419983863831,
+            "bbox": [
+              [
+                168,
+                362
+              ],
+              [
+                494,
+                353
+              ],
+              [
+                496,
+                409
+              ],
+              [
+                170,
+                418
+              ]
+            ]
+          },
+          {
+            "text": "·식품의 유형:준초콜릿·원재료명 및 성분명:설탕,식물성",
+            "confidence": 0.9229257106781006,
+            "bbox": [
+              [
+                124,
+                421
+              ],
+              [
+                485,
+                411
+              ],
+              [
+                486,
+                452
+              ],
+              [
+                125,
+                462
+              ]
+            ]
+          },
+          {
+            "text": "넛(13%),탈지분유(8.7%),저지방코코아파우데(7.4%)",
+            "confidence": 0.8355692028999329,
+            "bbox": [
+              [
+                124,
+                451
+              ],
+              [
+                478,
+                439
+              ],
+              [
+                479,
+                480
+              ],
+              [
+                125,
+                492
+              ]
+            ]
+          }
+        ],
+        "rotation_270": [
+          {
+            "text": "utellai",
+            "confidence": 0.8731881380081177,
+            "bbox": [
+              [
+                100,
+                0
+              ],
+              [
+                169,
+                0
+              ],
+              [
+                156,
+                132
+              ],
+              [
+                87,
+                125
+              ]
+            ]
+          },
+          {
+            "text": "하루를 시작하는 행복한 방법",
+            "confidence": 0.8590429425239563,
+            "bbox": [
+              [
+                91,
+                163
+              ],
+              [
+                148,
+                162
+              ],
+              [
+                158,
+                498
+              ],
+              [
+                101,
+                500
+              ]
+            ]
+          },
+          {
+            "text": "L352MW-- 12:14",
+            "confidence": 0.9667760729789734,
+            "bbox": [
+              [
+                377,
+                185
+              ],
+              [
+                402,
+                186
+              ],
+              [
+                398,
+                331
+              ],
+              [
+                373,
+                331
+              ]
+            ]
+          },
+          {
+            "text": "17.12.20",
+            "confidence": 0.9387230277061462,
+            "bbox": [
+              [
+                404,
+                193
+              ],
+              [
+                429,
+                193
+              ],
+              [
+                429,
+                277
+              ],
+              [
+                404,
+                277
+              ]
+            ]
+          }
+        ],
+        "highres_1024": [
+          {
+            "text": "17.12.20",
+            "confidence": 0.9967722296714783,
+            "bbox": [
+              [
+                303,
+                129
+              ],
+              [
+                427,
+                131
+              ],
+              [
+                426,
+                163
+              ],
+              [
+                303,
+                160
+              ]
+            ]
+          },
+          {
+            "text": "L352MW--12:14",
+            "confidence": 0.9506334662437439,
+            "bbox": [
+              [
+                291,
+                171
+              ],
+              [
+                513,
+                179
+              ],
+              [
+                512,
+                210
+              ],
+              [
+                290,
+                203
+              ]
+            ]
+          },
+          {
+            "text": "utella",
+            "confidence": 0.945443332195282,
+            "bbox": [
+              [
+                0,
+                519
+              ],
+              [
+                206,
+                552
+              ],
+              [
+                188,
+                658
+              ],
+              [
+                0,
+                625
+              ]
+            ]
+          },
+          {
+            "text": "하루를 시작하는",
+            "confidence": 0.9509238004684448,
+            "bbox": [
+              [
+                263,
+                557
+              ],
+              [
+                588,
+                553
+              ],
+              [
+                590,
+                641
+              ],
+              [
+                264,
+                646
+              ]
+            ]
+          },
+          {
+            "text": "는행복한 방법",
+            "confidence": 0.8750280141830444,
+            "bbox": [
+              [
+                546,
+                560
+              ],
+              [
+                768,
+                544
+              ],
+              [
+                774,
+                631
+              ],
+              [
+                552,
+                646
+              ]
+            ]
+          }
+        ],
+        "clahe": [
+          {
+            "text": "17.12.20",
+            "confidence": 0.9924829006195068,
+            "bbox": [
+              [
+                195,
+                82
+              ],
+              [
+                277,
+                84
+              ],
+              [
+                276,
+                106
+              ],
+              [
+                194,
+                104
+              ]
+            ]
+          },
+          {
+            "text": "L352MW--12:14",
+            "confidence": 0.9402440786361694,
+            "bbox": [
+              [
+                187,
+                108
+              ],
+              [
+                331,
+                113
+              ],
+              [
+                331,
+                136
+              ],
+              [
+                186,
+                131
+              ]
+            ]
+          },
+          {
+            "text": "utelld",
+            "confidence": 0.9204854965209961,
+            "bbox": [
+              [
+                0,
+                335
+              ],
+              [
+                133,
+                355
+              ],
+              [
+                123,
+                427
+              ],
+              [
+                0,
+                407
+              ]
+            ]
+          },
+          {
+            "text": "하루를 시작하는행복한 방법",
+            "confidence": 0.8601350784301758,
+            "bbox": [
+              [
+                169,
+                361
+              ],
+              [
+                495,
+                353
+              ],
+              [
+                497,
+                409
+              ],
+              [
+                171,
+                417
+              ]
+            ]
+          },
+          {
+            "text": "즐넛(13%), 탈지분유(8.7%), 저지방코아파우데(7.4%)",
+            "confidence": 0.8032336831092834,
+            "bbox": [
+              [
+                123,
+                451
+              ],
+              [
+                478,
+                438
+              ],
+              [
+                480,
+                480
+              ],
+              [
+                124,
+                493
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "new_stages": {
+      "original_512": {
+        "prediction": {
+          "year": "2017",
+          "month": "12",
+          "day": "20",
+          "final_date": "2017-12-20"
+        },
+        "has_candidate": true,
+        "q": 0.9943455457687378,
+        "M": false,
+        "B": false,
+        "candidate_count": 1,
+        "distinct_dates": [
+          "2017-12-20"
+        ],
+        "interpretation_ambiguity": true,
+        "incomplete": false,
+        "expiry_keyword": false,
+        "use_by_keyword": false,
+        "ocr_sec": 1.3725430999911623,
+        "selected_text": "17.12.20",
+        "format_hint": null,
+        "keyword_evidence": [],
+        "candidates": [
+          {
+            "text": "17.12.20",
+            "result": "2017-12-20",
+            "readings": [
+              "2017-12-20",
+              "2020-12-17"
+            ]
+          }
+        ]
+      },
+      "rotation_270": {
+        "prediction": {
+          "year": "2017",
+          "month": "12",
+          "day": "20",
+          "final_date": "2017-12-20"
+        },
+        "has_candidate": true,
+        "q": 0.9387230277061462,
+        "M": false,
+        "B": false,
+        "candidate_count": 1,
+        "distinct_dates": [
+          "2017-12-20"
+        ],
+        "interpretation_ambiguity": true,
+        "incomplete": false,
+        "expiry_keyword": false,
+        "use_by_keyword": false,
+        "ocr_sec": 1.143268400002853,
+        "selected_text": "17.12.20",
+        "format_hint": null,
+        "keyword_evidence": [],
+        "candidates": [
+          {
+            "text": "17.12.20",
+            "result": "2017-12-20",
+            "readings": [
+              "2017-12-20",
+              "2020-12-17"
+            ]
+          }
+        ]
+      },
+      "highres_1024": {
+        "prediction": {
+          "year": "2017",
+          "month": "12",
+          "day": "20",
+          "final_date": "2017-12-20"
+        },
+        "has_candidate": true,
+        "q": 0.9967722296714783,
+        "M": false,
+        "B": false,
+        "candidate_count": 1,
+        "distinct_dates": [
+          "2017-12-20"
+        ],
+        "interpretation_ambiguity": true,
+        "incomplete": false,
+        "expiry_keyword": false,
+        "use_by_keyword": false,
+        "ocr_sec": 2.388552600008552,
+        "selected_text": "17.12.20",
+        "format_hint": null,
+        "keyword_evidence": [],
+        "candidates": [
+          {
+            "text": "17.12.20",
+            "result": "2017-12-20",
+            "readings": [
+              "2017-12-20",
+              "2020-12-17"
+            ]
+          }
+        ]
+      },
+      "clahe": {
+        "prediction": {
+          "year": "2017",
+          "month": "12",
+          "day": "20",
+          "final_date": "2017-12-20"
+        },
+        "has_candidate": true,
+        "q": 0.9924829006195068,
+        "M": false,
+        "B": false,
+        "candidate_count": 1,
+        "distinct_dates": [
+          "2017-12-20"
+        ],
+        "interpretation_ambiguity": true,
+        "incomplete": false,
+        "expiry_keyword": false,
+        "use_by_keyword": false,
+        "ocr_sec": 1.4690618999884464,
+        "selected_text": "17.12.20",
+        "format_hint": null,
+        "keyword_evidence": [],
+        "candidates": [
+          {
+            "text": "17.12.20",
+            "result": "2017-12-20",
+            "readings": [
+              "2017-12-20",
+              "2020-12-17"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "002586": {
+    "old": {
+      "truth": "2022-12-NONE",
+      "metadata_truth": "2022-12-NONE",
+      "label_status": "approved",
+      "baseline_prediction": "NONE",
+      "baseline_stage": "original_no_candidate",
+      "stages": {
+        "original_512": {
+          "prediction": {
+            "year": "NONE",
+            "month": "NONE",
+            "day": "NONE",
+            "final_date": "NONE"
+          },
+          "has_candidate": false,
+          "q": null,
+          "M": false,
+          "B": null,
+          "candidate_count": 0,
+          "distinct_dates": [],
+          "interpretation_ambiguity": false,
+          "incomplete": true,
+          "expiry_keyword": true,
+          "use_by_keyword": false,
+          "ocr_sec": 2.489782499993453,
+          "selected_text": null,
+          "format_hint": null,
+          "keyword_evidence": [
+            {
+              "text": "Exp.Date: 12/22",
+              "confidence": 0.9831138849258423,
+              "bbox": [
+                [
+                  136,
+                  433
+                ],
+                [
+                  235,
+                  433
+                ],
+                [
+                  235,
+                  447
+                ],
+                [
+                  136,
+                  447
+                ]
+              ]
+            }
+          ],
+          "candidates": []
+        },
+        "rotation_270": {
+          "prediction": {
+            "year": "NONE",
+            "month": "NONE",
+            "day": "NONE",
+            "final_date": "NONE"
+          },
+          "has_candidate": false,
+          "q": null,
+          "M": false,
+          "B": null,
+          "candidate_count": 0,
+          "distinct_dates": [],
+          "interpretation_ambiguity": false,
+          "incomplete": true,
+          "expiry_keyword": true,
+          "use_by_keyword": false,
+          "ocr_sec": 1.4208596999960719,
+          "selected_text": null,
+          "format_hint": null,
+          "keyword_evidence": [
+            {
+              "text": "Exp.Date: 12/22",
+              "confidence": 0.9630332589149475,
+              "bbox": [
+                [
+                  63,
+                  136
+                ],
+                [
+                  77,
+                  136
+                ],
+                [
+                  77,
+                  235
+                ],
+                [
+                  63,
+                  235
+                ]
+              ]
+            }
+          ],
+          "candidates": []
+        },
+        "highres_1024": {
+          "prediction": {
+            "year": "NONE",
+            "month": "NONE",
+            "day": "NONE",
+            "final_date": "NONE"
+          },
+          "has_candidate": false,
+          "q": null,
+          "M": false,
+          "B": null,
+          "candidate_count": 0,
+          "distinct_dates": [],
+          "interpretation_ambiguity": false,
+          "incomplete": true,
+          "expiry_keyword": true,
+          "use_by_keyword": false,
+          "ocr_sec": 5.535656099993503,
+          "selected_text": null,
+          "format_hint": null,
+          "keyword_evidence": [
+            {
+              "text": "Exp.Date: 12/22",
+              "confidence": 0.9825848937034607,
+              "bbox": [
+                [
+                  274,
+                  866
+                ],
+                [
+                  468,
+                  866
+                ],
+                [
+                  468,
+                  894
+                ],
+                [
+                  274,
+                  894
+                ]
+              ]
+            }
+          ],
+          "candidates": []
+        },
+        "clahe": {
+          "prediction": {
+            "year": "NONE",
+            "month": "NONE",
+            "day": "NONE",
+            "final_date": "NONE"
+          },
+          "has_candidate": false,
+          "q": null,
+          "M": false,
+          "B": null,
+          "candidate_count": 0,
+          "distinct_dates": [],
+          "interpretation_ambiguity": false,
+          "incomplete": true,
+          "expiry_keyword": true,
+          "use_by_keyword": false,
+          "ocr_sec": 2.786291700002039,
+          "selected_text": null,
+          "format_hint": null,
+          "keyword_evidence": [
+            {
+              "text": "Exp.Date: 12/22",
+              "confidence": 0.9786531925201416,
+              "bbox": [
+                [
+                  136,
+                  433
+                ],
+                [
+                  234,
+                  433
+                ],
+                [
+                  234,
+                  447
+                ],
+                [
+                  136,
+                  447
+                ]
+              ]
+            }
+          ],
+          "candidates": []
+        }
+      },
+      "raw_detections": {
+        "original_512": [
+          {
+            "text": "DIRECTONS: Take 1 Casule a day, or as",
+            "confidence": 0.867645263671875,
+            "bbox": [
+              [
+                119,
+                28
+              ],
+              [
+                270,
+                32
+              ],
+              [
+                269,
+                45
+              ],
+              [
+                118,
+                41
+              ]
+            ]
+          },
+          {
+            "text": "directed by your healthcare profestionai",
+            "confidence": 0.9570283889770508,
+            "bbox": [
+              [
+                118,
+                38
+              ],
+              [
+                250,
+                40
+              ],
+              [
+                250,
+                50
+              ],
+              [
+                118,
+                48
+              ]
+            ]
+          },
+          {
+            "text": "The product is not a medicine preventing and",
+            "confidence": 0.9888041019439697,
+            "bbox": [
+              [
+                118,
+                46
+              ],
+              [
+                270,
+                49
+              ],
+              [
+                270,
+                59
+              ],
+              [
+                118,
+                56
+              ]
+            ]
+          },
+          {
+            "text": "curing disease.",
+            "confidence": 0.9401038885116577,
+            "bbox": [
+              [
+                119,
+                56
+              ],
+              [
+                170,
+                56
+              ],
+              [
+                170,
+                66
+              ],
+              [
+                119,
+                66
+              ]
+            ]
+          },
+          {
+            "text": "SUPPLEMENT FACTS:",
+            "confidence": 0.9933921694755554,
+            "bbox": [
+              [
+                120,
+                67
+              ],
+              [
+                220,
+                69
+              ],
+              [
+                219,
+                82
+              ],
+              [
+                120,
+                80
+              ]
+            ]
+          },
+          {
+            "text": "Serving Size 1 Capsule(s)",
+            "confidence": 0.9269509315490723,
+            "bbox": [
+              [
+                121,
+                78
+              ],
+              [
+                207,
+                79
+              ],
+              [
+                206,
+                90
+              ],
+              [
+                121,
+                89
+              ]
+            ]
+          },
+          {
+            "text": "Amount Per Sening",
+            "confidence": 0.9587289094924927,
+            "bbox": [
+              [
+                119,
+                98
+              ],
+              [
+                192,
+                101
+              ],
+              [
+                191,
+                115
+              ],
+              [
+                118,
+                112
+              ]
+            ]
+          },
+          {
+            "text": "%DV+",
+            "confidence": 0.8443745374679565,
+            "bbox": [
+              [
+                243,
+                102
+              ],
+              [
+                267,
+                102
+              ],
+              [
+                267,
+                114
+              ],
+              [
+                243,
+                114
+              ]
+            ]
+          },
+          {
+            "text": "(Standardzed to Contain 10%",
+            "confidence": 0.9348952770233154,
+            "bbox": [
+              [
+                124,
+                120
+              ],
+              [
+                218,
+                121
+              ],
+              [
+                217,
+                132
+              ],
+              [
+                124,
+                131
+              ]
+            ]
+          },
+          {
+            "text": "Astaxanthin, 6mg)",
+            "confidence": 0.9308861494064331,
+            "bbox": [
+              [
+                125,
+                128
+              ],
+              [
+                185,
+                129
+              ],
+              [
+                184,
+                140
+              ],
+              [
+                125,
+                139
+              ]
+            ]
+          },
+          {
+            "text": "60.0mg",
+            "confidence": 0.9395003318786621,
+            "bbox": [
+              [
+                221,
+                122
+              ],
+              [
+                248,
+                122
+              ],
+              [
+                248,
+                133
+              ],
+              [
+                221,
+                133
+              ]
+            ]
+          },
+          {
+            "text": "Marigold Extract",
+            "confidence": 0.9615268111228943,
+            "bbox": [
+              [
+                121,
+                138
+              ],
+              [
+                181,
+                139
+              ],
+              [
+                180,
+                150
+              ],
+              [
+                121,
+                149
+              ]
+            ]
+          },
+          {
+            "text": "Lunein Ol. 20mg)",
+            "confidence": 0.8823508024215698,
+            "bbox": [
+              [
+                123,
+                155
+              ],
+              [
+                182,
+                156
+              ],
+              [
+                181,
+                167
+              ],
+              [
+                123,
+                166
+              ]
+            ]
+          },
+          {
+            "text": "(Standardzed to Contain 20%\"10erog",
+            "confidence": 0.9014087915420532,
+            "bbox": [
+              [
+                124,
+                147
+              ],
+              [
+                241,
+                148
+              ],
+              [
+                241,
+                159
+              ],
+              [
+                124,
+                158
+              ]
+            ]
+          },
+          {
+            "text": "Vitamin A (as Retiny Paifitate) 2.100",
+            "confidence": 0.890677273273468,
+            "bbox": [
+              [
+                118,
+                164
+              ],
+              [
+                248,
+                166
+              ],
+              [
+                248,
+                179
+              ],
+              [
+                118,
+                177
+              ]
+            ]
+          },
+          {
+            "text": "Hydrochioride)",
+            "confidence": 0.9174989461898804,
+            "bbox": [
+              [
+                123,
+                185
+              ],
+              [
+                174,
+                185
+              ],
+              [
+                174,
+                196
+              ],
+              [
+                123,
+                196
+              ]
+            ]
+          },
+          {
+            "text": "Vitamin B2 Cas Riboflavin)",
+            "confidence": 0.948616087436676,
+            "bbox": [
+              [
+                119,
+                195
+              ],
+              [
+                207,
+                196
+              ],
+              [
+                206,
+                207
+              ],
+              [
+                119,
+                206
+              ]
+            ]
+          },
+          {
+            "text": "Vitamin E(as baTocoobero)",
+            "confidence": 0.8433012366294861,
+            "bbox": [
+              [
+                119,
+                206
+              ],
+              [
+                210,
+                207
+              ],
+              [
+                209,
+                218
+              ],
+              [
+                119,
+                217
+              ]
+            ]
+          },
+          {
+            "text": "82%",
+            "confidence": 0.9970128536224365,
+            "bbox": [
+              [
+                247,
+                198
+              ],
+              [
+                264,
+                198
+              ],
+              [
+                264,
+                206
+              ],
+              [
+                247,
+                206
+              ]
+            ]
+          },
+          {
+            "text": "Zinc (as Zinc Oxide)",
+            "confidence": 0.9736884832382202,
+            "bbox": [
+              [
+                119,
+                217
+              ],
+              [
+                187,
+                218
+              ],
+              [
+                186,
+                229
+              ],
+              [
+                119,
+                228
+              ]
+            ]
+          },
+          {
+            "text": "Percent Dalty Values(%DV)",
+            "confidence": 0.9403067827224731,
+            "bbox": [
+              [
+                122,
+                241
+              ],
+              [
+                218,
+                242
+              ],
+              [
+                217,
+                253
+              ],
+              [
+                122,
+                252
+              ]
+            ]
+          },
+          {
+            "text": "based on",
+            "confidence": 0.9784953594207764,
+            "bbox": [
+              [
+                217,
+                243
+              ],
+              [
+                260,
+                243
+              ],
+              [
+                260,
+                254
+              ],
+              [
+                217,
+                254
+              ]
+            ]
+          },
+          {
+            "text": "-Daily Value not established",
+            "confidence": 0.9520459175109863,
+            "bbox": [
+              [
+                119,
+                257
+              ],
+              [
+                217,
+                258
+              ],
+              [
+                216,
+                269
+              ],
+              [
+                119,
+                268
+              ]
+            ]
+          },
+          {
+            "text": "Dioxide, Caramel Color)",
+            "confidence": 0.9673671722412109,
+            "bbox": [
+              [
+                117,
+                303
+              ],
+              [
+                199,
+                303
+              ],
+              [
+                199,
+                313
+              ],
+              [
+                117,
+                313
+              ]
+            ]
+          },
+          {
+            "text": "WARNiNG: If you are pregnant, nursing or taking",
+            "confidence": 0.9439347982406616,
+            "bbox": [
+              [
+                116,
+                315
+              ],
+              [
+                267,
+                317
+              ],
+              [
+                267,
+                328
+              ],
+              [
+                116,
+                326
+              ]
+            ]
+          },
+          {
+            "text": "Descontinue use and cortult your doctor af any",
+            "confidence": 0.9109104871749878,
+            "bbox": [
+              [
+                115,
+                331
+              ],
+              [
+                267,
+                333
+              ],
+              [
+                267,
+                343
+              ],
+              [
+                115,
+                341
+              ]
+            ]
+          },
+          {
+            "text": "any medications, consult your doctor befone use.",
+            "confidence": 0.9703074097633362,
+            "bbox": [
+              [
+                116,
+                325
+              ],
+              [
+                266,
+                325
+              ],
+              [
+                266,
+                335
+              ],
+              [
+                116,
+                335
+              ]
+            ]
+          },
+          {
+            "text": "adverse reactions occur, When taken in excessve",
+            "confidence": 0.938977837562561,
+            "bbox": [
+              [
+                116,
+                340
+              ],
+              [
+                267,
+                340
+              ],
+              [
+                267,
+                350
+              ],
+              [
+                116,
+                350
+              ]
+            ]
+          },
+          {
+            "text": "amounts, it may tum the sin yelow temporarly it",
+            "confidence": 0.9308412671089172,
+            "bbox": [
+              [
+                116,
+                348
+              ],
+              [
+                267,
+                348
+              ],
+              [
+                267,
+                358
+              ],
+              [
+                116,
+                358
+              ]
+            ]
+          },
+          {
+            "text": "cool, dry place.",
+            "confidence": 0.9334108233451843,
+            "bbox": [
+              [
+                116,
+                363
+              ],
+              [
+                163,
+                363
+              ],
+              [
+                163,
+                373
+              ],
+              [
+                116,
+                373
+              ]
+            ]
+          },
+          {
+            "text": "DO NOT USE IF BLSTER SEAL IS BROKEN.",
+            "confidence": 0.9355307817459106,
+            "bbox": [
+              [
+                114,
+                375
+              ],
+              [
+                265,
+                375
+              ],
+              [
+                265,
+                388
+              ],
+              [
+                114,
+                388
+              ]
+            ]
+          },
+          {
+            "text": "KEEP OUT OF REACH OF CHILDREN.",
+            "confidence": 0.9358395934104919,
+            "bbox": [
+              [
+                115,
+                385
+              ],
+              [
+                247,
+                385
+              ],
+              [
+                247,
+                395
+              ],
+              [
+                115,
+                395
+              ]
+            ]
+          },
+          {
+            "text": "Batch No: 652332",
+            "confidence": 0.967239499092102,
+            "bbox": [
+              [
+                136,
+                416
+              ],
+              [
+                245,
+                416
+              ],
+              [
+                245,
+                430
+              ],
+              [
+                136,
+                430
+              ]
+            ]
+          },
+          {
+            "text": "Exp.Date: 12/22",
+            "confidence": 0.9831138849258423,
+            "bbox": [
+              [
+                136,
+                433
+              ],
+              [
+                235,
+                433
+              ],
+              [
+                235,
+                447
+              ],
+              [
+                136,
+                447
+              ]
+            ]
+          }
+        ],
+        "rotation_270": [
+          {
+            "text": "cool, dry place.",
+            "confidence": 0.9356650114059448,
+            "bbox": [
+              [
+                137,
+                115
+              ],
+              [
+                147,
+                115
+              ],
+              [
+                147,
+                165
+              ],
+              [
+                137,
+                165
+              ]
+            ]
+          },
+          {
+            "text": "amounts, it may tum the sin yelow temporanly It",
+            "confidence": 0.9229218363761902,
+            "bbox": [
+              [
+                153,
+                115
+              ],
+              [
+                163,
+                115
+              ],
+              [
+                163,
+                268
+              ],
+              [
+                153,
+                268
+              ]
+            ]
+          },
+          {
+            "text": "Dioxide, Caramel Color)",
+            "confidence": 0.9830954074859619,
+            "bbox": [
+              [
+                198,
+                116
+              ],
+              [
+                208,
+                116
+              ],
+              [
+                208,
+                201
+              ],
+              [
+                198,
+                201
+              ]
+            ]
+          },
+          {
+            "text": "Hydrochloride)",
+            "confidence": 0.9247981905937195,
+            "bbox": [
+              [
+                315,
+                124
+              ],
+              [
+                325,
+                124
+              ],
+              [
+                325,
+                175
+              ],
+              [
+                315,
+                175
+              ]
+            ]
+          },
+          {
+            "text": "Astaanthin, 6mg)",
+            "confidence": 0.9173284769058228,
+            "bbox": [
+              [
+                371,
+                126
+              ],
+              [
+                382,
+                126
+              ],
+              [
+                382,
+                186
+              ],
+              [
+                371,
+                186
+              ]
+            ]
+          },
+          {
+            "text": "Standardized to Contain 10%",
+            "confidence": 0.9117715358734131,
+            "bbox": [
+              [
+                379,
+                123
+              ],
+              [
+                390,
+                123
+              ],
+              [
+                389,
+                219
+              ],
+              [
+                378,
+                218
+              ]
+            ]
+          },
+          {
+            "text": "Serving Size 1 Capsule(s)",
+            "confidence": 0.9015734791755676,
+            "bbox": [
+              [
+                420,
+                122
+              ],
+              [
+                431,
+                122
+              ],
+              [
+                430,
+                207
+              ],
+              [
+                419,
+                206
+              ]
+            ]
+          },
+          {
+            "text": "SUPPLEMENT FACTS:",
+            "confidence": 0.9819871187210083,
+            "bbox": [
+              [
+                429,
+                121
+              ],
+              [
+                443,
+                121
+              ],
+              [
+                441,
+                220
+              ],
+              [
+                427,
+                219
+              ]
+            ]
+          },
+          {
+            "text": "curing disease.",
+            "confidence": 0.9640246033668518,
+            "bbox": [
+              [
+                445,
+                119
+              ],
+              [
+                455,
+                119
+              ],
+              [
+                455,
+                172
+              ],
+              [
+                445,
+                172
+              ]
+            ]
+          },
+          {
+            "text": "directed by your healthcare Drofestional.",
+            "confidence": 0.9360473155975342,
+            "bbox": [
+              [
+                460,
+                118
+              ],
+              [
+                471,
+                118
+              ],
+              [
+                470,
+                251
+              ],
+              [
+                459,
+                251
+              ]
+            ]
+          },
+          {
+            "text": "Exp.Date: 12/22",
+            "confidence": 0.9630332589149475,
+            "bbox": [
+              [
+                63,
+                136
+              ],
+              [
+                77,
+                136
+              ],
+              [
+                77,
+                235
+              ],
+              [
+                63,
+                235
+              ]
+            ]
+          },
+          {
+            "text": "Batch No: 652332",
+            "confidence": 0.9430984258651733,
+            "bbox": [
+              [
+                79,
+                135
+              ],
+              [
+                96,
+                135
+              ],
+              [
+                96,
+                246
+              ],
+              [
+                79,
+                246
+              ]
+            ]
+          },
+          {
+            "text": "60.0mg",
+            "confidence": 0.9274671673774719,
+            "bbox": [
+              [
+                378,
+                220
+              ],
+              [
+                389,
+                220
+              ],
+              [
+                389,
+                249
+              ],
+              [
+                378,
+                249
+              ]
+            ]
+          },
+          {
+            "text": "%DV+",
+            "confidence": 0.8383259773254395,
+            "bbox": [
+              [
+                397,
+                243
+              ],
+              [
+                408,
+                243
+              ],
+              [
+                408,
+                266
+              ],
+              [
+                397,
+                266
+              ]
+            ]
+          }
+        ],
+        "highres_1024": [
+          {
+            "text": "DIRECTIONs : Take 1 Capsule a day, or as",
+            "confidence": 0.9145239591598511,
+            "bbox": [
+              [
+                239,
+                59
+              ],
+              [
+                540,
+                67
+              ],
+              [
+                539,
+                87
+              ],
+              [
+                238,
+                79
+              ]
+            ]
+          },
+          {
+            "text": "directed by your healthcare professional.",
+            "confidence": 0.9751068949699402,
+            "bbox": [
+              [
+                240,
+                78
+              ],
+              [
+                499,
+                83
+              ],
+              [
+                498,
+                100
+              ],
+              [
+                239,
+                95
+              ]
+            ]
+          },
+          {
+            "text": "The product is not a medicine preventing and",
+            "confidence": 0.9689602255821228,
+            "bbox": [
+              [
+                239,
+                93
+              ],
+              [
+                539,
+                99
+              ],
+              [
+                538,
+                119
+              ],
+              [
+                238,
+                113
+              ]
+            ]
+          },
+          {
+            "text": "curing disease",
+            "confidence": 0.9961757659912109,
+            "bbox": [
+              [
+                239,
+                110
+              ],
+              [
+                339,
+                112
+              ],
+              [
+                338,
+                130
+              ],
+              [
+                238,
+                128
+              ]
+            ]
+          },
+          {
+            "text": "SUPPLEMENT FACTS:",
+            "confidence": 0.9905376434326172,
+            "bbox": [
+              [
+                247,
+                138
+              ],
+              [
+                437,
+                141
+              ],
+              [
+                436,
+                162
+              ],
+              [
+                246,
+                159
+              ]
+            ]
+          },
+          {
+            "text": "Serving Size 1 Capsule(s)",
+            "confidence": 0.9940066337585449,
+            "bbox": [
+              [
+                246,
+                159
+              ],
+              [
+                411,
+                161
+              ],
+              [
+                410,
+                179
+              ],
+              [
+                246,
+                177
+              ]
+            ]
+          },
+          {
+            "text": "Serving Per Container 30",
+            "confidence": 0.9651476740837097,
+            "bbox": [
+              [
+                245,
+                177
+              ],
+              [
+                415,
+                179
+              ],
+              [
+                414,
+                197
+              ],
+              [
+                245,
+                195
+              ]
+            ]
+          },
+          {
+            "text": "Amount Per Serving",
+            "confidence": 0.9845348000526428,
+            "bbox": [
+              [
+                245,
+                202
+              ],
+              [
+                379,
+                205
+              ],
+              [
+                378,
+                223
+              ],
+              [
+                244,
+                220
+              ]
+            ]
+          },
+          {
+            "text": "%DV+",
+            "confidence": 0.9430778622627258,
+            "bbox": [
+              [
+                487,
+                207
+              ],
+              [
+                533,
+                207
+              ],
+              [
+                533,
+                226
+              ],
+              [
+                487,
+                226
+              ]
+            ]
+          },
+          {
+            "text": "Haematococcus Pluvialis Extract",
+            "confidence": 0.9516605138778687,
+            "bbox": [
+              [
+                246,
+                226
+              ],
+              [
+                435,
+                229
+              ],
+              [
+                434,
+                247
+              ],
+              [
+                245,
+                244
+              ]
+            ]
+          },
+          {
+            "text": "(Standardized to Contain 10%",
+            "confidence": 0.9893852472305298,
+            "bbox": [
+              [
+                252,
+                242
+              ],
+              [
+                435,
+                245
+              ],
+              [
+                434,
+                263
+              ],
+              [
+                251,
+                260
+              ]
+            ]
+          },
+          {
+            "text": "60.0mg",
+            "confidence": 0.9516546726226807,
+            "bbox": [
+              [
+                441,
+                247
+              ],
+              [
+                493,
+                247
+              ],
+              [
+                493,
+                265
+              ],
+              [
+                441,
+                265
+              ]
+            ]
+          },
+          {
+            "text": "Astaxanthin, 6mg)",
+            "confidence": 0.9396706223487854,
+            "bbox": [
+              [
+                255,
+                257
+              ],
+              [
+                368,
+                260
+              ],
+              [
+                367,
+                280
+              ],
+              [
+                254,
+                277
+              ]
+            ]
+          },
+          {
+            "text": "Marigold Extract",
+            "confidence": 0.9884347915649414,
+            "bbox": [
+              [
+                244,
+                278
+              ],
+              [
+                358,
+                281
+              ],
+              [
+                357,
+                299
+              ],
+              [
+                243,
+                296
+              ]
+            ]
+          },
+          {
+            "text": "(Standardized to Contain 20%'10e.0mg",
+            "confidence": 0.9500871300697327,
+            "bbox": [
+              [
+                249,
+                292
+              ],
+              [
+                493,
+                298
+              ],
+              [
+                492,
+                319
+              ],
+              [
+                248,
+                313
+              ]
+            ]
+          },
+          {
+            "text": "Lutein Oil, 20mg)",
+            "confidence": 0.9731760621070862,
+            "bbox": [
+              [
+                251,
+                310
+              ],
+              [
+                363,
+                313
+              ],
+              [
+                362,
+                333
+              ],
+              [
+                250,
+                330
+              ]
+            ]
+          },
+          {
+            "text": "Vitamin A (as Retinyl Palmitate)",
+            "confidence": 0.9582999348640442,
+            "bbox": [
+              [
+                244,
+                333
+              ],
+              [
+                428,
+                336
+              ],
+              [
+                427,
+                354
+              ],
+              [
+                243,
+                351
+              ]
+            ]
+          },
+          {
+            "text": "2,10010",
+            "confidence": 0.9310820698738098,
+            "bbox": [
+              [
+                435,
+                336
+              ],
+              [
+                494,
+                338
+              ],
+              [
+                493,
+                356
+              ],
+              [
+                434,
+                354
+              ]
+            ]
+          },
+          {
+            "text": "Vitamin B1 (as Thiamine",
+            "confidence": 0.9712479710578918,
+            "bbox": [
+              [
+                243,
+                353
+              ],
+              [
+                407,
+                356
+              ],
+              [
+                406,
+                376
+              ],
+              [
+                242,
+                373
+              ]
+            ]
+          },
+          {
+            "text": "Hydrochloride)",
+            "confidence": 0.9971800446510315,
+            "bbox": [
+              [
+                251,
+                371
+              ],
+              [
+                346,
+                373
+              ],
+              [
+                345,
+                391
+              ],
+              [
+                250,
+                389
+              ]
+            ]
+          },
+          {
+            "text": "1.2mg",
+            "confidence": 0.9957467913627625,
+            "bbox": [
+              [
+                451,
+                366
+              ],
+              [
+                492,
+                368
+              ],
+              [
+                491,
+                387
+              ],
+              [
+                450,
+                385
+              ]
+            ]
+          },
+          {
+            "text": "Vitamin B2 (as Riboflavin)",
+            "confidence": 0.9494534730911255,
+            "bbox": [
+              [
+                244,
+                392
+              ],
+              [
+                413,
+                395
+              ],
+              [
+                412,
+                413
+              ],
+              [
+                243,
+                410
+              ]
+            ]
+          },
+          {
+            "text": "mg 82%",
+            "confidence": 0.9173898100852966,
+            "bbox": [
+              [
+                469,
+                396
+              ],
+              [
+                528,
+                396
+              ],
+              [
+                528,
+                414
+              ],
+              [
+                469,
+                414
+              ]
+            ]
+          },
+          {
+            "text": "Vitamin E (as D--Tocopherol)",
+            "confidence": 0.9472650289535522,
+            "bbox": [
+              [
+                243,
+                412
+              ],
+              [
+                421,
+                416
+              ],
+              [
+                420,
+                436
+              ],
+              [
+                242,
+                432
+              ]
+            ]
+          },
+          {
+            "text": "55%",
+            "confidence": 0.9995126724243164,
+            "bbox": [
+              [
+                489,
+                418
+              ],
+              [
+                528,
+                418
+              ],
+              [
+                528,
+                436
+              ],
+              [
+                489,
+                436
+              ]
+            ]
+          },
+          {
+            "text": "Zinc (as Zinc Oxide)",
+            "confidence": 0.9714320302009583,
+            "bbox": [
+              [
+                243,
+                435
+              ],
+              [
+                373,
+                438
+              ],
+              [
+                372,
+                456
+              ],
+              [
+                242,
+                453
+              ]
+            ]
+          },
+          {
+            "text": "8.5mg",
+            "confidence": 0.9663341641426086,
+            "bbox": [
+              [
+                447,
+                440
+              ],
+              [
+                491,
+                440
+              ],
+              [
+                491,
+                458
+              ],
+              [
+                447,
+                458
+              ]
+            ]
+          },
+          {
+            "text": "Selenium (as Sodium Sdlem )",
+            "confidence": 0.8950352668762207,
+            "bbox": [
+              [
+                241,
+                458
+              ],
+              [
+                420,
+                460
+              ],
+              [
+                419,
+                478
+              ],
+              [
+                241,
+                476
+              ]
+            ]
+          },
+          {
+            "text": "40.049'57%",
+            "confidence": 0.8077937364578247,
+            "bbox": [
+              [
+                447,
+                461
+              ],
+              [
+                527,
+                461
+              ],
+              [
+                527,
+                479
+              ],
+              [
+                447,
+                479
+              ]
+            ]
+          },
+          {
+            "text": "+Percent Daily Values(%DV)",
+            "confidence": 0.9827154874801636,
+            "bbox": [
+              [
+                243,
+                483
+              ],
+              [
+                432,
+                486
+              ],
+              [
+                431,
+                506
+              ],
+              [
+                242,
+                503
+              ]
+            ]
+          },
+          {
+            "text": "based on",
+            "confidence": 0.9948741793632507,
+            "bbox": [
+              [
+                449,
+                485
+              ],
+              [
+                520,
+                487
+              ],
+              [
+                519,
+                508
+              ],
+              [
+                448,
+                506
+              ]
+            ]
+          },
+          {
+            "text": "a 2,000 calorie diet.",
+            "confidence": 0.9340195655822754,
+            "bbox": [
+              [
+                254,
+                501
+              ],
+              [
+                386,
+                503
+              ],
+              [
+                385,
+                520
+              ],
+              [
+                253,
+                518
+              ]
+            ]
+          },
+          {
+            "text": "*Daily Value not established:",
+            "confidence": 0.9597611427307129,
+            "bbox": [
+              [
+                243,
+                517
+              ],
+              [
+                435,
+                519
+              ],
+              [
+                434,
+                536
+              ],
+              [
+                243,
+                534
+              ]
+            ]
+          },
+          {
+            "text": "OTHER INGREDIENTS: Soy bean Oil/ Fish",
+            "confidence": 0.9064887762069702,
+            "bbox": [
+              [
+                236,
+                544
+              ],
+              [
+                534,
+                548
+              ],
+              [
+                534,
+                566
+              ],
+              [
+                236,
+                562
+              ]
+            ]
+          },
+          {
+            "text": "oil(Anchovy), Beeswax, Bilberry Extract,",
+            "confidence": 0.9389613270759583,
+            "bbox": [
+              [
+                235,
+                560
+              ],
+              [
+                532,
+                564
+              ],
+              [
+                532,
+                581
+              ],
+              [
+                235,
+                577
+              ]
+            ]
+          },
+          {
+            "text": "Blueberry Extract, Soy Lecithin, Soft Capsule",
+            "confidence": 0.970015287399292,
+            "bbox": [
+              [
+                235,
+                575
+              ],
+              [
+                534,
+                579
+              ],
+              [
+                534,
+                596
+              ],
+              [
+                235,
+                592
+              ]
+            ]
+          },
+          {
+            "text": "(Pig Gelatin, Glycerin, Purified Water, Titanium",
+            "confidence": 0.9815971851348877,
+            "bbox": [
+              [
+                235,
+                591
+              ],
+              [
+                534,
+                594
+              ],
+              [
+                534,
+                611
+              ],
+              [
+                235,
+                608
+              ]
+            ]
+          },
+          {
+            "text": "Dioxide, Caramel Color)",
+            "confidence": 0.9817572832107544,
+            "bbox": [
+              [
+                235,
+                606
+              ],
+              [
+                397,
+                608
+              ],
+              [
+                396,
+                625
+              ],
+              [
+                235,
+                623
+              ]
+            ]
+          },
+          {
+            "text": "WARNiNG: If you are pregnant, nursing or taking",
+            "confidence": 0.9692520499229431,
+            "bbox": [
+              [
+                234,
+                632
+              ],
+              [
+                532,
+                637
+              ],
+              [
+                531,
+                654
+              ],
+              [
+                234,
+                649
+              ]
+            ]
+          },
+          {
+            "text": "any medications, consult your doctor before use.",
+            "confidence": 0.9775028824806213,
+            "bbox": [
+              [
+                233,
+                649
+              ],
+              [
+                532,
+                652
+              ],
+              [
+                532,
+                669
+              ],
+              [
+                233,
+                666
+              ]
+            ]
+          },
+          {
+            "text": "Discontinue use and consult your doctor if any",
+            "confidence": 0.9729594588279724,
+            "bbox": [
+              [
+                233,
+                664
+              ],
+              [
+                533,
+                667
+              ],
+              [
+                533,
+                684
+              ],
+              [
+                233,
+                681
+              ]
+            ]
+          },
+          {
+            "text": "adverse reactions occur. When taken in excessive",
+            "confidence": 0.9661901593208313,
+            "bbox": [
+              [
+                233,
+                679
+              ],
+              [
+                533,
+                682
+              ],
+              [
+                533,
+                699
+              ],
+              [
+                233,
+                696
+              ]
+            ]
+          },
+          {
+            "text": "amounts, it may turn the skin yellow temporarily It",
+            "confidence": 0.9601437449455261,
+            "bbox": [
+              [
+                232,
+                695
+              ],
+              [
+                533,
+                697
+              ],
+              [
+                533,
+                714
+              ],
+              [
+                232,
+                712
+              ]
+            ]
+          },
+          {
+            "text": "may inhibit the absorption of β-carotene. Store in a",
+            "confidence": 0.9703466892242432,
+            "bbox": [
+              [
+                232,
+                710
+              ],
+              [
+                533,
+                713
+              ],
+              [
+                533,
+                730
+              ],
+              [
+                232,
+                727
+              ]
+            ]
+          },
+          {
+            "text": "cool, dry place.",
+            "confidence": 0.9560145139694214,
+            "bbox": [
+              [
+                233,
+                727
+              ],
+              [
+                324,
+                727
+              ],
+              [
+                324,
+                744
+              ],
+              [
+                233,
+                744
+              ]
+            ]
+          },
+          {
+            "text": "DO NOT USE IF BLISTER SEAL IS BROKEN.",
+            "confidence": 0.9617080688476562,
+            "bbox": [
+              [
+                231,
+                753
+              ],
+              [
+                526,
+                756
+              ],
+              [
+                526,
+                773
+              ],
+              [
+                231,
+                770
+              ]
+            ]
+          },
+          {
+            "text": "KEEP OUT OF REACH OF CHILDREN",
+            "confidence": 0.9522429704666138,
+            "bbox": [
+              [
+                231,
+                769
+              ],
+              [
+                490,
+                771
+              ],
+              [
+                490,
+                788
+              ],
+              [
+                231,
+                786
+              ]
+            ]
+          },
+          {
+            "text": "Batch No: 652332",
+            "confidence": 0.9966498613357544,
+            "bbox": [
+              [
+                274,
+                832
+              ],
+              [
+                490,
+                832
+              ],
+              [
+                490,
+                859
+              ],
+              [
+                274,
+                859
+              ]
+            ]
+          },
+          {
+            "text": "Exp.Date: 12/22",
+            "confidence": 0.9825848937034607,
+            "bbox": [
+              [
+                274,
+                866
+              ],
+              [
+                468,
+                866
+              ],
+              [
+                468,
+                894
+              ],
+              [
+                274,
+                894
+              ]
+            ]
+          }
+        ],
+        "clahe": [
+          {
+            "text": "directed by your healthcare profertiona",
+            "confidence": 0.9411523342132568,
+            "bbox": [
+              [
+                118,
+                38
+              ],
+              [
+                249,
+                40
+              ],
+              [
+                249,
+                50
+              ],
+              [
+                118,
+                48
+              ]
+            ]
+          },
+          {
+            "text": "The product is not a medicine preventing and",
+            "confidence": 0.9803247451782227,
+            "bbox": [
+              [
+                118,
+                46
+              ],
+              [
+                270,
+                49
+              ],
+              [
+                270,
+                59
+              ],
+              [
+                118,
+                56
+              ]
+            ]
+          },
+          {
+            "text": "curing disease.",
+            "confidence": 0.9309929609298706,
+            "bbox": [
+              [
+                119,
+                56
+              ],
+              [
+                171,
+                56
+              ],
+              [
+                171,
+                66
+              ],
+              [
+                119,
+                66
+              ]
+            ]
+          },
+          {
+            "text": "SUPPLEMENT FACTS:",
+            "confidence": 0.9905040860176086,
+            "bbox": [
+              [
+                120,
+                66
+              ],
+              [
+                220,
+                68
+              ],
+              [
+                219,
+                82
+              ],
+              [
+                119,
+                80
+              ]
+            ]
+          },
+          {
+            "text": "Senving Per Container 30",
+            "confidence": 0.9214738011360168,
+            "bbox": [
+              [
+                120,
+                85
+              ],
+              [
+                209,
+                87
+              ],
+              [
+                208,
+                101
+              ],
+              [
+                119,
+                99
+              ]
+            ]
+          },
+          {
+            "text": "Serving Sire I Capsule(s)",
+            "confidence": 0.9117705821990967,
+            "bbox": [
+              [
+                121,
+                78
+              ],
+              [
+                206,
+                79
+              ],
+              [
+                205,
+                90
+              ],
+              [
+                121,
+                89
+              ]
+            ]
+          },
+          {
+            "text": "Amount Per Serving",
+            "confidence": 0.9374628067016602,
+            "bbox": [
+              [
+                120,
+                99
+              ],
+              [
+                191,
+                101
+              ],
+              [
+                190,
+                114
+              ],
+              [
+                119,
+                112
+              ]
+            ]
+          },
+          {
+            "text": "Raematococcus PlMals Extract",
+            "confidence": 0.8747061491012573,
+            "bbox": [
+              [
+                120,
+                111
+              ],
+              [
+                219,
+                113
+              ],
+              [
+                218,
+                124
+              ],
+              [
+                120,
+                122
+              ]
+            ]
+          },
+          {
+            "text": "%DV",
+            "confidence": 0.930480420589447,
+            "bbox": [
+              [
+                243,
+                102
+              ],
+              [
+                267,
+                102
+              ],
+              [
+                267,
+                114
+              ],
+              [
+                243,
+                114
+              ]
+            ]
+          },
+          {
+            "text": "Standardzed to Contain 10%",
+            "confidence": 0.9072186350822449,
+            "bbox": [
+              [
+                123,
+                120
+              ],
+              [
+                218,
+                121
+              ],
+              [
+                217,
+                132
+              ],
+              [
+                123,
+                131
+              ]
+            ]
+          },
+          {
+            "text": "Astauanthin, 6mg)",
+            "confidence": 0.9018692970275879,
+            "bbox": [
+              [
+                125,
+                128
+              ],
+              [
+                185,
+                129
+              ],
+              [
+                184,
+                140
+              ],
+              [
+                125,
+                139
+              ]
+            ]
+          },
+          {
+            "text": "60.0mg",
+            "confidence": 0.9235170483589172,
+            "bbox": [
+              [
+                221,
+                122
+              ],
+              [
+                248,
+                122
+              ],
+              [
+                248,
+                133
+              ],
+              [
+                221,
+                133
+              ]
+            ]
+          },
+          {
+            "text": "Marigold Extract",
+            "confidence": 0.9560574293136597,
+            "bbox": [
+              [
+                120,
+                138
+              ],
+              [
+                181,
+                139
+              ],
+              [
+                180,
+                150
+              ],
+              [
+                120,
+                149
+              ]
+            ]
+          },
+          {
+            "text": "(Standardeed to Contain 20%\"10erogng",
+            "confidence": 0.8528016805648804,
+            "bbox": [
+              [
+                124,
+                147
+              ],
+              [
+                246,
+                148
+              ],
+              [
+                246,
+                159
+              ],
+              [
+                124,
+                158
+              ]
+            ]
+          },
+          {
+            "text": "Vitamin A (as Retiny Paifitate) 2,100",
+            "confidence": 0.8433486819267273,
+            "bbox": [
+              [
+                118,
+                164
+              ],
+              [
+                248,
+                166
+              ],
+              [
+                248,
+                179
+              ],
+              [
+                118,
+                177
+              ]
+            ]
+          },
+          {
+            "text": "Lunein Oll 20rmg)",
+            "confidence": 0.7776588201522827,
+            "bbox": [
+              [
+                124,
+                156
+              ],
+              [
+                181,
+                156
+              ],
+              [
+                181,
+                167
+              ],
+              [
+                124,
+                167
+              ]
+            ]
+          },
+          {
+            "text": "Vitamin B1 (as ThiamiKe",
+            "confidence": 0.914219319820404,
+            "bbox": [
+              [
+                120,
+                176
+              ],
+              [
+                204,
+                176
+              ],
+              [
+                204,
+                189
+              ],
+              [
+                120,
+                189
+              ]
+            ]
+          },
+          {
+            "text": "Vitamin B2 (as Riboflavin)",
+            "confidence": 0.8979860544204712,
+            "bbox": [
+              [
+                119,
+                195
+              ],
+              [
+                208,
+                195
+              ],
+              [
+                208,
+                208
+              ],
+              [
+                119,
+                208
+              ]
+            ]
+          },
+          {
+            "text": "Vamin E (ai bTocopbero)",
+            "confidence": 0.7551210522651672,
+            "bbox": [
+              [
+                119,
+                206
+              ],
+              [
+                209,
+                207
+              ],
+              [
+                208,
+                218
+              ],
+              [
+                119,
+                217
+              ]
+            ]
+          },
+          {
+            "text": "Percent Dalty Values(%DV)",
+            "confidence": 0.9420059323310852,
+            "bbox": [
+              [
+                122,
+                241
+              ],
+              [
+                217,
+                242
+              ],
+              [
+                216,
+                253
+              ],
+              [
+                122,
+                252
+              ]
+            ]
+          },
+          {
+            "text": "based on",
+            "confidence": 0.9670021533966064,
+            "bbox": [
+              [
+                222,
+                243
+              ],
+              [
+                260,
+                243
+              ],
+              [
+                260,
+                254
+              ],
+              [
+                222,
+                254
+              ]
+            ]
+          },
+          {
+            "text": "•Daily Value not established",
+            "confidence": 0.9361088871955872,
+            "bbox": [
+              [
+                120,
+                257
+              ],
+              [
+                215,
+                258
+              ],
+              [
+                214,
+                269
+              ],
+              [
+                120,
+                268
+              ]
+            ]
+          },
+          {
+            "text": "OTHER INGREDIENTS: Soy bean Oil Fith",
+            "confidence": 0.890417218208313,
+            "bbox": [
+              [
+                115,
+                269
+              ],
+              [
+                269,
+                272
+              ],
+              [
+                269,
+                285
+              ],
+              [
+                115,
+                282
+              ]
+            ]
+          },
+          {
+            "text": "Oa(Anchovy). Beeswax, Balberry Extract.",
+            "confidence": 0.8475266695022583,
+            "bbox": [
+              [
+                116,
+                279
+              ],
+              [
+                267,
+                280
+              ],
+              [
+                267,
+                291
+              ],
+              [
+                116,
+                290
+              ]
+            ]
+          },
+          {
+            "text": "Blueberry Extract. Soy Lecithin, Sof Capsule",
+            "confidence": 0.9098766446113586,
+            "bbox": [
+              [
+                116,
+                287
+              ],
+              [
+                268,
+                289
+              ],
+              [
+                268,
+                299
+              ],
+              [
+                116,
+                297
+              ]
+            ]
+          },
+          {
+            "text": "Dioxide, Caramel Color)",
+            "confidence": 0.9310332536697388,
+            "bbox": [
+              [
+                117,
+                303
+              ],
+              [
+                200,
+                303
+              ],
+              [
+                200,
+                313
+              ],
+              [
+                117,
+                313
+              ]
+            ]
+          },
+          {
+            "text": "WeARNiNG: If you are pregnant,nuirsing or taling",
+            "confidence": 0.9010307192802429,
+            "bbox": [
+              [
+                116,
+                315
+              ],
+              [
+                267,
+                317
+              ],
+              [
+                267,
+                328
+              ],
+              [
+                116,
+                326
+              ]
+            ]
+          },
+          {
+            "text": "Discontinue use and consult your doctor al any",
+            "confidence": 0.9572480320930481,
+            "bbox": [
+              [
+                116,
+                331
+              ],
+              [
+                267,
+                332
+              ],
+              [
+                267,
+                343
+              ],
+              [
+                116,
+                342
+              ]
+            ]
+          },
+          {
+            "text": "adherse reactions occur, When taken in excesshve",
+            "confidence": 0.9433754086494446,
+            "bbox": [
+              [
+                116,
+                340
+              ],
+              [
+                267,
+                340
+              ],
+              [
+                267,
+                350
+              ],
+              [
+                116,
+                350
+              ]
+            ]
+          },
+          {
+            "text": "amounts, it may tum the sin yelow temporarly It",
+            "confidence": 0.8848446607589722,
+            "bbox": [
+              [
+                116,
+                348
+              ],
+              [
+                267,
+                348
+              ],
+              [
+                267,
+                358
+              ],
+              [
+                116,
+                358
+              ]
+            ]
+          },
+          {
+            "text": "cool,dey place.",
+            "confidence": 0.8914749026298523,
+            "bbox": [
+              [
+                116,
+                363
+              ],
+              [
+                163,
+                363
+              ],
+              [
+                163,
+                373
+              ],
+              [
+                116,
+                373
+              ]
+            ]
+          },
+          {
+            "text": "DO NOT USE IF BUSTER SEAL IS BROKEN.",
+            "confidence": 0.9737659096717834,
+            "bbox": [
+              [
+                115,
+                375
+              ],
+              [
+                265,
+                375
+              ],
+              [
+                265,
+                388
+              ],
+              [
+                115,
+                388
+              ]
+            ]
+          },
+          {
+            "text": "KEEP OUT OF REACH OF CHILDREN.",
+            "confidence": 0.9296907782554626,
+            "bbox": [
+              [
+                115,
+                385
+              ],
+              [
+                247,
+                385
+              ],
+              [
+                247,
+                395
+              ],
+              [
+                115,
+                395
+              ]
+            ]
+          },
+          {
+            "text": "Batch No: 652332",
+            "confidence": 0.9590683579444885,
+            "bbox": [
+              [
+                136,
+                416
+              ],
+              [
+                245,
+                416
+              ],
+              [
+                245,
+                429
+              ],
+              [
+                136,
+                429
+              ]
+            ]
+          },
+          {
+            "text": "Exp.Date: 12/22",
+            "confidence": 0.9786531925201416,
+            "bbox": [
+              [
+                136,
+                433
+              ],
+              [
+                234,
+                433
+              ],
+              [
+                234,
+                447
+              ],
+              [
+                136,
+                447
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "new_stages": {
+      "original_512": {
+        "prediction": {
+          "year": "2022",
+          "month": "12",
+          "day": "NONE",
+          "final_date": "2022-12-NONE"
+        },
+        "has_candidate": true,
+        "q": 0.9831138849258423,
+        "M": false,
+        "B": false,
+        "candidate_count": 1,
+        "distinct_dates": [
+          "2022-12-NONE"
+        ],
+        "interpretation_ambiguity": false,
+        "incomplete": true,
+        "expiry_keyword": true,
+        "use_by_keyword": false,
+        "ocr_sec": 2.489782499993453,
+        "selected_text": "Exp.Date: 12/22",
+        "format_hint": null,
+        "keyword_evidence": [
+          {
+            "text": "Exp.Date: 12/22",
+            "confidence": 0.9831138849258423,
+            "bbox": [
+              [
+                136,
+                433
+              ],
+              [
+                235,
+                433
+              ],
+              [
+                235,
+                447
+              ],
+              [
+                136,
+                447
+              ]
+            ]
+          }
+        ],
+        "candidates": [
+          {
+            "text": "Exp.Date: 12/22",
+            "result": "2022-12-NONE",
+            "readings": [
+              "2022-12-NONE"
+            ]
+          }
+        ]
+      },
+      "rotation_270": {
+        "prediction": {
+          "year": "2022",
+          "month": "12",
+          "day": "NONE",
+          "final_date": "2022-12-NONE"
+        },
+        "has_candidate": true,
+        "q": 0.9630332589149475,
+        "M": false,
+        "B": false,
+        "candidate_count": 1,
+        "distinct_dates": [
+          "2022-12-NONE"
+        ],
+        "interpretation_ambiguity": false,
+        "incomplete": true,
+        "expiry_keyword": true,
+        "use_by_keyword": false,
+        "ocr_sec": 1.4208596999960719,
+        "selected_text": "Exp.Date: 12/22",
+        "format_hint": null,
+        "keyword_evidence": [
+          {
+            "text": "Exp.Date: 12/22",
+            "confidence": 0.9630332589149475,
+            "bbox": [
+              [
+                63,
+                136
+              ],
+              [
+                77,
+                136
+              ],
+              [
+                77,
+                235
+              ],
+              [
+                63,
+                235
+              ]
+            ]
+          }
+        ],
+        "candidates": [
+          {
+            "text": "Exp.Date: 12/22",
+            "result": "2022-12-NONE",
+            "readings": [
+              "2022-12-NONE"
+            ]
+          }
+        ]
+      },
+      "highres_1024": {
+        "prediction": {
+          "year": "2022",
+          "month": "12",
+          "day": "NONE",
+          "final_date": "2022-12-NONE"
+        },
+        "has_candidate": true,
+        "q": 0.9825848937034607,
+        "M": false,
+        "B": false,
+        "candidate_count": 1,
+        "distinct_dates": [
+          "2022-12-NONE"
+        ],
+        "interpretation_ambiguity": false,
+        "incomplete": true,
+        "expiry_keyword": true,
+        "use_by_keyword": false,
+        "ocr_sec": 5.535656099993503,
+        "selected_text": "Exp.Date: 12/22",
+        "format_hint": null,
+        "keyword_evidence": [
+          {
+            "text": "Exp.Date: 12/22",
+            "confidence": 0.9825848937034607,
+            "bbox": [
+              [
+                274,
+                866
+              ],
+              [
+                468,
+                866
+              ],
+              [
+                468,
+                894
+              ],
+              [
+                274,
+                894
+              ]
+            ]
+          }
+        ],
+        "candidates": [
+          {
+            "text": "Exp.Date: 12/22",
+            "result": "2022-12-NONE",
+            "readings": [
+              "2022-12-NONE"
+            ]
+          }
+        ]
+      },
+      "clahe": {
+        "prediction": {
+          "year": "2022",
+          "month": "12",
+          "day": "NONE",
+          "final_date": "2022-12-NONE"
+        },
+        "has_candidate": true,
+        "q": 0.9786531925201416,
+        "M": false,
+        "B": false,
+        "candidate_count": 1,
+        "distinct_dates": [
+          "2022-12-NONE"
+        ],
+        "interpretation_ambiguity": false,
+        "incomplete": true,
+        "expiry_keyword": true,
+        "use_by_keyword": false,
+        "ocr_sec": 2.786291700002039,
+        "selected_text": "Exp.Date: 12/22",
+        "format_hint": null,
+        "keyword_evidence": [
+          {
+            "text": "Exp.Date: 12/22",
+            "confidence": 0.9786531925201416,
+            "bbox": [
+              [
+                136,
+                433
+              ],
+              [
+                234,
+                433
+              ],
+              [
+                234,
+                447
+              ],
+              [
+                136,
+                447
+              ]
+            ]
+          }
+        ],
+        "candidates": [
+          {
+            "text": "Exp.Date: 12/22",
+            "result": "2022-12-NONE",
+            "readings": [
+              "2022-12-NONE"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

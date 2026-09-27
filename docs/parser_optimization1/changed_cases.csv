@@ -1,0 +1,16 @@
+cohort,policy,image_id,label_status,truth,old_prediction,new_prediction,old_correct,new_correct,old_selected_stage,new_selected_stage,old_attempts,new_attempts
+official_300,current_cascade,002586,approved,2022-12-NONE,NONE,2022-12-NONE,False,True,original_512,original_512,original_512|rotation_270|highres_1024|clahe,original_512
+official_300,frozen_B_highest_q,002586,approved,2022-12-NONE,NONE,2022-12-NONE,False,True,original_512,original_512,original_512|rotation_270|highres_1024|clahe,original_512
+official_300,previous_best269,002586,approved,2022-12-NONE,NONE,2022-12-NONE,False,True,original_512,original_512,original_512|rotation_270|highres_1024|clahe,original_512
+official_300,agreement_no_anchor,002586,approved,2022-12-NONE,NONE,2022-12-NONE,False,True,original_512,original_512,original_512|rotation_270|highres_1024|clahe,original_512
+official_300,agreement_all,002586,approved,2022-12-NONE,NONE,2022-12-NONE,False,True,original_512,original_512,original_512|rotation_270|highres_1024|clahe,original_512|rotation_270
+approved_69,current_cascade,002586,approved,2022-12-NONE,NONE,2022-12-NONE,False,True,original_512,original_512,original_512|rotation_270|highres_1024|clahe,original_512
+approved_69,frozen_B_highest_q,002586,approved,2022-12-NONE,NONE,2022-12-NONE,False,True,original_512,original_512,original_512|rotation_270|highres_1024|clahe,original_512
+approved_69,previous_best269,002586,approved,2022-12-NONE,NONE,2022-12-NONE,False,True,original_512,original_512,original_512|rotation_270|highres_1024|clahe,original_512
+approved_69,agreement_no_anchor,002586,approved,2022-12-NONE,NONE,2022-12-NONE,False,True,original_512,original_512,original_512|rotation_270|highres_1024|clahe,original_512
+approved_69,agreement_all,002586,approved,2022-12-NONE,NONE,2022-12-NONE,False,True,original_512,original_512,original_512|rotation_270|highres_1024|clahe,original_512|rotation_270
+all_701_provisional,current_cascade,002586,approved,2022-12-NONE,NONE,2022-12-NONE,False,True,original_512,original_512,original_512|rotation_270|highres_1024|clahe,original_512
+all_701_provisional,frozen_B_highest_q,002586,approved,2022-12-NONE,NONE,2022-12-NONE,False,True,original_512,original_512,original_512|rotation_270|highres_1024|clahe,original_512
+all_701_provisional,previous_best269,002586,approved,2022-12-NONE,NONE,2022-12-NONE,False,True,original_512,original_512,original_512|rotation_270|highres_1024|clahe,original_512
+all_701_provisional,agreement_no_anchor,002586,approved,2022-12-NONE,NONE,2022-12-NONE,False,True,original_512,original_512,original_512|rotation_270|highres_1024|clahe,original_512
+all_701_provisional,agreement_all,002586,approved,2022-12-NONE,NONE,2022-12-NONE,False,True,original_512,original_512,original_512|rotation_270|highres_1024|clahe,original_512|rotation_270
