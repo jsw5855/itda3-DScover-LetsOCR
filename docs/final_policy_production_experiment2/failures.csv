@@ -1,0 +1,31 @@
+﻿file_name,image_id,year,month,day,final_date,method,attempts,elapsed_sec,true_year,true_month,true_day,true_final_date,year_correct,month_correct,day_correct,final_date_correct,baseline_final_date,baseline_correct
+000157.jpg,000157,NONE,NONE,NONE,NONE,original_no_candidate,"['original_512', 'rotation_270', 'highres_1024', 'clahe']",2.7762561999843456,2027,08,07,2027-08-07,False,False,False,False,NONE,False
+000438.jpg,000438,NONE,NONE,NONE,NONE,original_no_candidate,"['original_512', 'rotation_270', 'highres_1024', 'clahe']",2.8878187999944203,2026,02,19,2026-02-19,False,False,False,False,NONE,False
+000820.jpeg,000820,NONE,NONE,NONE,NONE,original_no_candidate,"['original_512', 'rotation_270', 'highres_1024', 'clahe']",7.989300100016408,2026,05,18,2026-05-18,False,False,False,False,NONE,False
+001214.jpg,001214,NONE,NONE,NONE,NONE,original_no_candidate,"['original_512', 'rotation_270', 'highres_1024', 'clahe']",6.303485599986743,2021,05,15,2021-05-15,False,False,False,False,NONE,False
+001515.jpg,001515,2022,08,18,2022-08-18,original_512,['original_512'],0.8264659999986179,2022,08,16,2022-08-16,True,True,False,False,2022-08-18,False
+001587.jpg,001587,2021,04,27,2021-04-27,original_512,['original_512'],0.5276196000049822,2021,04,20,2021-04-20,True,True,False,False,2021-04-27,False
+002019.jpg,002019,NONE,NONE,NONE,NONE,original_no_candidate,"['original_512', 'rotation_270', 'highres_1024', 'clahe']",2.395481200015638,2022,03,09,2022-03-09,False,False,False,False,NONE,False
+002278.jpg,002278,NONE,NONE,NONE,NONE,original_no_candidate,"['original_512', 'rotation_270', 'highres_1024', 'clahe']",2.430397999996785,2023,07,NONE,2023-07-NONE,False,False,True,False,NONE,False
+002328.jpg,002328,2020,10,21,2020-10-21,original_512_retry_kept,"['original_512', 'highres_1024']",3.221257600001991,2021,10,20,2021-10-20,False,True,False,False,2020-10-21,False
+002492.jpg,002492,NONE,NONE,NONE,NONE,original_no_candidate,"['original_512', 'rotation_270', 'highres_1024', 'clahe']",4.804028399987146,2022,08,09,2022-08-09,False,False,False,False,NONE,False
+002726.jpg,002726,2017,03,22,2017-03-22,rotation_270,"['original_512', 'rotation_270']",1.1161204999953043,2022,03,17,2022-03-17,False,True,False,False,2017-03-22,False
+002814.jpg,002814,NONE,NONE,NONE,NONE,original_no_candidate,"['original_512', 'rotation_270', 'highres_1024', 'clahe']",2.596399999980349,2021,04,02,2021-04-02,False,False,False,False,NONE,False
+003014.jpg,003014,NONE,NONE,NONE,NONE,original_no_candidate,"['original_512', 'rotation_270', 'highres_1024', 'clahe']",3.3500023999949917,2021,06,12,2021-06-12,False,False,False,False,NONE,False
+003218.jpg,003218,2021,03,16,2021-03-16,original_512,['original_512'],1.799071700021159,2021,06,16,2021-06-16,True,False,True,False,2021-03-16,False
+003312.jpg,003312,2021,03,NONE,2021-03-NONE,clahe,"['original_512', 'rotation_270', 'highres_1024', 'clahe']",2.527705899992725,2021,03,11,2021-03-11,True,True,False,False,2021-03-NONE,False
+003326.jpg,003326,NONE,NONE,NONE,NONE,original_no_candidate,"['original_512', 'rotation_270', 'highres_1024', 'clahe']",4.04088819999015,2024,06,05,2024-06-05,False,False,False,False,NONE,False
+3350.jpeg,3350,NONE,NONE,NONE,NONE,original_no_candidate,"['original_512', 'rotation_270', 'highres_1024', 'clahe']",5.009411800012458,2025,12,10,2025-12-10,False,False,False,False,NONE,False
+000422.jpg,000422,2025,09,10,2025-09-10,original_512,['original_512'],0.6446456999983639,2026,06,09,2026-06-09,False,False,False,False,2025-09-10,False
+000582.jpg,000582,2025,01,21,2025-01-21,highres_1024,"['original_512', 'rotation_270', 'highres_1024']",2.0441091999819037,2025,11,21,2025-11-21,True,False,True,False,2025-01-21,False
+000694.jpg,000694,NONE,NONE,NONE,NONE,original_no_candidate,"['original_512', 'rotation_270', 'highres_1024', 'clahe']",5.022624700010056,2026,09,01,2026-09-01,False,False,False,False,NONE,False
+000726.jpg,000726,2026,08,16,2026-08-16,original_512_retry_kept,"['original_512', 'highres_1024']",1.4892470999911893,2026,09,16,2026-09-16,True,False,True,False,2026-08-16,False
+000749.jpg,000749,NONE,NONE,NONE,NONE,original_no_candidate,"['original_512', 'rotation_270', 'highres_1024', 'clahe']",3.4215778000070713,2026,01,21,2026-01-21,False,False,False,False,NONE,False
+000978.jpg,000978,NONE,NONE,NONE,NONE,original_no_candidate,"['original_512', 'rotation_270', 'highres_1024', 'clahe']",4.78353220000281,2021,11,03,2021-11-03,False,False,False,False,NONE,False
+001539.jpg,001539,NONE,NONE,NONE,NONE,original_no_candidate,"['original_512', 'rotation_270', 'highres_1024', 'clahe']",4.694069900026079,2022,01,18,2022-01-18,False,False,False,False,NONE,False
+001646.jpg,001646,NONE,NONE,NONE,NONE,original_no_candidate,"['original_512', 'rotation_270', 'highres_1024', 'clahe']",1.9629347999871243,2021,10,12,2021-10-12,False,False,False,False,NONE,False
+002034.jpg,002034,2017,12,20,2017-12-20,original_512,['original_512'],0.6866238999937195,2020,12,17,2020-12-17,False,True,False,False,2017-12-20,False
+002404.jpg,002404,NONE,NONE,NONE,NONE,original_no_candidate,"['original_512', 'rotation_270', 'highres_1024', 'clahe']",2.6117535999801476,2020,11,11,2020-11-11,False,False,False,False,NONE,False
+002436.jpg,002436,2021,05,03,2021-05-03,clahe,"['original_512', 'rotation_270', 'highres_1024', 'clahe']",6.877021899999818,2021,06,03,2021-06-03,True,False,True,False,2021-05-03,False
+002917.jpg,002917,2030,04,21,2030-04-21,original_512,['original_512'],1.2076021999819204,2021,04,30,2021-04-30,False,True,False,False,2030-04-21,False
+003338.jpg,003338,NONE,NONE,NONE,NONE,original_no_candidate,"['original_512', 'rotation_270', 'highres_1024', 'clahe']",7.785313400003361,2021,06,01,2021-06-01,False,False,False,False,NONE,False

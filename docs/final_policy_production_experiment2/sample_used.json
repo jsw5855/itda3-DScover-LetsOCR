@@ -1,0 +1,3310 @@
+{
+  "dataset_mode": "baseline",
+  "count": 300,
+  "sample_fingerprint": "e18eea9b832ca3d7a2fe97d9d8752f80660989221bfed5b8b410b40a0fd731df",
+  "image_ids": [
+    "18",
+    "26",
+    "30",
+    "60",
+    "75",
+    "124",
+    "137",
+    "139",
+    "157",
+    "189",
+    "194",
+    "245",
+    "268",
+    "280",
+    "321",
+    "331",
+    "352",
+    "366",
+    "383",
+    "438",
+    "447",
+    "462",
+    "463",
+    "485",
+    "493",
+    "515",
+    "548",
+    "561",
+    "612",
+    "645",
+    "653",
+    "658",
+    "678",
+    "715",
+    "725",
+    "729",
+    "763",
+    "789",
+    "820",
+    "853",
+    "879",
+    "912",
+    "922",
+    "957",
+    "967",
+    "1014",
+    "1034",
+    "1075",
+    "1108",
+    "1113",
+    "1157",
+    "1173",
+    "1175",
+    "1205",
+    "1214",
+    "1225",
+    "1277",
+    "1321",
+    "1380",
+    "1393",
+    "1394",
+    "1399",
+    "1406",
+    "1426",
+    "1427",
+    "1450",
+    "1472",
+    "1515",
+    "1525",
+    "1528",
+    "1554",
+    "1572",
+    "1587",
+    "1642",
+    "1683",
+    "1741",
+    "1742",
+    "1752",
+    "1780",
+    "1782",
+    "1812",
+    "1818",
+    "1851",
+    "1857",
+    "1942",
+    "2003",
+    "2011",
+    "2019",
+    "2041",
+    "2062",
+    "2080",
+    "2090",
+    "2113",
+    "2162",
+    "2186",
+    "2247",
+    "2248",
+    "2276",
+    "2278",
+    "2328",
+    "2364",
+    "2405",
+    "2424",
+    "2443",
+    "2466",
+    "2480",
+    "2492",
+    "2510",
+    "2529",
+    "2615",
+    "2620",
+    "2622",
+    "2628",
+    "2642",
+    "2659",
+    "2674",
+    "2691",
+    "2714",
+    "2726",
+    "2728",
+    "2767",
+    "2802",
+    "2814",
+    "2835",
+    "2846",
+    "2847",
+    "2892",
+    "2899",
+    "2900",
+    "2944",
+    "2981",
+    "3004",
+    "3006",
+    "3014",
+    "3017",
+    "3090",
+    "3132",
+    "3136",
+    "3158",
+    "3185",
+    "3201",
+    "3218",
+    "3222",
+    "3238",
+    "3290",
+    "3311",
+    "3312",
+    "3326",
+    "3340",
+    "3350",
+    "7",
+    "21",
+    "58",
+    "99",
+    "110",
+    "131",
+    "148",
+    "225",
+    "227",
+    "250",
+    "266",
+    "287",
+    "292",
+    "299",
+    "324",
+    "327",
+    "378",
+    "382",
+    "384",
+    "400",
+    "416",
+    "422",
+    "426",
+    "469",
+    "512",
+    "582",
+    "634",
+    "677",
+    "684",
+    "690",
+    "694",
+    "707",
+    "726",
+    "749",
+    "775",
+    "778",
+    "845",
+    "893",
+    "901",
+    "907",
+    "909",
+    "954",
+    "978",
+    "1055",
+    "1061",
+    "1084",
+    "1097",
+    "1104",
+    "1141",
+    "1184",
+    "1185",
+    "1188",
+    "1189",
+    "1197",
+    "1231",
+    "1248",
+    "1289",
+    "1290",
+    "1294",
+    "1295",
+    "1315",
+    "1317",
+    "1384",
+    "1409",
+    "1428",
+    "1438",
+    "1455",
+    "1471",
+    "1500",
+    "1502",
+    "1529",
+    "1539",
+    "1623",
+    "1646",
+    "1657",
+    "1665",
+    "1705",
+    "1746",
+    "1747",
+    "1800",
+    "1815",
+    "1823",
+    "1869",
+    "1898",
+    "1955",
+    "1977",
+    "1980",
+    "1982",
+    "2033",
+    "2034",
+    "2037",
+    "2042",
+    "2066",
+    "2133",
+    "2134",
+    "2141",
+    "2146",
+    "2197",
+    "2221",
+    "2233",
+    "2245",
+    "2251",
+    "2258",
+    "2284",
+    "2306",
+    "2327",
+    "2370",
+    "2376",
+    "2387",
+    "2404",
+    "2428",
+    "2436",
+    "2504",
+    "2521",
+    "2522",
+    "2586",
+    "2611",
+    "2634",
+    "2651",
+    "2740",
+    "2747",
+    "2752",
+    "2765",
+    "2790",
+    "2823",
+    "2831",
+    "2857",
+    "2859",
+    "2860",
+    "2870",
+    "2877",
+    "2917",
+    "2927",
+    "2963",
+    "2990",
+    "2994",
+    "3010",
+    "3020",
+    "3043",
+    "3078",
+    "3087",
+    "3129",
+    "3148",
+    "3206",
+    "3228",
+    "3277",
+    "3280",
+    "3310",
+    "3313",
+    "3338"
+  ],
+  "entries": [
+    {
+      "image_id": "18",
+      "file_name": "000018.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "04",
+        "day": "24",
+        "final_date": "2026-04-24"
+      }
+    },
+    {
+      "image_id": "26",
+      "file_name": "000026.jpg",
+      "truth": {
+        "year": "2025",
+        "month": "11",
+        "day": "13",
+        "final_date": "2025-11-13"
+      }
+    },
+    {
+      "image_id": "30",
+      "file_name": "000030.jpg",
+      "truth": {
+        "year": "2028",
+        "month": "08",
+        "day": "17",
+        "final_date": "2028-08-17"
+      }
+    },
+    {
+      "image_id": "60",
+      "file_name": "000060.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "04",
+        "day": "30",
+        "final_date": "2026-04-30"
+      }
+    },
+    {
+      "image_id": "75",
+      "file_name": "000075.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "01",
+        "day": "06",
+        "final_date": "2026-01-06"
+      }
+    },
+    {
+      "image_id": "124",
+      "file_name": "000124.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "01",
+        "day": "02",
+        "final_date": "2026-01-02"
+      }
+    },
+    {
+      "image_id": "137",
+      "file_name": "000137.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "03",
+        "day": "26",
+        "final_date": "2026-03-26"
+      }
+    },
+    {
+      "image_id": "139",
+      "file_name": "000139.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "07",
+        "day": "26",
+        "final_date": "2026-07-26"
+      }
+    },
+    {
+      "image_id": "157",
+      "file_name": "000157.jpg",
+      "truth": {
+        "year": "2027",
+        "month": "08",
+        "day": "07",
+        "final_date": "2027-08-07"
+      }
+    },
+    {
+      "image_id": "189",
+      "file_name": "000189.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "08",
+        "day": "25",
+        "final_date": "2026-08-25"
+      }
+    },
+    {
+      "image_id": "194",
+      "file_name": "000194.jpg",
+      "truth": {
+        "year": "2027",
+        "month": "04",
+        "day": "23",
+        "final_date": "2027-04-23"
+      }
+    },
+    {
+      "image_id": "245",
+      "file_name": "000245.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "02",
+        "day": "24",
+        "final_date": "2026-02-24"
+      }
+    },
+    {
+      "image_id": "268",
+      "file_name": "000268.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "07",
+        "day": "14",
+        "final_date": "2026-07-14"
+      }
+    },
+    {
+      "image_id": "280",
+      "file_name": "000280.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "03",
+        "day": "23",
+        "final_date": "2026-03-23"
+      }
+    },
+    {
+      "image_id": "321",
+      "file_name": "000321.jpg",
+      "truth": {
+        "year": "2025",
+        "month": "10",
+        "day": "29",
+        "final_date": "2025-10-29"
+      }
+    },
+    {
+      "image_id": "331",
+      "file_name": "000331.jpg",
+      "truth": {
+        "year": "2025",
+        "month": "10",
+        "day": "31",
+        "final_date": "2025-10-31"
+      }
+    },
+    {
+      "image_id": "352",
+      "file_name": "000352.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "08",
+        "day": "27",
+        "final_date": "2026-08-27"
+      }
+    },
+    {
+      "image_id": "366",
+      "file_name": "000366.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "09",
+        "day": "05",
+        "final_date": "2026-09-05"
+      }
+    },
+    {
+      "image_id": "383",
+      "file_name": "000383.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "04",
+        "day": "03",
+        "final_date": "2026-04-03"
+      }
+    },
+    {
+      "image_id": "438",
+      "file_name": "000438.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "02",
+        "day": "19",
+        "final_date": "2026-02-19"
+      }
+    },
+    {
+      "image_id": "447",
+      "file_name": "000447.jpg",
+      "truth": {
+        "year": "2025",
+        "month": "11",
+        "day": "22",
+        "final_date": "2025-11-22"
+      }
+    },
+    {
+      "image_id": "462",
+      "file_name": "000462.jpg",
+      "truth": {
+        "year": "2027",
+        "month": "05",
+        "day": "27",
+        "final_date": "2027-05-27"
+      }
+    },
+    {
+      "image_id": "463",
+      "file_name": "000463.jpg",
+      "truth": {
+        "year": "2027",
+        "month": "02",
+        "day": "14",
+        "final_date": "2027-02-14"
+      }
+    },
+    {
+      "image_id": "485",
+      "file_name": "000485.jpg",
+      "truth": {
+        "year": "2027",
+        "month": "09",
+        "day": "17",
+        "final_date": "2027-09-17"
+      }
+    },
+    {
+      "image_id": "493",
+      "file_name": "000493.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "06",
+        "day": "17",
+        "final_date": "2026-06-17"
+      }
+    },
+    {
+      "image_id": "515",
+      "file_name": "000515.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "01",
+        "day": "NONE",
+        "final_date": "2026-01-NONE"
+      }
+    },
+    {
+      "image_id": "548",
+      "file_name": "000548.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "05",
+        "day": "26",
+        "final_date": "2026-05-26"
+      }
+    },
+    {
+      "image_id": "561",
+      "file_name": "000561.jpg",
+      "truth": {
+        "year": "2028",
+        "month": "08",
+        "day": "07",
+        "final_date": "2028-08-07"
+      }
+    },
+    {
+      "image_id": "612",
+      "file_name": "000612.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "05",
+        "day": "07",
+        "final_date": "2026-05-07"
+      }
+    },
+    {
+      "image_id": "645",
+      "file_name": "000645.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "05",
+        "day": "13",
+        "final_date": "2026-05-13"
+      }
+    },
+    {
+      "image_id": "653",
+      "file_name": "000653.jpg",
+      "truth": {
+        "year": "2027",
+        "month": "01",
+        "day": "19",
+        "final_date": "2027-01-19"
+      }
+    },
+    {
+      "image_id": "658",
+      "file_name": "000658.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "01",
+        "day": "16",
+        "final_date": "2026-01-16"
+      }
+    },
+    {
+      "image_id": "678",
+      "file_name": "000678.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "07",
+        "day": "24",
+        "final_date": "2026-07-24"
+      }
+    },
+    {
+      "image_id": "715",
+      "file_name": "000715.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "06",
+        "day": "26",
+        "final_date": "2026-06-26"
+      }
+    },
+    {
+      "image_id": "725",
+      "file_name": "000725.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "04",
+        "day": "16",
+        "final_date": "2026-04-16"
+      }
+    },
+    {
+      "image_id": "729",
+      "file_name": "000729.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "01",
+        "day": "07",
+        "final_date": "2026-01-07"
+      }
+    },
+    {
+      "image_id": "763",
+      "file_name": "000763.jpg",
+      "truth": {
+        "year": "NONE",
+        "month": "11",
+        "day": "12",
+        "final_date": "NONE-11-12"
+      }
+    },
+    {
+      "image_id": "789",
+      "file_name": "000789.jpeg",
+      "truth": {
+        "year": "NONE",
+        "month": "12",
+        "day": "19",
+        "final_date": "NONE-12-19"
+      }
+    },
+    {
+      "image_id": "820",
+      "file_name": "000820.jpeg",
+      "truth": {
+        "year": "2026",
+        "month": "05",
+        "day": "18",
+        "final_date": "2026-05-18"
+      }
+    },
+    {
+      "image_id": "853",
+      "file_name": "000853.jpeg",
+      "truth": {
+        "year": "2026",
+        "month": "09",
+        "day": "24",
+        "final_date": "2026-09-24"
+      }
+    },
+    {
+      "image_id": "879",
+      "file_name": "000879.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "05",
+        "day": "11",
+        "final_date": "2021-05-11"
+      }
+    },
+    {
+      "image_id": "912",
+      "file_name": "000912.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "05",
+        "day": "05",
+        "final_date": "2022-05-05"
+      }
+    },
+    {
+      "image_id": "922",
+      "file_name": "000922.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "02",
+        "day": "26",
+        "final_date": "2022-02-26"
+      }
+    },
+    {
+      "image_id": "957",
+      "file_name": "000957.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "02",
+        "day": "22",
+        "final_date": "2021-02-22"
+      }
+    },
+    {
+      "image_id": "967",
+      "file_name": "000967.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "10",
+        "day": "17",
+        "final_date": "2022-10-17"
+      }
+    },
+    {
+      "image_id": "1014",
+      "file_name": "001014.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "01",
+        "day": "11",
+        "final_date": "2022-01-11"
+      }
+    },
+    {
+      "image_id": "1034",
+      "file_name": "001034.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "06",
+        "day": "28",
+        "final_date": "2021-06-28"
+      }
+    },
+    {
+      "image_id": "1075",
+      "file_name": "001075.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "09",
+        "day": "30",
+        "final_date": "2021-09-30"
+      }
+    },
+    {
+      "image_id": "1108",
+      "file_name": "001108.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "02",
+        "day": "28",
+        "final_date": "2021-02-28"
+      }
+    },
+    {
+      "image_id": "1113",
+      "file_name": "001113.jpg",
+      "truth": {
+        "year": "2023",
+        "month": "11",
+        "day": "15",
+        "final_date": "2023-11-15"
+      }
+    },
+    {
+      "image_id": "1157",
+      "file_name": "001157.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "02",
+        "day": "07",
+        "final_date": "2021-02-07"
+      }
+    },
+    {
+      "image_id": "1173",
+      "file_name": "001173.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "09",
+        "day": "NONE",
+        "final_date": "2021-09-NONE"
+      }
+    },
+    {
+      "image_id": "1175",
+      "file_name": "001175.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "09",
+        "day": "07",
+        "final_date": "2021-09-07"
+      }
+    },
+    {
+      "image_id": "1205",
+      "file_name": "001205.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "05",
+        "day": "NONE",
+        "final_date": "2021-05-NONE"
+      }
+    },
+    {
+      "image_id": "1214",
+      "file_name": "001214.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "05",
+        "day": "15",
+        "final_date": "2021-05-15"
+      }
+    },
+    {
+      "image_id": "1225",
+      "file_name": "001225.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "06",
+        "day": "27",
+        "final_date": "2022-06-27"
+      }
+    },
+    {
+      "image_id": "1277",
+      "file_name": "001277.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "11",
+        "day": "04",
+        "final_date": "2021-11-04"
+      }
+    },
+    {
+      "image_id": "1321",
+      "file_name": "001321.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "02",
+        "day": "15",
+        "final_date": "2022-02-15"
+      }
+    },
+    {
+      "image_id": "1380",
+      "file_name": "001380.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "04",
+        "day": "09",
+        "final_date": "2021-04-09"
+      }
+    },
+    {
+      "image_id": "1393",
+      "file_name": "001393.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "07",
+        "day": "14",
+        "final_date": "2022-07-14"
+      }
+    },
+    {
+      "image_id": "1394",
+      "file_name": "001394.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "09",
+        "day": "01",
+        "final_date": "2021-09-01"
+      }
+    },
+    {
+      "image_id": "1399",
+      "file_name": "001399.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "07",
+        "day": "23",
+        "final_date": "2021-07-23"
+      }
+    },
+    {
+      "image_id": "1406",
+      "file_name": "001406.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "07",
+        "day": "31",
+        "final_date": "2021-07-31"
+      }
+    },
+    {
+      "image_id": "1426",
+      "file_name": "001426.jpg",
+      "truth": {
+        "year": "2020",
+        "month": "04",
+        "day": "17",
+        "final_date": "2020-04-17"
+      }
+    },
+    {
+      "image_id": "1427",
+      "file_name": "001427.jpg",
+      "truth": {
+        "year": "2020",
+        "month": "08",
+        "day": "12",
+        "final_date": "2020-08-12"
+      }
+    },
+    {
+      "image_id": "1450",
+      "file_name": "001450.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "04",
+        "day": "26",
+        "final_date": "2022-04-26"
+      }
+    },
+    {
+      "image_id": "1472",
+      "file_name": "001472.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "02",
+        "day": "17",
+        "final_date": "2022-02-17"
+      }
+    },
+    {
+      "image_id": "1515",
+      "file_name": "001515.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "08",
+        "day": "16",
+        "final_date": "2022-08-16"
+      }
+    },
+    {
+      "image_id": "1525",
+      "file_name": "001525.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "06",
+        "day": "25",
+        "final_date": "2021-06-25"
+      }
+    },
+    {
+      "image_id": "1528",
+      "file_name": "001528.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "06",
+        "day": "25",
+        "final_date": "2021-06-25"
+      }
+    },
+    {
+      "image_id": "1554",
+      "file_name": "001554.jpg",
+      "truth": {
+        "year": "2020",
+        "month": "06",
+        "day": "03",
+        "final_date": "2020-06-03"
+      }
+    },
+    {
+      "image_id": "1572",
+      "file_name": "001572.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "06",
+        "day": "11",
+        "final_date": "2021-06-11"
+      }
+    },
+    {
+      "image_id": "1587",
+      "file_name": "001587.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "04",
+        "day": "20",
+        "final_date": "2021-04-20"
+      }
+    },
+    {
+      "image_id": "1642",
+      "file_name": "001642.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "03",
+        "day": "19",
+        "final_date": "2022-03-19"
+      }
+    },
+    {
+      "image_id": "1683",
+      "file_name": "001683.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "11",
+        "day": "14",
+        "final_date": "2021-11-14"
+      }
+    },
+    {
+      "image_id": "1741",
+      "file_name": "001741.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "11",
+        "day": "01",
+        "final_date": "2022-11-01"
+      }
+    },
+    {
+      "image_id": "1742",
+      "file_name": "001742.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "10",
+        "day": "26",
+        "final_date": "2021-10-26"
+      }
+    },
+    {
+      "image_id": "1752",
+      "file_name": "001752.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "01",
+        "day": "10",
+        "final_date": "2022-01-10"
+      }
+    },
+    {
+      "image_id": "1780",
+      "file_name": "001780.jpg",
+      "truth": {
+        "year": "2020",
+        "month": "09",
+        "day": "01",
+        "final_date": "2020-09-01"
+      }
+    },
+    {
+      "image_id": "1782",
+      "file_name": "001782.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "10",
+        "day": "01",
+        "final_date": "2022-10-01"
+      }
+    },
+    {
+      "image_id": "1812",
+      "file_name": "001812.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "03",
+        "day": "26",
+        "final_date": "2021-03-26"
+      }
+    },
+    {
+      "image_id": "1818",
+      "file_name": "001818.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "01",
+        "day": "18",
+        "final_date": "2022-01-18"
+      }
+    },
+    {
+      "image_id": "1851",
+      "file_name": "001851.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "12",
+        "day": "16",
+        "final_date": "2021-12-16"
+      }
+    },
+    {
+      "image_id": "1857",
+      "file_name": "001857.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "07",
+        "day": "17",
+        "final_date": "2022-07-17"
+      }
+    },
+    {
+      "image_id": "1942",
+      "file_name": "001942.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "05",
+        "day": "27",
+        "final_date": "2022-05-27"
+      }
+    },
+    {
+      "image_id": "2003",
+      "file_name": "002003.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "05",
+        "day": "15",
+        "final_date": "2022-05-15"
+      }
+    },
+    {
+      "image_id": "2011",
+      "file_name": "002011.jpg",
+      "truth": {
+        "year": "2020",
+        "month": "06",
+        "day": "30",
+        "final_date": "2020-06-30"
+      }
+    },
+    {
+      "image_id": "2019",
+      "file_name": "002019.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "03",
+        "day": "09",
+        "final_date": "2022-03-09"
+      }
+    },
+    {
+      "image_id": "2041",
+      "file_name": "002041.jpg",
+      "truth": {
+        "year": "2020",
+        "month": "08",
+        "day": "27",
+        "final_date": "2020-08-27"
+      }
+    },
+    {
+      "image_id": "2062",
+      "file_name": "002062.jpg",
+      "truth": {
+        "year": "2023",
+        "month": "02",
+        "day": "NONE",
+        "final_date": "2023-02-NONE"
+      }
+    },
+    {
+      "image_id": "2080",
+      "file_name": "002080.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "01",
+        "day": "03",
+        "final_date": "2021-01-03"
+      }
+    },
+    {
+      "image_id": "2090",
+      "file_name": "002090.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "11",
+        "day": "09",
+        "final_date": "2021-11-09"
+      }
+    },
+    {
+      "image_id": "2113",
+      "file_name": "002113.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "03",
+        "day": "12",
+        "final_date": "2022-03-12"
+      }
+    },
+    {
+      "image_id": "2162",
+      "file_name": "002162.jpg",
+      "truth": {
+        "year": "2023",
+        "month": "06",
+        "day": "18",
+        "final_date": "2023-06-18"
+      }
+    },
+    {
+      "image_id": "2186",
+      "file_name": "002186.jpg",
+      "truth": {
+        "year": "2020",
+        "month": "06",
+        "day": "10",
+        "final_date": "2020-06-10"
+      }
+    },
+    {
+      "image_id": "2247",
+      "file_name": "002247.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "09",
+        "day": "07",
+        "final_date": "2021-09-07"
+      }
+    },
+    {
+      "image_id": "2248",
+      "file_name": "002248.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "09",
+        "day": "07",
+        "final_date": "2021-09-07"
+      }
+    },
+    {
+      "image_id": "2276",
+      "file_name": "002276.jpg",
+      "truth": {
+        "year": "2023",
+        "month": "12",
+        "day": "22",
+        "final_date": "2023-12-22"
+      }
+    },
+    {
+      "image_id": "2278",
+      "file_name": "002278.jpg",
+      "truth": {
+        "year": "2023",
+        "month": "07",
+        "day": "NONE",
+        "final_date": "2023-07-NONE"
+      }
+    },
+    {
+      "image_id": "2328",
+      "file_name": "002328.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "10",
+        "day": "20",
+        "final_date": "2021-10-20"
+      }
+    },
+    {
+      "image_id": "2364",
+      "file_name": "002364.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "08",
+        "day": "04",
+        "final_date": "2021-08-04"
+      }
+    },
+    {
+      "image_id": "2405",
+      "file_name": "002405.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "11",
+        "day": "01",
+        "final_date": "2021-11-01"
+      }
+    },
+    {
+      "image_id": "2424",
+      "file_name": "002424.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "06",
+        "day": "09",
+        "final_date": "2022-06-09"
+      }
+    },
+    {
+      "image_id": "2443",
+      "file_name": "002443.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "11",
+        "day": "11",
+        "final_date": "2021-11-11"
+      }
+    },
+    {
+      "image_id": "2466",
+      "file_name": "002466.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "01",
+        "day": "20",
+        "final_date": "2022-01-20"
+      }
+    },
+    {
+      "image_id": "2480",
+      "file_name": "002480.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "07",
+        "day": "NONE",
+        "final_date": "2022-07-NONE"
+      }
+    },
+    {
+      "image_id": "2492",
+      "file_name": "002492.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "08",
+        "day": "09",
+        "final_date": "2022-08-09"
+      }
+    },
+    {
+      "image_id": "2510",
+      "file_name": "002510.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "03",
+        "day": "09",
+        "final_date": "2022-03-09"
+      }
+    },
+    {
+      "image_id": "2529",
+      "file_name": "002529.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "10",
+        "day": "19",
+        "final_date": "2021-10-19"
+      }
+    },
+    {
+      "image_id": "2615",
+      "file_name": "002615.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "12",
+        "day": "21",
+        "final_date": "2022-12-21"
+      }
+    },
+    {
+      "image_id": "2620",
+      "file_name": "002620.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "03",
+        "day": "31",
+        "final_date": "2022-03-31"
+      }
+    },
+    {
+      "image_id": "2622",
+      "file_name": "002622.jpg",
+      "truth": {
+        "year": "2023",
+        "month": "12",
+        "day": "21",
+        "final_date": "2023-12-21"
+      }
+    },
+    {
+      "image_id": "2628",
+      "file_name": "002628.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "12",
+        "day": "08",
+        "final_date": "2021-12-08"
+      }
+    },
+    {
+      "image_id": "2642",
+      "file_name": "002642.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "10",
+        "day": "31",
+        "final_date": "2021-10-31"
+      }
+    },
+    {
+      "image_id": "2659",
+      "file_name": "002659.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "06",
+        "day": "11",
+        "final_date": "2022-06-11"
+      }
+    },
+    {
+      "image_id": "2674",
+      "file_name": "002674.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "04",
+        "day": "25",
+        "final_date": "2021-04-25"
+      }
+    },
+    {
+      "image_id": "2691",
+      "file_name": "002691.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "03",
+        "day": "10",
+        "final_date": "2021-03-10"
+      }
+    },
+    {
+      "image_id": "2714",
+      "file_name": "002714.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "10",
+        "day": "22",
+        "final_date": "2021-10-22"
+      }
+    },
+    {
+      "image_id": "2726",
+      "file_name": "002726.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "03",
+        "day": "17",
+        "final_date": "2022-03-17"
+      }
+    },
+    {
+      "image_id": "2728",
+      "file_name": "002728.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "11",
+        "day": "04",
+        "final_date": "2021-11-04"
+      }
+    },
+    {
+      "image_id": "2767",
+      "file_name": "002767.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "12",
+        "day": "01",
+        "final_date": "2021-12-01"
+      }
+    },
+    {
+      "image_id": "2802",
+      "file_name": "002802.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "09",
+        "day": "29",
+        "final_date": "2021-09-29"
+      }
+    },
+    {
+      "image_id": "2814",
+      "file_name": "002814.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "04",
+        "day": "02",
+        "final_date": "2021-04-02"
+      }
+    },
+    {
+      "image_id": "2835",
+      "file_name": "002835.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "06",
+        "day": "30",
+        "final_date": "2021-06-30"
+      }
+    },
+    {
+      "image_id": "2846",
+      "file_name": "002846.jpg",
+      "truth": {
+        "year": "2020",
+        "month": "03",
+        "day": "09",
+        "final_date": "2020-03-09"
+      }
+    },
+    {
+      "image_id": "2847",
+      "file_name": "002847.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "12",
+        "day": "30",
+        "final_date": "2021-12-30"
+      }
+    },
+    {
+      "image_id": "2892",
+      "file_name": "002892.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "03",
+        "day": "31",
+        "final_date": "2021-03-31"
+      }
+    },
+    {
+      "image_id": "2899",
+      "file_name": "002899.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "11",
+        "day": "09",
+        "final_date": "2021-11-09"
+      }
+    },
+    {
+      "image_id": "2900",
+      "file_name": "002900.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "08",
+        "day": "03",
+        "final_date": "2022-08-03"
+      }
+    },
+    {
+      "image_id": "2944",
+      "file_name": "002944.jpg",
+      "truth": {
+        "year": "2020",
+        "month": "06",
+        "day": "23",
+        "final_date": "2020-06-23"
+      }
+    },
+    {
+      "image_id": "2981",
+      "file_name": "002981.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "12",
+        "day": "17",
+        "final_date": "2021-12-17"
+      }
+    },
+    {
+      "image_id": "3004",
+      "file_name": "003004.jpg",
+      "truth": {
+        "year": "2023",
+        "month": "05",
+        "day": "NONE",
+        "final_date": "2023-05-NONE"
+      }
+    },
+    {
+      "image_id": "3006",
+      "file_name": "003006.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "05",
+        "day": "26",
+        "final_date": "2022-05-26"
+      }
+    },
+    {
+      "image_id": "3014",
+      "file_name": "003014.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "06",
+        "day": "12",
+        "final_date": "2021-06-12"
+      }
+    },
+    {
+      "image_id": "3017",
+      "file_name": "003017.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "02",
+        "day": "23",
+        "final_date": "2022-02-23"
+      }
+    },
+    {
+      "image_id": "3090",
+      "file_name": "003090.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "09",
+        "day": "15",
+        "final_date": "2021-09-15"
+      }
+    },
+    {
+      "image_id": "3132",
+      "file_name": "003132.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "05",
+        "day": "22",
+        "final_date": "2021-05-22"
+      }
+    },
+    {
+      "image_id": "3136",
+      "file_name": "003136.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "11",
+        "day": "09",
+        "final_date": "2022-11-09"
+      }
+    },
+    {
+      "image_id": "3158",
+      "file_name": "003158.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "04",
+        "day": "25",
+        "final_date": "2021-04-25"
+      }
+    },
+    {
+      "image_id": "3185",
+      "file_name": "003185.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "06",
+        "day": "28",
+        "final_date": "2021-06-28"
+      }
+    },
+    {
+      "image_id": "3201",
+      "file_name": "003201.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "09",
+        "day": "21",
+        "final_date": "2022-09-21"
+      }
+    },
+    {
+      "image_id": "3218",
+      "file_name": "003218.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "06",
+        "day": "16",
+        "final_date": "2021-06-16"
+      }
+    },
+    {
+      "image_id": "3222",
+      "file_name": "003222.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "06",
+        "day": "14",
+        "final_date": "2022-06-14"
+      }
+    },
+    {
+      "image_id": "3238",
+      "file_name": "003238.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "10",
+        "day": "16",
+        "final_date": "2021-10-16"
+      }
+    },
+    {
+      "image_id": "3290",
+      "file_name": "003290.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "12",
+        "day": "22",
+        "final_date": "2022-12-22"
+      }
+    },
+    {
+      "image_id": "3311",
+      "file_name": "003311.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "03",
+        "day": "11",
+        "final_date": "2021-03-11"
+      }
+    },
+    {
+      "image_id": "3312",
+      "file_name": "003312.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "03",
+        "day": "11",
+        "final_date": "2021-03-11"
+      }
+    },
+    {
+      "image_id": "3326",
+      "file_name": "003326.jpg",
+      "truth": {
+        "year": "2024",
+        "month": "06",
+        "day": "05",
+        "final_date": "2024-06-05"
+      }
+    },
+    {
+      "image_id": "3340",
+      "file_name": "003340.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "09",
+        "day": "29",
+        "final_date": "2022-09-29"
+      }
+    },
+    {
+      "image_id": "3350",
+      "file_name": "3350.jpeg",
+      "truth": {
+        "year": "2025",
+        "month": "12",
+        "day": "10",
+        "final_date": "2025-12-10"
+      }
+    },
+    {
+      "image_id": "7",
+      "file_name": "000007.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "06",
+        "day": "25",
+        "final_date": "2026-06-25"
+      }
+    },
+    {
+      "image_id": "21",
+      "file_name": "000021.jpg",
+      "truth": {
+        "year": "2025",
+        "month": "10",
+        "day": "10",
+        "final_date": "2025-10-10"
+      }
+    },
+    {
+      "image_id": "58",
+      "file_name": "000058.jpg",
+      "truth": {
+        "year": "2027",
+        "month": "03",
+        "day": "27",
+        "final_date": "2027-03-27"
+      }
+    },
+    {
+      "image_id": "99",
+      "file_name": "000099.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "03",
+        "day": "07",
+        "final_date": "2026-03-07"
+      }
+    },
+    {
+      "image_id": "110",
+      "file_name": "000110.jpg",
+      "truth": {
+        "year": "2025",
+        "month": "10",
+        "day": "29",
+        "final_date": "2025-10-29"
+      }
+    },
+    {
+      "image_id": "131",
+      "file_name": "000131.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "08",
+        "day": "05",
+        "final_date": "2026-08-05"
+      }
+    },
+    {
+      "image_id": "148",
+      "file_name": "000148.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "02",
+        "day": "26",
+        "final_date": "2026-02-26"
+      }
+    },
+    {
+      "image_id": "225",
+      "file_name": "000225.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "04",
+        "day": "06",
+        "final_date": "2026-04-06"
+      }
+    },
+    {
+      "image_id": "227",
+      "file_name": "000227.jpg",
+      "truth": {
+        "year": "2028",
+        "month": "09",
+        "day": "17",
+        "final_date": "2028-09-17"
+      }
+    },
+    {
+      "image_id": "250",
+      "file_name": "000250.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "03",
+        "day": "04",
+        "final_date": "2026-03-04"
+      }
+    },
+    {
+      "image_id": "266",
+      "file_name": "000266.jpg",
+      "truth": {
+        "year": "2025",
+        "month": "12",
+        "day": "04",
+        "final_date": "2025-12-04"
+      }
+    },
+    {
+      "image_id": "287",
+      "file_name": "000287.jpg",
+      "truth": {
+        "year": "2027",
+        "month": "02",
+        "day": "18",
+        "final_date": "2027-02-18"
+      }
+    },
+    {
+      "image_id": "292",
+      "file_name": "000292.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "02",
+        "day": "13",
+        "final_date": "2026-02-13"
+      }
+    },
+    {
+      "image_id": "299",
+      "file_name": "000299.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "05",
+        "day": "13",
+        "final_date": "2026-05-13"
+      }
+    },
+    {
+      "image_id": "324",
+      "file_name": "000324.jpg",
+      "truth": {
+        "year": "2027",
+        "month": "05",
+        "day": "15",
+        "final_date": "2027-05-15"
+      }
+    },
+    {
+      "image_id": "327",
+      "file_name": "000327.jpg",
+      "truth": {
+        "year": "2025",
+        "month": "10",
+        "day": "21",
+        "final_date": "2025-10-21"
+      }
+    },
+    {
+      "image_id": "378",
+      "file_name": "000378.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "05",
+        "day": "29",
+        "final_date": "2026-05-29"
+      }
+    },
+    {
+      "image_id": "382",
+      "file_name": "000382.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "08",
+        "day": "18",
+        "final_date": "2026-08-18"
+      }
+    },
+    {
+      "image_id": "384",
+      "file_name": "000384.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "07",
+        "day": "08",
+        "final_date": "2026-07-08"
+      }
+    },
+    {
+      "image_id": "400",
+      "file_name": "000400.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "01",
+        "day": "11",
+        "final_date": "2026-01-11"
+      }
+    },
+    {
+      "image_id": "416",
+      "file_name": "000416.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "04",
+        "day": "07",
+        "final_date": "2026-04-07"
+      }
+    },
+    {
+      "image_id": "422",
+      "file_name": "000422.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "06",
+        "day": "09",
+        "final_date": "2026-06-09"
+      }
+    },
+    {
+      "image_id": "426",
+      "file_name": "000426.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "12",
+        "day": "26",
+        "final_date": "2026-12-26"
+      }
+    },
+    {
+      "image_id": "469",
+      "file_name": "000469.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "07",
+        "day": "21",
+        "final_date": "2026-07-21"
+      }
+    },
+    {
+      "image_id": "512",
+      "file_name": "000512.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "02",
+        "day": "17",
+        "final_date": "2026-02-17"
+      }
+    },
+    {
+      "image_id": "582",
+      "file_name": "000582.jpg",
+      "truth": {
+        "year": "2025",
+        "month": "11",
+        "day": "21",
+        "final_date": "2025-11-21"
+      }
+    },
+    {
+      "image_id": "634",
+      "file_name": "000634.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "02",
+        "day": "05",
+        "final_date": "2026-02-05"
+      }
+    },
+    {
+      "image_id": "677",
+      "file_name": "000677.jpg",
+      "truth": {
+        "year": "2027",
+        "month": "08",
+        "day": "17",
+        "final_date": "2027-08-17"
+      }
+    },
+    {
+      "image_id": "684",
+      "file_name": "000684.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "03",
+        "day": "23",
+        "final_date": "2026-03-23"
+      }
+    },
+    {
+      "image_id": "690",
+      "file_name": "000690.jpg",
+      "truth": {
+        "year": "2025",
+        "month": "10",
+        "day": "11",
+        "final_date": "2025-10-11"
+      }
+    },
+    {
+      "image_id": "694",
+      "file_name": "000694.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "09",
+        "day": "01",
+        "final_date": "2026-09-01"
+      }
+    },
+    {
+      "image_id": "707",
+      "file_name": "000707.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "08",
+        "day": "19",
+        "final_date": "2026-08-19"
+      }
+    },
+    {
+      "image_id": "726",
+      "file_name": "000726.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "09",
+        "day": "16",
+        "final_date": "2026-09-16"
+      }
+    },
+    {
+      "image_id": "749",
+      "file_name": "000749.jpg",
+      "truth": {
+        "year": "2026",
+        "month": "01",
+        "day": "21",
+        "final_date": "2026-01-21"
+      }
+    },
+    {
+      "image_id": "775",
+      "file_name": "000775.jpeg",
+      "truth": {
+        "year": "2025",
+        "month": "12",
+        "day": "17",
+        "final_date": "2025-12-17"
+      }
+    },
+    {
+      "image_id": "778",
+      "file_name": "000778.jpeg",
+      "truth": {
+        "year": "2026",
+        "month": "06",
+        "day": "22",
+        "final_date": "2026-06-22"
+      }
+    },
+    {
+      "image_id": "845",
+      "file_name": "000845.jpeg",
+      "truth": {
+        "year": "2026",
+        "month": "06",
+        "day": "17",
+        "final_date": "2026-06-17"
+      }
+    },
+    {
+      "image_id": "893",
+      "file_name": "000893.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "02",
+        "day": "07",
+        "final_date": "2022-02-07"
+      }
+    },
+    {
+      "image_id": "901",
+      "file_name": "000901.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "11",
+        "day": "01",
+        "final_date": "2021-11-01"
+      }
+    },
+    {
+      "image_id": "907",
+      "file_name": "000907.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "01",
+        "day": "NONE",
+        "final_date": "2022-01-NONE"
+      }
+    },
+    {
+      "image_id": "909",
+      "file_name": "000909.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "09",
+        "day": "20",
+        "final_date": "2021-09-20"
+      }
+    },
+    {
+      "image_id": "954",
+      "file_name": "000954.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "02",
+        "day": "05",
+        "final_date": "2021-02-05"
+      }
+    },
+    {
+      "image_id": "978",
+      "file_name": "000978.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "11",
+        "day": "03",
+        "final_date": "2021-11-03"
+      }
+    },
+    {
+      "image_id": "1055",
+      "file_name": "001055.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "08",
+        "day": "10",
+        "final_date": "2022-08-10"
+      }
+    },
+    {
+      "image_id": "1061",
+      "file_name": "001061.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "07",
+        "day": "04",
+        "final_date": "2022-07-04"
+      }
+    },
+    {
+      "image_id": "1084",
+      "file_name": "001084.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "07",
+        "day": "09",
+        "final_date": "2021-07-09"
+      }
+    },
+    {
+      "image_id": "1097",
+      "file_name": "001097.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "06",
+        "day": "11",
+        "final_date": "2021-06-11"
+      }
+    },
+    {
+      "image_id": "1104",
+      "file_name": "001104.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "08",
+        "day": "26",
+        "final_date": "2021-08-26"
+      }
+    },
+    {
+      "image_id": "1141",
+      "file_name": "001141.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "03",
+        "day": "14",
+        "final_date": "2022-03-14"
+      }
+    },
+    {
+      "image_id": "1184",
+      "file_name": "001184.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "10",
+        "day": "08",
+        "final_date": "2021-10-08"
+      }
+    },
+    {
+      "image_id": "1185",
+      "file_name": "001185.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "09",
+        "day": "28",
+        "final_date": "2021-09-28"
+      }
+    },
+    {
+      "image_id": "1188",
+      "file_name": "001188.jpg",
+      "truth": {
+        "year": "2020",
+        "month": "04",
+        "day": "23",
+        "final_date": "2020-04-23"
+      }
+    },
+    {
+      "image_id": "1189",
+      "file_name": "001189.jpg",
+      "truth": {
+        "year": "2019",
+        "month": "06",
+        "day": "28",
+        "final_date": "2019-06-28"
+      }
+    },
+    {
+      "image_id": "1197",
+      "file_name": "001197.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "10",
+        "day": "10",
+        "final_date": "2021-10-10"
+      }
+    },
+    {
+      "image_id": "1231",
+      "file_name": "001231.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "05",
+        "day": "05",
+        "final_date": "2021-05-05"
+      }
+    },
+    {
+      "image_id": "1248",
+      "file_name": "001248.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "07",
+        "day": "15",
+        "final_date": "2021-07-15"
+      }
+    },
+    {
+      "image_id": "1289",
+      "file_name": "001289.jpg",
+      "truth": {
+        "year": "2024",
+        "month": "11",
+        "day": "21",
+        "final_date": "2024-11-21"
+      }
+    },
+    {
+      "image_id": "1290",
+      "file_name": "001290.jpg",
+      "truth": {
+        "year": "2024",
+        "month": "11",
+        "day": "21",
+        "final_date": "2024-11-21"
+      }
+    },
+    {
+      "image_id": "1294",
+      "file_name": "001294.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "11",
+        "day": "NONE",
+        "final_date": "2021-11-NONE"
+      }
+    },
+    {
+      "image_id": "1295",
+      "file_name": "001295.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "11",
+        "day": "NONE",
+        "final_date": "2021-11-NONE"
+      }
+    },
+    {
+      "image_id": "1315",
+      "file_name": "001315.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "12",
+        "day": "09",
+        "final_date": "2021-12-09"
+      }
+    },
+    {
+      "image_id": "1317",
+      "file_name": "001317.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "12",
+        "day": "07",
+        "final_date": "2022-12-07"
+      }
+    },
+    {
+      "image_id": "1384",
+      "file_name": "001384.jpg",
+      "truth": {
+        "year": "2018",
+        "month": "09",
+        "day": "NONE",
+        "final_date": "2018-09-NONE"
+      }
+    },
+    {
+      "image_id": "1409",
+      "file_name": "001409.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "12",
+        "day": "16",
+        "final_date": "2021-12-16"
+      }
+    },
+    {
+      "image_id": "1428",
+      "file_name": "001428.jpg",
+      "truth": {
+        "year": "2020",
+        "month": "08",
+        "day": "12",
+        "final_date": "2020-08-12"
+      }
+    },
+    {
+      "image_id": "1438",
+      "file_name": "001438.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "08",
+        "day": "29",
+        "final_date": "2021-08-29"
+      }
+    },
+    {
+      "image_id": "1455",
+      "file_name": "001455.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "04",
+        "day": "02",
+        "final_date": "2022-04-02"
+      }
+    },
+    {
+      "image_id": "1471",
+      "file_name": "001471.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "12",
+        "day": "29",
+        "final_date": "2021-12-29"
+      }
+    },
+    {
+      "image_id": "1500",
+      "file_name": "001500.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "09",
+        "day": "23",
+        "final_date": "2021-09-23"
+      }
+    },
+    {
+      "image_id": "1502",
+      "file_name": "001502.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "06",
+        "day": "24",
+        "final_date": "2021-06-24"
+      }
+    },
+    {
+      "image_id": "1529",
+      "file_name": "001529.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "02",
+        "day": "11",
+        "final_date": "2021-02-11"
+      }
+    },
+    {
+      "image_id": "1539",
+      "file_name": "001539.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "01",
+        "day": "18",
+        "final_date": "2022-01-18"
+      }
+    },
+    {
+      "image_id": "1623",
+      "file_name": "001623.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "01",
+        "day": "14",
+        "final_date": "2022-01-14"
+      }
+    },
+    {
+      "image_id": "1646",
+      "file_name": "001646.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "10",
+        "day": "12",
+        "final_date": "2021-10-12"
+      }
+    },
+    {
+      "image_id": "1657",
+      "file_name": "001657.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "01",
+        "day": "16",
+        "final_date": "2021-01-16"
+      }
+    },
+    {
+      "image_id": "1665",
+      "file_name": "001665.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "01",
+        "day": "28",
+        "final_date": "2021-01-28"
+      }
+    },
+    {
+      "image_id": "1705",
+      "file_name": "001705.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "06",
+        "day": "04",
+        "final_date": "2021-06-04"
+      }
+    },
+    {
+      "image_id": "1746",
+      "file_name": "001746.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "10",
+        "day": "12",
+        "final_date": "2021-10-12"
+      }
+    },
+    {
+      "image_id": "1747",
+      "file_name": "001747.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "10",
+        "day": "12",
+        "final_date": "2021-10-12"
+      }
+    },
+    {
+      "image_id": "1800",
+      "file_name": "001800.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "01",
+        "day": "14",
+        "final_date": "2021-01-14"
+      }
+    },
+    {
+      "image_id": "1815",
+      "file_name": "001815.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "06",
+        "day": "07",
+        "final_date": "2022-06-07"
+      }
+    },
+    {
+      "image_id": "1823",
+      "file_name": "001823.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "06",
+        "day": "09",
+        "final_date": "2021-06-09"
+      }
+    },
+    {
+      "image_id": "1869",
+      "file_name": "001869.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "09",
+        "day": "26",
+        "final_date": "2021-09-26"
+      }
+    },
+    {
+      "image_id": "1898",
+      "file_name": "001898.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "05",
+        "day": "29",
+        "final_date": "2021-05-29"
+      }
+    },
+    {
+      "image_id": "1955",
+      "file_name": "001955.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "10",
+        "day": "NONE",
+        "final_date": "2021-10-NONE"
+      }
+    },
+    {
+      "image_id": "1977",
+      "file_name": "001977.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "01",
+        "day": "14",
+        "final_date": "2021-01-14"
+      }
+    },
+    {
+      "image_id": "1980",
+      "file_name": "001980.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "10",
+        "day": "15",
+        "final_date": "2022-10-15"
+      }
+    },
+    {
+      "image_id": "1982",
+      "file_name": "001982.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "10",
+        "day": "20",
+        "final_date": "2021-10-20"
+      }
+    },
+    {
+      "image_id": "2033",
+      "file_name": "002033.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "03",
+        "day": "22",
+        "final_date": "2022-03-22"
+      }
+    },
+    {
+      "image_id": "2034",
+      "file_name": "002034.jpg",
+      "truth": {
+        "year": "2020",
+        "month": "12",
+        "day": "17",
+        "final_date": "2020-12-17"
+      }
+    },
+    {
+      "image_id": "2037",
+      "file_name": "002037.jpg",
+      "truth": {
+        "year": "2020",
+        "month": "08",
+        "day": "22",
+        "final_date": "2020-08-22"
+      }
+    },
+    {
+      "image_id": "2042",
+      "file_name": "002042.jpg",
+      "truth": {
+        "year": "2020",
+        "month": "08",
+        "day": "27",
+        "final_date": "2020-08-27"
+      }
+    },
+    {
+      "image_id": "2066",
+      "file_name": "002066.jpg",
+      "truth": {
+        "year": "2020",
+        "month": "04",
+        "day": "30",
+        "final_date": "2020-04-30"
+      }
+    },
+    {
+      "image_id": "2133",
+      "file_name": "002133.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "10",
+        "day": "04",
+        "final_date": "2021-10-04"
+      }
+    },
+    {
+      "image_id": "2134",
+      "file_name": "002134.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "11",
+        "day": "02",
+        "final_date": "2022-11-02"
+      }
+    },
+    {
+      "image_id": "2141",
+      "file_name": "002141.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "04",
+        "day": "11",
+        "final_date": "2021-04-11"
+      }
+    },
+    {
+      "image_id": "2146",
+      "file_name": "002146.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "07",
+        "day": "26",
+        "final_date": "2022-07-26"
+      }
+    },
+    {
+      "image_id": "2197",
+      "file_name": "002197.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "01",
+        "day": "13",
+        "final_date": "2021-01-13"
+      }
+    },
+    {
+      "image_id": "2221",
+      "file_name": "002221.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "06",
+        "day": "03",
+        "final_date": "2022-06-03"
+      }
+    },
+    {
+      "image_id": "2233",
+      "file_name": "002233.jpg",
+      "truth": {
+        "year": "2023",
+        "month": "01",
+        "day": "21",
+        "final_date": "2023-01-21"
+      }
+    },
+    {
+      "image_id": "2245",
+      "file_name": "002245.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "05",
+        "day": "21",
+        "final_date": "2021-05-21"
+      }
+    },
+    {
+      "image_id": "2251",
+      "file_name": "002251.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "05",
+        "day": "09",
+        "final_date": "2021-05-09"
+      }
+    },
+    {
+      "image_id": "2258",
+      "file_name": "002258.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "01",
+        "day": "24",
+        "final_date": "2022-01-24"
+      }
+    },
+    {
+      "image_id": "2284",
+      "file_name": "002284.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "01",
+        "day": "06",
+        "final_date": "2022-01-06"
+      }
+    },
+    {
+      "image_id": "2306",
+      "file_name": "002306.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "11",
+        "day": "23",
+        "final_date": "2021-11-23"
+      }
+    },
+    {
+      "image_id": "2327",
+      "file_name": "002327.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "10",
+        "day": "23",
+        "final_date": "2022-10-23"
+      }
+    },
+    {
+      "image_id": "2370",
+      "file_name": "002370.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "05",
+        "day": "12",
+        "final_date": "2022-05-12"
+      }
+    },
+    {
+      "image_id": "2376",
+      "file_name": "002376.jpg",
+      "truth": {
+        "year": "2019",
+        "month": "10",
+        "day": "28",
+        "final_date": "2019-10-28"
+      }
+    },
+    {
+      "image_id": "2387",
+      "file_name": "002387.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "01",
+        "day": "14",
+        "final_date": "2021-01-14"
+      }
+    },
+    {
+      "image_id": "2404",
+      "file_name": "002404.jpg",
+      "truth": {
+        "year": "2020",
+        "month": "11",
+        "day": "11",
+        "final_date": "2020-11-11"
+      }
+    },
+    {
+      "image_id": "2428",
+      "file_name": "002428.jpg",
+      "truth": {
+        "year": "2020",
+        "month": "12",
+        "day": "23",
+        "final_date": "2020-12-23"
+      }
+    },
+    {
+      "image_id": "2436",
+      "file_name": "002436.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "06",
+        "day": "03",
+        "final_date": "2021-06-03"
+      }
+    },
+    {
+      "image_id": "2504",
+      "file_name": "002504.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "01",
+        "day": "06",
+        "final_date": "2022-01-06"
+      }
+    },
+    {
+      "image_id": "2521",
+      "file_name": "002521.jpg",
+      "truth": {
+        "year": "2023",
+        "month": "10",
+        "day": "02",
+        "final_date": "2023-10-02"
+      }
+    },
+    {
+      "image_id": "2522",
+      "file_name": "002522.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "09",
+        "day": "14",
+        "final_date": "2022-09-14"
+      }
+    },
+    {
+      "image_id": "2586",
+      "file_name": "002586.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "12",
+        "day": "NONE",
+        "final_date": "2022-12-NONE"
+      }
+    },
+    {
+      "image_id": "2611",
+      "file_name": "002611.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "12",
+        "day": "01",
+        "final_date": "2021-12-01"
+      }
+    },
+    {
+      "image_id": "2634",
+      "file_name": "002634.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "02",
+        "day": "03",
+        "final_date": "2022-02-03"
+      }
+    },
+    {
+      "image_id": "2651",
+      "file_name": "002651.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "08",
+        "day": "18",
+        "final_date": "2021-08-18"
+      }
+    },
+    {
+      "image_id": "2740",
+      "file_name": "002740.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "12",
+        "day": "18",
+        "final_date": "2021-12-18"
+      }
+    },
+    {
+      "image_id": "2747",
+      "file_name": "002747.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "01",
+        "day": "08",
+        "final_date": "2022-01-08"
+      }
+    },
+    {
+      "image_id": "2752",
+      "file_name": "002752.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "01",
+        "day": "NONE",
+        "final_date": "2022-01-NONE"
+      }
+    },
+    {
+      "image_id": "2765",
+      "file_name": "002765.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "03",
+        "day": "16",
+        "final_date": "2021-03-16"
+      }
+    },
+    {
+      "image_id": "2790",
+      "file_name": "002790.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "12",
+        "day": "06",
+        "final_date": "2021-12-06"
+      }
+    },
+    {
+      "image_id": "2823",
+      "file_name": "002823.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "10",
+        "day": "07",
+        "final_date": "2021-10-07"
+      }
+    },
+    {
+      "image_id": "2831",
+      "file_name": "002831.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "05",
+        "day": "21",
+        "final_date": "2022-05-21"
+      }
+    },
+    {
+      "image_id": "2857",
+      "file_name": "002857.jpg",
+      "truth": {
+        "year": "2023",
+        "month": "06",
+        "day": "02",
+        "final_date": "2023-06-02"
+      }
+    },
+    {
+      "image_id": "2859",
+      "file_name": "002859.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "06",
+        "day": "15",
+        "final_date": "2022-06-15"
+      }
+    },
+    {
+      "image_id": "2860",
+      "file_name": "002860.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "06",
+        "day": "15",
+        "final_date": "2022-06-15"
+      }
+    },
+    {
+      "image_id": "2870",
+      "file_name": "002870.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "02",
+        "day": "25",
+        "final_date": "2021-02-25"
+      }
+    },
+    {
+      "image_id": "2877",
+      "file_name": "002877.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "12",
+        "day": "04",
+        "final_date": "2022-12-04"
+      }
+    },
+    {
+      "image_id": "2917",
+      "file_name": "002917.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "04",
+        "day": "30",
+        "final_date": "2021-04-30"
+      }
+    },
+    {
+      "image_id": "2927",
+      "file_name": "002927.jpg",
+      "truth": {
+        "year": "NONE",
+        "month": "04",
+        "day": "08",
+        "final_date": "NONE-04-08"
+      }
+    },
+    {
+      "image_id": "2963",
+      "file_name": "002963.jpg",
+      "truth": {
+        "year": "2020",
+        "month": "11",
+        "day": "06",
+        "final_date": "2020-11-06"
+      }
+    },
+    {
+      "image_id": "2990",
+      "file_name": "002990.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "03",
+        "day": "20",
+        "final_date": "2021-03-20"
+      }
+    },
+    {
+      "image_id": "2994",
+      "file_name": "002994.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "07",
+        "day": "13",
+        "final_date": "2022-07-13"
+      }
+    },
+    {
+      "image_id": "3010",
+      "file_name": "003010.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "12",
+        "day": "11",
+        "final_date": "2021-12-11"
+      }
+    },
+    {
+      "image_id": "3020",
+      "file_name": "003020.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "03",
+        "day": "23",
+        "final_date": "2021-03-23"
+      }
+    },
+    {
+      "image_id": "3043",
+      "file_name": "003043.jpg",
+      "truth": {
+        "year": "2020",
+        "month": "07",
+        "day": "13",
+        "final_date": "2020-07-13"
+      }
+    },
+    {
+      "image_id": "3078",
+      "file_name": "003078.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "12",
+        "day": "13",
+        "final_date": "2021-12-13"
+      }
+    },
+    {
+      "image_id": "3087",
+      "file_name": "003087.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "06",
+        "day": "30",
+        "final_date": "2021-06-30"
+      }
+    },
+    {
+      "image_id": "3129",
+      "file_name": "003129.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "08",
+        "day": "25",
+        "final_date": "2022-08-25"
+      }
+    },
+    {
+      "image_id": "3148",
+      "file_name": "003148.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "01",
+        "day": "14",
+        "final_date": "2022-01-14"
+      }
+    },
+    {
+      "image_id": "3206",
+      "file_name": "003206.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "04",
+        "day": "13",
+        "final_date": "2021-04-13"
+      }
+    },
+    {
+      "image_id": "3228",
+      "file_name": "003228.jpg",
+      "truth": {
+        "year": "2022",
+        "month": "04",
+        "day": "26",
+        "final_date": "2022-04-26"
+      }
+    },
+    {
+      "image_id": "3277",
+      "file_name": "003277.jpg",
+      "truth": {
+        "year": "NONE",
+        "month": "04",
+        "day": "05",
+        "final_date": "NONE-04-05"
+      }
+    },
+    {
+      "image_id": "3280",
+      "file_name": "003280.jpg",
+      "truth": {
+        "year": "2023",
+        "month": "07",
+        "day": "31",
+        "final_date": "2023-07-31"
+      }
+    },
+    {
+      "image_id": "3310",
+      "file_name": "003310.jpg",
+      "truth": {
+        "year": "2020",
+        "month": "08",
+        "day": "29",
+        "final_date": "2020-08-29"
+      }
+    },
+    {
+      "image_id": "3313",
+      "file_name": "003313.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "07",
+        "day": "05",
+        "final_date": "2021-07-05"
+      }
+    },
+    {
+      "image_id": "3338",
+      "file_name": "003338.jpg",
+      "truth": {
+        "year": "2021",
+        "month": "06",
+        "day": "01",
+        "final_date": "2021-06-01"
+      }
+    }
+  ],
+  "labels_sha256": "c74d24a45b747eb9f64514ee877ed6aaf69e9be1885dfd3952da59461c501cfc"
+}

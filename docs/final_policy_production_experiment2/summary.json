@@ -1,0 +1,47 @@
+{
+  "status": "complete",
+  "count": 300,
+  "final_date_correct": 270,
+  "final_date_accuracy": 0.9,
+  "field_accuracy": {
+    "year": 0.9233333333333333,
+    "month": 0.9233333333333333,
+    "day": 0.9166666666666666,
+    "final_date": 0.9
+  },
+  "baseline_correct": 267,
+  "gains": [
+    "000266",
+    "002066",
+    "003311"
+  ],
+  "regressions": [],
+  "methods": {
+    "original_512": 204,
+    "original_512_retry_kept": 25,
+    "original_no_candidate": 18,
+    "highres_1024_retry": 25,
+    "rotation_270": 7,
+    "clahe": 9,
+    "highres_1024": 12
+  },
+  "attempt_counts": {
+    "original_512": 300,
+    "rotation_270": 46,
+    "highres_1024": 89,
+    "clahe": 27
+  },
+  "attempt_ocr_sec": {
+    "original_512": 277.9004750998283,
+    "rotation_270": 37.53595530000166,
+    "highres_1024": 148.96825700011686,
+    "clahe": 24.703878999920562
+  },
+  "none_none_none_outputs": [],
+  "init_sec": 5.715445900015766,
+  "infer_sec": 506.96730380001827,
+  "avg_sec_per_image": 1.6898910126667275,
+  "submission_csv_sec": 0.00228909999714233,
+  "script_entry_through_submission_csv_sec": 513.2894420000084,
+  "timing_note": "Single process, engine threads as in manifest. Not the 2-process submission layout and not an end-to-end notebook timing; interpreter start-up is excluded."
+}
