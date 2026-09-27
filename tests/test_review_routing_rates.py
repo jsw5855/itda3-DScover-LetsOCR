@@ -64,6 +64,7 @@ def test_summary_counts_add_up_and_risk(tmp_path):
     class Args:
         cascade = "first_candidate"
         stage_snapshots = None
+        full_stage_raw = None
     Args.dump, Args.labels = dump, labels
     summary = rr.summarize(rows, unreproducible, Args)
     table = summary["A_route_rates"]["all"]
@@ -77,7 +78,35 @@ def test_summary_counts_add_up_and_risk(tmp_path):
 
 def test_policy_b_marks_missing_highres_unreproducible(tmp_path):
     dump, labels = write_inputs(tmp_path)
-    rows, unreproducible = rr.analyze(rr.dump_images(dump), labels, "policy_b")
+    rows, unreproducible = rr.analyze(rr.dump_images(dump), labels, "production")
     # Low q (4) and multiple dates (3) now need highres_1024, which was not saved.
     assert {r["image_id"]: r["missing_stage"] for r in unreproducible} == {
         "000003": "highres_1024", "000004": "highres_1024", "000006": "rotation_270"}
+
+
+def test_error_direction():
+    assert rr.error_direction("2026-05-01", "2026-04-24") == "late"
+    assert rr.error_direction("2026-04-01", "2026-04-24") == "early"
+    assert rr.error_direction("2026-04-NONE", "2026-04-24") == "not_comparable"
+    assert rr.error_direction("NONE", "NONE") == ""
+
+
+def test_wilson_interval():
+    assert rr.wilson(0, 0) is None
+    low, high = rr.wilson(256, 701)
+    assert low < 36.5 < high and 32 < low and high < 41
+    assert rr.wilson(0, 10)[0] == 0.0
+
+
+def test_full_stage_raw_source(tmp_path):
+    raw = tmp_path / "raw_ocr.jsonl"
+    with raw.open("w", encoding="utf-8") as stream:
+        for stage in STAGES:
+            detections = [box("2026.04.24", 0.80)] if stage != "highres_1024" else [box("2026.04.21", 0.97)]
+            stream.write(json.dumps({"image_id": "000004", "stage": stage, "detections": detections}) + "\n")
+    _, labels = write_inputs(tmp_path)
+    rows, unreproducible = rr.analyze(rr.full_stage_images(raw), labels, "production")
+    assert not unreproducible
+    # Low q triggers the production highres retry, which wins on higher q.
+    assert (rows[0]["stop_stage"], rows[0]["pred"], rows[0]["route"]) == ("highres_1024_retry", "2026-04-21", "CONFIRM")
+    assert rows[0]["error_direction"] == "early"

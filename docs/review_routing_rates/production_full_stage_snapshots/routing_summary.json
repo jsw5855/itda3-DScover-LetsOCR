@@ -1,10 +1,10 @@
 {
-  "cascade": "first_candidate",
+  "cascade": "production",
   "q_threshold": 0.9,
   "ocr_invocations": 0,
   "inputs": {
-    "source": "docs/run701/ocr_dump.jsonl",
-    "source_sha256": "d231bf5656014a4d30b1aac35ef4d796767b2f6247497d84432379e12718cea3",
+    "source": "docs/parser_optimization2/new_parser_replay.json",
+    "source_sha256": "06b0ae5f703ae41b6771b4b374251a287bb68669d0381207945178b2fa0d5fe6",
     "labels": "tmp_labels_701.csv",
     "labels_sha256": "2cc22fab12f28e38f2a5011a3c15c214d90b2a02af0a5d4c678befabee8e5593"
   },
@@ -17,66 +17,66 @@
     "by_status": {},
     "ids": []
   },
-  "prediction_changed_vs_saved": 50,
-  "correct_reproducible": 583,
+  "prediction_changed_vs_saved": null,
+  "correct_reproducible": 586,
   "A_route_rates": {
     "all": {
       "n": 701,
       "MANUAL": {
-        "count": 119,
-        "pct": 17.0,
+        "count": 117,
+        "pct": 16.7,
         "ci95": [
-          14.4,
-          19.9
+          14.1,
+          19.6
         ]
       },
       "CHOOSE": {
-        "count": 89,
-        "pct": 12.7,
+        "count": 88,
+        "pct": 12.6,
         "ci95": [
-          10.4,
-          15.4
+          10.3,
+          15.2
         ]
       },
       "RECHECK": {
-        "count": 65,
-        "pct": 9.3,
+        "count": 51,
+        "pct": 7.3,
         "ci95": [
-          7.3,
-          11.6
+          5.6,
+          9.4
         ]
       },
       "CONFIRM": {
-        "count": 428,
-        "pct": 61.1,
+        "count": 445,
+        "pct": 63.5,
         "ci95": [
-          57.4,
-          64.6
+          59.9,
+          67.0
         ]
       },
       "staff_review": {
-        "count": 273,
-        "pct": 38.9,
+        "count": 256,
+        "pct": 36.5,
         "ci95": [
-          35.4,
-          42.6
+          33.0,
+          40.1
         ]
       },
       "per_100_items": {
-        "MANUAL": 17.0,
-        "CHOOSE": 12.7,
-        "RECHECK": 9.3,
-        "CONFIRM": 61.1
+        "MANUAL": 16.7,
+        "CHOOSE": 12.6,
+        "RECHECK": 7.3,
+        "CONFIRM": 63.5
       }
     },
     "existing_300": {
       "n": 300,
       "MANUAL": {
-        "count": 37,
-        "pct": 12.3,
+        "count": 36,
+        "pct": 12.0,
         "ci95": [
-          9.1,
-          16.5
+          8.8,
+          16.2
         ]
       },
       "CHOOSE": {
@@ -88,83 +88,83 @@
         ]
       },
       "RECHECK": {
-        "count": 29,
-        "pct": 9.7,
+        "count": 21,
+        "pct": 7.0,
         "ci95": [
-          6.8,
-          13.5
+          4.6,
+          10.5
         ]
       },
       "CONFIRM": {
-        "count": 206,
-        "pct": 68.7,
+        "count": 215,
+        "pct": 71.7,
         "ci95": [
-          63.2,
-          73.7
+          66.3,
+          76.5
         ]
       },
       "staff_review": {
-        "count": 94,
-        "pct": 31.3,
+        "count": 85,
+        "pct": 28.3,
         "ci95": [
-          26.3,
-          36.8
+          23.5,
+          33.7
         ]
       },
       "per_100_items": {
-        "MANUAL": 12.3,
+        "MANUAL": 12.0,
         "CHOOSE": 9.3,
-        "RECHECK": 9.7,
-        "CONFIRM": 68.7
+        "RECHECK": 7.0,
+        "CONFIRM": 71.7
       }
     },
     "new_401": {
       "n": 401,
       "MANUAL": {
-        "count": 82,
-        "pct": 20.4,
+        "count": 81,
+        "pct": 20.2,
         "ci95": [
-          16.8,
-          24.7
+          16.6,
+          24.4
         ]
       },
       "CHOOSE": {
-        "count": 61,
-        "pct": 15.2,
+        "count": 60,
+        "pct": 15.0,
         "ci95": [
-          12.0,
-          19.1
+          11.8,
+          18.8
         ]
       },
       "RECHECK": {
-        "count": 36,
-        "pct": 9.0,
+        "count": 30,
+        "pct": 7.5,
         "ci95": [
-          6.6,
-          12.2
+          5.3,
+          10.5
         ]
       },
       "CONFIRM": {
-        "count": 222,
-        "pct": 55.4,
+        "count": 230,
+        "pct": 57.4,
         "ci95": [
-          50.5,
-          60.2
+          52.5,
+          62.1
         ]
       },
       "staff_review": {
-        "count": 179,
-        "pct": 44.6,
+        "count": 171,
+        "pct": 42.6,
         "ci95": [
-          39.8,
-          49.5
+          37.9,
+          47.5
         ]
       },
       "per_100_items": {
-        "MANUAL": 20.4,
-        "CHOOSE": 15.2,
-        "RECHECK": 9.0,
-        "CONFIRM": 55.4
+        "MANUAL": 20.2,
+        "CHOOSE": 15.0,
+        "RECHECK": 7.5,
+        "CONFIRM": 57.4
       }
     }
   },
@@ -175,51 +175,51 @@
         "n": 53
       },
       "CHOOSE": {
-        "correct": 4,
-        "n": 5
+        "correct": 3,
+        "n": 4
       },
       "RECHECK": {
         "correct": 1,
         "n": 1
       },
       "CONFIRM": {
-        "correct": 6,
-        "n": 10
+        "correct": 7,
+        "n": 11
       }
     },
     "candidate": {
       "MANUAL": {
         "correct": 0,
-        "n": 66
+        "n": 64
       },
       "CHOOSE": {
         "correct": 76,
         "n": 84
       },
       "RECHECK": {
-        "correct": 50,
-        "n": 64
+        "correct": 40,
+        "n": 50
       },
       "CONFIRM": {
-        "correct": 401,
-        "n": 418
+        "correct": 414,
+        "n": 434
       }
     }
   },
   "C_confirm_but_wrong": {
-    "count": 21,
-    "pct_of_all": 3.0,
+    "count": 24,
+    "pct_of_all": 3.4,
     "ci95_of_all": [
-      2.0,
-      4.5
+      2.3,
+      5.0
     ],
-    "pct_of_confirm": 4.9,
+    "pct_of_confirm": 5.4,
     "ci95_of_confirm": [
-      3.2,
-      7.4
+      3.7,
+      7.9
     ],
     "by_status": {
-      "candidate": 17,
+      "candidate": 20,
       "approved": 4
     },
     "direction": {
@@ -238,15 +238,18 @@
         "000231",
         "000422",
         "001658",
+        "001768",
         "001852",
         "001862",
         "001932",
         "001964",
         "002034",
         "002552",
+        "002588",
         "002726",
         "002829",
-        "003218"
+        "003218",
+        "003245"
       ],
       "not_comparable": []
     },
@@ -267,14 +270,17 @@
         "001515",
         "001587",
         "001658",
+        "001768",
         "001852",
         "001932",
         "001964",
         "002524",
         "002552",
+        "002588",
         "002726",
         "002829",
-        "003218"
+        "003218",
+        "003245"
       ]
     }
   },
@@ -285,10 +291,10 @@
       2.3,
       14.0
     ],
-    "pct_of_confirm": 40.0,
+    "pct_of_confirm": 36.4,
     "ci95_of_confirm": [
-      16.8,
-      68.7
+      15.2,
+      64.6
     ],
     "by_status": {
       "approved": 4
@@ -316,18 +322,18 @@
   },
   "wrong_direction_by_route": {
     "MANUAL": {
-      "not_comparable": 74
+      "not_comparable": 72
     },
     "CHOOSE": {
-      "early": 4,
-      "late": 5
+      "early": 5,
+      "late": 4
     },
     "RECHECK": {
-      "early": 12,
+      "early": 8,
       "late": 2
     },
     "CONFIRM": {
-      "early": 13,
+      "early": 16,
       "late": 8
     }
   },
@@ -336,66 +342,66 @@
       "rates": {
         "n": 701,
         "MANUAL": {
-          "count": 119,
-          "pct": 17.0,
+          "count": 117,
+          "pct": 16.7,
           "ci95": [
-            14.4,
-            19.9
+            14.1,
+            19.6
           ]
         },
         "CHOOSE": {
-          "count": 89,
-          "pct": 12.7,
+          "count": 88,
+          "pct": 12.6,
           "ci95": [
-            10.4,
-            15.4
+            10.3,
+            15.2
           ]
         },
         "RECHECK": {
-          "count": 23,
-          "pct": 3.3,
+          "count": 15,
+          "pct": 2.1,
           "ci95": [
-            2.2,
-            4.9
+            1.3,
+            3.5
           ]
         },
         "CONFIRM": {
-          "count": 470,
-          "pct": 67.0,
+          "count": 481,
+          "pct": 68.6,
           "ci95": [
-            63.5,
-            70.4
+            65.1,
+            71.9
           ]
         },
         "staff_review": {
-          "count": 231,
-          "pct": 33.0,
+          "count": 220,
+          "pct": 31.4,
           "ci95": [
-            29.6,
-            36.5
+            28.1,
+            34.9
           ]
         },
         "per_100_items": {
-          "MANUAL": 17.0,
-          "CHOOSE": 12.7,
-          "RECHECK": 3.3,
-          "CONFIRM": 67.0
+          "MANUAL": 16.7,
+          "CHOOSE": 12.6,
+          "RECHECK": 2.1,
+          "CONFIRM": 68.6
         }
       },
       "confirm_but_wrong": {
-        "count": 25,
-        "pct_of_all": 3.6,
+        "count": 28,
+        "pct_of_all": 4.0,
         "ci95_of_all": [
-          2.4,
-          5.2
+          2.8,
+          5.7
         ],
-        "pct_of_confirm": 5.3,
+        "pct_of_confirm": 5.8,
         "ci95_of_confirm": [
-          3.6,
-          7.7
+          4.1,
+          8.3
         ],
         "by_status": {
-          "candidate": 21,
+          "candidate": 24,
           "approved": 4
         },
         "direction": {
@@ -416,6 +422,7 @@
             "000422",
             "000582",
             "001658",
+            "001768",
             "001852",
             "001862",
             "001932",
@@ -424,9 +431,11 @@
             "002328",
             "002336",
             "002552",
+            "002588",
             "002726",
             "002829",
-            "003218"
+            "003218",
+            "003245"
           ],
           "not_comparable": []
         },
@@ -448,6 +457,7 @@
             "001515",
             "001587",
             "001658",
+            "001768",
             "001852",
             "001932",
             "001940",
@@ -456,9 +466,11 @@
             "002336",
             "002524",
             "002552",
+            "002588",
             "002726",
             "002829",
-            "003218"
+            "003218",
+            "003245"
           ]
         }
       }
@@ -467,66 +479,66 @@
       "rates": {
         "n": 701,
         "MANUAL": {
-          "count": 119,
-          "pct": 17.0,
+          "count": 117,
+          "pct": 16.7,
           "ci95": [
-            14.4,
-            19.9
+            14.1,
+            19.6
           ]
         },
         "CHOOSE": {
-          "count": 89,
-          "pct": 12.7,
+          "count": 88,
+          "pct": 12.6,
           "ci95": [
-            10.4,
-            15.4
+            10.3,
+            15.2
           ]
         },
         "RECHECK": {
-          "count": 65,
-          "pct": 9.3,
+          "count": 51,
+          "pct": 7.3,
           "ci95": [
-            7.3,
-            11.6
+            5.6,
+            9.4
           ]
         },
         "CONFIRM": {
-          "count": 428,
-          "pct": 61.1,
+          "count": 445,
+          "pct": 63.5,
           "ci95": [
-            57.4,
-            64.6
+            59.9,
+            67.0
           ]
         },
         "staff_review": {
-          "count": 273,
-          "pct": 38.9,
+          "count": 256,
+          "pct": 36.5,
           "ci95": [
-            35.4,
-            42.6
+            33.0,
+            40.1
           ]
         },
         "per_100_items": {
-          "MANUAL": 17.0,
-          "CHOOSE": 12.7,
-          "RECHECK": 9.3,
-          "CONFIRM": 61.1
+          "MANUAL": 16.7,
+          "CHOOSE": 12.6,
+          "RECHECK": 7.3,
+          "CONFIRM": 63.5
         }
       },
       "confirm_but_wrong": {
-        "count": 21,
-        "pct_of_all": 3.0,
+        "count": 24,
+        "pct_of_all": 3.4,
         "ci95_of_all": [
-          2.0,
-          4.5
+          2.3,
+          5.0
         ],
-        "pct_of_confirm": 4.9,
+        "pct_of_confirm": 5.4,
         "ci95_of_confirm": [
-          3.2,
-          7.4
+          3.7,
+          7.9
         ],
         "by_status": {
-          "candidate": 17,
+          "candidate": 20,
           "approved": 4
         },
         "direction": {
@@ -545,15 +557,18 @@
             "000231",
             "000422",
             "001658",
+            "001768",
             "001852",
             "001862",
             "001932",
             "001964",
             "002034",
             "002552",
+            "002588",
             "002726",
             "002829",
-            "003218"
+            "003218",
+            "003245"
           ],
           "not_comparable": []
         },
@@ -574,14 +589,17 @@
             "001515",
             "001587",
             "001658",
+            "001768",
             "001852",
             "001932",
             "001964",
             "002524",
             "002552",
+            "002588",
             "002726",
             "002829",
-            "003218"
+            "003218",
+            "003245"
           ]
         }
       }
@@ -590,66 +608,66 @@
       "rates": {
         "n": 701,
         "MANUAL": {
-          "count": 119,
-          "pct": 17.0,
+          "count": 117,
+          "pct": 16.7,
           "ci95": [
-            14.4,
-            19.9
+            14.1,
+            19.6
           ]
         },
         "CHOOSE": {
-          "count": 89,
-          "pct": 12.7,
+          "count": 88,
+          "pct": 12.6,
           "ci95": [
-            10.4,
-            15.4
+            10.3,
+            15.2
           ]
         },
         "RECHECK": {
-          "count": 186,
-          "pct": 26.5,
+          "count": 180,
+          "pct": 25.7,
           "ci95": [
-            23.4,
-            29.9
+            22.6,
+            29.0
           ]
         },
         "CONFIRM": {
-          "count": 307,
-          "pct": 43.8,
+          "count": 316,
+          "pct": 45.1,
           "ci95": [
-            40.2,
-            47.5
+            41.4,
+            48.8
           ]
         },
         "staff_review": {
-          "count": 394,
-          "pct": 56.2,
+          "count": 385,
+          "pct": 54.9,
           "ci95": [
-            52.5,
-            59.8
+            51.2,
+            58.6
           ]
         },
         "per_100_items": {
-          "MANUAL": 17.0,
-          "CHOOSE": 12.7,
-          "RECHECK": 26.5,
-          "CONFIRM": 43.8
+          "MANUAL": 16.7,
+          "CHOOSE": 12.6,
+          "RECHECK": 25.7,
+          "CONFIRM": 45.1
         }
       },
       "confirm_but_wrong": {
-        "count": 10,
-        "pct_of_all": 1.4,
+        "count": 12,
+        "pct_of_all": 1.7,
         "ci95_of_all": [
-          0.8,
-          2.6
+          1.0,
+          3.0
         ],
-        "pct_of_confirm": 3.3,
+        "pct_of_confirm": 3.8,
         "ci95_of_confirm": [
-          1.8,
-          5.9
+          2.2,
+          6.5
         ],
         "by_status": {
-          "candidate": 8,
+          "candidate": 10,
           "approved": 2
         },
         "direction": {
@@ -660,12 +678,14 @@
           "early": [
             "000143",
             "000422",
+            "001768",
             "001964",
             "002034",
             "002552",
             "002726",
             "002829",
-            "003218"
+            "003218",
+            "003245"
           ],
           "not_comparable": []
         },
@@ -677,12 +697,14 @@
           "candidate": [
             "000143",
             "000422",
+            "001768",
             "001964",
             "002524",
             "002552",
             "002726",
             "002829",
-            "003218"
+            "003218",
+            "003245"
           ]
         }
       }

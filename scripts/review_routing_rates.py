@@ -14,11 +14,17 @@ routing, for the reference accuracy tables. An image whose replay needs a stage
 that was not saved is "unreproducible" and left out of the rates.
 
 --cascade first_candidate  stop at the first stage with a candidate (pre-Policy-B)
---cascade policy_b         production ocr_pipeline.run_cascade (current main)
+--cascade production       ocr_pipeline.run_cascade of the checked-out code
+                           (Policy B as of main bb83a74)
 
---stage-snapshots replaces --dump with per-stage parser results saved from the
-full four-stage dump (docs/parser_optimization2/new_parser_replay.json): no stage is
-missing, but the parse is the saved one, not re-run here.
+Sources (exactly one):
+--full-stage-raw   docs/full_stage_701_run1/raw_ocr.jsonl: every image x 4 stages,
+                   re-parsed here with the current code. Preferred for final numbers.
+--dump             docs/run701/ocr_dump.jsonl: only the stages the 2026-09-23 run
+                   reached; images needing an unsaved stage are unreproducible.
+--stage-snapshots  per-stage parser results saved from the full-stage dump
+                   (docs/parser_optimization2/new_parser_replay.json); the parse is
+                   the saved one, not re-run here.
 """
 from __future__ import annotations
 
@@ -27,6 +33,7 @@ from collections import Counter
 import csv
 import hashlib
 import json
+import math
 from pathlib import Path
 import subprocess
 import sys
@@ -88,6 +95,8 @@ def replay(stage_facts_of, cascade):
             cache[name] = stage_facts_of(name)
         return cache[name]
 
+    if cascade not in ("first_candidate", "production"):
+        raise ValueError(f"Unknown cascade: {cascade}")
     if cascade == "first_candidate":
         for name in ocr_pipeline.STAGES:
             if facts(name)["evidence"] is not None:
@@ -109,12 +118,35 @@ def pct(n, d):
     return round(100 * n / d, 1) if d else None
 
 
+def wilson(k, n, z=1.96):
+    """95% Wilson score interval, in percent."""
+    if not n:
+        return None
+    p = k / n
+    centre = (p + z * z / (2 * n)) / (1 + z * z / n)
+    half = z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / (1 + z * z / n)
+    return [round(100 * max(0.0, centre - half), 1), round(100 * min(1.0, centre + half), 1)]
+
+
+def error_direction(pred, truth):
+    """For a wrong date: 'late' (predicted after truth: an expired item could pass),
+    'early' (predicted before truth: a sellable item could be discarded), or
+    'not_comparable' when either side has a NONE field."""
+    if pred == truth:
+        return ""
+    if "NONE" in pred or "NONE" in truth:
+        return "not_comparable"
+    return "late" if pred > truth else "early"
+
+
 def rate_table(rows, key="route"):
     n = len(rows)
     counts = Counter(r[key] for r in rows)
-    table = {r: {"count": counts.get(r, 0), "pct": pct(counts.get(r, 0), n)} for r in ROUTES}
+    table = {r: {"count": counts.get(r, 0), "pct": pct(counts.get(r, 0), n), "ci95": wilson(counts.get(r, 0), n)}
+             for r in ROUTES}
     review = sum(counts.get(r, 0) for r in REVIEW)
-    return {"n": n, **table, "staff_review": {"count": review, "pct": pct(review, n)}}
+    return {"n": n, **table, "staff_review": {"count": review, "pct": pct(review, n), "ci95": wilson(review, n)},
+            "per_100_items": {r: round(100 * counts.get(r, 0) / n, 1) if n else None for r in ROUTES}}
 
 
 def accuracy_table(rows, key="route"):
@@ -129,8 +161,11 @@ def accuracy_table(rows, key="route"):
 def risk(rows, key="route"):
     wrong = [r for r in rows if r[key] == "CONFIRM" and not r["correct"]]
     confirm = sum(1 for r in rows if r[key] == "CONFIRM")
-    return {"count": len(wrong), "pct_of_all": pct(len(wrong), len(rows)), "pct_of_confirm": pct(len(wrong), confirm),
+    return {"count": len(wrong), "pct_of_all": pct(len(wrong), len(rows)), "ci95_of_all": wilson(len(wrong), len(rows)),
+            "pct_of_confirm": pct(len(wrong), confirm), "ci95_of_confirm": wilson(len(wrong), confirm),
             "by_status": dict(Counter(r["label_status"] for r in wrong)),
+            "direction": {d: sorted(r["image_id"] for r in wrong if r["error_direction"] == d)
+                          for d in ("late", "early", "not_comparable")},
             "ids": {s: sorted(r["image_id"] for r in wrong if r["label_status"] == s) for s in ("approved", "candidate")}}
 
 
@@ -146,6 +181,24 @@ def dump_images(path):
                     raise MissingStage(name)
                 return stage_facts(saved[name])
             yield f"{int(record['image_id']):06d}", provider, record["prediction"]["final_date"]
+
+
+def full_stage_images(path):
+    """raw_ocr.jsonl of scripts/dump_full_stage_701.py: one line per image x stage."""
+    saved = {}
+    with Path(path).open(encoding="utf-8") as stream:
+        for line in stream:
+            record = json.loads(line)
+            stages = saved.setdefault(f"{int(record['image_id']):06d}", {})
+            if record["stage"] in stages:
+                raise ValueError(f"Duplicate stage record: {record['image_id']}/{record['stage']}")
+            stages[record["stage"]] = record["detections"]
+    for key in sorted(saved):
+        def provider(name, stages=saved[key]):
+            if name not in stages:
+                raise MissingStage(name)
+            return stage_facts(stages[name])
+        yield key, provider, None
 
 
 def snapshot_images(path):
@@ -171,7 +224,8 @@ def analyze(images, labels_path, cascade):
         truth = normalize_truth(label)["final_date"]
         row = {**base, "reproducible": True, "stop_stage": method, "q": facts["q"],
                "distinct_dates": "|".join(facts["distinct"]), "pred": prediction["final_date"],
-               "truth": truth, "correct": prediction["final_date"] == truth}
+               "truth": truth, "correct": prediction["final_date"] == truth,
+               "error_direction": error_direction(prediction["final_date"], truth)}
         for threshold in SENSITIVITY:
             row[f"route_q{threshold:.2f}"] = route(facts, prediction, threshold)
         row["route"] = row[f"route_q{THRESHOLD:.2f}"]
@@ -183,7 +237,7 @@ def summarize(rows, unreproducible, args):
     groups = {"all": rows, **{g: [r for r in rows if r["group"] == g] for g in ("existing_300", "new_401")}}
     summary = {
         "cascade": args.cascade, "q_threshold": THRESHOLD, "ocr_invocations": 0,
-        "inputs": {"source": display(args.dump or args.stage_snapshots), "source_sha256": sha(args.dump or args.stage_snapshots),
+        "inputs": {"source": display(source_path(args)), "source_sha256": sha(source_path(args)),
                    "labels": display(args.labels), "labels_sha256": sha(args.labels)},
         "code_commit": git_head(),
         "images": len(rows) + len(unreproducible), "reproducible": len(rows),
@@ -197,12 +251,19 @@ def summarize(rows, unreproducible, args):
         "A_route_rates": {g: rate_table(v) for g, v in groups.items()},
         "B_route_accuracy_reference": accuracy_table(rows),
         "C_confirm_but_wrong": risk(rows),
+        "C_approved_only": risk([r for r in rows if r["label_status"] == "approved"]),
+        "wrong_direction_by_route": {rt: dict(Counter(r["error_direction"] for r in rows if r["route"] == rt and not r["correct"]))
+                                     for rt in ROUTES},
         "D_sensitivity_reference_not_policy": {
             f"{t:.2f}": {"rates": rate_table(rows, f"route_q{t:.2f}"), "confirm_but_wrong": risk(rows, f"route_q{t:.2f}")}
             for t in SENSITIVITY},
     }
     assert sum(summary["A_route_rates"]["all"][r]["count"] for r in ROUTES) + len(unreproducible) == summary["images"]
     return summary
+
+
+def source_path(args):
+    return args.full_stage_raw or args.dump or args.stage_snapshots
 
 
 def display(path):
@@ -224,22 +285,24 @@ def git_head():
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     source = ap.add_mutually_exclusive_group(required=True)
+    source.add_argument("--full-stage-raw", type=Path, help="raw_ocr.jsonl, every image x 4 stages (preferred)")
     source.add_argument("--dump", type=Path, help="ocr_dump.jsonl (one image per line, saved stages)")
     source.add_argument("--stage-snapshots", type=Path, help="per-stage parser results of a full four-stage dump")
     ap.add_argument("--labels", type=Path, default=ROOT / "tmp_labels_701.csv")
-    ap.add_argument("--cascade", choices=("first_candidate", "policy_b"), default="first_candidate")
+    ap.add_argument("--cascade", choices=("first_candidate", "production"), default="production")
     ap.add_argument("--output", type=Path, help="New directory for routing_rows.csv and routing_summary.json")
     args = ap.parse_args()
     if args.output is not None and args.output.exists():
         raise FileExistsError(f"Choose a new output directory: {args.output}")
-    images = dump_images(args.dump) if args.dump else snapshot_images(args.stage_snapshots)
+    images = (full_stage_images(args.full_stage_raw) if args.full_stage_raw
+              else dump_images(args.dump) if args.dump else snapshot_images(args.stage_snapshots))
     rows, unreproducible = analyze(images, args.labels, args.cascade)
     summary = summarize(rows, unreproducible, args)
     print(json.dumps(summary, indent=2, ensure_ascii=False))
     if args.output is not None:
         args.output.mkdir(parents=True)
         columns = ["image_id", "label_status", "group", "stop_stage", "route", "q", "distinct_dates", "pred", "truth",
-                   "correct", "reproducible", "old_pred", "missing_stage", *[f"route_q{t:.2f}" for t in SENSITIVITY]]
+                   "correct", "error_direction", "reproducible", "old_pred", "missing_stage", *[f"route_q{t:.2f}" for t in SENSITIVITY]]
         with (args.output / "routing_rows.csv").open("w", encoding="utf-8-sig", newline="") as stream:
             writer = csv.DictWriter(stream, fieldnames=columns, extrasaction="ignore")
             writer.writeheader()
