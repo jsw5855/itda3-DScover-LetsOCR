@@ -7,7 +7,7 @@ from typing import List, Optional, Sequence, Tuple
 
 from .crossref import apply_manufacture_constraint
 from .hints import MONTH_YEAR, detect_format_hint
-from .extract import extract_date_tokens, extract_month_yy_tokens, extract_yearless_month_day_tokens, extract_hint_month_name_year_tokens
+from .extract import extract_date_tokens, extract_month_yy_tokens, extract_yearless_month_day_tokens
 from .interpret import DEFAULT_YEAR_MAX, DEFAULT_YEAR_MIN, ScoredCandidate, generate_candidates
 from .keywords import ANCHOR_KEYWORDS, EXCLUDE_KEYWORDS, PRIMARY_ANCHOR_KEYWORDS, bbox_center, has_keyword, min_distance
 from .types import DateResult, TextBox
@@ -48,8 +48,6 @@ def find_all_candidates(
         tokens = extract_date_tokens(box.text, accept=has_reading)
         if hint == MONTH_YEAR:
             extra = [t for t in extract_month_yy_tokens(box.text, [t.span for t in tokens]) if has_reading(t)]
-            extra += [t for t in extract_hint_month_name_year_tokens(
-                box.text, [t.span for t in tokens + extra]) if has_reading(t)]
             tokens = sorted(tokens + extra, key=lambda t: t.span[0])
         for token in tokens:
             scored = scored_by_token[token]

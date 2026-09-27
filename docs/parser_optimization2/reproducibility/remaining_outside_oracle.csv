@@ -1,0 +1,27 @@
+image_id,truth,original_512,rotation_270,highres_1024,clahe,previous_category,review_note
+000157,2027-08-07,NONE,NONE,NONE,NONE,label_uncertainty,Documented conflict: official 2027-08-07 versus frozen approved 2027-07-08. No readable full date in any stage; OCR deficiency also present.
+000438,2026-02-19,NONE,NONE,NONE,NONE,insufficient_ocr,No recognizable date; only product/numeric fragments across stages.
+000820,2026-05-18,NONE,NONE,NONE,NONE,mixed_ocr_parser,"Rotation ESTeBEFERE18405-2026 resembles 18/05/2026 with an inserted 4; not clean correct-date evidence. Requires OCR repair, not selection alone."
+001214,2021-05-15,NONE,NONE,NONE,NONE,insufficient_ocr,"All stages corrupt month 05 as 85, often year 2021 as 2821; no valid correct date without digit repair."
+001587,2021-04-20,2021-04-27,2021-04-NONE,2021-04-27,2021-04-NONE,label_uncertainty,"Original/highres agree on 2021.04.27; other stages read .37; label says .20. Suspected label mismatch OR repeated OCR error, not confirmed without visual review."
+002019,2022-03-09,NONE,NONE,NONE,NONE,insufficient_ocr,Only batch code BTCH:122491 at highres; no date evidence.
+002278,2023-07-NONE,NONE,NONE,NONE,NONE,insufficient_ocr,202 / 2023 fragments but no reliable July evidence for approved partial date.
+002328,2021-10-20,2020-10-21,NONE,NONE,2020-10-21,mixed_ocr_parser,"Highres has 21 10 201, plausibly correct 21-10-20 plus suffix 1, while other stages read manufacturing 2020.10.21. Boundary/field repair and date-role selection needed."
+002492,2022-08-09,NONE,NONE,NONE,NONE,insufficient_ocr,Expiry keyword survives but year/day date fields are fragmented or corrupt.
+002726,2022-03-17,NONE,2017-03-22,NONE,NONE,parser_evidence,Rotation 17.03.22 exposes correct 2022-03-17 as lower-ranked interpretation; YMD prior chooses 2017-03-22. Other stages contain L0076 17.03.22 but extraction returns none.
+002814,2021-04-02,NONE,NONE,NONE,NONE,insufficient_ocr,No date in saved observations.
+003014,2021-06-12,NONE,NONE,NONE,NONE,insufficient_ocr,Best-before-like fragments and time fragments but no full labeled date.
+003218,2021-06-16,2021-03-16,2021-03-16,2021-03-16,2021-03-16,label_uncertainty,"All four stages consistently read 16.03.2021, contrary to label 2021-06-16. Suspected label mismatch OR shared OCR error; no new visual approval."
+003312,2021-03-11,NONE,NONE,NONE,2021-03-NONE,insufficient_ocr,CLAHE sees 03.2021 but day 11 is missing across stages.
+003326,2024-06-05,NONE,NONE,NONE,NONE,insufficient_ocr,No recognizable expiration date across stages.
+003350,2025-12-10,NONE,NONE,NONE,NONE,mixed_ocr_parser,"Highres 25.412.1015시 plausibly encodes 25.12.10 plus hour 15, but extra 4 and fused day/hour require repair. Not clean date evidence."
+000582,2025-11-21,NONE,NONE,2025-01-21,NONE,insufficient_ocr,Month 11 loses a digit: highres 2025 1.21; other stages corrupt/suppress year-month boundary.
+000694,2026-09-01,NONE,NONE,NONE,NONE,insufficient_ocr,Severe orientation/recognition corruption; no usable labeled date.
+000749,2026-01-21,NONE,NONE,NONE,NONE,insufficient_ocr,202602 and noisy suffix lack reliable January 21 fields.
+000978,2021-11-03,NONE,NONE,NONE,NONE,insufficient_ocr,No readable date in any saved stage.
+001539,2022-01-18,NONE,NONE,NONE,NONE,insufficient_ocr,"Every stage reads 22.91.18 or 22.91-18, corrupting month 01 as 91."
+001646,2021-10-12,NONE,NONE,NONE,NONE,insufficient_ocr,"Only a corrupt year-containing rotation fragment, no clean month/day."
+002034,2020-12-17,2017-12-20,2017-12-20,2017-12-20,2017-12-20,parser_evidence,All four stages read 17.12.20. Correct 2020-12-17 exists as alternative; YMD prior chooses 2017-12-20. Choosing DMY universally is not justified.
+002404,2020-11-11,NONE,NONE,NONE,NONE,insufficient_ocr,Only 0200T203 fragment; no full date.
+002436,2021-06-03,NONE,NONE,NONE,2021-05-03,insufficient_ocr,"Date-order instructions survive, but CLAHE reads 03.05.2021 instead of labeled 03.06.2021; other stages corrupt date. Parser follows DMY correctly for the wrong OCR month."
+003338,2021-06-01,NONE,NONE,NONE,NONE,insufficient_ocr,Year repeatedly corrupted as 202N or shortened 202; month/day 06/01 survive but full year requires repair.

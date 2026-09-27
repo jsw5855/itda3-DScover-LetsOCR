@@ -1,0 +1,17 @@
+variant,cohort,policy,image_id,truth,old_prediction,new_prediction,old_correct,new_correct,old_attempts,new_attempts
+comma_year,official_300,current_cascade,002899,2021-11-09,2021-11-NONE,2021-11-09,False,True,original_512|rotation_270|highres_1024|clahe,original_512|rotation_270|highres_1024|clahe
+comma_year,all_701_provisional,current_cascade,002899,2021-11-09,2021-11-NONE,2021-11-09,False,True,original_512|rotation_270|highres_1024|clahe,original_512|rotation_270|highres_1024|clahe
+yearless_hour,official_300,current_cascade,000763,NONE-11-12,NONE,NONE-11-12,False,True,original_512|rotation_270|highres_1024|clahe,original_512|rotation_270|highres_1024|clahe
+yearless_hour,approved_69,current_cascade,000763,NONE-11-12,NONE,NONE-11-12,False,True,original_512|rotation_270|highres_1024|clahe,original_512|rotation_270|highres_1024|clahe
+yearless_hour,all_701_provisional,current_cascade,000763,NONE-11-12,NONE,NONE-11-12,False,True,original_512|rotation_270|highres_1024|clahe,original_512|rotation_270|highres_1024|clahe
+hint_month_separator,official_300,current_cascade,001955,2021-10-NONE,NONE,2021-10-NONE,False,True,original_512|rotation_270|highres_1024|clahe,original_512|rotation_270|highres_1024|clahe
+hint_month_separator,approved_69,current_cascade,001955,2021-10-NONE,NONE,2021-10-NONE,False,True,original_512|rotation_270|highres_1024|clahe,original_512|rotation_270|highres_1024|clahe
+hint_month_separator,all_701_provisional,current_cascade,001955,2021-10-NONE,NONE,2021-10-NONE,False,True,original_512|rotation_270|highres_1024|clahe,original_512|rotation_270|highres_1024|clahe
+combined,official_300,current_cascade,000763,NONE-11-12,NONE,NONE-11-12,False,True,original_512|rotation_270|highres_1024|clahe,original_512|rotation_270|highres_1024|clahe
+combined,official_300,current_cascade,002899,2021-11-09,2021-11-NONE,2021-11-09,False,True,original_512|rotation_270|highres_1024|clahe,original_512|rotation_270|highres_1024|clahe
+combined,official_300,current_cascade,001955,2021-10-NONE,NONE,2021-10-NONE,False,True,original_512|rotation_270|highres_1024|clahe,original_512|rotation_270|highres_1024|clahe
+combined,approved_69,current_cascade,000763,NONE-11-12,NONE,NONE-11-12,False,True,original_512|rotation_270|highres_1024|clahe,original_512|rotation_270|highres_1024|clahe
+combined,approved_69,current_cascade,001955,2021-10-NONE,NONE,2021-10-NONE,False,True,original_512|rotation_270|highres_1024|clahe,original_512|rotation_270|highres_1024|clahe
+combined,all_701_provisional,current_cascade,000763,NONE-11-12,NONE,NONE-11-12,False,True,original_512|rotation_270|highres_1024|clahe,original_512|rotation_270|highres_1024|clahe
+combined,all_701_provisional,current_cascade,001955,2021-10-NONE,NONE,2021-10-NONE,False,True,original_512|rotation_270|highres_1024|clahe,original_512|rotation_270|highres_1024|clahe
+combined,all_701_provisional,current_cascade,002899,2021-11-09,2021-11-NONE,2021-11-09,False,True,original_512|rotation_270|highres_1024|clahe,original_512|rotation_270|highres_1024|clahe

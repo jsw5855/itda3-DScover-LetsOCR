@@ -1,0 +1,41 @@
+{
+  "recoverable": 3,
+  "safely_fixed": 3,
+  "official": {
+    "before": 264,
+    "after": 267,
+    "total": 300,
+    "gains": [
+      "000763",
+      "001955",
+      "002899"
+    ],
+    "regressions": []
+  },
+  "approved": {
+    "before": 54,
+    "after": 56,
+    "total": 69
+  },
+  "independent_reused": {
+    "before": 192,
+    "after": 192,
+    "total": 195
+  },
+  "provisional": {
+    "before": 580,
+    "after": 583,
+    "total": 701
+  },
+  "oracle": {
+    "before": 271,
+    "after": 274
+  },
+  "parser_reaches_266": true,
+  "frozen_B_reaches_270": true,
+  "best_combined_offline": 274,
+  "ocr_invocations": 0,
+  "additional_current_cascade_ocr_attempts": 0,
+  "policies_adopted": false,
+  "existing_uncommitted_work_preserved": true
+}

@@ -46,15 +46,6 @@ _OPTIONAL_SEP = r"[.\-/\s·×]*"
 # (년/월/일), so the order is read directly off the text rather than assumed.
 _PATTERN_DEFS = [
     (
-        # Four-digit year with comma separators. Use the same trailing-noise
-        # handling as dotted YYYY.MM.DDD; do not admit long numeric runs or
-        # start inside an alphanumeric code. Year/order validation is unchanged.
-        re.compile(r"(?<![0-9A-Za-z])([0-9]{4})\s*,\s*([0-9]{1,2})\s*,\s*([0-9]{1,3})(?![0-9])"),
-        ("num", "num", "num"),
-        ("year", "month", "day"),
-        None,
-    ),
-    (
         re.compile(rf"(?<!\d)(\d{{4}})년\s*(\d{{1,2}})월\s*(\d{{1,2}})일"),
         ("num", "num", "num"),
         ("year", "month", "day"),
@@ -367,22 +358,6 @@ def extract_date_tokens(text: str, accept: Optional[Callable[[RawDateToken], boo
 # month/year format hint (see hints.py).
 _MONTH_YY_RE = re.compile(r"(?<![0-9.,:])([0-9]{1,2})\s*[./\-]\s*([0-9]{2})(?![0-9.,:])")
 
-# With a printed month/year hint only, tolerate a single OCR letter in the
-# separator slot of a standalone month-name + four-digit-year field. Neither
-# the month nor the year is repaired. Whole-box bounds exclude lot prefixes,
-# extra digits and longer words; the caller supplies the format evidence.
-_HINT_MONTH_NAME_YEAR_RE = re.compile(
-    rf"\A\s*[-.(\[]*({_MONTH_RE})[A-Za-z]([0-9]{{4}})[.)\]]*\s*\Z", re.IGNORECASE
-)
-
-
-def extract_hint_month_name_year_tokens(text: str, taken: List[Tuple[int, int]]) -> List[RawDateToken]:
-    match = _HINT_MONTH_NAME_YEAR_RE.fullmatch(text)
-    if match is None or _overlaps(match.span(), taken):
-        return []
-    fields = (RawField(match.group(1), "month_name"), RawField(match.group(2), "num"))
-    return [RawDateToken(match.span(), fields, ("month", "year"), ("month", "year"))]
-
 
 def extract_month_yy_tokens(text: str, taken: List[Tuple[int, int]]) -> List[RawDateToken]:
     tokens = []
@@ -404,17 +379,9 @@ _YEARLESS_MD_RE = re.compile(
     rf"(?<![0-9.,:])(0[1-9]|1[0-2])\s?\.\s?(0[1-9]|[12][0-9]|3[01])(?![0-9])(?!\s?{_UNIT}(?![A-Za-z]))"
 )
 
-# MM.DDHH시: an explicit Korean clock-hour unit establishes the missing
-# date/time boundary. Keep this in the yearless fallback, require a valid
-# two-digit hour, and do not match inside a code or a full dated token.
-_YEARLESS_GLUED_HOUR_RE = re.compile(
-    r"\A\s*(0[1-9]|1[0-2])\.\s*(0[1-9]|[12][0-9]|3[01])([01][0-9]|2[0-3])시"
-)
-
 
 def extract_yearless_month_day_tokens(text: str) -> List[RawDateToken]:
     text = split_glued(text)
-    text = _YEARLESS_GLUED_HOUR_RE.sub(r"\1.\2 \3시", text)
     tokens = []
     for match in _YEARLESS_MD_RE.finditer(text):
         fields = (RawField(raw=match.group(1), kind="num"), RawField(raw=match.group(2), kind="num"))

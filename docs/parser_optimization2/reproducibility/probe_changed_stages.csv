@@ -1,0 +1,14 @@
+variant,image_id,stage,old_prediction,new_prediction
+comma_year,000015,original_512,2026-03-01,2026-03-01
+comma_year,002899,clahe,2021-11-NONE,2021-11-09
+yearless_hour,000763,clahe,NONE,NONE-11-12
+hint_month_separator,001955,clahe,NONE,2021-10-NONE
+combined,000015,original_512,2026-03-01,2026-03-01
+combined,000763,clahe,NONE,NONE-11-12
+combined,001955,clahe,NONE,2021-10-NONE
+combined,002899,clahe,2021-11-NONE,2021-11-09
+rejected_two_digit_trailing_noise,000245,highres_1024,2020-09-25,2023-02-24
+rejected_two_digit_trailing_noise,000503,clahe,NONE,2026-02-18
+rejected_two_digit_trailing_noise,002134,original_512,2022-11-02,2022-11-02
+rejected_two_digit_trailing_noise,002328,highres_1024,NONE,2021-10-20
+rejected_two_digit_trailing_noise,002459,highres_1024,2021-11-30,2021-11-30

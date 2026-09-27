@@ -1,0 +1,47 @@
+{
+  "accepted_commit": "9b14803cd42459d4bcf91104bcb26e4fb161a372",
+  "accepted_parser_sha256": {
+    "date_parser\\__init__.py": "6de4f6e384e4c80c8bafed21ac67c2bbd90b8110d787dd02eb451210e53360ec",
+    "date_parser\\crossref.py": "00aef7f56809f6d394227722ca523dac36694b7efc66a848c1520e9578f2d89f",
+    "date_parser\\extract.py": "85c03af5eaf50b6efc5afd7d45512476243871fbdad00402f0815686cc8401a5",
+    "date_parser\\hints.py": "b89c78c072b07f56048fa2daa957309ee5d44fc89ff72eee6a96a9e65d181fdc",
+    "date_parser\\interpret.py": "24867248dc17472115ffa23e2974faf9664969ca4e8ee07b82b089b73360391f",
+    "date_parser\\keywords.py": "2a788b47a9950b847c5e5c9434a46c0bedc6746d3a1996e08ca0439a9c1b58ce",
+    "date_parser\\parser.py": "c6264681357cb06c527bebafb65e1e97fc491cc7217acdd378e9e259b456370d",
+    "date_parser\\select.py": "a9154edd4111dc68e362ce87295bf8121a451b4db58c4499e323308429b73f48",
+    "date_parser\\types.py": "23f1fd305fc7832f43d6e71c2d291b558e1a11f93db9c183d5275300176c90f0"
+  },
+  "source_sha256": {
+    "docs\\full_stage_701_run1\\raw_ocr.jsonl": "3c00358afc9281413e47520ddcb7784b0e16ced070d1d1b74a2734313df502a2",
+    "docs\\full_stage_701_run1\\manifest.json": "f35984f5801e34b615ed18b3766b7ef97a383909f6e08a93c2d80e42d782a58a",
+    "docs\\full_stage_701_run1\\integrity.json": "13aa6416e76b1d5dbad2dcfa76ada8995ad31896232097cdb1500da85289d304",
+    "docs\\full_stage_701_run1\\labels_metadata.json": "eb338fc3c4c88e6f92c75457adfd14f2d75d35ce25d9ca225c5b2b9a9321fc14",
+    "docs\\full_stage_701_run1\\timing_summary.json": "df760de7a4e37d442bfecc3a254a812c15f88d21e1cca7084d175ef64eb05d4c",
+    "docs\\full_stage_701_run1\\summary.json": "ee1aad1eb673f0669fccff041e15ae7f5b8781084bda6b4b590195303470c7ef",
+    "docs\\parser_integration_300_correct_0926\\evaluation_300.csv": "df0425cc6c09cd9c300c646e51e391cdf72c86a000d204b370f7585223889684",
+    "docs\\parser_integration_300_correct_0926\\manifest.json": "c311f308708f0aa4510f50b41d5dc37567b85e86bbe44cc5ff09c5780fd78e49",
+    "docs\\frozen_b_shadow_independent_run1\\manifest.json": "8ff0fc2236e89701858676ea9448d0438e884b5e349949238d35b1a37e3b4c6c",
+    "scripts\\analyze_full_stage_offline.py": "1dc3d553c62dd8524abb9552ac08a783f15a76762866c7cdbed4a1be2bf4fa82",
+    "scripts\\diagnose_oracle_gap_offline.py": "4ccf8bbcf5ec4a51f5520abadd8817c4c85c473dc1f39e769a5b5034a71ebd47",
+    "scripts\\evaluation_common.py": "1117a155ce9b6306ebc2dfd3a79b35f19b83aa375a3473577fb665b7509883a3"
+  },
+  "protected_sha256": {
+    "ocr_pipeline.py": "518ec41a617daa2a74cd96da384574e152b68d81e43faeb0fc4bf78ff82fc1fa",
+    "predict.ipynb": "99dcd3e0148d71daade07f71ac8771cd6a50cd55a0409efad0af6fe3c36bba28",
+    "submission_runtime.py": "69d8f7a7ccc4434d726542c5c871ff4209a0dfab877daac9431efabdcf961061"
+  },
+  "probe_script_sha256": "166e2cd9f14388e256ad7e16d0a4f10de80a67b29193d18b47c0c3551cbe27cb",
+  "ocr_invocations": 0,
+  "new_parser_sha256": {
+    "date_parser\\__init__.py": "6de4f6e384e4c80c8bafed21ac67c2bbd90b8110d787dd02eb451210e53360ec",
+    "date_parser\\crossref.py": "00aef7f56809f6d394227722ca523dac36694b7efc66a848c1520e9578f2d89f",
+    "date_parser\\extract.py": "30de24cf960c3523e31d22f9e2f9c297dac2ee348817a398caff9d04749f7999",
+    "date_parser\\hints.py": "b89c78c072b07f56048fa2daa957309ee5d44fc89ff72eee6a96a9e65d181fdc",
+    "date_parser\\interpret.py": "24867248dc17472115ffa23e2974faf9664969ca4e8ee07b82b089b73360391f",
+    "date_parser\\keywords.py": "2a788b47a9950b847c5e5c9434a46c0bedc6746d3a1996e08ca0439a9c1b58ce",
+    "date_parser\\parser.py": "c6264681357cb06c527bebafb65e1e97fc491cc7217acdd378e9e259b456370d",
+    "date_parser\\select.py": "70848767ef5301997d229d91a3b5ff3622fc505bd2497b487808752b66b0a16e",
+    "date_parser\\types.py": "23f1fd305fc7832f43d6e71c2d291b558e1a11f93db9c183d5275300176c90f0"
+  },
+  "raw_sha256_after": "3c00358afc9281413e47520ddcb7784b0e16ced070d1d1b74a2734313df502a2"
+}
