@@ -40,3 +40,16 @@ def test_rule1_in_box_keyword_and_partial_recency(lines, expected):
 ])
 def test_nearest_keyword_is_exclude(text, span, expected):
     assert nearest_keyword_is_exclude(text, span) is expected
+
+
+# Rule 2: a lot code or a clock time right before a full date is not a date
+# field (a four-digit year is never the middle field).
+@pytest.mark.parametrize("lines, expected", [
+    (["E26L1 2027.11.25 까지"], "2027-11-25"),                  # 900089
+    (["260729–01TJ32 10:12 2029.07.29 "], "2029-07-29"),       # 900095
+    # unchanged readings with a real day-month-year order
+    (["17/09/2027"], "2027-09-17"),
+    (["30.12,2021"], "2021-12-30"),
+])
+def test_rule2_year_never_middle(lines, expected):
+    assert _parse(*lines) == expected

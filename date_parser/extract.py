@@ -332,6 +332,15 @@ def _overlaps(span: Tuple[int, int], claimed: List[Tuple[int, int]]) -> bool:
     return any(span[0] < end and start < span[1] for start, end in claimed)
 
 
+def _year_in_middle(fields: Tuple[RawField, ...]) -> bool:
+    """A four-digit year is printed first or last, never between the other two
+    fields. "E26L1 2027.11.25" (lot code, then date) and "10:12 2029.07.29"
+    (time, then date) would otherwise be read as 1/2027/11 and 12/2029/07; the
+    span is left free so the full date after it is still found."""
+    return (len(fields) == 3 and all(f.kind == "num" for f in fields)
+            and len(normalize_confusable(fields[1].raw)) == 4 and len(normalize_confusable(fields[0].raw)) <= 2)
+
+
 def extract_date_tokens(text: str, accept: Optional[Callable[[RawDateToken], bool]] = None) -> List[RawDateToken]:
     """Find date-shaped substrings in ``text`` without assuming field order.
 
@@ -353,6 +362,8 @@ def extract_date_tokens(text: str, accept: Optional[Callable[[RawDateToken], boo
             if _overlaps(span, claimed):
                 continue
             fields = _trim_trailing_noise(tuple(RawField(raw=g, kind=k) for g, k in zip(match.groups(), kinds)))
+            if _year_in_middle(fields):
+                continue
             token = RawDateToken(span=span, fields=fields, role_universe=role_universe, fixed_roles=fixed_roles)
             if accept is not None and not accept(token):
                 continue
