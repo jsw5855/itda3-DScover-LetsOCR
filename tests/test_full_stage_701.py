@@ -67,8 +67,14 @@ output = pathlib.Path(sys.argv[1])
 m, labels, report = d.preflight(output)
 assert report['image_count'] == 701
 assert report['maximum_attempts'] == 2804
-assert report['safely_reusable_historical_attempts'] == 269
-assert report['remaining_attempts'] == 2535
+# Local historical artifacts may be rejected by the current provenance audit.
+reusable = report['safely_reusable_historical_attempts']
+assert report['cache_audit'] == m['cache_audit']
+assert reusable == sum(source['reusable'] for source in report['cache_audit'].values())
+assert reusable == len(m['historical_reuse'])
+assert 0 <= reusable <= report['maximum_attempts']
+assert report['existing_output_records'] == 0
+assert report['remaining_attempts'] == report['maximum_attempts'] - reusable
 assert not output.exists()
 assert not any(n in sys.modules for n in ('ocr_pipeline', 'paddleocr', 'paddle', 'cv2', 'numpy'))
 """
@@ -115,7 +121,9 @@ assert not any(n in sys.modules for n in ('ocr_pipeline', 'paddleocr', 'paddle',
         source.mkdir(parents=True)
 
         def build(manifest_changes=None, record_changes=None):
-            m = {'packages': packages, 'code_sha256': {}, 'weights_sha256': weights,
+            m = {'packages': packages,
+                 'code_sha256': {'scripts/dump_full_stage_701.py': dump.sha(fake / 'scripts/dump_full_stage_701.py')},
+                 'weights_sha256': weights,
                  'engine': dump.ENGINE, 'predict': {'text_det_limit_type': 'max', 'text_det_box_thresh': 0.7},
                  'stages': ['original_512', 'rotation_270', 'highres_1024'], 'images': images,
                  **(manifest_changes or {})}
@@ -133,6 +141,17 @@ assert not any(n in sys.modules for n in ('ocr_pipeline', 'paddleocr', 'paddle',
         accepted, reports, _ = audit(build())
         self.assertEqual(list(accepted), ['000007_original_512'])
         self.assertEqual(reports['frozen_b_shadow_independent_run1']['reusable'], 1)
+        pins = build()
+        code_path = fake / 'scripts/dump_full_stage_701.py'
+        original_code = code_path.read_bytes()
+        code_path.write_bytes(original_code + b'\n# Simulated code drift\n')
+        accepted, reports, _ = audit(pins)
+        self.assertEqual(accepted, {})
+        self.assertEqual(reports['frozen_b_shadow_independent_run1']['records'], 1)
+        self.assertEqual(reports['frozen_b_shadow_independent_run1']['reusable'], 0)
+        self.assertIn('code drift: scripts/dump_full_stage_701.py',
+                      reports['frozen_b_shadow_independent_run1']['reason'])
+        code_path.write_bytes(original_code)
         for changes in ({'packages': dict(packages, paddleocr='0.9')},
                         {'engine': dict(dump.ENGINE, cpu_threads=4)},
                         {'predict': {'text_det_limit_type': 'max', 'text_det_box_thresh': 0.6}},
