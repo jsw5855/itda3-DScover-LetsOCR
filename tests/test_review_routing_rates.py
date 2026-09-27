@@ -122,3 +122,14 @@ def test_days_off_and_magnitude():
     assert m["late"]["bins"] == {"1-7 days": 1, "8-31 days": 0, "32-365 days": 0, "over 1 year": 1}
     assert m["late"]["median_days"] == (7 + 731) / 2
     assert m["early"]["n"] == 1 and m["early"]["bins"]["8-31 days"] == 1
+
+
+def test_workload_breakdown(tmp_path):
+    dump, labels = write_inputs(tmp_path)
+    rows, _ = rr.analyze(rr.dump_images(dump), labels, "first_candidate")
+    w = rr.workload(rows)
+    assert w["manual_nothing_read"]["count"] == 1          # image 1: nothing read
+    assert w["manual_partial_date"]["count"] == 1          # image 2: 2026-04-NONE
+    assert w["manual_partial_date"]["no_day"] == 1 and w["manual_partial_date"]["correct_as_printed"] == 0
+    assert w["choose"]["truth_in_candidates"] == 1         # 2026-04-24 is one of the two dates
+    assert w["recheck"]["already_correct"] == 1

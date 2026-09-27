@@ -177,6 +177,27 @@ def rate_table(rows, key="route"):
             "per_100_items": {r: round(100 * counts.get(r, 0) / n, 1) if n else None for r in ROUTES}}
 
 
+def workload(rows):
+    """What the staff actually does inside the review share. Counts need no labels;
+    the *_correct / truth_in_candidates figures do (reference only)."""
+    n = len(rows)
+    nothing = [r for r in rows if r["route"] == "MANUAL" and r["pred"] == "NONE"]
+    partial = [r for r in rows if r["route"] == "MANUAL" and r["pred"] != "NONE"]
+    choose = [r for r in rows if r["route"] == "CHOOSE"]
+    recheck = [r for r in rows if r["route"] == "RECHECK"]
+
+    def entry(group, **extra):
+        return {"count": len(group), "per_100_items": round(100 * len(group) / n, 1) if n else None, **extra}
+    return {
+        "manual_nothing_read": entry(nothing),
+        "manual_partial_date": entry(partial, correct_as_printed=sum(r["correct"] for r in partial),
+                                     no_day=sum(r["pred"].endswith("-NONE") for r in partial),
+                                     no_year=sum(r["pred"].startswith("NONE-") for r in partial)),
+        "choose": entry(choose, truth_in_candidates=sum(r["truth"] in r["distinct_dates"].split("|") for r in choose)),
+        "recheck": entry(recheck, already_correct=sum(r["correct"] for r in recheck)),
+    }
+
+
 def accuracy_table(rows, key="route"):
     out = {}
     for status in ("approved", "candidate"):
@@ -278,6 +299,7 @@ def summarize(rows, unreproducible, args):
                                         if all(r["old_pred"] is not None for r in rows) else None),
         "correct_reproducible": sum(r["correct"] for r in rows),
         "A_route_rates": {g: rate_table(v) for g, v in groups.items()},
+        "A_workload_breakdown": workload(rows),
         "B_route_accuracy_reference": accuracy_table(rows),
         "C_confirm_but_wrong": risk(rows),
         "C_approved_only": risk([r for r in rows if r["label_status"] == "approved"]),

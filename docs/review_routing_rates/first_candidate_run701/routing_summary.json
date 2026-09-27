@@ -8,7 +8,7 @@
     "labels": "tmp_labels_701.csv",
     "labels_sha256": "2cc22fab12f28e38f2a5011a3c15c214d90b2a02af0a5d4c678befabee8e5593"
   },
-  "code_commit": "e56780203806cb02eaa799a37653d9db152c71eb",
+  "code_commit": "88aa358343f454915978593b40f58c9720251d24",
   "images": 701,
   "reproducible": 701,
   "unreproducible": {
@@ -166,6 +166,29 @@
         "RECHECK": 9.0,
         "CONFIRM": 55.4
       }
+    }
+  },
+  "A_workload_breakdown": {
+    "manual_nothing_read": {
+      "count": 64,
+      "per_100_items": 9.1
+    },
+    "manual_partial_date": {
+      "count": 55,
+      "per_100_items": 7.8,
+      "correct_as_printed": 45,
+      "no_day": 41,
+      "no_year": 14
+    },
+    "choose": {
+      "count": 89,
+      "per_100_items": 12.7,
+      "truth_in_candidates": 83
+    },
+    "recheck": {
+      "count": 65,
+      "per_100_items": 9.3,
+      "already_correct": 51
     }
   },
   "B_route_accuracy_reference": {
