@@ -1,0 +1,83 @@
+"""Staff-review routing on fake saved detections (no OCR)."""
+import csv
+import json
+from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from scripts import review_routing_rates as rr  # noqa: E402
+
+STAGES = ["original_512", "rotation_270", "highres_1024", "clahe"]
+
+
+def box(text, confidence, row=0):
+    return {"text": text, "confidence": confidence,
+            "bbox": [[0, 40 * row], [100, 40 * row], [100, 40 * row + 20], [0, 40 * row + 20]]}
+
+
+NOTHING = [box("nothing", 0.99)]
+CASES = {
+    # image id: (saved stages, expected route or None when unreproducible)
+    "1": ({s: NOTHING for s in STAGES}, "MANUAL"),
+    "2": ({"original_512": [box("2026.04", 0.99)]}, "MANUAL"),
+    "3": ({"original_512": [box("2026.04.24", 0.99), box("2025.01.02", 0.99, row=5)]}, "CHOOSE"),
+    "4": ({"original_512": [box("2026.04.24", 0.80)]}, "RECHECK"),
+    "5": ({"original_512": [box("2026.04.24", 0.93)]}, "CONFIRM"),
+    "6": ({"original_512": NOTHING}, None),
+}
+
+
+def write_inputs(tmp_path):
+    dump = tmp_path / "ocr_dump.jsonl"
+    with dump.open("w", encoding="utf-8") as stream:
+        for key, (stages, _) in CASES.items():
+            stream.write(json.dumps({"image_id": key, "prediction": {"final_date": "NONE"},
+                                     "stages": [{"stage": s, "detections": d} for s, d in stages.items()]}) + "\n")
+    labels = tmp_path / "labels.csv"
+    with labels.open("w", encoding="utf-8", newline="") as stream:
+        writer = csv.writer(stream)
+        writer.writerow(["image_id", "year", "month", "day", "final_date", "truth_source", "label_sources"])
+        for key in CASES:
+            writer.writerow([key, "2026", "04", "24", "2026-04-24",
+                             "approved" if key == "5" else "candidate", "existing_300" if key < "4" else "incoming_432"])
+    return dump, labels
+
+
+def test_four_routes_and_unreproducible(tmp_path):
+    dump, labels = write_inputs(tmp_path)
+    rows, unreproducible = rr.analyze(rr.dump_images(dump), labels, "first_candidate")
+    assert {r["image_id"]: r["route"] for r in rows} == {
+        f"{int(k):06d}": v for k, (_, v) in CASES.items() if v is not None}
+    assert [(r["image_id"], r["missing_stage"]) for r in unreproducible] == [("000006", "rotation_270")]
+    by_id = {r["image_id"]: r for r in rows}
+    assert by_id["000002"]["pred"] == "2026-04-NONE"
+    assert by_id["000001"]["pred"] == "NONE"
+    assert by_id["000005"]["correct"] and by_id["000005"]["label_status"] == "approved"
+
+
+def test_summary_counts_add_up_and_risk(tmp_path):
+    dump, labels = write_inputs(tmp_path)
+    rows, unreproducible = rr.analyze(rr.dump_images(dump), labels, "first_candidate")
+
+    class Args:
+        cascade = "first_candidate"
+        stage_snapshots = None
+    Args.dump, Args.labels = dump, labels
+    summary = rr.summarize(rows, unreproducible, Args)
+    table = summary["A_route_rates"]["all"]
+    assert sum(table[r]["count"] for r in rr.ROUTES) + summary["unreproducible"]["count"] == len(CASES)
+    assert table["staff_review"]["count"] == 4
+    assert summary["C_confirm_but_wrong"]["count"] == 0
+    # Sensitivity only moves RECHECK/CONFIRM: q 0.80 is RECHECK everywhere, q 0.93 only at 0.95.
+    assert all(summary["D_sensitivity_reference_not_policy"][t]["rates"]["RECHECK"]["count"] == 1 for t in ("0.85", "0.90"))
+    assert summary["D_sensitivity_reference_not_policy"]["0.95"]["rates"]["RECHECK"]["count"] == 2
+
+
+def test_policy_b_marks_missing_highres_unreproducible(tmp_path):
+    dump, labels = write_inputs(tmp_path)
+    rows, unreproducible = rr.analyze(rr.dump_images(dump), labels, "policy_b")
+    # Low q (4) and multiple dates (3) now need highres_1024, which was not saved.
+    assert {r["image_id"]: r["missing_stage"] for r in unreproducible} == {
+        "000003": "highres_1024", "000004": "highres_1024", "000006": "rotation_270"}

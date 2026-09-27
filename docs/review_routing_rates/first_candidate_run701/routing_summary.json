@@ -1,0 +1,345 @@
+{
+  "cascade": "first_candidate",
+  "q_threshold": 0.9,
+  "ocr_invocations": 0,
+  "inputs": {
+    "source": "docs/run701/ocr_dump.jsonl",
+    "source_sha256": "d231bf5656014a4d30b1aac35ef4d796767b2f6247497d84432379e12718cea3",
+    "labels": "tmp_labels_701.csv",
+    "labels_sha256": "2cc22fab12f28e38f2a5011a3c15c214d90b2a02af0a5d4c678befabee8e5593"
+  },
+  "code_commit": "bb83a74cbe882f06e98676d75f0858df1d1d35d9",
+  "images": 701,
+  "reproducible": 701,
+  "unreproducible": {
+    "count": 0,
+    "by_missing_stage": {},
+    "by_status": {},
+    "ids": []
+  },
+  "prediction_changed_vs_saved": 50,
+  "correct_reproducible": 583,
+  "A_route_rates": {
+    "all": {
+      "n": 701,
+      "MANUAL": {
+        "count": 119,
+        "pct": 17.0
+      },
+      "CHOOSE": {
+        "count": 89,
+        "pct": 12.7
+      },
+      "RECHECK": {
+        "count": 65,
+        "pct": 9.3
+      },
+      "CONFIRM": {
+        "count": 428,
+        "pct": 61.1
+      },
+      "staff_review": {
+        "count": 273,
+        "pct": 38.9
+      }
+    },
+    "existing_300": {
+      "n": 300,
+      "MANUAL": {
+        "count": 37,
+        "pct": 12.3
+      },
+      "CHOOSE": {
+        "count": 28,
+        "pct": 9.3
+      },
+      "RECHECK": {
+        "count": 29,
+        "pct": 9.7
+      },
+      "CONFIRM": {
+        "count": 206,
+        "pct": 68.7
+      },
+      "staff_review": {
+        "count": 94,
+        "pct": 31.3
+      }
+    },
+    "new_401": {
+      "n": 401,
+      "MANUAL": {
+        "count": 82,
+        "pct": 20.4
+      },
+      "CHOOSE": {
+        "count": 61,
+        "pct": 15.2
+      },
+      "RECHECK": {
+        "count": 36,
+        "pct": 9.0
+      },
+      "CONFIRM": {
+        "count": 222,
+        "pct": 55.4
+      },
+      "staff_review": {
+        "count": 179,
+        "pct": 44.6
+      }
+    }
+  },
+  "B_route_accuracy_reference": {
+    "approved": {
+      "MANUAL": {
+        "correct": 45,
+        "n": 53
+      },
+      "CHOOSE": {
+        "correct": 4,
+        "n": 5
+      },
+      "RECHECK": {
+        "correct": 1,
+        "n": 1
+      },
+      "CONFIRM": {
+        "correct": 6,
+        "n": 10
+      }
+    },
+    "candidate": {
+      "MANUAL": {
+        "correct": 0,
+        "n": 66
+      },
+      "CHOOSE": {
+        "correct": 76,
+        "n": 84
+      },
+      "RECHECK": {
+        "correct": 50,
+        "n": 64
+      },
+      "CONFIRM": {
+        "correct": 401,
+        "n": 418
+      }
+    }
+  },
+  "C_confirm_but_wrong": {
+    "count": 21,
+    "pct_of_all": 3.0,
+    "pct_of_confirm": 4.9,
+    "by_status": {
+      "candidate": 17,
+      "approved": 4
+    },
+    "ids": {
+      "approved": [
+        "001862",
+        "002034",
+        "002125",
+        "002917"
+      ],
+      "candidate": [
+        "000143",
+        "000231",
+        "000233",
+        "000422",
+        "000466",
+        "000844",
+        "001515",
+        "001587",
+        "001658",
+        "001852",
+        "001932",
+        "001964",
+        "002524",
+        "002552",
+        "002726",
+        "002829",
+        "003218"
+      ]
+    }
+  },
+  "D_sensitivity_reference_not_policy": {
+    "0.85": {
+      "rates": {
+        "n": 701,
+        "MANUAL": {
+          "count": 119,
+          "pct": 17.0
+        },
+        "CHOOSE": {
+          "count": 89,
+          "pct": 12.7
+        },
+        "RECHECK": {
+          "count": 23,
+          "pct": 3.3
+        },
+        "CONFIRM": {
+          "count": 470,
+          "pct": 67.0
+        },
+        "staff_review": {
+          "count": 231,
+          "pct": 33.0
+        }
+      },
+      "confirm_but_wrong": {
+        "count": 25,
+        "pct_of_all": 3.6,
+        "pct_of_confirm": 5.3,
+        "by_status": {
+          "candidate": 21,
+          "approved": 4
+        },
+        "ids": {
+          "approved": [
+            "001862",
+            "002034",
+            "002125",
+            "002917"
+          ],
+          "candidate": [
+            "000143",
+            "000231",
+            "000233",
+            "000422",
+            "000466",
+            "000582",
+            "000844",
+            "001515",
+            "001587",
+            "001658",
+            "001852",
+            "001932",
+            "001940",
+            "001964",
+            "002328",
+            "002336",
+            "002524",
+            "002552",
+            "002726",
+            "002829",
+            "003218"
+          ]
+        }
+      }
+    },
+    "0.90": {
+      "rates": {
+        "n": 701,
+        "MANUAL": {
+          "count": 119,
+          "pct": 17.0
+        },
+        "CHOOSE": {
+          "count": 89,
+          "pct": 12.7
+        },
+        "RECHECK": {
+          "count": 65,
+          "pct": 9.3
+        },
+        "CONFIRM": {
+          "count": 428,
+          "pct": 61.1
+        },
+        "staff_review": {
+          "count": 273,
+          "pct": 38.9
+        }
+      },
+      "confirm_but_wrong": {
+        "count": 21,
+        "pct_of_all": 3.0,
+        "pct_of_confirm": 4.9,
+        "by_status": {
+          "candidate": 17,
+          "approved": 4
+        },
+        "ids": {
+          "approved": [
+            "001862",
+            "002034",
+            "002125",
+            "002917"
+          ],
+          "candidate": [
+            "000143",
+            "000231",
+            "000233",
+            "000422",
+            "000466",
+            "000844",
+            "001515",
+            "001587",
+            "001658",
+            "001852",
+            "001932",
+            "001964",
+            "002524",
+            "002552",
+            "002726",
+            "002829",
+            "003218"
+          ]
+        }
+      }
+    },
+    "0.95": {
+      "rates": {
+        "n": 701,
+        "MANUAL": {
+          "count": 119,
+          "pct": 17.0
+        },
+        "CHOOSE": {
+          "count": 89,
+          "pct": 12.7
+        },
+        "RECHECK": {
+          "count": 186,
+          "pct": 26.5
+        },
+        "CONFIRM": {
+          "count": 307,
+          "pct": 43.8
+        },
+        "staff_review": {
+          "count": 394,
+          "pct": 56.2
+        }
+      },
+      "confirm_but_wrong": {
+        "count": 10,
+        "pct_of_all": 1.4,
+        "pct_of_confirm": 3.3,
+        "by_status": {
+          "candidate": 8,
+          "approved": 2
+        },
+        "ids": {
+          "approved": [
+            "002034",
+            "002917"
+          ],
+          "candidate": [
+            "000143",
+            "000422",
+            "001964",
+            "002524",
+            "002552",
+            "002726",
+            "002829",
+            "003218"
+          ]
+        }
+      }
+    }
+  }
+}
