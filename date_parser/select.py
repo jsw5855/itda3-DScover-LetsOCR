@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import calendar
 import re
 from dataclasses import dataclass
 from datetime import date
@@ -9,7 +10,7 @@ from .crossref import apply_manufacture_constraint
 from .hints import MONTH_YEAR, detect_format_hint
 from .extract import extract_date_tokens, extract_month_yy_tokens, extract_yearless_month_day_tokens, extract_hint_month_name_year_tokens
 from .interpret import DEFAULT_YEAR_MAX, DEFAULT_YEAR_MIN, ScoredCandidate, generate_candidates
-from .keywords import ANCHOR_KEYWORDS, EXCLUDE_KEYWORDS, PRIMARY_ANCHOR_KEYWORDS, bbox_center, has_keyword, min_distance
+from .keywords import ANCHOR_KEYWORDS, EXCLUDE_KEYWORDS, PRIMARY_ANCHOR_KEYWORDS, bbox_center, has_keyword, min_distance, nearest_keyword_is_exclude
 from .types import DateResult, TextBox
 
 
@@ -19,6 +20,7 @@ class PositionedCandidate:
     center: Tuple[float, float]
     source_text: str
     candidates: List[ScoredCandidate]
+    span: Optional[Tuple[int, int]] = None
 
 
 def _has_position(box: TextBox) -> bool:
@@ -59,6 +61,7 @@ def find_all_candidates(
                     center=bbox_center(box.bbox),
                     source_text=box.text,
                     candidates=scored,
+                    span=token.span,
                 )
             )
     if not positioned:
@@ -113,6 +116,29 @@ def _adjacent_year(box: TextBox, boxes: Sequence[TextBox], year_min: int, year_m
         if d <= 3 * height and (best is None or d < best[0]):
             best = (d, int(m.group(1)))
     return best[1] if best else None
+
+
+def _self_excluded(pc: PositionedCandidate) -> bool:
+    """The box's own text names this date as a non-expiration date. When the
+    same box also carries an expiration keyword ("[제조번호]별도표기
+    [사용기한]2029년 04월"), the keyword nearest to the date decides."""
+    if not has_keyword(pc.source_text, EXCLUDE_KEYWORDS):
+        return False
+    if pc.span is None or not has_keyword(pc.source_text, ANCHOR_KEYWORDS):
+        return True
+    return nearest_keyword_is_exclude(pc.source_text, pc.span)
+
+
+def _latest_ordinal(result: DateResult) -> int:
+    """Latest calendar day the reading can mean, for the "later date first"
+    tie-break: a year-month reading ("2029년 04월") runs to its month end, so it
+    is compared on the same scale as complete dates instead of losing to all
+    of them. Readings without a year stay neutral (0)."""
+    if result.year is None or result.month is None:
+        return 0
+    if result.day is not None:
+        return date(result.year, result.month, result.day).toordinal()
+    return date(result.year, result.month, calendar.monthrange(result.year, result.month)[1]).toordinal()
 
 
 def _is_closer_to(center: Tuple[float, float], own: List[Tuple[float, float]], other: List[Tuple[float, float]]) -> bool:
@@ -176,7 +202,7 @@ def select_final_date(
             # manufacture-date box itself when it happens to sit closer to
             # the (possibly distant) anchor text than the real expiration
             # date box does.
-            self_excluded = has_keyword(pc.source_text, EXCLUDE_KEYWORDS)
+            self_excluded = _self_excluded(pc)
             d_anchor = min_distance(pc.center, anchor_centers)
             d_exclude = min_distance(pc.center, exclude_centers)
             penalty = 0 if d_anchor <= d_exclude else 1
@@ -196,10 +222,7 @@ def select_final_date(
             # closer to the keyword text by coincidence (e.g. a manufacture
             # date on the line right above "소비기한") shouldn't win against
             # a plausible later date only because it's a few pixels nearer.
-            if pc.result.is_complete():
-                recency = -date(pc.result.year, pc.result.month, pc.result.day).toordinal()
-            else:
-                recency = 0
+            recency = -_latest_ordinal(pc.result)
 
             return (int(self_excluded), penalty, not_nearest_to_primary, recency, d_anchor)
 

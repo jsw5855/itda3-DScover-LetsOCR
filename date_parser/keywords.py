@@ -36,6 +36,35 @@ def has_keyword(text: str, keywords: Iterable[str]) -> bool:
     return False
 
 
+def keyword_spans(text: str, keywords: Iterable[str]) -> List[Tuple[int, int]]:
+    """Character spans of every keyword occurrence, matched as in has_keyword."""
+    text_upper = text.upper()
+    spans: List[Tuple[int, int]] = []
+    for kw in keywords:
+        kw_upper = kw.upper()
+        pattern = rf"\b{re.escape(kw_upper)}\b" if kw_upper.isascii() else re.escape(kw_upper)
+        spans.extend(m.span() for m in re.finditer(pattern, text_upper))
+    return spans
+
+
+def nearest_keyword_is_exclude(text: str, span: Tuple[int, int]) -> bool:
+    """Within one OCR box holding both kinds of keyword, the keyword closest to
+    the date (in characters) names it. A preceding keyword wins a tie
+    ("MFD 2025.01.01 EXP 2027.01.01"): labels are usually printed before the date."""
+    best = None
+    for kind, spans in ((True, keyword_spans(text, EXCLUDE_KEYWORDS)), (False, keyword_spans(text, ANCHOR_KEYWORDS))):
+        for start, end in spans:
+            if end <= span[0]:
+                key = (span[0] - end, 0)
+            elif start >= span[1]:
+                key = (start - span[1], 1)
+            else:
+                key = (0, 0)
+            if best is None or key < best[0]:
+                best = (key, kind)
+    return bool(best and best[1])
+
+
 def bbox_center(bbox: Bbox) -> Tuple[float, float]:
     xs = [point[0] for point in bbox]
     ys = [point[1] for point in bbox]

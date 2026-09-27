@@ -1,0 +1,42 @@
+"""Regression cases from the cosmetics development photos (900001-900150).
+
+Each case is OCR text actually produced by the submitted pipeline on that photo
+(full-stage dump, 2026-09-27) with the expected parse_expiration_date() output.
+The cosmetics validation photos (900301-900400) are not used anywhere here.
+"""
+import pytest
+
+from date_parser import parse_expiration_date
+from date_parser.keywords import nearest_keyword_is_exclude
+
+
+def _parse(*lines):
+    boxes = [
+        {"text": t, "confidence": 0.9, "bbox": [[0, 40 * i], [300, 40 * i], [300, 40 * i + 30], [0, 40 * i + 30]]}
+        for i, t in enumerate(lines)
+    ]
+    return parse_expiration_date(boxes)["final_date"]
+
+
+# Rule 1: a box holding both kinds of keyword is judged by the keyword nearest
+# the date, and a year-month reading competes on its month end.
+@pytest.mark.parametrize("lines, expected", [
+    (["크 삼각형 한 면 기준※2 롱 래시,워터프루프 효과 시험2SC안티에이징랩 2023.06.19~21만",
+      "[용량]4.5g [제조번호]별도표기 [사용기한]2029년 04월"], "2029-04-NONE"),   # 900130
+    (["MFD20260611E", "제조번호 및 사용기한별도표기끝xP20290610지"], "2029-06-10"),  # 900082 (subset)
+    # unchanged: the exclude keyword still names its own date
+    (["HFG 2024.05.07제조"], "2024-05-07"),
+    (["제조일자 2025.01.01", "소비기한 2027.01.01"], "2027-01-01"),
+])
+def test_rule1_in_box_keyword_and_partial_recency(lines, expected):
+    assert _parse(*lines) == expected
+
+
+@pytest.mark.parametrize("text, span, expected", [
+    ("[제조번호]별도표기 [사용기한]2029년 04월", (19, 27), False),
+    ("MFD 2025.01.01 EXP 2027.01.01", (4, 14), True),    # tie: the preceding MFD wins
+    ("MFD 2025.01.01 EXP 2027.01.01", (19, 29), False),
+    ("2024.05.07제조 EXP", (0, 10), True),
+])
+def test_nearest_keyword_is_exclude(text, span, expected):
+    assert nearest_keyword_is_exclude(text, span) is expected
