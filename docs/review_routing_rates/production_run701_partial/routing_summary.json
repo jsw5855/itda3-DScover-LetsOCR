@@ -8,7 +8,7 @@
     "labels": "tmp_labels_701.csv",
     "labels_sha256": "2cc22fab12f28e38f2a5011a3c15c214d90b2a02af0a5d4c678befabee8e5593"
   },
-  "code_commit": "a5b15efe4c85f6ca396a70d7db73794c0c55c040",
+  "code_commit": "e56780203806cb02eaa799a37653d9db152c71eb",
   "images": 701,
   "reproducible": 577,
   "unreproducible": {
@@ -442,6 +442,158 @@
         "002917"
       ],
       "candidate": []
+    }
+  },
+  "C_error_magnitude": {
+    "late": {
+      "n": 8,
+      "bins": {
+        "1-7 days": 4,
+        "8-31 days": 1,
+        "32-365 days": 1,
+        "over 1 year": 2
+      },
+      "median_days": 8.5,
+      "cases": [
+        {
+          "image_id": "001515",
+          "pred": "2022-08-18",
+          "truth": "2022-08-16",
+          "days_off": 2
+        },
+        {
+          "image_id": "002125",
+          "pred": "2021-04-24",
+          "truth": "2021-04-21",
+          "days_off": 3
+        },
+        {
+          "image_id": "000233",
+          "pred": "2028-01-18",
+          "truth": "2028-01-13",
+          "days_off": 5
+        },
+        {
+          "image_id": "001587",
+          "pred": "2021-04-27",
+          "truth": "2021-04-20",
+          "days_off": 7
+        },
+        {
+          "image_id": "002524",
+          "pred": "2023-01-25",
+          "truth": "2023-01-15",
+          "days_off": 10
+        },
+        {
+          "image_id": "000844",
+          "pred": "2026-07-03",
+          "truth": "2026-03-07",
+          "days_off": 118
+        },
+        {
+          "image_id": "000466",
+          "pred": "2027-06-07",
+          "truth": "2026-04-11",
+          "days_off": 422
+        },
+        {
+          "image_id": "002917",
+          "pred": "2030-04-21",
+          "truth": "2021-04-30",
+          "days_off": 3278
+        }
+      ]
+    },
+    "early": {
+      "n": 13,
+      "bins": {
+        "1-7 days": 2,
+        "8-31 days": 2,
+        "32-365 days": 4,
+        "over 1 year": 5
+      },
+      "median_days": 272,
+      "cases": [
+        {
+          "image_id": "001658",
+          "pred": "2021-10-20",
+          "truth": "2021-10-22",
+          "days_off": -2
+        },
+        {
+          "image_id": "001852",
+          "pred": "2022-08-13",
+          "truth": "2022-08-18",
+          "days_off": -5
+        },
+        {
+          "image_id": "001932",
+          "pred": "2022-01-02",
+          "truth": "2022-01-22",
+          "days_off": -20
+        },
+        {
+          "image_id": "002829",
+          "pred": "2022-01-02",
+          "truth": "2022-02-01",
+          "days_off": -30
+        },
+        {
+          "image_id": "000143",
+          "pred": "2027-03-06",
+          "truth": "2027-06-03",
+          "days_off": -89
+        },
+        {
+          "image_id": "003218",
+          "pred": "2021-03-16",
+          "truth": "2021-06-16",
+          "days_off": -92
+        },
+        {
+          "image_id": "000422",
+          "pred": "2025-09-10",
+          "truth": "2026-06-09",
+          "days_off": -272
+        },
+        {
+          "image_id": "002552",
+          "pred": "2021-01-22",
+          "truth": "2022-01-22",
+          "days_off": -365
+        },
+        {
+          "image_id": "001964",
+          "pred": "2019-10-10",
+          "truth": "2021-10-09",
+          "days_off": -730
+        },
+        {
+          "image_id": "002034",
+          "pred": "2017-12-20",
+          "truth": "2020-12-17",
+          "days_off": -1093
+        },
+        {
+          "image_id": "001862",
+          "pred": "2018-06-23",
+          "truth": "2023-06-18",
+          "days_off": -1821
+        },
+        {
+          "image_id": "002726",
+          "pred": "2017-03-22",
+          "truth": "2022-03-17",
+          "days_off": -1821
+        },
+        {
+          "image_id": "000231",
+          "pred": "2023-05-27",
+          "truth": "2028-05-27",
+          "days_off": -1827
+        }
+      ]
     }
   },
   "wrong_direction_by_route": {

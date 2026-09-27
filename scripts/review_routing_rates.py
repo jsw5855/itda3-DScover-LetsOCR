@@ -34,6 +34,7 @@ import csv
 import hashlib
 import json
 import math
+from datetime import date
 from pathlib import Path
 import subprocess
 import sys
@@ -139,6 +140,33 @@ def error_direction(pred, truth):
     return "late" if pred > truth else "early"
 
 
+def days_off(pred, truth):
+    """Signed days from truth to prediction (positive = late) when both are full dates, else None."""
+    if pred == truth or "NONE" in pred or "NONE" in truth:
+        return None
+    return (date.fromisoformat(pred) - date.fromisoformat(truth)).days
+
+
+MAGNITUDE_BINS = ((7, "1-7 days"), (31, "8-31 days"), (365, "32-365 days"), (None, "over 1 year"))
+
+
+def magnitude(rows):
+    """Size of the date error for wrong rows with comparable dates, split by direction."""
+    out = {}
+    for direction in ("late", "early"):
+        values = sorted(abs(r["days_off"]) for r in rows if r["error_direction"] == direction)
+        bins = {label: 0 for _, label in MAGNITUDE_BINS}
+        for v in values:
+            bins[next(label for limit, label in MAGNITUDE_BINS if limit is None or v <= limit)] += 1
+        out[direction] = {"n": len(values), "bins": bins,
+                          "median_days": values[len(values) // 2] if len(values) % 2 else
+                          (sum(values[len(values) // 2 - 1:len(values) // 2 + 1]) / 2 if values else None),
+                          "cases": sorted(({"image_id": r["image_id"], "pred": r["pred"], "truth": r["truth"],
+                                            "days_off": r["days_off"]} for r in rows if r["error_direction"] == direction),
+                                          key=lambda c: abs(c["days_off"]))}
+    return out
+
+
 def rate_table(rows, key="route"):
     n = len(rows)
     counts = Counter(r[key] for r in rows)
@@ -225,7 +253,8 @@ def analyze(images, labels_path, cascade):
         row = {**base, "reproducible": True, "stop_stage": method, "q": facts["q"],
                "distinct_dates": "|".join(facts["distinct"]), "pred": prediction["final_date"],
                "truth": truth, "correct": prediction["final_date"] == truth,
-               "error_direction": error_direction(prediction["final_date"], truth)}
+               "error_direction": error_direction(prediction["final_date"], truth),
+               "days_off": days_off(prediction["final_date"], truth)}
         for threshold in SENSITIVITY:
             row[f"route_q{threshold:.2f}"] = route(facts, prediction, threshold)
         row["route"] = row[f"route_q{THRESHOLD:.2f}"]
@@ -252,6 +281,7 @@ def summarize(rows, unreproducible, args):
         "B_route_accuracy_reference": accuracy_table(rows),
         "C_confirm_but_wrong": risk(rows),
         "C_approved_only": risk([r for r in rows if r["label_status"] == "approved"]),
+        "C_error_magnitude": magnitude([r for r in rows if r["route"] == "CONFIRM" and not r["correct"]]),
         "wrong_direction_by_route": {rt: dict(Counter(r["error_direction"] for r in rows if r["route"] == rt and not r["correct"]))
                                      for rt in ROUTES},
         "D_sensitivity_reference_not_policy": {
@@ -302,7 +332,7 @@ def main():
     if args.output is not None:
         args.output.mkdir(parents=True)
         columns = ["image_id", "label_status", "group", "stop_stage", "route", "q", "distinct_dates", "pred", "truth",
-                   "correct", "error_direction", "reproducible", "old_pred", "missing_stage", *[f"route_q{t:.2f}" for t in SENSITIVITY]]
+                   "correct", "error_direction", "days_off", "reproducible", "old_pred", "missing_stage", *[f"route_q{t:.2f}" for t in SENSITIVITY]]
         with (args.output / "routing_rows.csv").open("w", encoding="utf-8-sig", newline="") as stream:
             writer = csv.DictWriter(stream, fieldnames=columns, extrasaction="ignore")
             writer.writeheader()

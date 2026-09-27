@@ -110,3 +110,15 @@ def test_full_stage_raw_source(tmp_path):
     # Low q triggers the production highres retry, which wins on higher q.
     assert (rows[0]["stop_stage"], rows[0]["pred"], rows[0]["route"]) == ("highres_1024_retry", "2026-04-21", "CONFIRM")
     assert rows[0]["error_direction"] == "early"
+
+
+def test_days_off_and_magnitude():
+    assert rr.days_off("2026-05-01", "2026-04-24") == 7
+    assert rr.days_off("2025-04-24", "2026-04-24") == -365
+    assert rr.days_off("2026-04-NONE", "2026-04-24") is None
+    rows = [{"image_id": k, "pred": p, "truth": t, "error_direction": rr.error_direction(p, t), "days_off": rr.days_off(p, t)}
+            for k, p, t in [("a", "2026-05-01", "2026-04-24"), ("b", "2028-04-24", "2026-04-24"), ("c", "2026-03-24", "2026-04-24")]]
+    m = rr.magnitude(rows)
+    assert m["late"]["bins"] == {"1-7 days": 1, "8-31 days": 0, "32-365 days": 0, "over 1 year": 1}
+    assert m["late"]["median_days"] == (7 + 731) / 2
+    assert m["early"]["n"] == 1 and m["early"]["bins"]["8-31 days"] == 1
