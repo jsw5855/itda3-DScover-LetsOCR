@@ -10,7 +10,8 @@ import numpy as np
 from PIL import Image, ImageOps
 
 from date_parser import parse_expiration_date
-from date_parser.select import select_final_date
+from date_parser.keywords import bbox_center
+from date_parser.select import find_all_candidates, select_final_date
 from date_parser.types import TextBox
 
 ROOT = Path(__file__).resolve().parent
@@ -103,27 +104,98 @@ def has_candidate(detections):
     return select_final_date(boxes) is not None
 
 
-def predict_image(engine, path):
+STAGES = ("original_512", "rotation_270", "highres_1024", "clahe")
+# Frozen retry policy: an original_512 date candidate is re-read once at 1024px
+# when its source box recognition confidence is below this, or when the stage
+# holds several distinct date readings.
+RETRY_Q_THRESHOLD = 0.90
+
+
+def stage_result(detections):
+    """Parse one OCR stage into (prediction, evidence).
+
+    evidence is None when the stage has no date candidate (has_candidate is
+    False); otherwise {"q", "M"}: q is the recognition confidence of the box the
+    selected date came from (minimum over boxes with the same text and center),
+    M is whether find_all_candidates yields at least two distinct dates.
+    """
+    boxes = [TextBox.from_dict(item) for item in detections]
+    prediction = parse_expiration_date(boxes)
+    selected = select_final_date(boxes)
+    if selected is None:
+        return prediction, None
+    q = min((box.confidence for box in boxes if box.bbox and box.text == selected.source_text
+             and bbox_center(box.bbox) == selected.center), default=None)
+    distinct = {candidate.result.final_date_string() for candidate in find_all_candidates(boxes)}
+    return prediction, {"q": q, "M": len(distinct) >= 2}
+
+
+def retry_triggered(evidence):
+    """Policy B on an original_512 candidate: q < 0.90 OR M.
+
+    A missing q (source box not found) cannot be trusted, so it also retries.
+    """
+    q = evidence["q"]
+    return q is None or q < RETRY_Q_THRESHOLD or evidence["M"]
+
+
+def prefer_retry(original, highres):
+    """Take the highres reading only with a candidate and strictly higher q; ties keep original."""
+    return (highres is not None and highres["q"] is not None and original["q"] is not None
+            and highres["q"] > original["q"])
+
+
+def run_cascade(run_stage):
+    """Stage control flow, independent of how a stage is produced.
+
+    run_stage(name) -> (prediction, evidence) as from stage_result. Returns
+    (prediction, method, attempted stage names in order).
+    """
+    attempts = []
+
+    def run(name):
+        attempts.append(name)
+        return run_stage(name)
+
+    original, evidence = run("original_512")
+    if evidence is not None:
+        if not retry_triggered(evidence):
+            return original, "original_512", attempts
+        highres, highres_evidence = run("highres_1024")
+        if prefer_retry(evidence, highres_evidence):
+            return highres, "highres_1024_retry", attempts
+        return original, "original_512_retry_kept", attempts
+    # No original candidate: unchanged fallback, first stage with a candidate wins.
+    for name in STAGES[1:]:
+        prediction, stage_evidence = run(name)
+        if stage_evidence is not None:
+            return prediction, name, attempts
+    return original, "original_no_candidate", attempts
+
+
+def predict_image_detailed(engine, path):
     rgb = decode_image(path)
     base = resize_image(rgb, 512)
-    stages = (
-        ("original_512", lambda: base, 512),
-        ("rotation_270", lambda: np.asarray(Image.fromarray(base).rotate(270, expand=True)), 512),
-        ("highres_1024", lambda: resize_image(rgb, 1024), 1024),
-        ("clahe", lambda: apply_clahe(base), 512),
-    )
-    original = None
-    for method, prepare, side in stages:
-        detections = paddle_to_common(engine.predict(
+    stages = {
+        "original_512": (lambda: base, 512),
+        "rotation_270": (lambda: np.asarray(Image.fromarray(base).rotate(270, expand=True)), 512),
+        "highres_1024": (lambda: resize_image(rgb, 1024), 1024),
+        "clahe": (lambda: apply_clahe(base), 512),
+    }
+
+    def run_stage(name):
+        prepare, side = stages[name]
+        return stage_result(paddle_to_common(engine.predict(
             prepare(), text_det_limit_side_len=side,
             text_det_limit_type="max", text_det_box_thresh=0.7,
-        ))
-        prediction = parse_expiration_date(detections)
-        if original is None:
-            original = prediction
-        if has_candidate(detections):
-            return prediction, method
-    return original, "original_no_candidate"
+        )))
+
+    return run_cascade(run_stage)
+
+
+def predict_image(engine, path):
+    prediction, method, _ = predict_image_detailed(engine, path)
+    return prediction, method
 
 
 _WORKER_ENGINE = None
