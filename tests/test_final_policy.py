@@ -66,8 +66,11 @@ def test_c_multiple_distinct_dates_runs_highres_once(image):
     assert attempts == ["original_512", "highres_1024"]
 
 
+# Two complete single-date readings that disagree ask clahe first (vote); with
+# no clahe candidate, the q rule below decides as before.
 def test_d_higher_highres_q_wins(image):
-    assert run(image, [box("2026.04.24", 0.85)], [box("2026.04.21", 0.97)])[:2] == ("2026-04-21", "highres_1024_retry")
+    date, method, attempts = run(image, [box("2026.04.24", 0.85)], [box("2026.04.21", 0.97)], [box("nothing", 0.99)])
+    assert (date, method, attempts) == ("2026-04-21", "highres_1024_retry", ["original_512", "highres_1024", "clahe"])
 
 
 def test_d2_self_anchor_is_not_replaced_by_self_exclude(image):
@@ -81,11 +84,42 @@ def test_d2_self_anchor_is_not_replaced_by_self_exclude(image):
 
 
 def test_e_higher_original_q_kept(image):
-    assert run(image, [box("2026.04.24", 0.85)], [box("2026.04.21", 0.80)])[:2] == ("2026-04-24", "original_512_retry_kept")
+    assert run(image, [box("2026.04.24", 0.85)], [box("2026.04.21", 0.80)], [box("nothing", 0.99)])[:2] == ("2026-04-24", "original_512_retry_kept")
 
 
 def test_f_tie_keeps_original(image):
-    assert run(image, [box("2026.04.24", 0.85)], [box("2026.04.21", 0.85)])[:2] == ("2026-04-24", "original_512_retry_kept")
+    assert run(image, [box("2026.04.24", 0.85)], [box("2026.04.21", 0.85)], [box("nothing", 0.99)])[:2] == ("2026-04-24", "original_512_retry_kept")
+
+
+def test_vote_clahe_agrees_with_original(image):
+    # 900296: "EP 2029.05.18" at 512px, "EP 2025.05.184" (higher q) at 1024px, clahe "DP 2029.05.18".
+    date, method, attempts = run(image, [box("EP 2029.05.18", 0.85)], [box("EP 2025.05.184", 0.90)], [box("DP 2029.05.18", 0.76)])
+    assert (date, method, attempts) == ("2029-05-18", "original_512_retry_kept", ["original_512", "highres_1024", "clahe"])
+
+
+def test_vote_clahe_agrees_with_highres(image):
+    date, method, _ = run(image, [box("2026.04.24", 0.88)], [box("2026.04.21", 0.80)], [box("2026.04.21", 0.70)])
+    assert (date, method) == ("2026-04-21", "highres_1024_retry")
+
+
+def test_no_vote_when_original_saw_two_dates(image):
+    # 000954: the original read manufacture and expiry dates (M); the vote would
+    # let two stages that missed the expiry date outvote it. The q rule decides.
+    original = [box("21.02.05", 0.99), box("21.01.07", 0.99, row=5)]
+    date, method, attempts = run(image, original, [box("21.01.07", 0.90)])
+    assert attempts == ["original_512", "highres_1024"]
+    assert method == "original_512_retry_kept"
+
+
+def test_short_fragment_retries_without_vote(image):
+    # 900146: a confident bare fragment "7.08.22" is re-read at 1024px; the
+    # retry was not triggered by q or M, so clahe is not asked.
+    date, method, attempts = run(image, [box("7.08.22", 0.908)], [box("EXP20280826까 지", 0.969)])
+    assert (date, method, attempts) == ("2028-08-26", "highres_1024_retry", ["original_512", "highres_1024"])
+
+
+def test_long_confident_source_does_not_retry(image):
+    assert run(image, [box("EXP 2026.04.24", 0.95)]) == ("2026-04-24", "original_512", ["original_512"])
 
 
 def test_g_highres_without_candidate_keeps_original(image):
@@ -130,18 +164,8 @@ def test_j_decisions_use_only_ocr_evidence(image, tmp_path):
     # Same pixels under another file name give the same result.
     other = tmp_path / "999999.png"
     Image.open(image).save(other)
-    responses = ([box("2026.04.24", 0.85)], [box("2026.04.21", 0.97)])
+    responses = ([box("2026.04.24", 0.85)], [box("2026.04.21", 0.97)], [box("nothing", 0.99)])
     assert run(image, *responses) == run(other, *responses)
-
-
-def test_short_fragment_retries(image):
-    # 900146: a confident bare fragment "7.08.22" (q >= 0.90, one date) is re-read at 1024px.
-    date, method, attempts = run(image, [box("7.08.22", 0.908)], [box("EXP20280826까 지", 0.969)])
-    assert (date, method, attempts) == ("2028-08-26", "highres_1024_retry", ["original_512", "highres_1024"])
-
-
-def test_long_confident_source_does_not_retry(image):
-    assert run(image, [box("EXP 2026.04.24", 0.95)]) == ("2026-04-24", "original_512", ["original_512"])
 
 
 def test_all_none_final_date_format(image):

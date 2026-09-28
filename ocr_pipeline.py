@@ -174,6 +174,15 @@ def prefer_retry(original, highres):
         return False
     return highres["q"] > original["q"]
 
+def single_date_disagreement(original, evidence, highres, highres_evidence):
+    """Both readings are complete single-date readings that disagree: the same
+    printed date misread in one of them ("2029.05.18" vs "2025.05.184"), not
+    two different printed dates (M), so a third stage can decide."""
+    return (highres_evidence is not None and not evidence["M"] and not highres_evidence["M"]
+            and "NONE" not in original["final_date"] and "NONE" not in highres["final_date"]
+            and original["final_date"] != highres["final_date"])
+
+
 def run_cascade(run_stage):
     """Stage control flow, independent of how a stage is produced.
 
@@ -191,6 +200,12 @@ def run_cascade(run_stage):
         if not retry_triggered(evidence):
             return original, "original_512", attempts
         highres, highres_evidence = run("highres_1024")
+        if uncertain(evidence) and single_date_disagreement(original, evidence, highres, highres_evidence):
+            clahe, clahe_evidence = run("clahe")
+            if clahe_evidence is not None and clahe["final_date"] == original["final_date"]:
+                return original, "original_512_retry_kept", attempts
+            if clahe_evidence is not None and clahe["final_date"] == highres["final_date"]:
+                return highres, "highres_1024_retry", attempts
         if prefer_retry(evidence, highres_evidence):
             return highres, "highres_1024_retry", attempts
         return original, "original_512_retry_kept", attempts
