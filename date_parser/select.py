@@ -38,13 +38,21 @@ def find_all_candidates(
     """Every date interpretation found across all OCR boxes, each keeping its position."""
     positioned: List[PositionedCandidate] = []
     hint = detect_format_hint(box.text for box in boxes)
+    slash_dmy = hint is None and _has_unambiguous_slash_dmy(boxes, year_min, year_max)
     for box in boxes:
         if not _has_position(box):
             continue
         scored_by_token = {}
 
         def has_reading(token):
-            scored_by_token[token] = generate_candidates(token, year_min, year_max, order_hint=hint)
+            token_hint = hint
+            if slash_dmy and len(token.fields) == 3 and all(f.kind == 'num' for f in token.fields):
+                # Transfer only between slash triples with the exact same
+                # numeric fields; dotted or compact codes keep their prior.
+                fields = tuple(f.raw for f in token.fields)
+                if any(m.groups() == fields for m in _SHORT_SLASH_DATE.finditer(box.text)):
+                    token_hint = 'dmy'
+            scored_by_token[token] = generate_candidates(token, year_min, year_max, order_hint=token_hint)
             return bool(scored_by_token[token])
 
         tokens = extract_date_tokens(box.text, accept=has_reading)
@@ -55,6 +63,21 @@ def find_all_candidates(
             tokens = sorted(tokens + extra, key=lambda t: t.span[0])
         for token in tokens:
             scored = scored_by_token[token]
+            if (len(token.fields) == 2 and token.fields[0].kind == 'num'
+                    and len(token.fields[0].raw) == 4
+                    and scored[0].date.year is not None and scored[0].date.month is not None
+                    and scored[0].date.day is None
+                    and re.search(r'20[0-9]{2}[./-][0-9]{2}\s*$', box.text)):
+                day = _right_adjacent_day(box, boxes)
+                if day is not None:
+                    value = scored[0].date
+                    try:
+                        date(value.year, value.month, day)
+                    except ValueError:
+                        pass
+                    else:
+                        scored = [ScoredCandidate(DateResult(value.year, value.month, day),
+                            scored[0].score, ('year', 'month', 'day'))]
             positioned.append(
                 PositionedCandidate(
                     result=scored[0].date,
@@ -64,6 +87,8 @@ def find_all_candidates(
                     span=token.span,
                 )
             )
+    if not positioned:
+        positioned = _anchored_compact_year_month(boxes, year_min, year_max)
     if not positioned:
         positioned = _yearless_candidates(boxes, year_min, year_max)
     if not positioned:
@@ -150,6 +175,81 @@ def _has_expiry_evidence(box: TextBox, end: int, anchor_boxes: Sequence[TextBox]
     height = (max(ys) - min(ys)) or 1.0
     center = bbox_center(box.bbox)
     return any(min_distance(center, [bbox_center(a.bbox)]) <= 3 * height for a in anchor_boxes)
+
+
+def _right_adjacent_day(box, boxes):
+    """Join a separated day only on the same line, with a small physical gap.
+
+    Require its confidence to be at least that of the source date box so the
+    production source confidence does not overstate the assembled reading.
+    Ambiguous neighbors, vertical text and distant numbers are left alone.
+    """
+    left, right = min(p[0] for p in box.bbox), max(p[0] for p in box.bbox)
+    height = max(p[1] for p in box.bbox) - min(p[1] for p in box.bbox)
+    if height <= 0 or right - left <= height:
+        return None
+    cy = bbox_center(box.bbox)[1]
+    matches = []
+    for other in boxes:
+        if other is box or not _has_position(other) or other.confidence < box.confidence:
+            continue
+        if not re.fullmatch(r'(?:0[1-9]|[12][0-9]|3[01])', other.text.strip()):
+            continue
+        gap = min(p[0] for p in other.bbox) - right
+        other_height = max(p[1] for p in other.bbox) - min(p[1] for p in other.bbox)
+        if (0 <= gap <= height and .5 * height <= other_height <= 1.5 * height
+                and abs(bbox_center(other.bbox)[1] - cy) <= .4 * height):
+            matches.append(int(other.text))
+    return matches[0] if len(matches) == 1 else None
+
+
+_SHORT_SLASH_DATE = re.compile(r'(?<![0-9])([0-9]{2})/([0-9]{2})/([0-9]{2})(?![0-9])')
+_LONG_SLASH_DATE = re.compile(r'(?<![0-9])([0-9]{2})/([0-9]{2})/(20[0-9]{2})(?![0-9])')
+
+
+def _has_unambiguous_slash_dmy(boxes, year_min, year_max):
+    found = False
+    for box in boxes:
+        if re.search(r'(?<![0-9])20[0-9]{2}/[0-9]{1,2}/[0-9]{1,2}(?![0-9])', box.text):
+            return False  # Mixed conventions are not a usable format hint.
+        for match in _LONG_SLASH_DATE.finditer(box.text):
+            day, month, year = map(int, match.groups())
+            if 1 <= day <= 12 and 13 <= month <= 31:
+                return False  # An explicit MM/DD/YYYY reference conflicts.
+            if day <= 12 or not year_min <= year <= year_max:
+                continue
+            try:
+                date(year, month, day)
+            except ValueError:
+                continue
+            found = True
+    return found
+
+
+def _anchored_compact_year_month(boxes, year_min, year_max):
+    """Bare YYYYMM needs a nearby standalone expiry label, not a lot guess.
+
+    This is a fallback only: an ordinary dated candidate always takes priority.
+    The label must be within three text heights and aligned on the same line.
+    """
+    labels = [b for b in boxes if _has_position(b)
+              and b.text.strip().rstrip(':. ').upper() in ANCHOR_KEYWORDS]
+    result = []
+    for box in boxes:
+        if not _has_position(box):
+            continue
+        match = re.fullmatch(r'\s*(20[0-9]{2})(0[1-9]|1[0-2])\s*', box.text)
+        if not match or not year_min <= int(match[1]) <= year_max:
+            continue
+        center = bbox_center(box.bbox)
+        height = max(p[1] for p in box.bbox) - min(p[1] for p in box.bbox)
+        if not any(abs(center[1] - bbox_center(b.bbox)[1]) <= height
+                   and min_distance(center, [bbox_center(b.bbox)]) <= 3 * height for b in labels):
+            continue
+        value = DateResult(year=int(match[1]), month=int(match[2]), day=None)
+        result.append(PositionedCandidate(value, center, box.text,
+            [ScoredCandidate(value, 13, ('year', 'month'))]))
+    return result
 
 
 def _yearless_candidates(

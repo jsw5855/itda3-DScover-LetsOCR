@@ -70,6 +70,14 @@ _OPTIONAL_SEP = r"[.\-/\s·×]*"
 # (년/월/일), so the order is read directly off the text rather than assumed.
 _PATTERN_DEFS = [
     (
+        # A standalone DDMM YYYY stamp: the explicit year and whole-box
+        # boundary exclude telephone numbers, copyright ranges and lot text.
+        re.compile(r"\A\s*([0-9]{2})([0-9]{2})\s+(20[0-9]{2})\s*\Z"),
+        ("num", "num", "num"),
+        ("day", "month", "year"),
+        None,
+    ),
+    (
         # Four-digit year with comma separators. Use the same trailing-noise
         # handling as dotted YYYY.MM.DDD; do not admit long numeric runs or
         # start inside an alphanumeric code. Year/order validation is unchanged.
@@ -351,6 +359,22 @@ _C_AS_ZERO_RE = re.compile(r"(?<=[.\-/])[Cc](?=[0-9][.\-/])")
 # "20 21.09.07": OCR split the 4-digit year in two ("2021").
 _SPLIT_YEAR_RE = re.compile(r"(?<![0-9])(20)\s+([0-9]{2})(?=[.\-/][0-9]{1,2}[.\-/][0-9]{1,2}(?![0-9]))")
 
+# A complete box with a four-digit year and a split two-digit day. Whole-box
+# bounds prevent joining a genuine one-digit day to a following time/lot code.
+_SPLIT_DAY_RE = re.compile(
+    r"\A(\s*20[0-9]{2}\s*[.\-/]\s*[0-9]{1,2}\s*[.\-/]\s*)([0-9])\s+([0-9])(\s*)\Z"
+)
+
+# A clock token must not lend its minutes to a following date triple.
+# Do not mask colon-separated date fields (2022.11:02, 2026:07.08).
+_CLOCK_RE = re.compile(r"(?<![0-9A-Za-z.:/\-])(?:[01]?[0-9]|2[0-3]):[0-5][0-9](?::[0-5][0-9])?(?![0-9./\-])")
+
+_SPACED_MONTH = '|'.join(r'\s*'.join(name) for name in MONTH_NAMES)
+_SPLIT_MONTH_RE = re.compile(
+    rf"(?<![0-9A-Za-z])([0-9]{{1,2}})\s*({_SPACED_MONTH})\s*([0-9]{{4}}|[0-9]{{2}})(?![0-9A-Za-z])",
+    re.IGNORECASE,
+)
+
 
 # A year-last date with stray OCR digits glued to the year: "02.10.202907"
 # (the year is always four digits, so the rest is noise). Year-first dates are
@@ -371,6 +395,10 @@ def split_glued(text: str) -> str:
     text = _C_AS_ZERO_RE.sub("0", text)
     text = _SPLIT_YEAR_RE.sub(r"\1\2", text)
     text = _LEADING_NOISE_RE.sub(r"\1 \2", text)
+    text = _SPLIT_DAY_RE.sub(r"\1\2\3\4", text)
+    text = _SPLIT_MONTH_RE.sub(
+        lambda m: m[1] + ' ' + re.sub(r'\s+', '', m[2]) + ' ' + m[3], text
+    )
     text = _GLUED_DATE_RE.sub(r"\1 ", text)
     text = _GLUED_TIME_RE.sub(r"\1 ", text)
     return _GLUED_NOISE_DMY_RE.sub(r"\1 ", text)
@@ -418,6 +446,7 @@ def extract_date_tokens(text: str, accept: Optional[Callable[[RawDateToken], boo
     inside it ("2026. 01" as year+month).
     """
     text = split_glued(text)
+    text = _CLOCK_RE.sub(lambda m: '#' * len(m.group()), text)
     claimed: List[Tuple[int, int]] = []
     tokens: List[RawDateToken] = []
     for pattern, kinds, role_universe, fixed_roles in _PATTERN_DEFS:

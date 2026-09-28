@@ -129,6 +129,7 @@ def stage_result(detections):
     center), M is whether find_all_candidates yields at least two distinct
     dates, short is whether that box holds at most SHORT_SOURCE_CHARS
     non-space characters (a bare fragment such as "7.08.22", no keyword).
+    Selected/candidate dates and source keyword flags support retry comparison.
     """
     boxes = [TextBox.from_dict(item) for item in detections]
     prediction = parse_expiration_date(boxes)
@@ -146,6 +147,8 @@ def stage_result(detections):
         "short": len("".join(selected.source_text.split())) <= SHORT_SOURCE_CHARS,
         "self_anchor": self_anchor and not self_exclude,
         "self_exclude": self_exclude and not self_anchor,
+        "selected_date": selected.result.final_date_string(),
+        "candidate_dates": sorted(distinct),
     }
 
 
@@ -171,6 +174,23 @@ def prefer_retry(original, highres):
     if highres is None or highres["q"] is None or original["q"] is None:
         return False
     if original.get("self_anchor", False) and highres.get("self_exclude", False):
+        return False
+    # Higher recognition confidence on an already-rejected earlier date is
+    # not evidence that the later expiry disappeared from the package. Keep
+    # the original when highres merely drops that expiry and repeats the
+    # original's other date, unless highres explicitly anchors it. Completing
+    # an earlier year/month is the same case, but a same-month day correction
+    # is not: it can be a legitimate refinement of the selected expiry.
+    old_date = original.get("selected_date", "NONE")
+    new_date = highres.get("selected_date", "NONE")
+    if (original["M"] and not highres["M"]
+            and not original.get("self_exclude", False)
+            and not highres.get("self_anchor", False)
+            and "NONE" not in old_date and "NONE" not in new_date
+            and new_date < old_date
+            and (new_date in original.get("candidate_dates", ())
+                 or (new_date[:7] < old_date[:7]
+                     and new_date[:7] + '-NONE' in original.get("candidate_dates", ())))):
         return False
     return highres["q"] > original["q"]
 
