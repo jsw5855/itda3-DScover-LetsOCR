@@ -4,7 +4,7 @@ from datetime import date
 from itertools import permutations
 from typing import List, Optional, Sequence, Tuple
 
-from .extract import MONTH_NAMES, RawDateToken, RawField, normalize_confusable
+from .extract import (MONTH_NAMES, RawDateToken, RawField, normalize_confusable, normalize_month_name, normalize_month_date_num)
 from .types import DateResult
 
 # Widened from the 150-image label sample (observed range 2018-2028), with
@@ -58,10 +58,15 @@ class ScoredCandidate:
 
 
 def _assign_role(role: str, field: RawField, year_min: int, year_max: int) -> Optional[int]:
-    if field.kind == "month_name":
-        return MONTH_NAMES[field.raw.upper()] if role == "month" else None
+    if field.kind in ("month_name", "month_name_confusable"):
+        if role != "month":
+            return None
+        return MONTH_NAMES.get(normalize_month_name(field.raw))
 
-    num = normalize_confusable(field.raw)
+    if field.kind == "month_date_num":
+        num = normalize_month_date_num(field.raw)
+    else:
+        num = normalize_confusable(field.raw)
     if not num.isdigit():
         return None
     n = int(num)
@@ -132,7 +137,7 @@ _DMY_HINT_ORDER_PRIOR = {
 
 
 def _score(fields: Sequence[RawField], perm: Tuple[str, ...], order_hint: Optional[str] = None) -> float:
-    if any(f.kind == "month_name" for f in fields):
+    if any(f.kind in ("month_name", "month_name_confusable") for f in fields):
         table = _MONTH_NAME_ORDER_PRIOR
     elif order_hint == "dmy":
         table = _DMY_HINT_ORDER_PRIOR
@@ -169,7 +174,7 @@ def generate_candidates(
         perms = list(permutations(token.role_universe))
 
     for perm in perms:
-        month_name_positions = [i for i, f in enumerate(token.fields) if f.kind == "month_name"]
+        month_name_positions = [i for i, f in enumerate(token.fields) if f.kind in ("month_name", "month_name_confusable")]
         if any(perm[i] != "month" for i in month_name_positions):
             continue
         candidate, is_degraded = _build_candidate(token.fields, perm, year_min, year_max)

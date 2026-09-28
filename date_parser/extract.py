@@ -12,6 +12,30 @@ MONTH_NAMES = {
 }
 _MONTH_RE = "|".join(MONTH_NAMES)
 
+# Narrow OCR-confusable forms observed repeatedly in actual date detections.
+# Keep these separate from _MONTH_RE so generic month-name parsing remains strict.
+_MONTH_CONFUSABLE_RE = r"(?:0CT|AU6)"
+_MONTH_CONFUSABLE_MAP = {
+    "0CT": "OCT",
+    "AU6": "AUG",
+}
+
+# Likewise, i/I/l -> 1 is accepted only inside the confusable-month patterns
+# below. Do not add these characters to the global DIGIT rule.
+_MONTH_DATE_DIGIT = r"[0-9OoUuiIl]"
+
+
+def normalize_month_name(raw: str) -> str:
+    upper = raw.upper()
+    return _MONTH_CONFUSABLE_MAP.get(upper, upper)
+
+
+def normalize_month_date_num(raw: str) -> str:
+    return normalize_confusable(raw).translate(str.maketrans({
+        "i": "1", "I": "1", "l": "1",
+    }))
+
+
 CONFUSABLE_MAP = str.maketrans({"O": "0", "o": "0", "U": "0", "u": "0"})
 
 
@@ -71,6 +95,33 @@ _PATTERN_DEFS = [
         ("num", "num"),
         ("month", "day"),
         ("month", "day"),
+    ),
+    (
+        # OCR-confusable month name with separators, e.g. "1i 0ct/2021",
+        # "10 AU6 2022". The recognized month-like token is the strong anchor
+        # that makes the local i/I/l -> 1 repair safe.
+        re.compile(
+            rf"(?<![0-9A-Za-z])({_MONTH_DATE_DIGIT}{{1,2}})"
+            rf"{_SEP}({_MONTH_CONFUSABLE_RE})"
+            rf"{_SEP}({_MONTH_DATE_DIGIT}{{2,4}})(?![0-9A-Za-z])",
+            re.IGNORECASE,
+        ),
+        ("month_date_num", "month_name_confusable", "month_date_num"),
+        ("year", "month", "day"),
+        None,
+    ),
+    (
+        # Same repair when OCR glues day/month/year, e.g. "280ct2023".
+        re.compile(
+            rf"(?<![0-9A-Za-z])({_MONTH_DATE_DIGIT}{{1,2}})"
+            rf"({_MONTH_CONFUSABLE_RE})"
+            rf"({_MONTH_DATE_DIGIT}{{2}}|{_MONTH_DATE_DIGIT}{{4}})"
+            rf"(?![0-9A-Za-z])",
+            re.IGNORECASE,
+        ),
+        ("month_date_num", "month_name_confusable", "month_date_num"),
+        ("year", "month", "day"),
+        None,
     ),
     (
         re.compile(rf"(?<!\d)(\d{{1,2}}){_SEP}({_MONTH_RE}){_SEP}(\d{{2,4}})(?!\d)", re.IGNORECASE),
