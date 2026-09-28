@@ -217,6 +217,11 @@ def select_final_date(
     positioned = find_all_candidates(boxes, year_min, year_max)
     if not positioned:
         return None
+    # Every date the stage found is named by its own box as a manufacture /
+    # packaging date ("PROD 02/2021", "HFG 2024.05.07제조"): the expiration date
+    # was not read, so report no candidate instead of the manufacture date.
+    if all(_self_excluded(pc) for pc in positioned):
+        return None
 
     positionable_boxes = [b for b in boxes if _has_position(b)]
     anchor_centers = [bbox_center(b.bbox) for b in positionable_boxes if has_keyword(b.text, ANCHOR_KEYWORDS)]

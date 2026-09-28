@@ -24,8 +24,8 @@ def _parse(*lines):
     (["크 삼각형 한 면 기준※2 롱 래시,워터프루프 효과 시험2SC안티에이징랩 2023.06.19~21만",
       "[용량]4.5g [제조번호]별도표기 [사용기한]2029년 04월"], "2029-04-NONE"),   # 900130
     (["MFD20260611E", "제조번호 및 사용기한별도표기끝xP20290610지"], "2029-06-10"),  # 900082 (subset)
-    # unchanged: the exclude keyword still names its own date
-    (["HFG 2024.05.07제조"], "2024-05-07"),
+    # a box naming its own date as a manufacture date keeps losing to a real expiry date
+    (["HFG 2024.05.07제조", "EXP 2026.11.06"], "2026-11-06"),
     (["제조일자 2025.01.01", "소비기한 2027.01.01"], "2027-01-01"),
 ])
 def test_rule1_in_box_keyword_and_partial_recency(lines, expected):
@@ -72,4 +72,18 @@ def test_rule2_year_never_middle(lines, expected):
     (["EXP 2027.03.01", "202812"], "2027-03-01"),
 ])
 def test_rule3_six_digit_fallback(lines, expected):
+    assert _parse(*lines) == expected
+
+
+# Rule 4: when every candidate is named as a manufacture / packaging date, the
+# expiration date was not read: no candidate (the cascade moves on; NONE if
+# nothing else is found) instead of reporting the manufacture date.
+@pytest.mark.parametrize("lines, expected", [
+    (["DE68S", "HFG 2024.05.07제조", "EXP 2026.106 ", "8 809576 260618"], "NONE"),   # 900026, 1st stage
+    (["PROD 02/2021"], "NONE"),
+    (["제조2020.11.27"], "NONE"),                                                       # food 001686, 1st stage
+    # unchanged when a non-manufacture candidate exists
+    (["PROD 02/2021", "EXP 02/2024"], "2024-02-NONE"),
+])
+def test_rule4_manufacture_only_is_no_candidate(lines, expected):
     assert _parse(*lines) == expected
