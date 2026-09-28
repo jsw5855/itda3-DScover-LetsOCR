@@ -276,6 +276,26 @@ def _pick_manufacture_reference(
     return manufacture_side[0].result
 
 
+def _earliest_of_labelled_set(positioned: List[PositionedCandidate]) -> Optional[PositionedCandidate]:
+    """A set of products: two or more different complete dates, each in its
+    own box, each box naming its date with the same expiry keyword and no
+    manufacture keyword ("본품 사용기한2029-03-26" / "토너패드사용기한2029-07-10").
+    The earliest one limits the whole item."""
+    if len(positioned) < 2 or len({pc.source_text for pc in positioned}) != len(positioned):
+        return None
+    kinds = set()
+    for pc in positioned:
+        if not pc.result.is_complete() or has_keyword(pc.source_text, EXCLUDE_KEYWORDS):
+            return None
+        found = frozenset(k for k in ANCHOR_KEYWORDS if has_keyword(pc.source_text, [k]))
+        if not found:
+            return None
+        kinds.add(found)
+    if len(kinds) != 1 or len({pc.result.final_date_string() for pc in positioned}) < 2:
+        return None
+    return min(positioned, key=lambda pc: date(pc.result.year, pc.result.month, pc.result.day))
+
+
 def select_final_date(
     boxes: Sequence[TextBox], year_min: int = DEFAULT_YEAR_MIN, year_max: int = DEFAULT_YEAR_MAX
 ) -> Optional[PositionedCandidate]:
@@ -289,6 +309,10 @@ def select_final_date(
     # was not read, so report no candidate instead of the manufacture date.
     if all(_self_excluded(pc) for pc in positioned):
         return _period_from_manufacture(boxes, positioned)
+
+    set_pick = _earliest_of_labelled_set(positioned)
+    if set_pick is not None:
+        return set_pick
 
     positionable_boxes = [b for b in boxes if _has_position(b)]
     anchor_centers = [bbox_center(b.bbox) for b in positionable_boxes if has_keyword(b.text, ANCHOR_KEYWORDS)]

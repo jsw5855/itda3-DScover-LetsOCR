@@ -160,3 +160,19 @@ def test_rule6_padded_eight_digits(lines, expected):
 ])
 def test_rule8_year_last_glued_noise(lines, expected):
     assert _parse(*lines) == expected
+
+
+# Rule 9: a set of products - different complete dates, each in its own box
+# with the same expiry keyword and no manufacture keyword - reports the
+# earliest one (team label rule, 2026-09-28).
+@pytest.mark.parametrize("lines, expected", [
+    (["8800346520741", "본품 80m사용기한2029-03-26", "토너패드사용기한2029-07-10"], "2029-03-26"),   # 900279
+    # not touched
+    (["제조일자", "소비기한", "2025.10.032025.10.12까지"], "2025-10-12"),        # food 000686: one box
+    (["NF6: 20260109EXP: 20290108"], "2029-01-08"),                              # 900099: one box
+    (["유통기한 2025.01.01", "소비기한 2025.03.01"], "2025-03-01"),              # 소비기한 priority, not earliest
+    (["MFD 2026.01.01", "EXP 2029.01.01"], "2029-01-01"),                        # manufacture + expiry
+    (["2026.01.01", "2029.01.01"], "2029-01-01"),                                # no keyword: latest
+])
+def test_rule9_labelled_set_earliest(lines, expected):
+    assert _parse(*lines) == expected
