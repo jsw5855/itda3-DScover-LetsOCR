@@ -10,7 +10,12 @@ import numpy as np
 from PIL import Image, ImageOps
 
 from date_parser import parse_expiration_date
-from date_parser.keywords import bbox_center
+from date_parser.keywords import (
+    ANCHOR_KEYWORDS,
+    EXCLUDE_KEYWORDS,
+    bbox_center,
+    has_keyword,
+)
 from date_parser.select import find_all_candidates, select_final_date
 from date_parser.types import TextBox
 
@@ -127,7 +132,14 @@ def stage_result(detections):
     q = min((box.confidence for box in boxes if box.bbox and box.text == selected.source_text
              and bbox_center(box.bbox) == selected.center), default=None)
     distinct = {candidate.result.final_date_string() for candidate in find_all_candidates(boxes)}
-    return prediction, {"q": q, "M": len(distinct) >= 2}
+    self_anchor = has_keyword(selected.source_text, ANCHOR_KEYWORDS)
+    self_exclude = has_keyword(selected.source_text, EXCLUDE_KEYWORDS)
+    return prediction, {
+        "q": q,
+        "M": len(distinct) >= 2,
+        "self_anchor": self_anchor and not self_exclude,
+        "self_exclude": self_exclude and not self_anchor,
+    }
 
 
 def retry_triggered(evidence):
@@ -140,10 +152,15 @@ def retry_triggered(evidence):
 
 
 def prefer_retry(original, highres):
-    """Take the highres reading only with a candidate and strictly higher q; ties keep original."""
-    return (highres is not None and highres["q"] is not None and original["q"] is not None
-            and highres["q"] > original["q"])
-
+    """Take highres only when it has strictly higher q, except when doing so
+    would replace a self-anchored expiration reading with a self-excluded
+    manufacture/non-expiration reading.
+    """
+    if highres is None or highres["q"] is None or original["q"] is None:
+        return False
+    if original.get("self_anchor", False) and highres.get("self_exclude", False):
+        return False
+    return highres["q"] > original["q"]
 
 def run_cascade(run_stage):
     """Stage control flow, independent of how a stage is produced.
