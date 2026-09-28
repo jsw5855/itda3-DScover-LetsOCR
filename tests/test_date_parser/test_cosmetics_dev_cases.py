@@ -87,3 +87,20 @@ def test_rule3_six_digit_fallback(lines, expected):
 ])
 def test_rule4_manufacture_only_is_no_candidate(lines, expected):
     assert _parse(*lines) == expected
+
+
+# Rule 5: "제조일로부터 N년/개월/일(까지)" with only a manufacture date read:
+# expiry = manufacture date + period (month end clamped).
+@pytest.mark.parametrize("lines, expected", [
+    (["제조2020.11.27", "직품의유성자제소금유통기한", "제조일로부터 5년까지"], "2025-11-27"),  # food 001686
+    (["제조일자 2025.01.10", "제조일로부터 18개월까지"], "2026-07-10"),
+    (["제조일자 2025.01.10", "제조일로부터 90일"], "2025-04-10"),
+    (["제조 2024.02.29", "제조일로부터 1년"], "2025-02-28"),
+    (["제조 2026년 02월", "제조일로부터 5년"], "2031-02-NONE"),
+    # a printed expiry date still wins over a computed one
+    (["제조2020.11.27", "유통기한 2025.11.20", "제조일로부터 5년까지"], "2025-11-20"),
+    # no period stated: rule 4 applies
+    (["제조2020.11.27"], "NONE"),
+])
+def test_rule5_period_from_manufacture(lines, expected):
+    assert _parse(*lines) == expected

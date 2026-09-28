@@ -3,7 +3,7 @@ from __future__ import annotations
 import calendar
 import re
 from dataclasses import dataclass
-from datetime import date
+from datetime import date, timedelta
 from typing import List, Optional, Sequence, Tuple
 
 from .crossref import apply_manufacture_constraint
@@ -165,6 +165,37 @@ def _adjacent_year(box: TextBox, boxes: Sequence[TextBox], year_min: int, year_m
     return best[1] if best else None
 
 
+# "유통기한: 제조일로부터 5년까지" - the package states the expiry as a period
+# from the manufacture date instead of printing it.
+_PERIOD_FROM_MANUFACTURE_RE = re.compile(r"제조일\s*로\s*부터\s*([0-9]{1,2})\s*(년|개월|일)")
+
+
+def _period_from_manufacture(
+    boxes: Sequence[TextBox], positioned: List[PositionedCandidate]
+) -> Optional[PositionedCandidate]:
+    """Only reached when every candidate is a manufacture date. With a stated
+    period, expiry = manufacture date + period; otherwise no candidate."""
+    periods = {m.groups() for b in boxes for m in _PERIOD_FROM_MANUFACTURE_RE.finditer(b.text)}
+    bases = {pc.result for pc in positioned if pc.result.year is not None and pc.result.month is not None}
+    if len(periods) != 1 or len(bases) != 1:
+        return None
+    (amount, unit), base = periods.pop(), bases.pop()
+    n = int(amount)
+    if unit == "일":
+        if not base.is_complete():
+            return None
+        d = date(base.year, base.month, base.day) + timedelta(days=n)
+        result = DateResult(year=d.year, month=d.month, day=d.day)
+    else:
+        months = base.month - 1 + (n * 12 if unit == "년" else n)
+        year, month = base.year + months // 12, months % 12 + 1
+        day = None if base.day is None else min(base.day, calendar.monthrange(year, month)[1])
+        result = DateResult(year=year, month=month, day=day)
+    source = next(pc for pc in positioned if pc.result == base)
+    return PositionedCandidate(result=result, center=source.center, source_text=source.source_text,
+                               candidates=[ScoredCandidate(result, 0, ("year", "month", "day"))], span=source.span)
+
+
 def _self_excluded(pc: PositionedCandidate) -> bool:
     """The box's own text names this date as a non-expiration date. When the
     same box also carries an expiration keyword ("[제조번호]별도표기
@@ -221,7 +252,7 @@ def select_final_date(
     # packaging date ("PROD 02/2021", "HFG 2024.05.07제조"): the expiration date
     # was not read, so report no candidate instead of the manufacture date.
     if all(_self_excluded(pc) for pc in positioned):
-        return None
+        return _period_from_manufacture(boxes, positioned)
 
     positionable_boxes = [b for b in boxes if _has_position(b)]
     anchor_centers = [bbox_center(b.bbox) for b in positionable_boxes if has_keyword(b.text, ANCHOR_KEYWORDS)]
