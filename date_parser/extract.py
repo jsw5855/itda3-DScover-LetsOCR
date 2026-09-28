@@ -301,6 +301,12 @@ _C_AS_ZERO_RE = re.compile(r"(?<=[.\-/])[Cc](?=[0-9][.\-/])")
 _SPLIT_YEAR_RE = re.compile(r"(?<![0-9])(20)\s+([0-9]{2})(?=[.\-/][0-9]{1,2}[.\-/][0-9]{1,2}(?![0-9]))")
 
 
+# A year-last date with stray OCR digits glued to the year: "02.10.202907"
+# (the year is always four digits, so the rest is noise). Year-first dates are
+# not split: "2022.01.0772" was really the 3rd, so a partial reading is safer.
+_GLUED_NOISE_DMY_RE = re.compile(r"(?<![0-9])([0-9]{1,2}\s*[.\-/]\s*[0-9]{1,2}\s*[.\-/]\s*20[0-9]{2})(?=[0-9])")
+
+
 def split_glued(text: str) -> str:
     """Insert a space where OCR glued a full YYYY.MM.DD date to what follows:
     another full date ("2025.10.032025.10.12까지") or a time
@@ -309,7 +315,8 @@ def split_glued(text: str) -> str:
     text = _C_AS_ZERO_RE.sub("0", text)
     text = _SPLIT_YEAR_RE.sub(r"\1\2", text)
     text = _GLUED_DATE_RE.sub(r"\1 ", text)
-    return _GLUED_TIME_RE.sub(r"\1 ", text)
+    text = _GLUED_TIME_RE.sub(r"\1 ", text)
+    return _GLUED_NOISE_DMY_RE.sub(r"\1 ", text)
 
 
 def _trim_trailing_noise(fields: Tuple[RawField, ...]) -> Tuple[RawField, ...]:

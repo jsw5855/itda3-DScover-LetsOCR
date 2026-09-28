@@ -146,3 +146,17 @@ def test_rule7_keyword_boundaries(text, keywords, expected):
 ])
 def test_rule6_padded_eight_digits(lines, expected):
     assert _parse(*lines) == expected
+
+
+# Rule 8: a year-last date with stray digits glued to its four-digit year.
+# Year-first dates are not split: the extra digits may sit before the real day.
+@pytest.mark.parametrize("lines, expected", [
+    (["F10830 8", "EXP 02.10.202907!"], "2029-10-02"),   # 900005, 1st stage
+    (["EXP.01.04.202710"], "2027-04-01"),                # 900158, highres stage
+    # not touched
+    (["2022.01.0772"], "2022-01-NONE"),                  # food 002148: truth 2022-01-03
+    (["EXP-2029.05.2171지"], "2029-05-NONE"),             # 900071 highres: truth 2029-05-17
+    (["02.10.2029"], "2029-10-02"),                      # no noise: existing path
+])
+def test_rule8_year_last_glued_noise(lines, expected):
+    assert _parse(*lines) == expected
