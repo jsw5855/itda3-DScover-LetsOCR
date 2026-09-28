@@ -229,11 +229,19 @@ def run_cascade(run_stage):
         if prefer_retry(evidence, highres_evidence):
             return highres, "highres_1024_retry", attempts
         return original, "original_512_retry_kept", attempts
-    # No original candidate: unchanged fallback, first stage with a candidate wins.
+    # No original candidate: the first fallback stage with a complete date wins;
+    # a partial date is kept only if no later stage completes it.
+    partial = None
     for name in STAGES[1:]:
         prediction, stage_evidence = run(name)
-        if stage_evidence is not None:
+        if stage_evidence is None:
+            continue
+        if "NONE" not in prediction["final_date"]:
             return prediction, name, attempts
+        if partial is None:
+            partial = (prediction, name)
+    if partial is not None:
+        return partial[0], partial[1], attempts
     return original, "original_no_candidate", attempts
 
 

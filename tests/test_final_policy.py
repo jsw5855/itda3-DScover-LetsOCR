@@ -168,6 +168,25 @@ def test_j_decisions_use_only_ocr_evidence(image, tmp_path):
     assert run(image, *responses) == run(other, *responses)
 
 
+def test_fallback_partial_is_completed_by_a_later_stage(image):
+    # 002148: no original candidate; highres reads only "2022.01.0772" (day
+    # unreadable -> 2022-01-NONE), clahe reads "2022.01.032" -> 2022-01-03.
+    responses = [[box("nothing", 0.99)], [box("nothing", 0.99)], [box("2022.01.0772", 0.9)], [box("2022.01.032", 0.9)]]
+    date, method, attempts = run(image, *responses)
+    assert (date, method, attempts) == ("2022-01-03", "clahe", list(pipeline.STAGES))
+
+
+def test_fallback_partial_kept_when_nothing_completes_it(image):
+    responses = [[box("nothing", 0.99)], [box("2026.03", 0.9)], [box("nothing", 0.99)], [box("nothing", 0.99)]]
+    date, method, attempts = run(image, *responses)
+    assert (date, method, attempts) == ("2026-03-NONE", "rotation_270", list(pipeline.STAGES))
+
+
+def test_fallback_complete_date_still_stops_early(image):
+    responses = [[box("nothing", 0.99)], [box("2026.03.14", 0.9)]]
+    assert run(image, *responses) == ("2026-03-14", "rotation_270", ["original_512", "rotation_270"])
+
+
 def test_all_none_final_date_format(image):
     date, _, _ = run(image, *[[box("nothing", 0.99)]] * 4)
     assert date == "NONE"
