@@ -307,6 +307,11 @@ _SPLIT_YEAR_RE = re.compile(r"(?<![0-9])(20)\s+([0-9]{2})(?=[.\-/][0-9]{1,2}[.\-
 _GLUED_NOISE_DMY_RE = re.compile(r"(?<![0-9])([0-9]{1,2}\s*[.\-/]\s*[0-9]{1,2}\s*[.\-/]\s*20[0-9]{2})(?=[0-9])")
 
 
+# One stray digit before a full year-first date that ends in 까지:
+# "12025.12.01까지" -> "1 2025.12.01까지".
+_LEADING_NOISE_RE = re.compile(r"(?<![0-9])([0-9])(20[0-9]{2}[.\-/][0-9]{1,2}[.\-/][0-9]{2})(?=\s*[가-힣]?지)")
+
+
 def split_glued(text: str) -> str:
     """Insert a space where OCR glued a full YYYY.MM.DD date to what follows:
     another full date ("2025.10.032025.10.12까지") or a time
@@ -314,6 +319,7 @@ def split_glued(text: str) -> str:
     every date pattern fail."""
     text = _C_AS_ZERO_RE.sub("0", text)
     text = _SPLIT_YEAR_RE.sub(r"\1\2", text)
+    text = _LEADING_NOISE_RE.sub(r"\1 \2", text)
     text = _GLUED_DATE_RE.sub(r"\1 ", text)
     text = _GLUED_TIME_RE.sub(r"\1 ", text)
     return _GLUED_NOISE_DMY_RE.sub(r"\1 ", text)

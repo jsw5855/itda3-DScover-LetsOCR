@@ -186,3 +186,16 @@ def test_rule9_labelled_set_earliest(lines, expected):
 ])
 def test_rule10_fluid_ounces_not_a_date(lines, expected):
     assert _parse(*lines) == expected
+
+
+# Rule 11: one stray digit (or a lot code's last digit) glued before a full
+# year-first date that ends in 까지.
+@pytest.mark.parametrize("lines, expected", [
+    (["12025.12.01까지"], "2025-12-01"),                 # 900030, clahe stage
+    (["E26L12027.11.25지"], "2027-11-25"),               # 900089, 1st stage
+    # not touched
+    (["12025.12.01"], "NONE"),                          # no 까지: stays unread
+    (["2025.12.01까지"], "2025-12-01"),                  # existing path
+])
+def test_rule11_leading_stray_digit(lines, expected):
+    assert _parse(*lines) == expected
