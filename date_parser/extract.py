@@ -414,10 +414,11 @@ def extract_month_yy_tokens(text: str, taken: List[Tuple[int, int]]) -> List[Raw
 
 # Year-less month.day ("01.24 A", "02.12까지", "03.13. 13:47"), printed on
 # Korean dairy products. Both parts must be two digits, the separator must be
-# a dot (a colon is a time) and no unit may follow ("3.60g", "12.50%").
+# a dot (a colon is a time) and no unit may follow ("3.60g", "12.50%",
+# "10.14 FL OZ").
 # find_all_candidates() only falls back to these when the image has no other
 # date candidate at all.
-_UNIT = r"(?:g|mg|kg|ml|mL|l|L|kcal|Kcal|%|원|개|cm|mm)"
+_UNIT = r"(?:g|mg|kg|ml|mL|l|L|kcal|Kcal|%|원|개|cm|mm|FL|fl|OZ|oz)"
 _YEARLESS_MD_RE = re.compile(
     rf"(?<![0-9.,:])(0[1-9]|1[0-2])\s?\.\s?(0[1-9]|[12][0-9]|3[01])(?![0-9])(?!\s?{_UNIT}(?![A-Za-z]))"
 )

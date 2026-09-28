@@ -176,3 +176,13 @@ def test_rule8_year_last_glued_noise(lines, expected):
 ])
 def test_rule9_labelled_set_earliest(lines, expected):
     assert _parse(*lines) == expected
+
+
+# Rule 10: a volume in fluid ounces is not a year-less month.day.
+@pytest.mark.parametrize("lines, expected", [
+    (["300ML I NET 10.14 FL 02", "알로에 97% 수딩 젤"], "NONE"),     # 900206
+    (["NET 3.38 fl.oz"], "NONE"),
+    (["02.12까지"], "NONE-02-12"),                                  # year-less date: existing path
+])
+def test_rule10_fluid_ounces_not_a_date(lines, expected):
+    assert _parse(*lines) == expected
