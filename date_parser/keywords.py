@@ -20,6 +20,13 @@ PRIMARY_ANCHOR_KEYWORDS = ["소비기한", "사용기한"]
 EXCLUDE_KEYWORDS = ["제조일자", "제조년월일", "제조일", "포장일자", "포장일", "산란일자", "산란일", "제조", "PRO", "PROD", "PRD", "MFD", "PACK", "MFG"]
 
 
+def _ascii_pattern(keyword_upper: str) -> str:
+    """ASCII keywords must not sit inside a longer word ("PRO" in "PROTEIN"),
+    but may touch digits: printers glue them to the date and lot code
+    ("MFD20260617부터", "FB001MFD20260909", "EXP20290616까지")."""
+    return rf"(?<![A-Z]){re.escape(keyword_upper)}(?![A-Z])"
+
+
 def has_keyword(text: str, keywords: Iterable[str]) -> bool:
     """Substring match for Korean keywords (unambiguous enough on their own);
     word-boundary match for ASCII ones, since short abbreviations like "PRO"
@@ -29,7 +36,7 @@ def has_keyword(text: str, keywords: Iterable[str]) -> bool:
     for kw in keywords:
         kw_upper = kw.upper()
         if kw_upper.isascii():
-            if re.search(rf"\b{re.escape(kw_upper)}\b", text_upper):
+            if re.search(_ascii_pattern(kw_upper), text_upper):
                 return True
         elif kw_upper in text_upper:
             return True
@@ -42,7 +49,7 @@ def keyword_spans(text: str, keywords: Iterable[str]) -> List[Tuple[int, int]]:
     spans: List[Tuple[int, int]] = []
     for kw in keywords:
         kw_upper = kw.upper()
-        pattern = rf"\b{re.escape(kw_upper)}\b" if kw_upper.isascii() else re.escape(kw_upper)
+        pattern = _ascii_pattern(kw_upper) if kw_upper.isascii() else re.escape(kw_upper)
         spans.extend(m.span() for m in re.finditer(pattern, text_upper))
     return spans
 

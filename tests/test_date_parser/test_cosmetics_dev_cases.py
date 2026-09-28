@@ -1,13 +1,13 @@
-"""Regression cases from the cosmetics development photos (900001-900150).
+"""Regression cases from the cosmetics development photos (900001-900300).
 
 Each case is OCR text actually produced by the submitted pipeline on that photo
-(full-stage dump, 2026-09-27) with the expected parse_expiration_date() output.
+(full-stage dumps, 2026-09-27 and 2026-09-28) with the expected parse_expiration_date() output.
 The cosmetics validation photos (900301-900400) are not used anywhere here.
 """
 import pytest
 
 from date_parser import parse_expiration_date
-from date_parser.keywords import nearest_keyword_is_exclude
+from date_parser.keywords import ANCHOR_KEYWORDS, EXCLUDE_KEYWORDS, has_keyword, nearest_keyword_is_exclude
 
 
 def _parse(*lines):
@@ -104,3 +104,28 @@ def test_rule4_manufacture_only_is_no_candidate(lines, expected):
 ])
 def test_rule5_period_from_manufacture(lines, expected):
     assert _parse(*lines) == expected
+
+
+# Rule 7: an ASCII keyword glued to digits still counts ("MFD20260617부터",
+# "FB001MFD20260909조"); it must not sit inside a longer word ("PROTEIN").
+@pytest.mark.parametrize("lines, expected", [
+    (["FB001MFD20260909조"], "NONE"),                                        # 900152: manufacture date only
+    (["KF17C", "MFD20260617부터", "사용기한 별도표기"], "NONE"),               # 900260, highres stage
+    (["F6024", "MFD20260707부터", "EXP28298786까지"], "NONE"),                # 900266, 1st stage (EXP misread)
+    (["MFD20260707북터", "EXP20290706까지"], "2029-07-06"),                  # 900266, highres stage
+])
+def test_rule7_glued_ascii_keyword(lines, expected):
+    assert _parse(*lines) == expected
+
+
+@pytest.mark.parametrize("text, keywords, expected", [
+    ("MFD20260617부터", EXCLUDE_KEYWORDS, True),
+    ("FB001MFD20260909조", EXCLUDE_KEYWORDS, True),
+    ("EXP20290616까지", ANCHOR_KEYWORDS, True),
+    ("PROTEIN 20g", EXCLUDE_KEYWORDS, False),
+    ("IMPROVED", EXCLUDE_KEYWORDS, False),
+    ("EXPERT", ANCHOR_KEYWORDS, False),
+    ("ABBA", ANCHOR_KEYWORDS, False),
+])
+def test_rule7_keyword_boundaries(text, keywords, expected):
+    assert has_keyword(text, keywords) is expected
