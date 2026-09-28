@@ -1,0 +1,1390 @@
+{
+  "baseline_commit": "71529a322e830c93c415e009fa10a674b9dc36a0",
+  "final": {
+    "n": 700,
+    "correct": 611,
+    "none": 60,
+    "stage_oracle_errors": 10,
+    "candidate_oracle_errors": 10,
+    "attempts": {
+      "original_512": 700,
+      "highres_1024": 249,
+      "rotation_270": 120,
+      "clahe": 78
+    },
+    "hashes": {
+      "labels/review/labels_700_confirmed_gt.csv": "9edfeb145acea9981e4d59447b6df0c0d827f8eb7ad0c7499bc281cb4fdc7c9d",
+      "labels/review/label_review_final.csv": "85df827fcde98139001d2518c5be297ab629daaf28fe6d112fba8c624c6d31fe",
+      "docs/full_stage_701_run1/raw_ocr.jsonl": "3c00358afc9281413e47520ddcb7784b0e16ced070d1d1b74a2734313df502a2"
+    },
+    "ocr_invocations": 0,
+    "old_correct": 602,
+    "changes": [
+      {
+        "image_id": "000777",
+        "gt": "2026-03-NONE",
+        "old": "NONE",
+        "new": "2026-03-NONE",
+        "old_method": "original_no_candidate",
+        "new_method": "highres_1024",
+        "outcome": "gain"
+      },
+      {
+        "image_id": "001000",
+        "gt": "2021-09-07",
+        "old": "NONE",
+        "new": "2021-09-07",
+        "old_method": "original_no_candidate",
+        "new_method": "highres_1024",
+        "outcome": "gain"
+      },
+      {
+        "image_id": "001548",
+        "gt": "2022-09-28",
+        "old": "2029-09-20",
+        "new": "2022-09-28",
+        "old_method": "highres_1024_retry",
+        "new_method": "highres_1024_retry",
+        "outcome": "gain"
+      },
+      {
+        "image_id": "001768",
+        "gt": "2021-06-29",
+        "old": "2020-12-30",
+        "new": "2021-06-29",
+        "old_method": "highres_1024_retry",
+        "new_method": "original_512_retry_kept",
+        "outcome": "gain"
+      },
+      {
+        "image_id": "001932",
+        "gt": "2022-01-22",
+        "old": "2022-01-02",
+        "new": "2022-01-22",
+        "old_method": "original_512",
+        "new_method": "original_512",
+        "outcome": "gain"
+      },
+      {
+        "image_id": "001940",
+        "gt": "2021-03-14",
+        "old": "2033-03-14",
+        "new": "2021-03-14",
+        "old_method": "original_512_retry_kept",
+        "new_method": "original_512_retry_kept",
+        "outcome": "gain"
+      },
+      {
+        "image_id": "002588",
+        "gt": "2023-10-15",
+        "old": "2020-10-15",
+        "new": "2023-10-15",
+        "old_method": "highres_1024_retry",
+        "new_method": "original_512_retry_kept",
+        "outcome": "gain"
+      },
+      {
+        "image_id": "002589",
+        "gt": "2023-10-15",
+        "old": "2020-10-NONE",
+        "new": "2023-10-15",
+        "old_method": "original_512_retry_kept",
+        "new_method": "original_512_retry_kept",
+        "outcome": "gain"
+      },
+      {
+        "image_id": "003011",
+        "gt": "2021-12-11",
+        "old": "NONE",
+        "new": "2021-12-11",
+        "old_method": "original_no_candidate",
+        "new_method": "original_512",
+        "outcome": "gain"
+      }
+    ]
+  },
+  "trials": {
+    "splitday": {
+      "n": 700,
+      "correct": 603,
+      "none": 63,
+      "stage_oracle_errors": 11,
+      "candidate_oracle_errors": 12,
+      "attempts": {
+        "original_512": 700,
+        "highres_1024": 250,
+        "rotation_270": 121,
+        "clahe": 81
+      },
+      "hashes": {
+        "labels/review/labels_700_confirmed_gt.csv": "9edfeb145acea9981e4d59447b6df0c0d827f8eb7ad0c7499bc281cb4fdc7c9d",
+        "labels/review/label_review_final.csv": "85df827fcde98139001d2518c5be297ab629daaf28fe6d112fba8c624c6d31fe",
+        "docs/full_stage_701_run1/raw_ocr.jsonl": "3c00358afc9281413e47520ddcb7784b0e16ced070d1d1b74a2734313df502a2"
+      },
+      "ocr_invocations": 0,
+      "old_correct": 602,
+      "changes": [
+        {
+          "image_id": "001932",
+          "gt": "2022-01-22",
+          "old": "2022-01-02",
+          "new": "2022-01-22",
+          "old_method": "original_512",
+          "new_method": "original_512",
+          "outcome": "gain"
+        }
+      ]
+    },
+    "clock": {
+      "n": 700,
+      "correct": 604,
+      "none": 63,
+      "stage_oracle_errors": 11,
+      "candidate_oracle_errors": 12,
+      "attempts": {
+        "original_512": 700,
+        "highres_1024": 251,
+        "rotation_270": 122,
+        "clahe": 81
+      },
+      "hashes": {
+        "labels/review/labels_700_confirmed_gt.csv": "9edfeb145acea9981e4d59447b6df0c0d827f8eb7ad0c7499bc281cb4fdc7c9d",
+        "labels/review/label_review_final.csv": "85df827fcde98139001d2518c5be297ab629daaf28fe6d112fba8c624c6d31fe",
+        "docs/full_stage_701_run1/raw_ocr.jsonl": "3c00358afc9281413e47520ddcb7784b0e16ced070d1d1b74a2734313df502a2"
+      },
+      "ocr_invocations": 0,
+      "old_correct": 603,
+      "changes": [
+        {
+          "image_id": "001940",
+          "gt": "2021-03-14",
+          "old": "2033-03-14",
+          "new": "2021-03-14",
+          "old_method": "original_512_retry_kept",
+          "new_method": "original_512_retry_kept",
+          "outcome": "gain"
+        }
+      ]
+    },
+    "clock_narrow": {
+      "n": 700,
+      "correct": 604,
+      "none": 63,
+      "stage_oracle_errors": 11,
+      "candidate_oracle_errors": 12,
+      "attempts": {
+        "original_512": 700,
+        "highres_1024": 250,
+        "rotation_270": 121,
+        "clahe": 81
+      },
+      "hashes": {
+        "labels/review/labels_700_confirmed_gt.csv": "9edfeb145acea9981e4d59447b6df0c0d827f8eb7ad0c7499bc281cb4fdc7c9d",
+        "labels/review/label_review_final.csv": "85df827fcde98139001d2518c5be297ab629daaf28fe6d112fba8c624c6d31fe",
+        "docs/full_stage_701_run1/raw_ocr.jsonl": "3c00358afc9281413e47520ddcb7784b0e16ced070d1d1b74a2734313df502a2"
+      },
+      "ocr_invocations": 0,
+      "old_correct": 603,
+      "changes": [
+        {
+          "image_id": "001940",
+          "gt": "2021-03-14",
+          "old": "2033-03-14",
+          "new": "2021-03-14",
+          "old_method": "original_512_retry_kept",
+          "new_method": "original_512_retry_kept",
+          "outcome": "gain"
+        }
+      ]
+    },
+    "splitmonth": {
+      "n": 700,
+      "correct": 605,
+      "none": 62,
+      "stage_oracle_errors": 11,
+      "candidate_oracle_errors": 12,
+      "attempts": {
+        "original_512": 700,
+        "highres_1024": 250,
+        "rotation_270": 121,
+        "clahe": 80
+      },
+      "hashes": {
+        "labels/review/labels_700_confirmed_gt.csv": "9edfeb145acea9981e4d59447b6df0c0d827f8eb7ad0c7499bc281cb4fdc7c9d",
+        "labels/review/label_review_final.csv": "85df827fcde98139001d2518c5be297ab629daaf28fe6d112fba8c624c6d31fe",
+        "docs/full_stage_701_run1/raw_ocr.jsonl": "3c00358afc9281413e47520ddcb7784b0e16ced070d1d1b74a2734313df502a2"
+      },
+      "ocr_invocations": 0,
+      "old_correct": 604,
+      "changes": [
+        {
+          "image_id": "001000",
+          "gt": "2021-09-07",
+          "old": "NONE",
+          "new": "2021-09-07",
+          "old_method": "original_no_candidate",
+          "new_method": "highres_1024",
+          "outcome": "gain"
+        }
+      ]
+    },
+    "compact": {
+      "n": 700,
+      "correct": 606,
+      "none": 61,
+      "stage_oracle_errors": 11,
+      "candidate_oracle_errors": 12,
+      "attempts": {
+        "original_512": 700,
+        "highres_1024": 249,
+        "rotation_270": 120,
+        "clahe": 79
+      },
+      "hashes": {
+        "labels/review/labels_700_confirmed_gt.csv": "9edfeb145acea9981e4d59447b6df0c0d827f8eb7ad0c7499bc281cb4fdc7c9d",
+        "labels/review/label_review_final.csv": "85df827fcde98139001d2518c5be297ab629daaf28fe6d112fba8c624c6d31fe",
+        "docs/full_stage_701_run1/raw_ocr.jsonl": "3c00358afc9281413e47520ddcb7784b0e16ced070d1d1b74a2734313df502a2"
+      },
+      "ocr_invocations": 0,
+      "old_correct": 605,
+      "changes": [
+        {
+          "image_id": "003011",
+          "gt": "2021-12-11",
+          "old": "NONE",
+          "new": "2021-12-11",
+          "old_method": "original_no_candidate",
+          "new_method": "original_512",
+          "outcome": "gain"
+        }
+      ]
+    },
+    "retry": {
+      "n": 700,
+      "correct": 607,
+      "none": 61,
+      "stage_oracle_errors": 10,
+      "candidate_oracle_errors": 11,
+      "attempts": {
+        "original_512": 700,
+        "highres_1024": 249,
+        "rotation_270": 120,
+        "clahe": 79
+      },
+      "hashes": {
+        "labels/review/labels_700_confirmed_gt.csv": "9edfeb145acea9981e4d59447b6df0c0d827f8eb7ad0c7499bc281cb4fdc7c9d",
+        "labels/review/label_review_final.csv": "85df827fcde98139001d2518c5be297ab629daaf28fe6d112fba8c624c6d31fe",
+        "docs/full_stage_701_run1/raw_ocr.jsonl": "3c00358afc9281413e47520ddcb7784b0e16ced070d1d1b74a2734313df502a2"
+      },
+      "ocr_invocations": 0,
+      "old_correct": 606,
+      "changes": [
+        {
+          "image_id": "001768",
+          "gt": "2021-06-29",
+          "old": "2020-12-30",
+          "new": "2021-06-29",
+          "old_method": "highres_1024_retry",
+          "new_method": "original_512_retry_kept",
+          "outcome": "gain"
+        }
+      ]
+    },
+    "yearmonth": {
+      "n": 700,
+      "correct": 608,
+      "none": 60,
+      "stage_oracle_errors": 10,
+      "candidate_oracle_errors": 11,
+      "attempts": {
+        "original_512": 700,
+        "highres_1024": 249,
+        "rotation_270": 120,
+        "clahe": 78
+      },
+      "hashes": {
+        "labels/review/labels_700_confirmed_gt.csv": "9edfeb145acea9981e4d59447b6df0c0d827f8eb7ad0c7499bc281cb4fdc7c9d",
+        "labels/review/label_review_final.csv": "85df827fcde98139001d2518c5be297ab629daaf28fe6d112fba8c624c6d31fe",
+        "docs/full_stage_701_run1/raw_ocr.jsonl": "3c00358afc9281413e47520ddcb7784b0e16ced070d1d1b74a2734313df502a2"
+      },
+      "ocr_invocations": 0,
+      "old_correct": 607,
+      "changes": [
+        {
+          "image_id": "000777",
+          "gt": "2026-03-NONE",
+          "old": "NONE",
+          "new": "2026-03-NONE",
+          "old_method": "original_no_candidate",
+          "new_method": "highres_1024",
+          "outcome": "gain"
+        }
+      ]
+    },
+    "slash": {
+      "n": 700,
+      "correct": 609,
+      "none": 60,
+      "stage_oracle_errors": 10,
+      "candidate_oracle_errors": 10,
+      "attempts": {
+        "original_512": 700,
+        "highres_1024": 249,
+        "rotation_270": 120,
+        "clahe": 78
+      },
+      "hashes": {
+        "labels/review/labels_700_confirmed_gt.csv": "9edfeb145acea9981e4d59447b6df0c0d827f8eb7ad0c7499bc281cb4fdc7c9d",
+        "labels/review/label_review_final.csv": "85df827fcde98139001d2518c5be297ab629daaf28fe6d112fba8c624c6d31fe",
+        "docs/full_stage_701_run1/raw_ocr.jsonl": "3c00358afc9281413e47520ddcb7784b0e16ced070d1d1b74a2734313df502a2"
+      },
+      "ocr_invocations": 0,
+      "old_correct": 608,
+      "changes": [
+        {
+          "image_id": "001548",
+          "gt": "2022-09-28",
+          "old": "2029-09-20",
+          "new": "2022-09-28",
+          "old_method": "highres_1024_retry",
+          "new_method": "highres_1024_retry",
+          "outcome": "gain"
+        }
+      ]
+    },
+    "adjday": {
+      "n": 700,
+      "correct": 610,
+      "none": 60,
+      "stage_oracle_errors": 11,
+      "candidate_oracle_errors": 11,
+      "attempts": {
+        "original_512": 700,
+        "highres_1024": 249,
+        "rotation_270": 120,
+        "clahe": 78
+      },
+      "hashes": {
+        "labels/review/labels_700_confirmed_gt.csv": "9edfeb145acea9981e4d59447b6df0c0d827f8eb7ad0c7499bc281cb4fdc7c9d",
+        "labels/review/label_review_final.csv": "85df827fcde98139001d2518c5be297ab629daaf28fe6d112fba8c624c6d31fe",
+        "docs/full_stage_701_run1/raw_ocr.jsonl": "3c00358afc9281413e47520ddcb7784b0e16ced070d1d1b74a2734313df502a2"
+      },
+      "ocr_invocations": 0,
+      "old_correct": 609,
+      "changes": [
+        {
+          "image_id": "002589",
+          "gt": "2023-10-15",
+          "old": "2020-10-NONE",
+          "new": "2023-10-15",
+          "old_method": "original_512_retry_kept",
+          "new_method": "original_512_retry_kept",
+          "outcome": "gain"
+        }
+      ]
+    },
+    "retry_partial": {
+      "n": 700,
+      "correct": 611,
+      "none": 60,
+      "stage_oracle_errors": 10,
+      "candidate_oracle_errors": 10,
+      "attempts": {
+        "original_512": 700,
+        "highres_1024": 249,
+        "rotation_270": 120,
+        "clahe": 78
+      },
+      "hashes": {
+        "labels/review/labels_700_confirmed_gt.csv": "9edfeb145acea9981e4d59447b6df0c0d827f8eb7ad0c7499bc281cb4fdc7c9d",
+        "labels/review/label_review_final.csv": "85df827fcde98139001d2518c5be297ab629daaf28fe6d112fba8c624c6d31fe",
+        "docs/full_stage_701_run1/raw_ocr.jsonl": "3c00358afc9281413e47520ddcb7784b0e16ced070d1d1b74a2734313df502a2"
+      },
+      "ocr_invocations": 0,
+      "old_correct": 610,
+      "changes": [
+        {
+          "image_id": "002588",
+          "gt": "2023-10-15",
+          "old": "2020-10-15",
+          "new": "2023-10-15",
+          "old_method": "highres_1024_retry",
+          "new_method": "original_512_retry_kept",
+          "outcome": "gain"
+        }
+      ]
+    },
+    "rejected_english_dmy": {
+      "n": 700,
+      "correct": 613,
+      "none": 60,
+      "stage_oracle_errors": 9,
+      "candidate_oracle_errors": 9,
+      "attempts": {
+        "original_512": 700,
+        "highres_1024": 249,
+        "rotation_270": 120,
+        "clahe": 78
+      },
+      "hashes": {
+        "labels/review/labels_700_confirmed_gt.csv": "9edfeb145acea9981e4d59447b6df0c0d827f8eb7ad0c7499bc281cb4fdc7c9d",
+        "labels/review/label_review_final.csv": "85df827fcde98139001d2518c5be297ab629daaf28fe6d112fba8c624c6d31fe",
+        "docs/full_stage_701_run1/raw_ocr.jsonl": "3c00358afc9281413e47520ddcb7784b0e16ced070d1d1b74a2734313df502a2"
+      },
+      "ocr_invocations": 0,
+      "old_correct": 611,
+      "changes": [
+        {
+          "image_id": "001406",
+          "gt": "2021-07-31",
+          "old": "2021-07-31",
+          "new": "2031-07-21",
+          "old_method": "original_512",
+          "new_method": "original_512",
+          "outcome": "regression"
+        },
+        {
+          "image_id": "001862",
+          "gt": "2023-06-18",
+          "old": "2018-06-23",
+          "new": "2023-06-18",
+          "old_method": "original_512",
+          "new_method": "original_512",
+          "outcome": "gain"
+        },
+        {
+          "image_id": "002037",
+          "gt": "2020-08-22",
+          "old": "2020-08-22",
+          "new": "2022-08-20",
+          "old_method": "original_512",
+          "new_method": "original_512",
+          "outcome": "regression"
+        },
+        {
+          "image_id": "002552",
+          "gt": "2022-01-21",
+          "old": "2021-01-22",
+          "new": "2022-01-21",
+          "old_method": "original_512",
+          "new_method": "original_512",
+          "outcome": "gain"
+        },
+        {
+          "image_id": "002604",
+          "gt": "2023-11-17",
+          "old": "2022-03-22",
+          "new": "2023-11-17",
+          "old_method": "original_512_retry_kept",
+          "new_method": "original_512_retry_kept",
+          "outcome": "gain"
+        },
+        {
+          "image_id": "002917",
+          "gt": "2021-04-30",
+          "old": "2030-04-21",
+          "new": "2021-04-30",
+          "old_method": "original_512",
+          "new_method": "original_512",
+          "outcome": "gain"
+        }
+      ]
+    },
+    "rejected_highres": {
+      "n": 700,
+      "correct": 600,
+      "none": 60,
+      "stage_oracle_errors": 21,
+      "candidate_oracle_errors": 21,
+      "attempts": {
+        "original_512": 700,
+        "highres_1024": 249,
+        "rotation_270": 120,
+        "clahe": 78
+      },
+      "hashes": {
+        "labels/review/labels_700_confirmed_gt.csv": "9edfeb145acea9981e4d59447b6df0c0d827f8eb7ad0c7499bc281cb4fdc7c9d",
+        "labels/review/label_review_final.csv": "85df827fcde98139001d2518c5be297ab629daaf28fe6d112fba8c624c6d31fe",
+        "docs/full_stage_701_run1/raw_ocr.jsonl": "3c00358afc9281413e47520ddcb7784b0e16ced070d1d1b74a2734313df502a2"
+      },
+      "ocr_invocations": 0,
+      "old_correct": 611,
+      "changes": [
+        {
+          "image_id": "000118",
+          "gt": "2026-03-23",
+          "old": "2026-03-23",
+          "new": "2026-01-23",
+          "old_method": "original_512_retry_kept",
+          "new_method": "highres_1024_retry",
+          "outcome": "regression"
+        },
+        {
+          "image_id": "000423",
+          "gt": "2026-06-04",
+          "old": "2025-06-05",
+          "new": "2026-06-NONE",
+          "old_method": "original_512_retry_kept",
+          "new_method": "highres_1024_retry",
+          "outcome": "changed-wrong"
+        },
+        {
+          "image_id": "000580",
+          "gt": "2026-02-28",
+          "old": "2026-02-28",
+          "new": "2028-02-28",
+          "old_method": "original_512_retry_kept",
+          "new_method": "highres_1024_retry",
+          "outcome": "regression"
+        },
+        {
+          "image_id": "000853",
+          "gt": "2026-09-24",
+          "old": "2026-09-24",
+          "new": "2025-09-24",
+          "old_method": "original_512_retry_kept",
+          "new_method": "highres_1024_retry",
+          "outcome": "regression"
+        },
+        {
+          "image_id": "000954",
+          "gt": "2021-02-05",
+          "old": "2021-02-05",
+          "new": "2021-01-07",
+          "old_method": "original_512_retry_kept",
+          "new_method": "highres_1024_retry",
+          "outcome": "regression"
+        },
+        {
+          "image_id": "001185",
+          "gt": "2021-09-28",
+          "old": "2021-09-28",
+          "new": "2023-12-02",
+          "old_method": "original_512_retry_kept",
+          "new_method": "highres_1024_retry",
+          "outcome": "regression"
+        },
+        {
+          "image_id": "001556",
+          "gt": "2022-03-16",
+          "old": "2022-03-16",
+          "new": "NONE-03-16",
+          "old_method": "original_512_retry_kept",
+          "new_method": "highres_1024_retry",
+          "outcome": "regression"
+        },
+        {
+          "image_id": "001768",
+          "gt": "2021-06-29",
+          "old": "2021-06-29",
+          "new": "2020-12-30",
+          "old_method": "original_512_retry_kept",
+          "new_method": "highres_1024_retry",
+          "outcome": "regression"
+        },
+        {
+          "image_id": "001806",
+          "gt": "2020-11-09",
+          "old": "2020-11-09",
+          "new": "2029-02-10",
+          "old_method": "original_512_retry_kept",
+          "new_method": "highres_1024_retry",
+          "outcome": "regression"
+        },
+        {
+          "image_id": "001947",
+          "gt": "2022-08-10",
+          "old": "2022-08-10",
+          "new": "2022-06-NONE",
+          "old_method": "original_512_retry_kept",
+          "new_method": "highres_1024_retry",
+          "outcome": "regression"
+        },
+        {
+          "image_id": "002284",
+          "gt": "2022-01-06",
+          "old": "2022-01-06",
+          "new": "2021-01-07",
+          "old_method": "original_512_retry_kept",
+          "new_method": "highres_1024_retry",
+          "outcome": "regression"
+        },
+        {
+          "image_id": "002336",
+          "gt": "2021-11-19",
+          "old": "2021-11-18",
+          "new": "2021-11-19",
+          "old_method": "original_512_retry_kept",
+          "new_method": "highres_1024_retry",
+          "outcome": "gain"
+        },
+        {
+          "image_id": "002588",
+          "gt": "2023-10-15",
+          "old": "2023-10-15",
+          "new": "2020-10-15",
+          "old_method": "original_512_retry_kept",
+          "new_method": "highres_1024_retry",
+          "outcome": "regression"
+        },
+        {
+          "image_id": "002883",
+          "gt": "2023-12-08",
+          "old": "2023-12-08",
+          "new": "2023-12-NONE",
+          "old_method": "original_512_retry_kept",
+          "new_method": "highres_1024_retry",
+          "outcome": "regression"
+        }
+      ]
+    }
+  },
+  "remaining_counts": {
+    "NONE: no coherent target-date evidence found": 32,
+    "Wrong date: required GT digits missing/corrupted": 13,
+    "NONE: corrupted/incomplete/ambiguous date-like text": 28,
+    "GT selected in another saved stage; cascade/confidence limitation": 10,
+    "Date-order ambiguity; GT only an alternative reading": 6
+  },
+  "remaining_errors": [
+    {
+      "image_id": "000050",
+      "gt": "2025-09-30",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000090",
+      "gt": "2026-09-01",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000106",
+      "gt": "NONE-10-20",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000143",
+      "gt": "2027-09-06",
+      "prediction": "2027-03-06",
+      "method": "original_512",
+      "category": "Wrong date: required GT digits missing/corrupted",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000157",
+      "gt": "2027-07-08",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000190",
+      "gt": "2026-11-22",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: corrupted/incomplete/ambiguous date-like text",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000231",
+      "gt": "2028-05-27",
+      "prediction": "2023-05-27",
+      "method": "original_512",
+      "category": "GT selected in another saved stage; cascade/confidence limitation",
+      "gt_selected_stages": [
+        "highres_1024"
+      ]
+    },
+    {
+      "image_id": "000232",
+      "gt": "2027-11-26",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000368",
+      "gt": "2026-09-22",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: corrupted/incomplete/ambiguous date-like text",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000406",
+      "gt": "2026-08-27",
+      "prediction": "2026-05-27",
+      "method": "highres_1024",
+      "category": "Wrong date: required GT digits missing/corrupted",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000415",
+      "gt": "2026-05-27",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000422",
+      "gt": "2026-06-09",
+      "prediction": "2025-09-10",
+      "method": "original_512",
+      "category": "GT selected in another saved stage; cascade/confidence limitation",
+      "gt_selected_stages": [
+        "rotation_270",
+        "highres_1024",
+        "clahe"
+      ]
+    },
+    {
+      "image_id": "000423",
+      "gt": "2026-06-04",
+      "prediction": "2025-06-05",
+      "method": "original_512_retry_kept",
+      "category": "GT selected in another saved stage; cascade/confidence limitation",
+      "gt_selected_stages": [
+        "rotation_270"
+      ]
+    },
+    {
+      "image_id": "000438",
+      "gt": "2026-02-19",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000440",
+      "gt": "2026-08-13",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000468",
+      "gt": "2026-04-06",
+      "prediction": "2025-06-NONE",
+      "method": "original_512",
+      "category": "Wrong date: required GT digits missing/corrupted",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000473",
+      "gt": "2026-05-21",
+      "prediction": "2026-03-01",
+      "method": "highres_1024",
+      "category": "Wrong date: required GT digits missing/corrupted",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000486",
+      "gt": "2027-07-15",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000553",
+      "gt": "2022-10-24",
+      "prediction": "2020-01-24",
+      "method": "original_512_retry_kept",
+      "category": "Wrong date: required GT digits missing/corrupted",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000582",
+      "gt": "2025-11-21",
+      "prediction": "2025-01-21",
+      "method": "highres_1024",
+      "category": "Wrong date: required GT digits missing/corrupted",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000604",
+      "gt": "2026-09-15",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: corrupted/incomplete/ambiguous date-like text",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000643",
+      "gt": "2026-01-21",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: corrupted/incomplete/ambiguous date-like text",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000648",
+      "gt": "2026-08-25",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: corrupted/incomplete/ambiguous date-like text",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000673",
+      "gt": "2026-06-02",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: corrupted/incomplete/ambiguous date-like text",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000694",
+      "gt": "2026-09-01",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000722",
+      "gt": "2026-08-04",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000726",
+      "gt": "2026-09-16",
+      "prediction": "2026-08-16",
+      "method": "original_512_retry_kept",
+      "category": "GT selected in another saved stage; cascade/confidence limitation",
+      "gt_selected_stages": [
+        "rotation_270",
+        "clahe"
+      ]
+    },
+    {
+      "image_id": "000749",
+      "gt": "2026-01-21",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: corrupted/incomplete/ambiguous date-like text",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000770",
+      "gt": "2030-04-NONE",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: corrupted/incomplete/ambiguous date-like text",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000795",
+      "gt": "2026-07-14",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000820",
+      "gt": "2026-05-18",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: corrupted/incomplete/ambiguous date-like text",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000832",
+      "gt": "2026-07-16",
+      "prediction": "2025-07-15",
+      "method": "clahe",
+      "category": "Wrong date: required GT digits missing/corrupted",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000848",
+      "gt": "2026-05-21",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: corrupted/incomplete/ambiguous date-like text",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000859",
+      "gt": "2021-10-20",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000862",
+      "gt": "2021-10-22",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000877",
+      "gt": "2023-04-03",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000933",
+      "gt": "2021-05-26",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000978",
+      "gt": "2021-11-03",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "000994",
+      "gt": "NONE-02-18",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: corrupted/incomplete/ambiguous date-like text",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "001103",
+      "gt": "2021-03-14",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "001214",
+      "gt": "2021-05-15",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: corrupted/incomplete/ambiguous date-like text",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "001455",
+      "gt": "2022-01-02",
+      "prediction": "2022-04-02",
+      "method": "original_512",
+      "category": "GT selected in another saved stage; cascade/confidence limitation",
+      "gt_selected_stages": [
+        "rotation_270"
+      ]
+    },
+    {
+      "image_id": "001515",
+      "gt": "2022-08-16",
+      "prediction": "2022-08-18",
+      "method": "original_512",
+      "category": "GT selected in another saved stage; cascade/confidence limitation",
+      "gt_selected_stages": [
+        "rotation_270",
+        "highres_1024",
+        "clahe"
+      ]
+    },
+    {
+      "image_id": "001539",
+      "gt": "2022-01-18",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: corrupted/incomplete/ambiguous date-like text",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "001646",
+      "gt": "2021-10-12",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: corrupted/incomplete/ambiguous date-like text",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "001689",
+      "gt": "2021-07-21",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "001714",
+      "gt": "2021-08-09",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: corrupted/incomplete/ambiguous date-like text",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "001749",
+      "gt": "2019-07-03",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "001802",
+      "gt": "2021-05-03",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "001858",
+      "gt": "2022-07-17",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: corrupted/incomplete/ambiguous date-like text",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "001860",
+      "gt": "2022-07-08",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: corrupted/incomplete/ambiguous date-like text",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "001862",
+      "gt": "2023-06-18",
+      "prediction": "2018-06-23",
+      "method": "original_512",
+      "category": "Date-order ambiguity; GT only an alternative reading",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "001868",
+      "gt": "2022-07-NONE",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: corrupted/incomplete/ambiguous date-like text",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "001900",
+      "gt": "2021-11-29",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: corrupted/incomplete/ambiguous date-like text",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "001925",
+      "gt": "2022-01-21",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "001964",
+      "gt": "2021-10-09",
+      "prediction": "2019-10-10",
+      "method": "original_512",
+      "category": "GT selected in another saved stage; cascade/confidence limitation",
+      "gt_selected_stages": [
+        "rotation_270",
+        "highres_1024"
+      ]
+    },
+    {
+      "image_id": "001975",
+      "gt": "2021-02-26",
+      "prediction": "2026-02-21",
+      "method": "clahe",
+      "category": "Date-order ambiguity; GT only an alternative reading",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "001979",
+      "gt": "2020-11-04",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "001988",
+      "gt": "2021-12-28",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "002019",
+      "gt": "2022-03-09",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "002034",
+      "gt": "2020-12-17",
+      "prediction": "2017-12-20",
+      "method": "original_512",
+      "category": "Date-order ambiguity; GT only an alternative reading",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "002068",
+      "gt": "2022-09-11",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: corrupted/incomplete/ambiguous date-like text",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "002148",
+      "gt": "2022-01-03",
+      "prediction": "2022-01-NONE",
+      "method": "highres_1024",
+      "category": "GT selected in another saved stage; cascade/confidence limitation",
+      "gt_selected_stages": [
+        "clahe"
+      ]
+    },
+    {
+      "image_id": "002152",
+      "gt": "2019-07-11",
+      "prediction": "2019-07-01",
+      "method": "highres_1024_retry",
+      "category": "Wrong date: required GT digits missing/corrupted",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "002209",
+      "gt": "2022-05-31",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "002227",
+      "gt": "2023-03-03",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: corrupted/incomplete/ambiguous date-like text",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "002241",
+      "gt": "2021-05-26",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: corrupted/incomplete/ambiguous date-like text",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "002278",
+      "gt": "2023-07-NONE",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: corrupted/incomplete/ambiguous date-like text",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "002328",
+      "gt": "2021-10-20",
+      "prediction": "2020-10-21",
+      "method": "original_512_retry_kept",
+      "category": "Wrong date: required GT digits missing/corrupted",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "002336",
+      "gt": "2021-11-19",
+      "prediction": "2021-11-18",
+      "method": "original_512_retry_kept",
+      "category": "GT selected in another saved stage; cascade/confidence limitation",
+      "gt_selected_stages": [
+        "highres_1024",
+        "clahe"
+      ]
+    },
+    {
+      "image_id": "002404",
+      "gt": "2020-11-11",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: corrupted/incomplete/ambiguous date-like text",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "002436",
+      "gt": "2021-06-03",
+      "prediction": "2021-05-03",
+      "method": "clahe",
+      "category": "Wrong date: required GT digits missing/corrupted",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "002492",
+      "gt": "2022-08-09",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "002552",
+      "gt": "2022-01-21",
+      "prediction": "2021-01-22",
+      "method": "original_512",
+      "category": "Date-order ambiguity; GT only an alternative reading",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "002604",
+      "gt": "2023-11-17",
+      "prediction": "2022-03-22",
+      "method": "original_512_retry_kept",
+      "category": "Date-order ambiguity; GT only an alternative reading",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "002704",
+      "gt": "2022-10-29",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: corrupted/incomplete/ambiguous date-like text",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "002726",
+      "gt": "2022-03-17",
+      "prediction": "2017-03-22",
+      "method": "rotation_270",
+      "category": "Date-order ambiguity; GT only an alternative reading",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "002766",
+      "gt": "2021-03-16",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: corrupted/incomplete/ambiguous date-like text",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "002814",
+      "gt": "2021-04-02",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "002829",
+      "gt": "2027-01-02",
+      "prediction": "2022-01-02",
+      "method": "original_512",
+      "category": "Wrong date: required GT digits missing/corrupted",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "002917",
+      "gt": "2021-04-30",
+      "prediction": "2030-04-21",
+      "method": "original_512",
+      "category": "GT selected in another saved stage; cascade/confidence limitation",
+      "gt_selected_stages": [
+        "highres_1024"
+      ]
+    },
+    {
+      "image_id": "002928",
+      "gt": "NONE-04-08",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "003014",
+      "gt": "2021-06-12",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "003016",
+      "gt": "2022-07-01",
+      "prediction": "2022-07-NONE",
+      "method": "original_512",
+      "category": "Wrong date: required GT digits missing/corrupted",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "003312",
+      "gt": "2021-03-11",
+      "prediction": "2021-03-NONE",
+      "method": "clahe",
+      "category": "Wrong date: required GT digits missing/corrupted",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "003326",
+      "gt": "2024-06-05",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "003338",
+      "gt": "2021-06-01",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: corrupted/incomplete/ambiguous date-like text",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "003350",
+      "gt": "2025-12-10",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: corrupted/incomplete/ambiguous date-like text",
+      "gt_selected_stages": []
+    },
+    {
+      "image_id": "003351",
+      "gt": "2025-12-10",
+      "prediction": "NONE",
+      "method": "original_no_candidate",
+      "category": "NONE: no coherent target-date evidence found",
+      "gt_selected_stages": []
+    }
+  ]
+}
