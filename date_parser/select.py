@@ -68,6 +68,42 @@ def find_all_candidates(
         positioned = _yearless_candidates(boxes, year_min, year_max)
     if not positioned:
         positioned = _six_digit_candidates(boxes, year_min, year_max)
+    if not positioned:
+        positioned = _padded_eight_digit_candidates(boxes, year_min, year_max)
+    return positioned
+
+
+# A full YYYYMMDD with stray OCR digits glued after it: one digit
+# ("EXP202906147", "EXP202802191지1"), or up to three right before a 까지/지
+# fragment, i.e. a misread 까지 ("2028062911지"). Longer runs without that
+# fragment stay unread ("EXP 2021112116" is not 2021-11-21). Last resort only,
+# with the same expiry evidence as six-digit dates or an EXP-like prefix.
+_PADDED_EIGHT_RE = re.compile(
+    r"(?<![0-9])(20[0-9]{2})(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])"
+    r"(?:[0-9](?![0-9])|[0-9]{1,3}(?=\s*[가-힣]?지))"
+)
+_EXP_PREFIX_RE = re.compile(r"(?:E?XP+|EXD|BBE?)[^0-9A-Z]{0,2}$")
+
+
+def _padded_eight_digit_candidates(
+    boxes: Sequence[TextBox], year_min: int, year_max: int
+) -> List[PositionedCandidate]:
+    positioned: List[PositionedCandidate] = []
+    anchor_boxes = [b for b in boxes if _has_position(b) and has_keyword(b.text, ANCHOR_KEYWORDS)]
+    for box in boxes:
+        if not _has_position(box):
+            continue
+        for match in _PADDED_EIGHT_RE.finditer(box.text):
+            if not (_EXP_PREFIX_RE.search(box.text[:match.start()].upper())
+                    or _has_expiry_evidence(box, match.end(), anchor_boxes)):
+                continue
+            roles = ("year", "month", "day")
+            token = RawDateToken(span=match.span(), fields=tuple(RawField(raw=g, kind="num") for g in match.groups()),
+                                 role_universe=roles, fixed_roles=roles)
+            scored = generate_candidates(token, year_min, year_max)
+            if scored:
+                positioned.append(PositionedCandidate(result=scored[0].date, center=bbox_center(box.bbox),
+                                                      source_text=box.text, candidates=scored, span=match.span()))
     return positioned
 
 

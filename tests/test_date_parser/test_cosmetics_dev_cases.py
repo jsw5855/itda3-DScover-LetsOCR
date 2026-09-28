@@ -129,3 +129,20 @@ def test_rule7_glued_ascii_keyword(lines, expected):
 ])
 def test_rule7_keyword_boundaries(text, keywords, expected):
     assert has_keyword(text, keywords) is expected
+
+
+# Rule 6: a full YYYYMMDD with stray digits glued after it, as a last resort:
+# one digit, or up to three right before a 까지/지 fragment (a misread 까지).
+@pytest.mark.parametrize("lines, expected", [
+    (["EXP202906147"], "2029-06-14"),                    # 900080, 1st stage
+    (["2028062911지"], "2028-06-29"),                     # 900096, highres stage
+    (["2029062811까지"], "2029-06-28"),                   # 900262, 1st stage
+    (["EXP202802191지1"], "2028-02-19"),                  # 900270, clahe stage
+    # not touched
+    (["EXP 2021112116"], "NONE"),                        # food 001851 clahe: truth 2021-12-16
+    (["8809576260618"], "NONE"),                         # barcode
+    (["20290614"], "2029-06-14"),                        # plain eight digits: existing path
+    (["202906147"], "NONE"),                             # no expiry evidence
+])
+def test_rule6_padded_eight_digits(lines, expected):
+    assert _parse(*lines) == expected
