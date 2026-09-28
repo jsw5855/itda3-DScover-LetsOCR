@@ -70,6 +70,16 @@ def test_d_higher_highres_q_wins(image):
     assert run(image, [box("2026.04.24", 0.85)], [box("2026.04.21", 0.97)])[:2] == ("2026-04-21", "highres_1024_retry")
 
 
+def test_d2_self_anchor_is_not_replaced_by_self_exclude(image):
+    original = [box("Exp.20.09.2021", 0.78)]
+    highres = [box("Prod.20.09.2020", 0.97)]
+
+    date, method, attempts = run(image, original, highres)
+
+    assert attempts == ["original_512", "highres_1024"]
+    assert (date, method) == ("2021-09-20", "original_512_retry_kept")
+
+
 def test_e_higher_original_q_kept(image):
     assert run(image, [box("2026.04.24", 0.85)], [box("2026.04.21", 0.80)])[:2] == ("2026-04-24", "original_512_retry_kept")
 
