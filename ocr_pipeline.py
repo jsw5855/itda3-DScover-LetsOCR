@@ -114,15 +114,21 @@ STAGES = ("original_512", "rotation_270", "highres_1024", "clahe")
 # when its source box recognition confidence is below this, or when the stage
 # holds several distinct date readings.
 RETRY_Q_THRESHOLD = 0.90
+# A date read from a bare fragment of at most this many non-space characters
+# ("7.08.22", "2026년 02월") carries no keyword or context to confirm it, so
+# it is also re-read at 1024px.
+SHORT_SOURCE_CHARS = 8
 
 
 def stage_result(detections):
     """Parse one OCR stage into (prediction, evidence).
 
     evidence is None when the stage has no date candidate (has_candidate is
-    False); otherwise {"q", "M"}: q is the recognition confidence of the box the
-    selected date came from (minimum over boxes with the same text and center),
-    M is whether find_all_candidates yields at least two distinct dates.
+    False); otherwise {"q", "M", ...}: q is the recognition confidence of the box
+    the selected date came from (minimum over boxes with the same text and
+    center), M is whether find_all_candidates yields at least two distinct
+    dates, short is whether that box holds at most SHORT_SOURCE_CHARS
+    non-space characters (a bare fragment such as "7.08.22", no keyword).
     """
     boxes = [TextBox.from_dict(item) for item in detections]
     prediction = parse_expiration_date(boxes)
@@ -137,18 +143,24 @@ def stage_result(detections):
     return prediction, {
         "q": q,
         "M": len(distinct) >= 2,
+        "short": len("".join(selected.source_text.split())) <= SHORT_SOURCE_CHARS,
         "self_anchor": self_anchor and not self_exclude,
         "self_exclude": self_exclude and not self_anchor,
     }
 
 
-def retry_triggered(evidence):
+def uncertain(evidence):
     """Policy B on an original_512 candidate: q < 0.90 OR M.
 
-    A missing q (source box not found) cannot be trusted, so it also retries.
+    A missing q (source box not found) cannot be trusted, so it also counts.
     """
     q = evidence["q"]
     return q is None or q < RETRY_Q_THRESHOLD or evidence["M"]
+
+
+def retry_triggered(evidence):
+    """Re-read at 1024px when the reading is uncertain or comes from a short fragment."""
+    return uncertain(evidence) or evidence.get("short", False)
 
 
 def prefer_retry(original, highres):

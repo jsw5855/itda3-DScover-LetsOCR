@@ -134,6 +134,16 @@ def test_j_decisions_use_only_ocr_evidence(image, tmp_path):
     assert run(image, *responses) == run(other, *responses)
 
 
+def test_short_fragment_retries(image):
+    # 900146: a confident bare fragment "7.08.22" (q >= 0.90, one date) is re-read at 1024px.
+    date, method, attempts = run(image, [box("7.08.22", 0.908)], [box("EXP20280826까 지", 0.969)])
+    assert (date, method, attempts) == ("2028-08-26", "highres_1024_retry", ["original_512", "highres_1024"])
+
+
+def test_long_confident_source_does_not_retry(image):
+    assert run(image, [box("EXP 2026.04.24", 0.95)]) == ("2026-04-24", "original_512", ["original_512"])
+
+
 def test_all_none_final_date_format(image):
     date, _, _ = run(image, *[[box("nothing", 0.99)]] * 4)
     assert date == "NONE"
