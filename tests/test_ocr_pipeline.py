@@ -20,7 +20,7 @@ class FakeEngine:
                  'rec_polys': np.array([[[0, 0], [100, 0], [100, 20], [0, 20]]])}]
 
 
-@pytest.mark.parametrize('stage', range(4))
+@pytest.mark.parametrize('stage', range(5))
 def test_cascade_stops_at_first_candidate(tmp_path, monkeypatch, stage):
     path = tmp_path / '000018.jpg'
     Image.new('RGB', (1200, 600)).save(path)
@@ -28,15 +28,15 @@ def test_cascade_stops_at_first_candidate(tmp_path, monkeypatch, stage):
     engine = FakeEngine(['nothing'] * stage + ['2026.04.24'])
     result, method = pipeline.predict_image(engine, path)
     assert result['final_date'] == '2026-04-24'
-    assert method == ['original_512', 'rotation_270', 'highres_1024', 'clahe'][stage]
-    assert engine.sides == [512, 512, 1024, 512][:stage + 1]
+    assert method == ['original_512', 'rotation_270', 'highres_1024', 'clahe', 'clahe_1024'][stage]
+    assert engine.sides == [512, 512, 1024, 512, 1024][:stage + 1]
 
 
 def test_no_candidate(tmp_path, monkeypatch):
     path = tmp_path / '1.png'
     Image.new('RGB', (20, 10)).save(path)
     monkeypatch.setattr(pipeline, 'apply_clahe', lambda image: image)
-    result, method = pipeline.predict_image(FakeEngine(['nothing'] * 4), path)
+    result, method = pipeline.predict_image(FakeEngine(['nothing'] * 5), path)
     assert result == pipeline.parse_expiration_date([])
     assert method == 'original_no_candidate'
 
