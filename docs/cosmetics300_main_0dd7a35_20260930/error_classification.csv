@@ -1,0 +1,57 @@
+﻿image_id,who,label,prediction,method,route,category,reason,work_branch_305efb3,work_branch_correct
+900026,수민,2026-11-06,2024-05-07,original_512,CONFIRM,D,rotation_270이 EXP 2026.11.06을 맞게 읽었는데 원본이 제조일(MFG)을 확신,2026-11-06,1
+900064,수민,2028-09-09,2020-09-09,highres_1024,RECHECK,D,clahe_1024가 2028-09-09를 읽었으나 원본 후보 없음 → highres의 연도 오인식(2020) 채택,2020-09-09,0
+900071,수민,2029-05-17,2029-05-NONE,original_512_retry_kept,MANUAL,D,clahe가 2029-05-17을 읽었으나 원본 부분 날짜에서 멈춤,2029-05-NONE,0
+900092,수민,2031-01-NONE,2026-02-NONE,original_512,MANUAL,D,rotation/highres가 유통기한 2031년 01월을 읽었으나 원본의 제조년월(키워드 못 읽음)을 채택,2031-01-NONE,1
+900111,수민,2027-08-19,2019-09-01,highres_1024,RECHECK,D,clahe가 2027.08.19를 읽었으나 highres 잡음 후보 `1 9.19` 채택,2019-09-01,0
+900146,수민,2028-08-26,2022-08-07,original_512,CONFIRM,D,rotation/highres가 EXP20280826을 읽었으나 원본 짧은 조각 `7.08.22`를 확신,2028-08-26,1
+900181,서현,2028-02-09,2028-02-NONE,original_512,MANUAL,D,rotation/highres/clahe가 2028-02-09를 읽었으나 원본 부분 날짜에서 멈춤,2028-02-NONE,0
+900225,서현,2029-08-02,2029-08-NONE,highres_1024_retry,MANUAL,D,"원본·clahe는 2029-08-02, highres 재시도의 `2029.08.027171`(잡음) 부분 날짜로 교체",2029-08-NONE,0
+900266,서현,2029-07-06,2026-07-07,original_512,CONFIRM,D,highres가 EXP20290706을 읽었으나 원본의 MFD20260707 채택(EXP 숫자 깨짐),2029-07-06,1
+900291,서현,2029-07-09,2026-06-NONE,original_512,MANUAL,D,rotation 이후 단계는 EXP 20290709를 읽었으나 원본의 제조년월 채택,2029-07-09,1
+900296,서현,2029-05-18,2025-05-18,highres_1024_retry,CONFIRM,D,원본 EP 2029.05.18(맞음)을 highres `2025.05.184`가 q로 교체,2029-05-18,1
+900005,수민,2029-10-02,NONE-02-10,highres_1024_retry,MANUAL,C,`EXP 02.10.202907!` 일.월.연 뒤 잡음 숫자,2029-10-02,1
+900006,수민,2028-08-24,NONE,original_no_candidate,MANUAL,C,`EXPP20280824771` 8자리 날짜 뒤 잡음 숫자,NONE,0
+900028,수민,2027-10-17,NONE,original_no_candidate,MANUAL,C,`271017마지` 6자리 YYMMDD(까지 오인식),2027-10-17,1
+900029,수민,2028-12-15,NONE,original_no_candidate,MANUAL,C,`2028121511지` 8자리 날짜 뒤 잡음 숫자,2028-12-15,1
+900030,수민,2025-12-01,NONE,original_no_candidate,MANUAL,C,`12025.12.01까지` 날짜 앞 잡음 숫자 1개,2025-12-01,1
+900041,수민,2028-07-13,NONE,original_no_candidate,MANUAL,C,`202807130` 8자리 날짜 뒤 잡음 숫자 1개,NONE,0
+900080,수민,2029-06-14,2023-06-14,highres_1024,RECHECK,C,`EXP202906147` 8자리 날짜 뒤 잡음 숫자 1개(highres는 연도 오인식),2029-06-14,1
+900082,수민,2029-06-10,2030-10-31,highres_1024,CHOOSE,C,highres·clahe_1024 `…별도표기끝xP20290610지` 설명 문장에 붙은 날짜를 못 떼어 냄. 대신 시험기간·잡음에서 늦은 날짜 2030-10-31,2029-06-10,1
+900089,수민,2027-11-25,2027-01-11,highres_1024,CONFIRM,C,`E26L1 2027.11.25 까지` 로트번호에 붙은 날짜를 2027-01-11로 해석,2027-11-25,1
+900096,수민,2028-06-29,NONE,original_no_candidate,MANUAL,C,highres `2028062911지` 8자리 날짜 뒤 잡음 숫자,2028-06-29,1
+900130,수민,2029-04-NONE,2023-06-19,highres_1024_retry,CHOOSE,C,rotation에 `[사용기한]2029년 04월`이 있으나 시험기간 `2023.06.19~`을 채택,2029-04-NONE,1
+900149,수민,2029-02-25,NONE,original_no_candidate,MANUAL,C,clahe `x290225` 6자리 YYMMDD(원본 미검출),NONE,0
+900152,서현,NONE,2026-09-09,original_512,CONFIRM,C,`FB001MFD20260909조` 숫자에 붙은 MFD(제조) 키워드를 못 봄. 라벨 NONE,NONE,1
+900189,서현,2028-12-08,NONE,original_no_candidate,MANUAL,C,`202812080…`/`2028120811` 날짜 뒤 잡음 숫자,NONE,0
+900198,서현,2029-03-03,NONE,original_no_candidate,MANUAL,C,clahe_1024 `290303까지` 6자리 YYMMDD(원본은 `29U003`로 깨짐),NONE,0
+900222,서현,2028-10-01,2029-03-01,highres_1024_retry,CHOOSE,C,세트 상품: 기한 3개 중 가장 이른 2028-10-01이 정답,2029-03-01,0
+900244,서현,2027-08-06,NONE,original_no_candidate,MANUAL,C,`06/08/27…` 일/월/연 뒤 잡음(인쇄 흐림),NONE,0
+900259,서현,NONE,2026-05-NONE,original_512,MANUAL,C,`MFG:05/2026` 제조일만 있음. 라벨 NONE인데 부분 날짜 출력,NONE,1
+900262,서현,2029-06-28,NONE,original_no_candidate,MANUAL,C,원본 `2029062811까지` 8자리 날짜 뒤 잡음 숫자(세로 인쇄),2029-06-28,1
+900270,서현,2028-02-19,NONE,original_no_candidate,MANUAL,C,`EXP202802191121` 8자리 날짜 뒤 잡음 숫자,2028-02-19,1
+900279,서현,2029-03-26,2029-07-10,original_512_retry_kept,CHOOSE,C,세트 상품: 본품·토너패드 두 기한 중 이른 2029-03-26이 정답,2029-03-26,1
+900285,서현,2028-09-04,NONE,original_no_candidate,MANUAL,C,highres `듣르280904까-지` 연도 앞 20이 깨져 6자리만 남음,NONE,0
+900008,수민,2026-06-20,NONE,original_no_candidate,MANUAL,B,`EP:2988620` 숫자 깨짐,NONE,0
+900011,수민,2029-03-10,NONE,original_no_candidate,MANUAL,B,`EXP202`까지만 읽음,NONE,0
+900042,수민,2026-08-28,NONE,original_no_candidate,MANUAL,B,`20260287` 숫자 빠짐(양각),NONE,0
+900045,수민,2029-03-30,NONE,original_no_candidate,MANUAL,B,`EXP2029C330` 숫자 깨짐,NONE,0
+900048,수민,2028-11-02,NONE,original_no_candidate,MANUAL,B,`268811` 등 숫자 깨짐,NONE,0
+900069,수민,2029-07-06,NONE,original_no_candidate,MANUAL,B,`끝XP28S8785까치` 숫자 깨짐,NONE,0
+900072,수민,2029-08-18,NONE,original_no_candidate,MANUAL,B,`EXP2029018까지` 숫자 1개 빠짐,NONE,0
+900117,수민,2031-06-NONE,NONE,original_no_candidate,MANUAL,B,`031.06` 연도 앞자리 빠짐,NONE,0
+900020,수민,2027-07-24,NONE,original_no_candidate,MANUAL,A,날짜 줄 미검출(글씨 겹침),NONE,0
+900021,수민,2028-06-22,NONE,original_no_candidate,MANUAL,A,날짜 줄 미검출,NONE,0
+900023,수민,2028-06-17,NONE,original_no_candidate,MANUAL,A,날짜 줄 미검출(유리병 곡면),NONE,0
+900057,수민,2027-09-17,NONE,original_no_candidate,MANUAL,A,날짜 줄 미검출,NONE,0
+900059,수민,2028-06-01,NONE,original_no_candidate,MANUAL,A,날짜 줄 미검출(양각),NONE,0
+900065,수민,2029-06-23,NONE,original_no_candidate,MANUAL,A,날짜 줄 미검출(작은 글씨),NONE,0
+900066,수민,2029-05-15,2020-10-03,clahe_1024,RECHECK,A,날짜 줄 미검출(음각). clahe_1024가 성분표 숫자로 틀린 날짜 2020-10-03을 만듦,NONE,0
+900068,수민,2029-01-13,NONE,original_no_candidate,MANUAL,A,날짜 줄 미검출,NONE,0
+900156,서현,2028-11-03,NONE,original_no_candidate,MANUAL,A,날짜 줄 미검출(글씨 겹침),NONE,0
+900166,서현,2028-12-NONE,NONE,original_no_candidate,MANUAL,A,날짜 줄 미검출(곡면·어두운 배경),NONE,0
+900206,서현,2029-08-13,NONE-10-14,original_512,MANUAL,A,날짜 줄 미검출(양각). 용량 `10.14 FL OZ`를 부분 날짜로 출력,NONE,0
+900216,서현,2029-07-24,NONE,original_no_candidate,MANUAL,A,기한 줄 미검출(제조 줄만 깨져서 읽힘),NONE,0
+900255,서현,2029-07-29,NONE,original_no_candidate,MANUAL,A,날짜 줄 미검출,NONE,0
+900278,서현,2028-11-03,NONE,original_no_candidate,MANUAL,A,날짜 줄 미검출(뒤집힌 인쇄),NONE,0
+900295,서현,2028-09-30,NONE,original_no_candidate,MANUAL,A,날짜 줄 미검출(곡면 라벨),NONE,0

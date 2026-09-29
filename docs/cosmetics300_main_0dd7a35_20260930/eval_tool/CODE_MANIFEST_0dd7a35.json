@@ -1,0 +1,16 @@
+{
+ "commit": "0dd7a35f43bdb52f7c091d916f8b5fd9e5d9b948",
+ "files": {
+  "ocr_pipeline.py": "139bc4334604c222a89ca2c060f295fce6f6af2cf85e96941dfc5f1c5da31e02",
+  "submission_runtime.py": "62445f10972970383be16640cbd26d52ea815aa5edbed041622b156990622d8e",
+  "date_parser/__init__.py": "856b90f7110309d8edc1bfc236612ecb4bb9461f3ed14de43265b93d07fa20dc",
+  "date_parser/crossref.py": "265158f6f9c9ff84857265ecd3ab3650c783c8ece2a4be4ecfb7d130476d92a0",
+  "date_parser/extract.py": "6cf342d7dff8daf9b3405abd645fd06b4ca491cec3d4a7dd4a6fd03dbd1e57ed",
+  "date_parser/hints.py": "92b9260d556a6dbc77d038d48c2dde5bb249cbf89e116f5a95043acc29101800",
+  "date_parser/interpret.py": "b46638ed1946ae9e5a7a6ae914b4136f20a9dba8f54f102e403277441eacf295",
+  "date_parser/keywords.py": "01957b86861dbb79beaf46bf2c7bbceabef1b2179f5b87fd1a9f98ea0e4c9769",
+  "date_parser/parser.py": "e2944c17621bffc0a800d84c79ef19068edbe70002f4bc89b107c47b55db131a",
+  "date_parser/select.py": "c1a36ed0a5c3b219db544f7c2ee5ee87a63fa78ad354ccf555d9d141faeae8d4",
+  "date_parser/types.py": "17be4606e1679481b98168756488fb289bd215a08973dcc25af08a3b92146c40"
+ }
+}
