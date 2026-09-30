@@ -9,7 +9,7 @@ from PIL import Image
 
 import ocr_pipeline as pipeline
 
-SIDE_OF = {"original_512": 512, "rotation_270": 512, "highres_1024": 1024, "clahe": 512}
+SIDE_OF = {"original_512": 512, "rotation_270": 512, "highres_1024": 1024, "clahe": 512, "clahe_1024": 1024}
 
 
 def box(text, score, row=0):
@@ -137,8 +137,20 @@ def test_h_no_original_candidate_keeps_fallback(image, stage):
 
 
 def test_h_no_candidate_anywhere(image):
-    date, method, attempts = run(image, *[[box("nothing", 0.99)]] * 4)
-    assert (date, method, attempts) == ("NONE", "original_no_candidate", list(pipeline.STAGES))
+    date, method, attempts = run(image, *[[box("nothing", 0.99)]] * 5)
+    assert (date, method, attempts) == ("NONE", "original_no_candidate", list(pipeline.STAGES) + ["clahe_1024"])
+
+
+@pytest.mark.parametrize("stage", pipeline.STAGES)
+def test_partial_date_does_not_trigger_clahe_1024(image, stage):
+    hit = list(pipeline.STAGES).index(stage)
+    # A labelled (not short-fragment) partial date. On a fallback stage, C6 keeps
+    # looking for a complete date in the later fallback stages, which find nothing.
+    later = len(pipeline.STAGES) - hit - 1 if hit else 0
+    responses = [[]] * hit + [[box("사용기한 2026.04", 0.99)]] + [[]] * later
+    date, _, attempts = run(image, *responses)
+    assert date == "2026-04-NONE"
+    assert "clahe_1024" not in attempts
 
 
 def test_i_highres_never_runs_twice_on_any_path():
@@ -147,7 +159,9 @@ def test_i_highres_never_runs_twice_on_any_path():
     prediction = {"year": "NONE", "month": "NONE", "day": "NONE", "final_date": "NONE"}
     for combo in itertools.product(outcomes, repeat=4):
         stages = dict(zip(pipeline.STAGES, combo))
-        _, _, attempts = pipeline.run_cascade(lambda name: (prediction, stages[name]))
+        stages["clahe_1024"] = None
+        _, _, attempts = pipeline.run_cascade(
+            lambda name: (prediction if stages[name] is None else {"final_date": "2026-04-24"}, stages[name]))
         assert len(attempts) == len(set(attempts))
         assert attempts[0] == "original_512"
         if combo[0] is not None:
@@ -188,5 +202,5 @@ def test_fallback_complete_date_still_stops_early(image):
 
 
 def test_all_none_final_date_format(image):
-    date, _, _ = run(image, *[[box("nothing", 0.99)]] * 4)
+    date, _, _ = run(image, *[[box("nothing", 0.99)]] * 5)
     assert date == "NONE"

@@ -204,6 +204,18 @@ def single_date_disagreement(original, evidence, highres, highres_evidence):
 
 
 def run_cascade(run_stage):
+    """Run the baseline, then retry only an exhausted NONE at 1024px CLAHE."""
+    prediction, method, attempts = _run_baseline_cascade(run_stage)
+    if prediction["final_date"] != "NONE":
+        return prediction, method, attempts
+    retry, evidence = run_stage("clahe_1024")
+    attempts = attempts + ["clahe_1024"]
+    if evidence is not None:
+        return retry, "clahe_1024", attempts
+    return prediction, method, attempts
+
+
+def _run_baseline_cascade(run_stage):
     """Stage control flow, independent of how a stage is produced.
 
     run_stage(name) -> (prediction, evidence) as from stage_result. Returns
@@ -253,6 +265,7 @@ def predict_image_detailed(engine, path):
         "rotation_270": (lambda: np.asarray(Image.fromarray(base).rotate(270, expand=True)), 512),
         "highres_1024": (lambda: resize_image(rgb, 1024), 1024),
         "clahe": (lambda: apply_clahe(base), 512),
+        "clahe_1024": (lambda: apply_clahe(resize_image(rgb, 1024)), 1024),
     }
 
     def run_stage(name):
