@@ -78,7 +78,9 @@ python scripts/validate_submission.py submission.csv --image-dir val_images
 
 worker 오류·시간 초과는 실패 처리하며 부분 결과 CSV를 성공으로 저장하지 않습니다.
 개별 작업의 worker 무응답 제한은 180초이며, 내부 전체 worker timeout은 7200초입니다.
-전체 2400초 제한 충족 여부는 실행 하드웨어와 입력으로 검증해야 합니다.
+대회 제한 2500초에 대해, 로컬 Ubuntu 22.04(WSL 2)에서 CPU 4개 제한·네트워크 차단으로
+500장을 처리한 실측은 442.7초(최대 RSS 3.53GB)입니다. 주최 측 서버 실측은 아니며
+기록은 `docs/phase3_runtime_20261002/ubuntu_validation.md`에 있습니다.
 
 ## 제출 파일과 검증
 
@@ -88,6 +90,8 @@ worker 오류·시간 초과는 실패 처리하며 부분 결과 CSV를 성공�
 제출 추론은 `data/`, `labels/`, 개발 notebook, 실험 스크립트에 의존하지 않습니다.
 개발 테스트는 `python -m pip install -r requirements-dev.txt` 후 `python -m pytest -q`입니다.
 
-기존 300장 validation 최종 후보는 244/300 (81.33%), v5 기준은 230/300 (76.67%)입니다.
+최종 코드의 개발 데이터 정확도는 식품 700장 620/700 (88.57%), 화장품 개발용 300장
+269/300 (89.67%)이며, 별도로 보관한 화장품 검증용 100장은 1회 평가에서 86/100 (86.0%)입니다.
 비공개 test 500장의 정확도와 실행시간은 공개 validation 결과로 보장할 수 없습니다.
-최종 fresh clone 및 오프라인 검증 결과·환경·한계는 `docs/submission_final_report.md`에 기록합니다.
+정확도·실행시간 검증 기록은 `docs/phase2_accuracy_20261001/`, `docs/phase3_runtime_20261002/`에,
+예선 제출 시점의 fresh clone 검증 기록은 `docs/submission_final_report.md`에 있습니다.
