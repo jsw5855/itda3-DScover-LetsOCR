@@ -1,0 +1,17 @@
+{
+ "correct": 86,
+ "n": 100,
+ "accuracy_pct": 86,
+ "wilson95": [
+  77.9,
+  91.5
+ ],
+ "wrong_total": 14,
+ "wrong_as_NONE": 10,
+ "wrong_as_partial": 2,
+ "wrong_full_date": 2,
+ "elapsed_sec_this_pc": 406.4,
+ "sentence": "검증용 100장에서도 86장(86%)으로 개발용과 같은 수준을 보여, 화장품 규칙이 처음 보는 사진에서도 유지되었다.",
+ "commit": "4c441eee2d4e870f41441852fd56a6857a6c71c1",
+ "label_sha256": "7cbb9fefd491a10fdc04aa4fbdb847088fef3bf0a6e7972e0d704d9eab38b30b"
+}
