@@ -1,0 +1,15 @@
+image_id,category,note
+000106,corrupted OCR,Saved 101740 does not support target month/day; do not insert missing digits
+000232,partial date,Supplemental stage contains 1126 but no usable year
+000749,corrupted OCR,Saved 202602 supports a partial February reading but not the frozen January day; no defensible digit recovery
+000978,no usable OCR evidence,Only isolated digits and unrelated text; no coherent date in available stages
+001103,no usable OCR evidence,Only short numeric fragments such as 18183; no coherent date fields
+001686,other,Computed expiry disagrees with frozen manufacture-date target; later CLAHE loses manufacture label
+001689,no usable OCR evidence,Only short code fragments such as 05242; no coherent date fields
+001988,corrupted OCR,Supplemental 202512.28 has wrong year and absent year/month separator
+002241,parser missed usable evidence,Supplemental stage contains exact 2021MAY26; now parsed without substitutions
+002404,corrupted OCR,0200T203 is corrupted; no reliable complete or partial date reconstruction
+002928,corrupted OCR,044 and 0744 do not establish target month/day without substitutions
+003014,no usable OCR evidence,Expiry wording but no coherent date; visible numbers are clock/code fragments
+003326,partial date,Standalone JUN exists but neither year nor day can be recovered
+003351,corrupted OCR,Garbled date/time-shaped text lacks the target digits; no defensible reconstruction

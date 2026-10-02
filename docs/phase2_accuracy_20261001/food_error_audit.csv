@@ -1,0 +1,83 @@
+image_id,gt,phase1,final,category,fixed,stage_oracle,oracle_already_requested,candidate_alternative_oracle,note
+000090,2026-09-01,NONE,NONE,no usable OCR evidence,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000106,NONE-10-20,NONE,NONE,corrupted OCR,False,,,,Saved 101740 does not support target month/day; do not insert missing digits
+000143,2027-09-06,2027-03-06,2027-03-06,corrupted OCR,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000157,2027-07-08,NONE,NONE,no usable OCR evidence,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000190,2026-11-22,NONE,NONE,corrupted OCR,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000232,2027-11-26,NONE,NONE,partial date,False,,,,Supplemental stage contains 1126 but no usable year
+000368,2026-09-22,NONE,NONE,corrupted OCR,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000406,2026-08-27,2026-05-27,2026-05-27,corrupted OCR,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000415,2026-05-27,NONE,NONE,no usable OCR evidence,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000422,2026-06-09,2025-09-10,2025-09-10,retry/stage-selection issue,False,rotation_270;highres_1024;clahe,,rotation_270;highres_1024;clahe,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000423,2026-06-04,2025-06-05,2025-06-05,retry/stage-selection issue,False,rotation_270,,rotation_270,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000438,2026-02-19,NONE,NONE,no usable OCR evidence,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000440,2026-08-13,NONE,NONE,no usable OCR evidence,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000468,2026-04-06,2025-06-NONE,2025-06-NONE,corrupted OCR,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000473,2026-05-21,2026-03-01,2026-05-02,partial date,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000486,2027-07-15,NONE,NONE,no usable OCR evidence,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000553,2022-10-24,2020-01-24,2020-01-24,corrupted OCR,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000582,2025-11-21,2025-01-21,2025-01-21,corrupted OCR,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000604,2026-09-15,NONE,NONE,corrupted OCR,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000643,2026-01-21,NONE,NONE,corrupted OCR,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000648,2026-08-25,NONE,NONE,corrupted OCR,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000673,2026-06-02,NONE,NONE,corrupted OCR,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000694,2026-09-01,NONE,NONE,no usable OCR evidence,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000722,2026-08-04,NONE,NONE,no usable OCR evidence,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000726,2026-09-16,2026-08-16,2026-09-16,retry/stage-selection issue,True,rotation_270;clahe,clahe,rotation_270;clahe,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000749,2026-01-21,2026-02-NONE,2026-02-NONE,corrupted OCR,False,,,,Saved 202602 supports a partial February reading but not the frozen January day; no defensible digit recovery
+000770,2030-04-NONE,NONE,NONE,corrupted OCR,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000795,2026-07-14,NONE,NONE,no usable OCR evidence,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000820,2026-05-18,NONE,NONE,corrupted OCR,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000832,2026-07-16,2025-07-15,2025-07-15,partial date,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000848,2026-05-21,NONE,NONE,partial date,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000859,2021-10-20,NONE,NONE,no usable OCR evidence,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000862,2021-10-22,NONE,NONE,corrupted OCR,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000877,2023-04-03,NONE,NONE,no usable OCR evidence,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000933,2021-05-26,NONE,NONE,no usable OCR evidence,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+000978,2021-11-03,NONE,NONE,no usable OCR evidence,False,,,,Only isolated digits and unrelated text; no coherent date in available stages
+001103,2021-03-14,NONE,NONE,no usable OCR evidence,False,,,,Only short numeric fragments such as 18183; no coherent date fields
+001214,2021-05-15,NONE,NONE,corrupted OCR,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+001455,2022-01-02,2022-04-02,2022-04-02,retry/stage-selection issue,False,rotation_270,,rotation_270,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+001515,2022-08-16,2022-08-18,2022-08-18,retry/stage-selection issue,False,rotation_270;highres_1024;clahe,,rotation_270;highres_1024;clahe,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+001539,2022-01-18,NONE,NONE,corrupted OCR,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+001646,2021-10-12,NONE,NONE,corrupted OCR,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+001686,2020-11-27,2025-11-27,2025-11-27,other,False,clahe,,original_512;rotation_270;highres_1024;clahe,Computed expiry disagrees with frozen manufacture-date target; later CLAHE loses manufacture label
+001689,2021-07-21,NONE,NONE,no usable OCR evidence,False,,,,Only short code fragments such as 05242; no coherent date fields
+001714,2021-08-09,NONE,NONE,ambiguous order/context,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+001749,2019-07-03,NONE,NONE,no usable OCR evidence,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+001802,2021-05-03,NONE,NONE,partial date,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+001858,2022-07-17,NONE,NONE,corrupted OCR,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+001860,2022-07-08,NONE,NONE,corrupted OCR,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+001862,2023-06-18,2018-06-23,2018-06-23,ambiguous order/context,False,,,original_512;highres_1024,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+001868,2022-07-NONE,NONE,NONE,corrupted OCR,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+001900,2021-11-29,NONE,NONE,corrupted OCR,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+001925,2022-01-21,NONE,NONE,no usable OCR evidence,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+001964,2021-10-09,2019-10-10,2019-10-10,retry/stage-selection issue,False,rotation_270;highres_1024,,rotation_270;highres_1024,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+001975,2021-02-26,2026-02-21,2026-02-21,ambiguous order/context,False,,,clahe,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+001988,2021-12-28,NONE,NONE,corrupted OCR,False,,,,Supplemental 202512.28 has wrong year and absent year/month separator
+002019,2022-03-09,NONE,NONE,no usable OCR evidence,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+002034,2020-12-17,2017-12-20,2017-12-20,ambiguous order/context,False,,,original_512;rotation_270;highres_1024;clahe,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+002068,2022-09-11,NONE,NONE,ambiguous order/context,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+002152,2019-07-11,2019-07-01,2019-07-01,corrupted OCR,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+002209,2022-05-31,NONE,NONE,corrupted OCR,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+002227,2023-03-03,NONE,NONE,partial date,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+002241,2021-05-26,NONE,2021-05-26,parser missed usable evidence,True,clahe_1024,clahe_1024,clahe_1024,Supplemental stage contains exact 2021MAY26; now parsed without substitutions
+002278,2023-07-NONE,NONE,NONE,partial date,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+002328,2021-10-20,2020-10-21,2020-10-21,partial date,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+002404,2020-11-11,NONE,NONE,corrupted OCR,False,,,,0200T203 is corrupted; no reliable complete or partial date reconstruction
+002436,2021-06-03,2021-05-03,2021-05-03,corrupted OCR,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+002492,2022-08-09,NONE,NONE,partial date,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+002552,2022-01-21,2021-01-22,2021-01-22,ambiguous order/context,False,,,original_512;highres_1024;clahe,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+002604,2023-11-17,2022-03-22,2022-03-22,ambiguous order/context,False,,,original_512;clahe,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+002704,2022-10-29,NONE,NONE,corrupted OCR,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+002726,2022-03-17,2017-03-22,2017-03-22,ambiguous order/context,False,,,rotation_270,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+002814,2021-04-02,NONE,NONE,no usable OCR evidence,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+002829,2027-01-02,2022-01-02,2022-01-02,corrupted OCR,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+002928,NONE-04-08,NONE,NONE,corrupted OCR,False,,,,044 and 0744 do not establish target month/day without substitutions
+003014,2021-06-12,NONE,NONE,no usable OCR evidence,False,,,,Expiry wording but no coherent date; visible numbers are clock/code fragments
+003016,2022-07-01,2022-07-NONE,2022-07-NONE,partial date,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+003312,2021-03-11,2021-03-NONE,2021-03-NONE,partial date,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+003326,2024-06-05,NONE,NONE,partial date,False,,,,Standalone JUN exists but neither year nor day can be recovered
+003338,2021-06-01,NONE,NONE,corrupted OCR,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+003350,2025-12-10,NONE,NONE,corrupted OCR,False,,,,"Primary evidence classification from earlier audit, rechecked against all currently saved stages."
+003351,2025-12-10,NONE,NONE,corrupted OCR,False,,,,Garbled date/time-shaped text lacks the target digits; no defensible reconstruction

@@ -1,0 +1,42 @@
+{
+  "tag": "smoke6",
+  "measured": true,
+  "fresh_ocr": true,
+  "count": 6,
+  "layout": {
+    "processes": 2,
+    "threads": 2,
+    "note": "run_submission 2-worker path via submission_runtime.run_workers"
+  },
+  "infer_wall_sec": 16.584572599999774,
+  "wall_through_csv_sec": 16.585110700000314,
+  "csv_sec": 0.0005350000001271837,
+  "avg_sec_per_image": 2.7640954333332957,
+  "sum_image_elapsed_sec": 16.9301303000002,
+  "projected_500_sec": 1382.0477166666478,
+  "margin_to_1800": 1.3024152337818036,
+  "margin_to_2500": 1.8089100469191717,
+  "stage_calls": {
+    "original_512": 6,
+    "highres_1024": 2
+  },
+  "total_calls": 8,
+  "calls_per_image": 1.3333333333333333,
+  "stage_ocr_sec_total": {
+    "original_512": 8.154226299999664,
+    "highres_1024": 7.495751600000403
+  },
+  "stage_ocr_sec_mean": {
+    "original_512": 1.3590377166666106,
+    "highres_1024": 3.7478758000002017
+  },
+  "ocr_sec_total": 15.649977900000067,
+  "non_ocr_per_image": 0.21335873333335562,
+  "correct": 6,
+  "accuracy": 1.0,
+  "worker_pids": [
+    15888,
+    25420
+  ],
+  "note": "Wall-clock inference across parallel workers, so avg_sec_per_image is throughput, not per-image latency. Food development images; accuracy is a consistency check only. Interpreter and notebook start-up are excluded."
+}

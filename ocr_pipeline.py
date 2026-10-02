@@ -2,14 +2,18 @@
 from __future__ import annotations
 
 import csv
+import ctypes
 import json
 import os
+import sys
+import threading
 from pathlib import Path
 
 import numpy as np
 from PIL import Image, ImageOps
 
 from date_parser import parse_expiration_date
+from date_parser.extract import extract_date_tokens, normalize_confusable
 from date_parser.keywords import (
     ANCHOR_KEYWORDS,
     EXCLUDE_KEYWORDS,
@@ -42,11 +46,14 @@ def initialize_engine(
     os.environ["MKL_NUM_THREADS"] = str(cpu_threads)
     os.environ["OPENBLAS_NUM_THREADS"] = str(cpu_threads)
     os.environ["NUMEXPR_NUM_THREADS"] = str(cpu_threads)
+    if sys.platform != "win32":
+        # Before any OpenMP thread exists: new Linux threads copy their creator's MXCSR.
+        flush_denormals()
     import cv2
     cv2.setNumThreads(cpu_threads)
     from paddleocr import PaddleOCR
 
-    return PaddleOCR(
+    engine = PaddleOCR(
         lang="korean", device="cpu",
         text_detection_model_name=names[0],
         text_detection_model_dir=str(weights / names[0]),
@@ -58,6 +65,79 @@ def initialize_engine(
         use_textline_orientation=False, enable_mkldnn=enable_mkldnn,
         cpu_threads=cpu_threads,
     )
+    if sys.platform == "win32":
+        flush_denormals()
+    return engine
+
+
+_DN_FLUSH, _MCW_DN = 0x01000000, 0x03000000
+_MXCSR_FTZ_DAZ = 0x8040
+_CPUINFO = "/proc/cpuinfo"
+
+
+def flush_denormals():
+    """Flush denormal floats to zero on the caller and its OpenMP team.
+
+    On Intel P-cores denormal operands in the 1x1 convolutions take microcode
+    assists, which made each OCR call about 3x slower; predictions were
+    unchanged with FTZ/DAZ. Returns the number of threads switched directly.
+    A failure only costs speed; unsupported platforms are left as they were.
+    """
+    if sys.platform == "win32":
+        return _flush_windows()
+    if sys.platform.startswith("linux"):
+        return _flush_linux()
+    return 0
+
+
+def _flush_windows():
+    """The bundled oneDNN runs on MSVC OpenMP (vcomp140), whose worker threads
+    never inherit the caller's floating-point mode, so the team is switched too.
+    """
+    try:
+        crt = ctypes.CDLL("ucrtbase")
+        crt._controlfp.argtypes = (ctypes.c_uint, ctypes.c_uint)
+        crt._controlfp.restype = ctypes.c_uint
+        switched = set()
+
+        def flush():
+            crt._controlfp(_DN_FLUSH, _MCW_DN)
+            switched.add(threading.get_native_id())
+
+        flush()
+        team = ctypes.CFUNCTYPE(None)(flush)
+        ctypes.CDLL("vcomp140")._vcomp_fork(1, 0, team)
+        return len(switched)
+    except (OSError, AttributeError):
+        return 0
+
+
+def _flush_linux():
+    """Set MXCSR FTZ|DAZ on the calling thread through glibc's femode_t.
+
+    Only the caller is switched. The wheel's Intel OpenMP copies the master's
+    MXCSR into its workers at every parallel region (KMP_INHERIT_FP_CONTROL,
+    on by default), and GNU OpenMP threads copy it from their creator.
+    """
+    import platform
+
+    if platform.machine() != "x86_64":
+        return 0
+    try:
+        with open(_CPUINFO, encoding="ascii", errors="replace") as source:
+            flags = next(line for line in source if line.startswith("flags")).split()
+        if "avx" not in flags:  # Paddle needs AVX, and every AVX CPU has DAZ
+            return 0
+        libm = ctypes.CDLL("libm.so.6")
+        mode = (ctypes.c_uint32 * 2)()  # control word, then __mxcsr
+        if libm.fegetmode(mode) or mode[1] >> 16:
+            return 0
+        mode[1] |= _MXCSR_FTZ_DAZ
+        if libm.fesetmode(mode) or libm.fegetmode(mode):
+            return 0
+        return int(mode[1] & _MXCSR_FTZ_DAZ == _MXCSR_FTZ_DAZ)
+    except (OSError, AttributeError, StopIteration):
+        return 0
 
 
 def decode_image(path):
@@ -120,6 +200,24 @@ RETRY_Q_THRESHOLD = 0.90
 SHORT_SOURCE_CHARS = 8
 
 
+def _has_damaged_day(selected):
+    """A full numeric YMD was attempted, but the day could not be parsed.
+
+    A genuine year/month label does not qualify. Re-read damaged full dates
+    without inventing their missing day or changing intentionally partial dates.
+    """
+    value = selected.result
+    if value.year is None or value.month is None or value.day is not None:
+        return False
+    for token in extract_date_tokens(selected.source_text):
+        fields = [normalize_confusable(f.raw) for f in token.fields]
+        if (len(fields) == 3 and all(f.isdigit() for f in fields)
+                and len(fields[0]) == 4
+                and int(fields[0]) == value.year and int(fields[1]) == value.month):
+            return True
+    return False
+
+
 def stage_result(detections):
     """Parse one OCR stage into (prediction, evidence).
 
@@ -145,6 +243,7 @@ def stage_result(detections):
         "q": q,
         "M": len(distinct) >= 2,
         "short": len("".join(selected.source_text.split())) <= SHORT_SOURCE_CHARS,
+        "damaged_day": _has_damaged_day(selected),
         "self_anchor": self_anchor and not self_exclude,
         "self_exclude": self_exclude and not self_anchor,
         "selected_date": selected.result.final_date_string(),
@@ -161,9 +260,26 @@ def uncertain(evidence):
     return q is None or q < RETRY_Q_THRESHOLD or evidence["M"]
 
 
+def conclusive(evidence):
+    """The strongest evidence class an original_512 stage can produce.
+
+    A complete date, recognized at or above the retry confidence threshold,
+    from a box that explicitly labels itself as the expiration date, with no
+    damaged field. A 1024px re-read carries no stronger class of evidence than
+    this, and prefer_retry can only replace the reading, so the cascade stops.
+    """
+    return (evidence.get("self_anchor", False)
+            and evidence["q"] is not None
+            and evidence["q"] >= RETRY_Q_THRESHOLD
+            and not evidence.get("damaged_day", False)
+            and "NONE" not in evidence["selected_date"])
+
+
 def retry_triggered(evidence):
-    """Re-read at 1024px when the reading is uncertain or comes from a short fragment."""
-    return uncertain(evidence) or evidence.get("short", False)
+    """Re-read uncertain/short readings and full dates with an unreadable day."""
+    if conclusive(evidence):
+        return False
+    return uncertain(evidence) or evidence.get("short", False) or evidence.get("damaged_day", False)
 
 
 def prefer_retry(original, highres):
@@ -183,6 +299,14 @@ def prefer_retry(original, highres):
     # is not: it can be a legitimate refinement of the selected expiry.
     old_date = original.get("selected_date", "NONE")
     new_date = highres.get("selected_date", "NONE")
+    # A retry that only loses fields provides no contradictory date evidence.
+    # Preserve the complete reading even when the partial box has a higher q.
+    # A genuinely different year/month still follows the normal retry policy.
+    old_fields, new_fields = old_date.split("-"), new_date.split("-")
+    if (len(old_fields) == len(new_fields) == 3
+            and "NONE" not in old_fields and "NONE" in new_fields
+            and all(new == "NONE" or old == new for old, new in zip(old_fields, new_fields))):
+        return False
     if (original["M"] and not highres["M"]
             and not original.get("self_exclude", False)
             and not highres.get("self_anchor", False)
@@ -232,6 +356,14 @@ def _run_baseline_cascade(run_stage):
         if not retry_triggered(evidence):
             return original, "original_512", attempts
         highres, highres_evidence = run("highres_1024")
+        # An empty highres result cannot resolve an uncertain expiry-labelled
+        # reading. Try the existing contrast stage, but replace only with a
+        # stronger reading that also explicitly names itself as expiration.
+        if highres_evidence is None and uncertain(evidence) and evidence.get("self_anchor", False):
+            clahe, clahe_evidence = run("clahe")
+            if (clahe_evidence is not None and clahe_evidence.get("self_anchor", False)
+                    and prefer_retry(evidence, clahe_evidence)):
+                return clahe, "clahe_retry", attempts
         if uncertain(evidence) and single_date_disagreement(original, evidence, highres, highres_evidence):
             clahe, clahe_evidence = run("clahe")
             if clahe_evidence is not None and clahe["final_date"] == original["final_date"]:

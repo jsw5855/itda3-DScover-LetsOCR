@@ -1,0 +1,637 @@
+{
+  "no_period": {
+    "food": {
+      "correct": 619,
+      "unknown": [],
+      "calls": {
+        "original_512": 700,
+        "highres_1024": 302,
+        "rotation_270": 121,
+        "clahe": 88,
+        "clahe_1024": 59
+      },
+      "call_delta": 3,
+      "changes": [
+        {
+          "image_id": "001686",
+          "gt": "2020-11-27",
+          "before": "2025-11-27",
+          "after": "2020-11-27",
+          "outcome": "gain"
+        }
+      ]
+    },
+    "cosmetic": {
+      "correct": 265,
+      "unknown": [],
+      "calls": {
+        "original_512": 300,
+        "highres_1024": 148,
+        "rotation_270": 94,
+        "clahe": 46,
+        "clahe_1024": 35
+      },
+      "call_delta": 0,
+      "changes": []
+    }
+  },
+  "printed_period_base": {
+    "food": {
+      "correct": 619,
+      "unknown": [],
+      "calls": {
+        "original_512": 700,
+        "highres_1024": 301,
+        "rotation_270": 120,
+        "clahe": 87,
+        "clahe_1024": 59
+      },
+      "call_delta": 0,
+      "changes": [
+        {
+          "image_id": "001686",
+          "gt": "2020-11-27",
+          "before": "2025-11-27",
+          "after": "2020-11-27",
+          "outcome": "gain"
+        }
+      ]
+    },
+    "cosmetic": {
+      "correct": 265,
+      "unknown": [],
+      "calls": {
+        "original_512": 300,
+        "highres_1024": 148,
+        "rotation_270": 94,
+        "clahe": 46,
+        "clahe_1024": 35
+      },
+      "call_delta": 0,
+      "changes": []
+    }
+  },
+  "no_six": {
+    "food": {
+      "correct": 618,
+      "unknown": [],
+      "calls": {
+        "original_512": 700,
+        "highres_1024": 301,
+        "rotation_270": 120,
+        "clahe": 87,
+        "clahe_1024": 60
+      },
+      "call_delta": 1,
+      "changes": [
+        {
+          "image_id": "000749",
+          "gt": "2026-01-21",
+          "before": "2026-02-NONE",
+          "after": "NONE",
+          "outcome": "changed-wrong"
+        }
+      ]
+    },
+    "cosmetic": {
+      "correct": 263,
+      "unknown": [],
+      "calls": {
+        "original_512": 300,
+        "highres_1024": 148,
+        "rotation_270": 95,
+        "clahe": 47,
+        "clahe_1024": 36
+      },
+      "call_delta": 3,
+      "changes": [
+        {
+          "image_id": "900028",
+          "gt": "2027-10-17",
+          "before": "2027-10-17",
+          "after": "NONE",
+          "outcome": "regression"
+        },
+        {
+          "image_id": "900198",
+          "gt": "2029-03-03",
+          "before": "2029-03-03",
+          "after": "NONE",
+          "outcome": "regression"
+        }
+      ]
+    }
+  },
+  "year_month_word": {
+    "food": {
+      "correct": 619,
+      "unknown": [],
+      "calls": {
+        "original_512": 700,
+        "highres_1024": 301,
+        "rotation_270": 120,
+        "clahe": 87,
+        "clahe_1024": 59
+      },
+      "call_delta": 0,
+      "changes": [
+        {
+          "image_id": "002241",
+          "gt": "2021-05-26",
+          "before": "NONE",
+          "after": "2021-05-26",
+          "outcome": "gain"
+        }
+      ]
+    },
+    "cosmetic": {
+      "correct": 265,
+      "unknown": [],
+      "calls": {
+        "original_512": 300,
+        "highres_1024": 148,
+        "rotation_270": 94,
+        "clahe": 46,
+        "clahe_1024": 35
+      },
+      "call_delta": 0,
+      "changes": []
+    }
+  },
+  "mixed_comma": {
+    "food": {
+      "correct": 618,
+      "unknown": [],
+      "calls": {
+        "original_512": 700,
+        "highres_1024": 301,
+        "rotation_270": 120,
+        "clahe": 87,
+        "clahe_1024": 59
+      },
+      "call_delta": 0,
+      "changes": [
+        {
+          "image_id": "000473",
+          "gt": "2026-05-21",
+          "before": "2026-03-01",
+          "after": "2026-05-02",
+          "outcome": "changed-wrong"
+        }
+      ]
+    },
+    "cosmetic": {
+      "correct": 266,
+      "unknown": [],
+      "calls": {
+        "original_512": 300,
+        "highres_1024": 148,
+        "rotation_270": 94,
+        "clahe": 46,
+        "clahe_1024": 35
+      },
+      "call_delta": 0,
+      "changes": [
+        {
+          "image_id": "900071",
+          "gt": "2029-05-17",
+          "before": "2029-05-NONE",
+          "after": "2029-05-17",
+          "outcome": "gain"
+        }
+      ]
+    }
+  },
+  "preserve_complete": {
+    "food": {
+      "correct": 618,
+      "unknown": [],
+      "calls": {
+        "original_512": 700,
+        "highres_1024": 301,
+        "rotation_270": 120,
+        "clahe": 87,
+        "clahe_1024": 59
+      },
+      "call_delta": 0,
+      "changes": []
+    },
+    "cosmetic": {
+      "correct": 266,
+      "unknown": [],
+      "calls": {
+        "original_512": 300,
+        "highres_1024": 148,
+        "rotation_270": 94,
+        "clahe": 46,
+        "clahe_1024": 35
+      },
+      "call_delta": 0,
+      "changes": [
+        {
+          "image_id": "900225",
+          "gt": "2029-08-02",
+          "before": "2029-08-NONE",
+          "after": "2029-08-02",
+          "outcome": "gain"
+        }
+      ]
+    }
+  },
+  "retry_partial": {
+    "food": {
+      "correct": 618,
+      "unknown": [],
+      "calls": {
+        "original_512": 700,
+        "highres_1024": 318,
+        "rotation_270": 120,
+        "clahe": 87,
+        "clahe_1024": 59
+      },
+      "call_delta": 17,
+      "changes": []
+    },
+    "cosmetic": {
+      "correct": 266,
+      "unknown": [],
+      "calls": {
+        "original_512": 300,
+        "highres_1024": 154,
+        "rotation_270": 94,
+        "clahe": 46,
+        "clahe_1024": 35
+      },
+      "call_delta": 6,
+      "changes": [
+        {
+          "image_id": "900181",
+          "gt": "2028-02-09",
+          "before": "2028-02-NONE",
+          "after": "2028-02-09",
+          "outcome": "gain"
+        }
+      ]
+    }
+  },
+  "retry_damaged_day": {
+    "food": {
+      "correct": 618,
+      "unknown": [],
+      "calls": {
+        "original_512": 700,
+        "highres_1024": 302,
+        "rotation_270": 120,
+        "clahe": 87,
+        "clahe_1024": 59
+      },
+      "call_delta": 1,
+      "changes": []
+    },
+    "cosmetic": {
+      "correct": 266,
+      "unknown": [],
+      "calls": {
+        "original_512": 300,
+        "highres_1024": 150,
+        "rotation_270": 94,
+        "clahe": 46,
+        "clahe_1024": 35
+      },
+      "call_delta": 2,
+      "changes": [
+        {
+          "image_id": "900181",
+          "gt": "2028-02-09",
+          "before": "2028-02-NONE",
+          "after": "2028-02-09",
+          "outcome": "gain"
+        }
+      ]
+    }
+  },
+  "split_until": {
+    "food": {
+      "correct": 618,
+      "unknown": [],
+      "calls": {
+        "original_512": 700,
+        "highres_1024": 301,
+        "rotation_270": 120,
+        "clahe": 87,
+        "clahe_1024": 59
+      },
+      "call_delta": 0,
+      "changes": []
+    },
+    "cosmetic": {
+      "correct": 266,
+      "unknown": [],
+      "calls": {
+        "original_512": 300,
+        "highres_1024": 148,
+        "rotation_270": 94,
+        "clahe": 45,
+        "clahe_1024": 34
+      },
+      "call_delta": -2,
+      "changes": [
+        {
+          "image_id": "900285",
+          "gt": "2028-09-04",
+          "before": "NONE",
+          "after": "2028-09-04",
+          "outcome": "gain"
+        }
+      ]
+    }
+  },
+  "retry_bare_date": {
+    "food": {
+      "correct": 617,
+      "unknown": [],
+      "calls": {
+        "original_512": 700,
+        "highres_1024": 478,
+        "rotation_270": 120,
+        "clahe": 87,
+        "clahe_1024": 59
+      },
+      "call_delta": 177,
+      "changes": [
+        {
+          "image_id": "000912",
+          "gt": "2022-05-05",
+          "before": "2022-05-05",
+          "after": "2022-05-NONE",
+          "outcome": "regression"
+        },
+        {
+          "image_id": "001515",
+          "gt": "2022-08-16",
+          "before": "2022-08-18",
+          "after": "2022-08-16",
+          "outcome": "gain"
+        },
+        {
+          "image_id": "002581",
+          "gt": "2021-11-17",
+          "before": "2021-11-17",
+          "after": "2021-01-NONE",
+          "outcome": "regression"
+        }
+      ]
+    },
+    "cosmetic": {
+      "correct": 266,
+      "unknown": [],
+      "calls": {
+        "original_512": 300,
+        "highres_1024": 168,
+        "rotation_270": 94,
+        "clahe": 46,
+        "clahe_1024": 35
+      },
+      "call_delta": 20,
+      "changes": [
+        {
+          "image_id": "900181",
+          "gt": "2028-02-09",
+          "before": "2028-02-NONE",
+          "after": "2028-02-09",
+          "outcome": "gain"
+        }
+      ]
+    }
+  },
+  "clahe_after_empty_retry": {
+    "food": {
+      "correct": 619,
+      "unknown": [],
+      "calls": {
+        "original_512": 700,
+        "highres_1024": 301,
+        "rotation_270": 120,
+        "clahe": 104,
+        "clahe_1024": 59
+      },
+      "call_delta": 17,
+      "changes": [
+        {
+          "image_id": "000553",
+          "gt": "2022-10-24",
+          "before": "2020-01-24",
+          "after": "2028-01-24",
+          "outcome": "changed-wrong"
+        },
+        {
+          "image_id": "000726",
+          "gt": "2026-09-16",
+          "before": "2026-08-16",
+          "after": "2026-09-16",
+          "outcome": "gain"
+        }
+      ]
+    },
+    "cosmetic": {
+      "correct": 265,
+      "unknown": [],
+      "calls": {
+        "original_512": 300,
+        "highres_1024": 148,
+        "rotation_270": 94,
+        "clahe": 51,
+        "clahe_1024": 35
+      },
+      "call_delta": 5,
+      "changes": []
+    }
+  },
+  "combined": {
+    "food": {
+      "correct": 619,
+      "unknown": [],
+      "calls": {
+        "original_512": 700,
+        "highres_1024": 302,
+        "rotation_270": 120,
+        "clahe": 87,
+        "clahe_1024": 59
+      },
+      "call_delta": 1,
+      "changes": [
+        {
+          "image_id": "000473",
+          "gt": "2026-05-21",
+          "before": "2026-03-01",
+          "after": "2026-05-02",
+          "outcome": "changed-wrong"
+        },
+        {
+          "image_id": "002241",
+          "gt": "2021-05-26",
+          "before": "NONE",
+          "after": "2021-05-26",
+          "outcome": "gain"
+        }
+      ]
+    },
+    "cosmetic": {
+      "correct": 269,
+      "unknown": [],
+      "calls": {
+        "original_512": 300,
+        "highres_1024": 150,
+        "rotation_270": 94,
+        "clahe": 45,
+        "clahe_1024": 34
+      },
+      "call_delta": 0,
+      "changes": [
+        {
+          "image_id": "900071",
+          "gt": "2029-05-17",
+          "before": "2029-05-NONE",
+          "after": "2029-05-17",
+          "outcome": "gain"
+        },
+        {
+          "image_id": "900181",
+          "gt": "2028-02-09",
+          "before": "2028-02-NONE",
+          "after": "2028-02-09",
+          "outcome": "gain"
+        },
+        {
+          "image_id": "900225",
+          "gt": "2029-08-02",
+          "before": "2029-08-NONE",
+          "after": "2029-08-02",
+          "outcome": "gain"
+        },
+        {
+          "image_id": "900285",
+          "gt": "2028-09-04",
+          "before": "NONE",
+          "after": "2028-09-04",
+          "outcome": "gain"
+        }
+      ]
+    }
+  },
+  "combined_anchored": {
+    "food": {
+      "correct": 620,
+      "unknown": [],
+      "calls": {
+        "original_512": 700,
+        "highres_1024": 302,
+        "rotation_270": 120,
+        "clahe": 92,
+        "clahe_1024": 59
+      },
+      "call_delta": 5,
+      "changes": [
+        {
+          "image_id": "000726",
+          "gt": "2026-09-16",
+          "before": "2026-08-16",
+          "after": "2026-09-16",
+          "outcome": "gain"
+        }
+      ]
+    },
+    "cosmetic": {
+      "correct": 269,
+      "unknown": [],
+      "calls": {
+        "original_512": 300,
+        "highres_1024": 150,
+        "rotation_270": 94,
+        "clahe": 46,
+        "clahe_1024": 34
+      },
+      "call_delta": 1,
+      "changes": []
+    }
+  },
+  "final_verified": {
+    "food": {
+      "correct": 620,
+      "unknown": [],
+      "calls": {
+        "original_512": 700,
+        "highres_1024": 302,
+        "rotation_270": 120,
+        "clahe": 92,
+        "clahe_1024": 59
+      },
+      "call_delta": 6,
+      "changes": [
+        {
+          "image_id": "000473",
+          "gt": "2026-05-21",
+          "before": "2026-03-01",
+          "after": "2026-05-02",
+          "outcome": "changed-wrong"
+        },
+        {
+          "image_id": "000726",
+          "gt": "2026-09-16",
+          "before": "2026-08-16",
+          "after": "2026-09-16",
+          "outcome": "gain"
+        },
+        {
+          "image_id": "002241",
+          "gt": "2021-05-26",
+          "before": "NONE",
+          "after": "2021-05-26",
+          "outcome": "gain"
+        }
+      ]
+    },
+    "cosmetic": {
+      "correct": 269,
+      "unknown": [],
+      "calls": {
+        "original_512": 300,
+        "highres_1024": 150,
+        "rotation_270": 94,
+        "clahe": 46,
+        "clahe_1024": 34
+      },
+      "call_delta": 1,
+      "changes": [
+        {
+          "image_id": "900071",
+          "gt": "2029-05-17",
+          "before": "2029-05-NONE",
+          "after": "2029-05-17",
+          "outcome": "gain"
+        },
+        {
+          "image_id": "900181",
+          "gt": "2028-02-09",
+          "before": "2028-02-NONE",
+          "after": "2028-02-09",
+          "outcome": "gain"
+        },
+        {
+          "image_id": "900225",
+          "gt": "2029-08-02",
+          "before": "2029-08-NONE",
+          "after": "2029-08-02",
+          "outcome": "gain"
+        },
+        {
+          "image_id": "900285",
+          "gt": "2028-09-04",
+          "before": "NONE",
+          "after": "2028-09-04",
+          "outcome": "gain"
+        }
+      ]
+    }
+  }
+}

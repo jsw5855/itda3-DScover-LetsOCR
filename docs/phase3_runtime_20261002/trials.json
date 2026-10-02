@@ -1,0 +1,561 @@
+{
+  "layout_ratio_2p2t_over_1p4t_measured": 0.675588737376264,
+  "stage_seconds_measured_1p4t": {
+    "original_512": 1.03655176466668,
+    "highres_1024": 2.0680861213483155,
+    "rotation_270": 0.939101943478363,
+    "clahe": 1.0481151037036531,
+    "clahe_1024": 1.6629922666667072
+  },
+  "clahe_1024_conservative_sec": 2.044982523333313,
+  "trials": {
+    "production_conclusive_stop": {
+      "food": {
+        "correct": 620,
+        "images": 700,
+        "calls": {
+          "original_512": 700,
+          "highres_1024": 273,
+          "rotation_270": 120,
+          "clahe": 91,
+          "clahe_1024": 59
+        },
+        "total_calls": 1243,
+        "calls_per_image": 1.7757142857142858,
+        "unknown": [],
+        "changes": [],
+        "outcomes": {},
+        "stage_order": [
+          "original_512",
+          "rotation_270",
+          "highres_1024",
+          "clahe"
+        ],
+        "projection_same_run_clahe1024": {
+          "1p4t": {
+            "projected_sec_per_image": 2.334367629117884,
+            "projected_500_sec": 1170.834781758942,
+            "margin_to_1800": 1.5373646461850619,
+            "margin_to_2500": 2.1352286752570304
+          },
+          "2p2t": {
+            "projected_sec_per_image": 1.5770724791277742,
+            "projected_500_sec": 792.1872067638872,
+            "margin_to_1800": 2.2721901901863117,
+            "margin_to_2500": 3.1558197085921
+          }
+        },
+        "projection_conservative_clahe1024": {
+          "1p4t": {
+            "projected_sec_per_image": 2.366563950751212,
+            "projected_500_sec": 1186.9329425756061,
+            "margin_to_1800": 1.5165136423748238,
+            "margin_to_2500": 2.106268947742811
+          },
+          "2p2t": {
+            "projected_sec_per_image": 1.5988239514081946,
+            "projected_500_sec": 803.0629429040973,
+            "margin_to_1800": 2.241418329540525,
+            "margin_to_2500": 3.1130810132507296
+          }
+        }
+      },
+      "cosmetic": {
+        "correct": 269,
+        "images": 300,
+        "calls": {
+          "original_512": 300,
+          "highres_1024": 143,
+          "rotation_270": 94,
+          "clahe": 45,
+          "clahe_1024": 34
+        },
+        "total_calls": 616,
+        "calls_per_image": 2.0533333333333332,
+        "unknown": [],
+        "changes": [],
+        "outcomes": {},
+        "stage_order": [
+          "original_512",
+          "rotation_270",
+          "highres_1024",
+          "clahe"
+        ],
+        "projection_same_run_clahe1024": {
+          "1p4t": {
+            "projected_sec_per_image": 2.716133065243678,
+            "projected_500_sec": 1361.717499821839,
+            "margin_to_1800": 1.3218600776119158,
+            "margin_to_2500": 1.835916774460994
+          },
+          "2p2t": {
+            "projected_sec_per_image": 1.8349889080938981,
+            "projected_500_sec": 921.1454212469491,
+            "margin_to_1800": 1.9540888533792533,
+            "margin_to_2500": 2.7140122963600737
+          }
+        },
+        "projection_conservative_clahe1024": {
+          "1p4t": {
+            "projected_sec_per_image": 2.7594252943325603,
+            "projected_500_sec": 1383.3636143662802,
+            "margin_to_1800": 1.3011763366528772,
+            "margin_to_2500": 1.8071893564623294
+          },
+          "2p2t": {
+            "projected_sec_per_image": 1.86423665048226,
+            "projected_500_sec": 935.7692924411301,
+            "margin_to_1800": 1.923551044621652,
+            "margin_to_2500": 2.6715986730856276
+          }
+        }
+      }
+    },
+    "fallback_clahe_before_highres": {
+      "food": {
+        "correct": 619,
+        "images": 700,
+        "calls": {
+          "original_512": 700,
+          "highres_1024": 250,
+          "rotation_270": 120,
+          "clahe": 118,
+          "clahe_1024": 59
+        },
+        "total_calls": 1247,
+        "calls_per_image": 1.7814285714285714,
+        "unknown": [],
+        "changes": [
+          {
+            "image_id": "000160",
+            "before": "2026-10-27",
+            "after": "2025-04-28",
+            "gt": "2026-10-27",
+            "outcome": "regression"
+          }
+        ],
+        "outcomes": {
+          "regression": 1
+        },
+        "stage_order": [
+          "original_512",
+          "rotation_270",
+          "clahe",
+          "highres_1024"
+        ],
+        "projection_same_run_clahe1024": {
+          "1p4t": {
+            "projected_sec_per_image": 2.306843524845009,
+            "projected_500_sec": 1157.0727296225045,
+            "margin_to_1800": 1.555649834204675,
+            "margin_to_2500": 2.1606247697287153
+          },
+          "2p2t": {
+            "projected_sec_per_image": 1.55847750427465,
+            "projected_500_sec": 782.889719337325,
+            "margin_to_1800": 2.29917439907578,
+            "margin_to_2500": 3.1932977764941386
+          }
+        },
+        "projection_conservative_clahe1024": {
+          "1p4t": {
+            "projected_sec_per_image": 2.3390398464783373,
+            "projected_500_sec": 1173.1708904391687,
+            "margin_to_1800": 1.5343033267098727,
+            "margin_to_2500": 2.130976842652601
+          },
+          "2p2t": {
+            "projected_sec_per_image": 1.5802289765550703,
+            "projected_500_sec": 793.7654554775353,
+            "margin_to_1800": 2.267672380523421,
+            "margin_to_2500": 3.149544972949196
+          }
+        }
+      },
+      "cosmetic": {
+        "correct": 267,
+        "images": 300,
+        "calls": {
+          "original_512": 300,
+          "highres_1024": 126,
+          "rotation_270": 94,
+          "clahe": 86,
+          "clahe_1024": 34
+        },
+        "total_calls": 640,
+        "calls_per_image": 2.1333333333333333,
+        "unknown": [],
+        "changes": [
+          {
+            "image_id": "900043",
+            "before": "2027-11-27",
+            "after": "2025-05-28",
+            "gt": "2027-11-27",
+            "outcome": "regression"
+          },
+          {
+            "image_id": "900082",
+            "before": "2029-06-10",
+            "after": "2024-04-29",
+            "gt": "2029-06-10",
+            "outcome": "regression"
+          },
+          {
+            "image_id": "900111",
+            "before": "2019-09-01",
+            "after": "2027-08-19",
+            "gt": "2027-08-19",
+            "outcome": "gain"
+          },
+          {
+            "image_id": "900160",
+            "before": "2029-04-16",
+            "after": "2023-04-16",
+            "gt": "2029-04-16",
+            "outcome": "regression"
+          }
+        ],
+        "outcomes": {
+          "regression": 3,
+          "gain": 1
+        },
+        "stage_order": [
+          "original_512",
+          "rotation_270",
+          "clahe",
+          "highres_1024"
+        ],
+        "projection_same_run_clahe1024": {
+          "1p4t": {
+            "projected_sec_per_image": 2.7421839158734396,
+            "projected_500_sec": 1374.7429251367198,
+            "margin_to_1800": 1.3093357071257434,
+            "margin_to_2500": 1.8185218154524214
+          },
+          "2p2t": {
+            "projected_sec_per_image": 1.8525885693784365,
+            "projected_500_sec": 929.9452518892183,
+            "margin_to_1800": 1.9355978175524131,
+            "margin_to_2500": 2.688330302156129
+          }
+        },
+        "projection_conservative_clahe1024": {
+          "1p4t": {
+            "projected_sec_per_image": 2.7854761449623218,
+            "projected_500_sec": 1396.3890396811607,
+            "margin_to_1800": 1.2890390491828811,
+            "margin_to_2500": 1.7903320127540017
+          },
+          "2p2t": {
+            "projected_sec_per_image": 1.8818363117667982,
+            "projected_500_sec": 944.5691230833992,
+            "margin_to_1800": 1.9056307855206822,
+            "margin_to_2500": 2.646709424334281
+          }
+        }
+      }
+    },
+    "fallback_clahe_first": {
+      "food": {
+        "correct": 619,
+        "images": 700,
+        "calls": {
+          "original_512": 700,
+          "highres_1024": 250,
+          "clahe": 128,
+          "rotation_270": 93,
+          "clahe_1024": 59
+        },
+        "total_calls": 1230,
+        "calls_per_image": 1.7571428571428571,
+        "unknown": [],
+        "changes": [
+          {
+            "image_id": "000160",
+            "before": "2026-10-27",
+            "after": "2025-04-28",
+            "gt": "2026-10-27",
+            "outcome": "regression"
+          }
+        ],
+        "outcomes": {
+          "regression": 1
+        },
+        "stage_order": [
+          "original_512",
+          "clahe",
+          "rotation_270",
+          "highres_1024"
+        ],
+        "projection_same_run_clahe1024": {
+          "1p4t": {
+            "projected_sec_per_image": 2.285594094220895,
+            "projected_500_sec": 1146.4480143104477,
+            "margin_to_1800": 1.5700668303591971,
+            "margin_to_2500": 2.180648375498885
+          },
+          "2p2t": {
+            "projected_sec_per_image": 1.5441216282693404,
+            "projected_500_sec": 775.7117813346703,
+            "margin_to_1800": 2.3204494804796765,
+            "margin_to_2500": 3.2228465006662175
+          }
+        },
+        "projection_conservative_clahe1024": {
+          "1p4t": {
+            "projected_sec_per_image": 2.3177904158542235,
+            "projected_500_sec": 1162.5461751271118,
+            "margin_to_1800": 1.5483255964462568,
+            "margin_to_2500": 2.150452217286468
+          },
+          "2p2t": {
+            "projected_sec_per_image": 1.5658731005497608,
+            "projected_500_sec": 786.5875174748805,
+            "margin_to_1800": 2.2883658334401202,
+            "margin_to_2500": 3.1782858797779445
+          }
+        }
+      },
+      "cosmetic": {
+        "correct": 267,
+        "images": 300,
+        "calls": {
+          "original_512": 300,
+          "highres_1024": 126,
+          "clahe": 99,
+          "rotation_270": 68,
+          "clahe_1024": 34
+        },
+        "total_calls": 627,
+        "calls_per_image": 2.09,
+        "unknown": [],
+        "changes": [
+          {
+            "image_id": "900043",
+            "before": "2027-11-27",
+            "after": "2025-05-28",
+            "gt": "2027-11-27",
+            "outcome": "regression"
+          },
+          {
+            "image_id": "900082",
+            "before": "2029-06-10",
+            "after": "2024-04-29",
+            "gt": "2029-06-10",
+            "outcome": "regression"
+          },
+          {
+            "image_id": "900111",
+            "before": "2019-09-01",
+            "after": "2027-08-19",
+            "gt": "2027-08-19",
+            "outcome": "gain"
+          },
+          {
+            "image_id": "900160",
+            "before": "2029-04-16",
+            "after": "2023-04-16",
+            "gt": "2029-04-16",
+            "outcome": "regression"
+          }
+        ],
+        "outcomes": {
+          "regression": 3,
+          "gain": 1
+        },
+        "stage_order": [
+          "original_512",
+          "clahe",
+          "rotation_270",
+          "highres_1024"
+        ],
+        "projection_same_run_clahe1024": {
+          "1p4t": {
+            "projected_sec_per_image": 2.706213401932473,
+            "projected_500_sec": 1356.7576681662365,
+            "margin_to_1800": 1.3266923358781086,
+            "margin_to_2500": 1.8426282442751507
+          },
+          "2p2t": {
+            "projected_sec_per_image": 1.8282872952822835,
+            "projected_500_sec": 917.7946148411419,
+            "margin_to_1800": 1.961223100346428,
+            "margin_to_2500": 2.723920972703372
+          }
+        },
+        "projection_conservative_clahe1024": {
+          "1p4t": {
+            "projected_sec_per_image": 2.7495056310213553,
+            "projected_500_sec": 1378.4037827106777,
+            "margin_to_1800": 1.3058582851972729,
+            "margin_to_2500": 1.8136920627739903
+          },
+          "2p2t": {
+            "projected_sec_per_image": 1.8575350376706454,
+            "projected_500_sec": 932.4184860353228,
+            "margin_to_1800": 1.9304636565644095,
+            "margin_to_2500": 2.6811995230061245
+          }
+        }
+      }
+    },
+    "fallback_rotation_last": {
+      "food": {
+        "correct": 618,
+        "images": 700,
+        "calls": {
+          "original_512": 700,
+          "highres_1024": 256,
+          "clahe": 128,
+          "rotation_270": 73,
+          "clahe_1024": 59
+        },
+        "total_calls": 1216,
+        "calls_per_image": 1.737142857142857,
+        "unknown": [],
+        "changes": [
+          {
+            "image_id": "000160",
+            "before": "2026-10-27",
+            "after": "2025-04-28",
+            "gt": "2026-10-27",
+            "outcome": "regression"
+          },
+          {
+            "image_id": "001142",
+            "before": "2021-06-28",
+            "after": "2028-06-02",
+            "gt": "2021-06-28",
+            "outcome": "regression"
+          }
+        ],
+        "outcomes": {
+          "regression": 2
+        },
+        "stage_order": [
+          "original_512",
+          "clahe",
+          "highres_1024",
+          "rotation_270"
+        ],
+        "projection_same_run_clahe1024": {
+          "1p4t": {
+            "projected_sec_per_image": 2.276489062590213,
+            "projected_500_sec": 1141.8954984951065,
+            "margin_to_1800": 1.5763263822059053,
+            "margin_to_2500": 2.1893421975082017
+          },
+          "2p2t": {
+            "projected_sec_per_image": 1.537970371446197,
+            "projected_500_sec": 772.6361529230986,
+            "margin_to_1800": 2.329686480745299,
+            "margin_to_2500": 3.2356756677018037
+          }
+        },
+        "projection_conservative_clahe1024": {
+          "1p4t": {
+            "projected_sec_per_image": 2.3086853842235415,
+            "projected_500_sec": 1157.9936593117707,
+            "margin_to_1800": 1.554412656343725,
+            "margin_to_2500": 2.1589064671440625
+          },
+          "2p2t": {
+            "projected_sec_per_image": 1.5597218437266174,
+            "projected_500_sec": 783.5118890633088,
+            "margin_to_1800": 2.297348674762174,
+            "margin_to_2500": 3.1907620482807975
+          }
+        }
+      },
+      "cosmetic": {
+        "correct": 266,
+        "images": 300,
+        "calls": {
+          "original_512": 300,
+          "highres_1024": 130,
+          "clahe": 99,
+          "rotation_270": 40,
+          "clahe_1024": 34
+        },
+        "total_calls": 603,
+        "calls_per_image": 2.01,
+        "unknown": [],
+        "changes": [
+          {
+            "image_id": "900043",
+            "before": "2027-11-27",
+            "after": "2025-05-28",
+            "gt": "2027-11-27",
+            "outcome": "regression"
+          },
+          {
+            "image_id": "900082",
+            "before": "2029-06-10",
+            "after": "2024-04-29",
+            "gt": "2029-06-10",
+            "outcome": "regression"
+          },
+          {
+            "image_id": "900111",
+            "before": "2019-09-01",
+            "after": "2027-08-19",
+            "gt": "2027-08-19",
+            "outcome": "gain"
+          },
+          {
+            "image_id": "900160",
+            "before": "2029-04-16",
+            "after": "2023-04-16",
+            "gt": "2029-04-16",
+            "outcome": "regression"
+          },
+          {
+            "image_id": "900197",
+            "before": "2028-10-06",
+            "after": "2020-10-06",
+            "gt": "2028-10-06",
+            "outcome": "regression"
+          }
+        ],
+        "outcomes": {
+          "regression": 4,
+          "gain": 1
+        },
+        "stage_order": [
+          "original_512",
+          "clahe",
+          "highres_1024",
+          "rotation_270"
+        ],
+        "projection_same_run_clahe1024": {
+          "1p4t": {
+            "projected_sec_per_image": 2.6461383688258033,
+            "projected_500_sec": 1326.7201516129016,
+            "margin_to_1800": 1.3567292226712087,
+            "margin_to_2500": 1.8843461425989008
+          },
+          "2p2t": {
+            "projected_sec_per_image": 1.7877012795179112,
+            "projected_500_sec": 897.5016069589557,
+            "margin_to_1800": 2.0055674397052274,
+            "margin_to_2500": 2.785510332923927
+          }
+        },
+        "projection_conservative_clahe1024": {
+          "1p4t": {
+            "projected_sec_per_image": 2.6894305979146855,
+            "projected_500_sec": 1348.3662661573428,
+            "margin_to_1800": 1.3349488526806228,
+            "margin_to_2500": 1.8540956287230872
+          },
+          "2p2t": {
+            "projected_sec_per_image": 1.8169490219062732,
+            "projected_500_sec": 912.1254781531367,
+            "margin_to_1800": 1.9734126971703756,
+            "margin_to_2500": 2.740850968292188
+          }
+        }
+      }
+    }
+  }
+}

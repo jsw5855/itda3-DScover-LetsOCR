@@ -1,0 +1,24 @@
+{
+  "code_root": "C:\\Users\\jsw58\\Desktop\\itda-ocr\\.candidate-final-20261001",
+  "variant": "baseline",
+  "code_sha256": {
+    "ocr_pipeline.py": "c775d5e3db9483bc175f9f0b61b755a34694607a6c7d67d8aa26d6ad95d52bd7",
+    "date_parser\\__init__.py": "6de4f6e384e4c80c8bafed21ac67c2bbd90b8110d787dd02eb451210e53360ec",
+    "date_parser\\crossref.py": "00aef7f56809f6d394227722ca523dac36694b7efc66a848c1520e9578f2d89f",
+    "date_parser\\extract.py": "2a7b75193373ec00795e8baea1183bfd6583bda539d08740986b3c7481fac9ce",
+    "date_parser\\hints.py": "b89c78c072b07f56048fa2daa957309ee5d44fc89ff72eee6a96a9e65d181fdc",
+    "date_parser\\interpret.py": "0f55910b10b909da46c544d688a1c9a98ef4cce70214409dcf2f63826c30b7a6",
+    "date_parser\\keywords.py": "86f32bdbddd831b46395d61da35e284b60e2742183ec59e12a53b2f9e5c3e90d",
+    "date_parser\\parser.py": "c6264681357cb06c527bebafb65e1e97fc491cc7217acdd378e9e259b456370d",
+    "date_parser\\select.py": "b590ea3661a9909c7d34cc3be40a6620afe690a91e399c4edcfa80fba25b07c1",
+    "date_parser\\types.py": "23f1fd305fc7832f43d6e71c2d291b558e1a11f93db9c183d5275300176c90f0"
+  },
+  "input_sha256": {
+    "C:\\Users\\jsw58\\Desktop\\itda-ocr\\labels\\review\\labels_700_confirmed_gt.csv": "9edfeb145acea9981e4d59447b6df0c0d827f8eb7ad0c7499bc281cb4fdc7c9d",
+    "C:\\Users\\jsw58\\Desktop\\itda-ocr\\docs\\full_stage_701_run1\\raw_ocr.jsonl": "3c00358afc9281413e47520ddcb7784b0e16ced070d1d1b74a2734313df502a2",
+    "C:\\Users\\jsw58\\Desktop\\itda-ocr\\docs\\ocr_clahe1024_full700_20260929_resumed1\\raw.jsonl": "2bb77aed031910773cfdd8969a0b21ea8a8f8c50fa677d41a378be3572664a55",
+    "C:\\Users\\jsw58\\Desktop\\itda-ocr\\.candidate-final-20261001\\docs\\cosmetics300_main_0dd7a35_20260930\\cos300_0dd7a35_results.csv": "05669c4a914372dec08365693b9c409ff43c3dffce4a379cf951210100a7eaf7",
+    "C:\\Users\\jsw58\\Desktop\\itda-ocr\\.candidate-final-20261001\\docs\\cosmetics300_main_0dd7a35_20260930\\cos300_0dd7a35_allstages.jsonl": "5bfde360b6fdab672b69a926fb055f3fb30888bea54bd655f82dc21e2593f2ab"
+  },
+  "fresh_ocr_calls": 0
+}

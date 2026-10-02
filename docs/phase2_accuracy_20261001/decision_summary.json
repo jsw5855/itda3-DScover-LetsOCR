@@ -1,0 +1,360 @@
+{
+  "food_correct": 620,
+  "cosmetic_correct": 269,
+  "food_vs_phase1": [
+    {
+      "image_id": "000473",
+      "gt": "2026-05-21",
+      "before": "2026-03-01",
+      "after": "2026-05-02",
+      "outcome": "changed-wrong"
+    },
+    {
+      "image_id": "000726",
+      "gt": "2026-09-16",
+      "before": "2026-08-16",
+      "after": "2026-09-16",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "002241",
+      "gt": "2021-05-26",
+      "before": "NONE",
+      "after": "2021-05-26",
+      "outcome": "gain"
+    }
+  ],
+  "food_vs_main": [
+    {
+      "image_id": "000231",
+      "gt": "2028-05-27",
+      "before": "2023-05-27",
+      "after": "2028-05-27",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "000473",
+      "gt": "2026-05-21",
+      "before": "2026-03-01",
+      "after": "2026-05-02",
+      "outcome": "changed-wrong"
+    },
+    {
+      "image_id": "000726",
+      "gt": "2026-09-16",
+      "before": "2026-08-16",
+      "after": "2026-09-16",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "000749",
+      "gt": "2026-01-21",
+      "before": "NONE",
+      "after": "2026-02-NONE",
+      "outcome": "changed-wrong"
+    },
+    {
+      "image_id": "001686",
+      "gt": "2020-11-27",
+      "before": "2020-11-27",
+      "after": "2025-11-27",
+      "outcome": "regression"
+    },
+    {
+      "image_id": "002148",
+      "gt": "2022-01-03",
+      "before": "2022-01-NONE",
+      "after": "2022-01-03",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "002241",
+      "gt": "2021-05-26",
+      "before": "NONE",
+      "after": "2021-05-26",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "002336",
+      "gt": "2021-11-19",
+      "before": "2021-11-18",
+      "after": "2021-11-19",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "002917",
+      "gt": "2021-04-30",
+      "before": "2030-04-21",
+      "after": "2021-04-30",
+      "outcome": "gain"
+    }
+  ],
+  "cosmetic_vs_phase1": [
+    {
+      "image_id": "900071",
+      "gt": "2029-05-17",
+      "before": "2029-05-NONE",
+      "after": "2029-05-17",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "900181",
+      "gt": "2028-02-09",
+      "before": "2028-02-NONE",
+      "after": "2028-02-09",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "900225",
+      "gt": "2029-08-02",
+      "before": "2029-08-NONE",
+      "after": "2029-08-02",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "900285",
+      "gt": "2028-09-04",
+      "before": "NONE",
+      "after": "2028-09-04",
+      "outcome": "gain"
+    }
+  ],
+  "cosmetic_vs_main": [
+    {
+      "image_id": "900005",
+      "gt": "2029-10-02",
+      "before": "NONE-02-10",
+      "after": "2029-10-02",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "900026",
+      "gt": "2026-11-06",
+      "before": "2024-05-07",
+      "after": "2026-11-06",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "900028",
+      "gt": "2027-10-17",
+      "before": "NONE",
+      "after": "2027-10-17",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "900029",
+      "gt": "2028-12-15",
+      "before": "NONE",
+      "after": "2028-12-15",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "900030",
+      "gt": "2025-12-01",
+      "before": "NONE",
+      "after": "2025-12-01",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "900071",
+      "gt": "2029-05-17",
+      "before": "2029-05-NONE",
+      "after": "2029-05-17",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "900080",
+      "gt": "2029-06-14",
+      "before": "2023-06-14",
+      "after": "2029-06-14",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "900082",
+      "gt": "2029-06-10",
+      "before": "2030-10-31",
+      "after": "2029-06-10",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "900089",
+      "gt": "2027-11-25",
+      "before": "2027-01-11",
+      "after": "2027-11-25",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "900092",
+      "gt": "2031-01-NONE",
+      "before": "2026-02-NONE",
+      "after": "2031-01-NONE",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "900096",
+      "gt": "2028-06-29",
+      "before": "NONE",
+      "after": "2028-06-29",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "900130",
+      "gt": "2029-04-NONE",
+      "before": "2023-06-19",
+      "after": "2029-04-NONE",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "900146",
+      "gt": "2028-08-26",
+      "before": "2022-08-07",
+      "after": "2028-08-26",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "900152",
+      "gt": "NONE",
+      "before": "2026-09-09",
+      "after": "NONE",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "900181",
+      "gt": "2028-02-09",
+      "before": "2028-02-NONE",
+      "after": "2028-02-09",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "900198",
+      "gt": "2029-03-03",
+      "before": "NONE",
+      "after": "2029-03-03",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "900206",
+      "gt": "2029-08-13",
+      "before": "NONE-10-14",
+      "after": "NONE",
+      "outcome": "changed-wrong"
+    },
+    {
+      "image_id": "900225",
+      "gt": "2029-08-02",
+      "before": "2029-08-NONE",
+      "after": "2029-08-02",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "900259",
+      "gt": "NONE",
+      "before": "2026-05-NONE",
+      "after": "NONE",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "900262",
+      "gt": "2029-06-28",
+      "before": "NONE",
+      "after": "2029-06-28",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "900266",
+      "gt": "2029-07-06",
+      "before": "2026-07-07",
+      "after": "2029-07-06",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "900270",
+      "gt": "2028-02-19",
+      "before": "NONE",
+      "after": "2028-02-19",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "900279",
+      "gt": "2029-03-26",
+      "before": "2029-07-10",
+      "after": "2029-03-26",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "900285",
+      "gt": "2028-09-04",
+      "before": "NONE",
+      "after": "2028-09-04",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "900291",
+      "gt": "2029-07-09",
+      "before": "2026-06-NONE",
+      "after": "2029-07-09",
+      "outcome": "gain"
+    },
+    {
+      "image_id": "900296",
+      "gt": "2029-05-18",
+      "before": "2025-05-18",
+      "after": "2029-05-18",
+      "outcome": "gain"
+    }
+  ],
+  "initial_categories": {
+    "parser missed usable evidence": 1,
+    "wrong candidate selection": 0,
+    "partial date": 12,
+    "corrupted OCR": 34,
+    "no usable OCR evidence": 20,
+    "ambiguous order/context": 8,
+    "retry/stage-selection issue": 6,
+    "other": 1
+  },
+  "remaining_categories": {
+    "parser missed usable evidence": 0,
+    "wrong candidate selection": 0,
+    "partial date": 12,
+    "corrupted OCR": 34,
+    "no usable OCR evidence": 20,
+    "ambiguous order/context": 8,
+    "retry/stage-selection issue": 5,
+    "other": 1
+  },
+  "calls": {
+    "food": {
+      "phase1": {
+        "original_512": 700,
+        "highres_1024": 301,
+        "rotation_270": 120,
+        "clahe": 87,
+        "clahe_1024": 59
+      },
+      "final": {
+        "original_512": 700,
+        "highres_1024": 302,
+        "rotation_270": 120,
+        "clahe": 92,
+        "clahe_1024": 59
+      }
+    },
+    "cosmetic": {
+      "phase1": {
+        "original_512": 300,
+        "highres_1024": 148,
+        "rotation_270": 94,
+        "clahe": 46,
+        "clahe_1024": 35
+      },
+      "final": {
+        "original_512": 300,
+        "highres_1024": 150,
+        "rotation_270": 94,
+        "clahe": 46,
+        "clahe_1024": 34
+      }
+    }
+  }
+}

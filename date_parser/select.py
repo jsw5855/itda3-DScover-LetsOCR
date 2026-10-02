@@ -139,7 +139,9 @@ def _padded_eight_digit_candidates(
 # ("지", "마지") glued right after the digits. Six digits continued by a
 # separator and more digits ("202504/28") are a cut-off full date, not this.
 _SIX_DIGIT_RE = re.compile(r"(?<![0-9A-Za-z])([0-9]{6})(?![0-9])(?!\s*[./\-:]\s*[0-9])")
-_UNTIL_FRAGMENT_RE = re.compile(r"[가-힣]?지")
+# A space or hyphen between the two exact syllables is OCR fragmentation,
+# not a new spelling guess. Retain the existing glued-fragment fallback.
+_UNTIL_FRAGMENT_RE = re.compile(r"(?:까[\s-]+지|[가-힣]?지)")
 
 
 def _six_digit_candidates(

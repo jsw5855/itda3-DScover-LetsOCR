@@ -1,0 +1,113 @@
+{
+  "wheel": {
+    "file": "paddlepaddle-3.2.2-cp310-cp310-manylinux1_x86_64.whl",
+    "sha256": "dcb41609f6f4bdba0404354d5f21b446467b615f5a5bf67a7c75ebc20b42c6a9"
+  },
+  "glibc": {
+    "package": "libc6_2.35-0ubuntu3_amd64.deb (Ubuntu 22.04 release)",
+    "libm_sha256": "0554e0d02070ac994921f8523828259bef149b532cb24fbbb31a265995a889d5"
+  },
+  "libraries": {
+    "libpaddle.so": {
+      "sha256": "08d65129420d9f1f849e801bfb82f0bac01683f50782ff2684073e6304874dd0",
+      "needed": [
+        "libpthread.so.0",
+        "librt.so.1",
+        "libopenvino.so.2500",
+        "libtbb.so.12",
+        "libopenvino_paddle_frontend.so.2500",
+        "libphi.so",
+        "libphi_core.so",
+        "libcommon.so",
+        "libdnnl.so.3",
+        "libiomp5.so",
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "openmp_symbols": {
+        "GOMP_parallel": [
+          "UNDEF VERSION (libiomp5.so)"
+        ]
+      }
+    },
+    "libphi_core.so": {
+      "sha256": "4c2fe36d1ad4a15e23bf356ea0edf4042b77eb7a2c3878591ea3d6d73e60dfac",
+      "needed": [
+        "libpthread.so.0",
+        "libcommon.so",
+        "librt.so.1",
+        "libdnnl.so.3",
+        "libiomp5.so",
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "openmp_symbols": {
+        "omp_set_num_threads": [
+          "UNDEF VERSION (libiomp5.so)"
+        ],
+        "GOMP_parallel": [
+          "UNDEF VERSION (libiomp5.so)"
+        ]
+      }
+    },
+    "libdnnl.so.3": {
+      "sha256": "382f24d2635ad93ce6bc25556b0356015ffc03517d2688ba7487486f6d4863d3",
+      "needed": [
+        "libpthread.so.0",
+        "libdl.so.2",
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libgomp.so.1",
+        "libgcc_s.so.1",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2"
+      ],
+      "openmp_symbols": {
+        "omp_set_num_threads": [
+          "UNDEF OMP_1.0 (libgomp.so.1)"
+        ],
+        "GOMP_parallel": [
+          "UNDEF GOMP_4.0 (libgomp.so.1)"
+        ]
+      }
+    },
+    "libcommon.so": {
+      "sha256": "442b569a46b663af1bffac16128f9030a5cac8a31be2e793506339e806566734",
+      "needed": [
+        "libpthread.so.0",
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libgomp.so.1",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "openmp_symbols": {}
+    },
+    "libiomp5.so": {
+      "sha256": "85d288e9799382766377a042b1d2f8044bb0a0af76ed6ff19b41f27a2029414e",
+      "needed": [
+        "libgcc_s.so.1",
+        "libpthread.so.0",
+        "libc.so.6",
+        "ld-linux-x86-64.so.2",
+        "libdl.so.2"
+      ],
+      "openmp_symbols": {
+        "omp_set_num_threads": [
+          "DEF OMP_1.0",
+          "DEF VERSION"
+        ],
+        "GOMP_parallel": [
+          "DEF VERSION",
+          "DEF GOMP_4.0"
+        ]
+      }
+    }
+  }
+}

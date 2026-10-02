@@ -1,0 +1,51 @@
+{
+  "tag": "calib60",
+  "measured": true,
+  "fresh_ocr": true,
+  "count": 60,
+  "layout": {
+    "processes": 2,
+    "threads": 2,
+    "note": "run_submission 2-worker path via submission_runtime.run_workers"
+  },
+  "infer_wall_sec": 111.5709082000003,
+  "wall_through_csv_sec": 111.57166999999981,
+  "csv_sec": 0.0007497999999941385,
+  "avg_sec_per_image": 1.8595151366666718,
+  "sum_image_elapsed_sec": 214.50244089999887,
+  "projected_500_sec": 929.7575683333359,
+  "margin_to_1800": 1.9359885429345227,
+  "margin_to_2500": 2.688872976297948,
+  "stage_calls": {
+    "original_512": 60,
+    "highres_1024": 27,
+    "rotation_270": 12,
+    "clahe": 11,
+    "clahe_1024": 6
+  },
+  "total_calls": 116,
+  "calls_per_image": 1.9333333333333333,
+  "stage_ocr_sec_total": {
+    "original_512": 75.84944799999676,
+    "highres_1024": 80.28653979999854,
+    "rotation_270": 12.645146799999111,
+    "clahe": 14.925332800000433,
+    "clahe_1024": 17.268128900001102
+  },
+  "stage_ocr_sec_mean": {
+    "original_512": 1.2641574666666127,
+    "highres_1024": 2.973575548148094,
+    "rotation_270": 1.0537622333332592,
+    "clahe": 1.3568484363636757,
+    "clahe_1024": 2.878021483333517
+  },
+  "ocr_sec_total": 200.97459629999594,
+  "non_ocr_per_image": 0.2254640766667156,
+  "correct": 54,
+  "accuracy": 0.9,
+  "worker_pids": [
+    204,
+    29444
+  ],
+  "note": "Wall-clock inference across parallel workers, so avg_sec_per_image is throughput, not per-image latency. Food development images; accuracy is a consistency check only. Interpreter and notebook start-up are excluded."
+}

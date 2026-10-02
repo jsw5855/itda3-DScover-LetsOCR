@@ -1,0 +1,204 @@
+{
+  "calibration": {
+    "tag": "calib60",
+    "kind": "MEASURED",
+    "images": 60,
+    "layout": {
+      "processes": 2,
+      "threads": 2,
+      "note": "run_submission 2-worker path via submission_runtime.run_workers"
+    },
+    "measured_wall_sec_per_image": 1.8595151366666718,
+    "measured_stage_latency_sec": {
+      "original_512": 1.2641574666666127,
+      "highres_1024": 2.973575548148094,
+      "rotation_270": 1.0537622333332592,
+      "clahe": 1.3568484363636757,
+      "clahe_1024": 2.878021483333517
+    },
+    "measured_non_ocr_per_image": 0.2254640766667156,
+    "measured_parallel_efficiency": 1.9225660556198492,
+    "caveat": "Stage latencies are per-call under 2-worker contention and are divided by the measured parallel efficiency to yield wall-clock throughput. Calibrated on a 60-image food subset.",
+    "self_check_wall_sec_per_image": 1.8595151366666718,
+    "self_check_error": 0.0
+  },
+  "projections": {
+    "production_conclusive_stop": {
+      "food": {
+        "correct": 620,
+        "images": 700,
+        "calls": {
+          "original_512": 700,
+          "highres_1024": 273,
+          "rotation_270": 120,
+          "clahe": 91,
+          "clahe_1024": 59
+        },
+        "total_calls": 1243,
+        "calls_per_image": 1.7757142857142858,
+        "projected_latency_sec_per_image": 3.2489273545764608,
+        "projected_wall_sec_per_image": 1.6898911457837964,
+        "projected_500_sec": 844.9455728918982,
+        "margins": {
+          "1770": 2.0948094845233927,
+          "1800": 2.1303147300237892,
+          "2500": 2.9587704583663736
+        }
+      },
+      "cosmetic": {
+        "correct": 269,
+        "images": 300,
+        "calls": {
+          "original_512": 300,
+          "highres_1024": 143,
+          "rotation_270": 94,
+          "clahe": 45,
+          "clahe_1024": 34
+        },
+        "total_calls": 616,
+        "calls_per_image": 2.0533333333333332,
+        "projected_latency_sec_per_image": 3.766907754627357,
+        "projected_wall_sec_per_image": 1.959312525890237,
+        "projected_500_sec": 979.6562629451186,
+        "margins": {
+          "1770": 1.8067561724955332,
+          "1800": 1.8373791584700336,
+          "2500": 2.5519154978750467
+        }
+      }
+    },
+    "fallback_clahe_before_highres": {
+      "food": {
+        "correct": 619,
+        "images": 700,
+        "calls": {
+          "original_512": 700,
+          "highres_1024": 250,
+          "rotation_270": 120,
+          "clahe": 118,
+          "clahe_1024": 59
+        },
+        "total_calls": 1247,
+        "calls_per_image": 1.7814285714285714,
+        "projected_latency_sec_per_image": 3.203559740539908,
+        "projected_wall_sec_per_image": 1.6662937178026151,
+        "projected_500_sec": 833.1468589013076,
+        "margins": {
+          "1770": 2.124475392410583,
+          "1800": 2.1604834499090675,
+          "2500": 3.0006714582070377
+        }
+      },
+      "cosmetic": {
+        "correct": 267,
+        "images": 300,
+        "calls": {
+          "original_512": 300,
+          "highres_1024": 126,
+          "rotation_270": 94,
+          "clahe": 86,
+          "clahe_1024": 34
+        },
+        "total_calls": 640,
+        "calls_per_image": 2.1333333333333333,
+        "projected_latency_sec_per_image": 3.783841093202001,
+        "projected_wall_sec_per_image": 1.9681202017176276,
+        "projected_500_sec": 984.0601008588138,
+        "margins": {
+          "1770": 1.7986706284049896,
+          "1800": 1.8291565712593114,
+          "2500": 2.5404952378601546
+        }
+      }
+    },
+    "fallback_clahe_first": {
+      "food": {
+        "correct": 619,
+        "images": 700,
+        "calls": {
+          "original_512": 700,
+          "highres_1024": 250,
+          "clahe": 128,
+          "rotation_270": 93,
+          "clahe_1024": 59
+        },
+        "total_calls": 1230,
+        "calls_per_image": 1.7571428571428571,
+        "projected_latency_sec_per_image": 3.1822981749165353,
+        "projected_wall_sec_per_image": 1.6552347658559587,
+        "projected_500_sec": 827.6173829279794,
+        "margins": {
+          "1770": 2.138669434102532,
+          "1800": 2.1749180685788456,
+          "2500": 3.0207195396928412
+        }
+      },
+      "cosmetic": {
+        "correct": 267,
+        "images": 300,
+        "calls": {
+          "original_512": 300,
+          "highres_1024": 126,
+          "clahe": 99,
+          "rotation_270": 68,
+          "clahe_1024": 34
+        },
+        "total_calls": 627,
+        "calls_per_image": 2.09,
+        "projected_latency_sec_per_image": 3.751311798555544,
+        "projected_wall_sec_per_image": 1.9512004737575033,
+        "projected_500_sec": 975.6002368787516,
+        "margins": {
+          "1770": 1.8142677021715166,
+          "1800": 1.845018002208322,
+          "2500": 2.562525003067114
+        }
+      }
+    },
+    "fallback_rotation_last": {
+      "food": {
+        "correct": 618,
+        "images": 700,
+        "calls": {
+          "original_512": 700,
+          "highres_1024": 256,
+          "clahe": 128,
+          "rotation_270": 73,
+          "clahe_1024": 59
+        },
+        "total_calls": 1216,
+        "calls_per_image": 1.737142857142857,
+        "projected_latency_sec_per_image": 3.1776784729482825,
+        "projected_wall_sec_per_image": 1.6528318825039154,
+        "projected_500_sec": 826.4159412519577,
+        "margins": {
+          "1770": 2.1417786270175085,
+          "1800": 2.178079959678822,
+          "2500": 3.025111055109475
+        }
+      },
+      "cosmetic": {
+        "correct": 266,
+        "images": 300,
+        "calls": {
+          "original_512": 300,
+          "highres_1024": 130,
+          "clahe": 99,
+          "rotation_270": 40,
+          "clahe_1024": 34
+        },
+        "total_calls": 603,
+        "calls_per_image": 2.01,
+        "projected_latency_sec_per_image": 3.6926083307530817,
+        "projected_wall_sec_per_image": 1.920666559132897,
+        "projected_500_sec": 960.3332795664485,
+        "margins": {
+          "1770": 1.8431101344307084,
+          "1800": 1.8743492892515679,
+          "2500": 2.603262901738289
+        }
+      }
+    }
+  },
+  "kind": "PROJECTED"
+}

@@ -1,0 +1,24 @@
+{
+  "code_root": "C:\\Users\\jsw58\\Desktop\\itda-ocr\\.candidate-final-20261001\\docs\\phase2_accuracy_20261001\\phase1_code",
+  "variant": "baseline",
+  "code_sha256": {
+    "ocr_pipeline.py": "9998c12d149577b888c3364e7b1304bcdc38b8e5a8bd5ae74d9a15a59892eb4f",
+    "date_parser\\__init__.py": "856b90f7110309d8edc1bfc236612ecb4bb9461f3ed14de43265b93d07fa20dc",
+    "date_parser\\crossref.py": "265158f6f9c9ff84857265ecd3ab3650c783c8ece2a4be4ecfb7d130476d92a0",
+    "date_parser\\extract.py": "3f80a336864641f98eb5752b89b784632d36e10eb07cff91a2d7e88e0f14bbb2",
+    "date_parser\\hints.py": "92b9260d556a6dbc77d038d48c2dde5bb249cbf89e116f5a95043acc29101800",
+    "date_parser\\interpret.py": "b46638ed1946ae9e5a7a6ae914b4136f20a9dba8f54f102e403277441eacf295",
+    "date_parser\\keywords.py": "0075e0d59f647edcba1e7450501f5728f84c1ca773120a9ad97f6c01e144806d",
+    "date_parser\\parser.py": "e2944c17621bffc0a800d84c79ef19068edbe70002f4bc89b107c47b55db131a",
+    "date_parser\\select.py": "a0adf2a70201d6f32b49249e28ee180a9be698dec851f50c59558677da07fd1b",
+    "date_parser\\types.py": "17be4606e1679481b98168756488fb289bd215a08973dcc25af08a3b92146c40"
+  },
+  "input_sha256": {
+    "C:\\Users\\jsw58\\Desktop\\itda-ocr\\labels\\review\\labels_700_confirmed_gt.csv": "9edfeb145acea9981e4d59447b6df0c0d827f8eb7ad0c7499bc281cb4fdc7c9d",
+    "C:\\Users\\jsw58\\Desktop\\itda-ocr\\docs\\full_stage_701_run1\\raw_ocr.jsonl": "3c00358afc9281413e47520ddcb7784b0e16ced070d1d1b74a2734313df502a2",
+    "C:\\Users\\jsw58\\Desktop\\itda-ocr\\docs\\ocr_clahe1024_full700_20260929_resumed1\\raw.jsonl": "2bb77aed031910773cfdd8969a0b21ea8a8f8c50fa677d41a378be3572664a55",
+    "C:\\Users\\jsw58\\Desktop\\itda-ocr\\.candidate-final-20261001\\docs\\cosmetics300_main_0dd7a35_20260930\\cos300_0dd7a35_results.csv": "05669c4a914372dec08365693b9c409ff43c3dffce4a379cf951210100a7eaf7",
+    "C:\\Users\\jsw58\\Desktop\\itda-ocr\\.candidate-final-20261001\\docs\\cosmetics300_main_0dd7a35_20260930\\cos300_0dd7a35_allstages.jsonl": "5bfde360b6fdab672b69a926fb055f3fb30888bea54bd655f82dc21e2593f2ab"
+  },
+  "fresh_ocr_calls": 0
+}

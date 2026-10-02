@@ -70,6 +70,29 @@ _OPTIONAL_SEP = r"[.\-/\s·×]*"
 # (년/월/일), so the order is read directly off the text rather than assumed.
 _PATTERN_DEFS = [
     (
+        # An explicit four-digit year and an exact month name determine the
+        # field order even when OCR removes spaces: "2024FEB29".
+        re.compile(rf"(?<![0-9A-Za-z])(20[0-9]{{2}}){_OPTIONAL_SEP}({_MONTH_RE}){_OPTIONAL_SEP}([0-9]{{1,2}})(?![0-9A-Za-z])", re.IGNORECASE),
+        ("num", "month_name", "num"),
+        ("year", "month", "day"),
+        ("year", "month", "day"),
+    ),
+    (
+        # Mixed comma/period separators have the same meaning as either
+        # separator alone. Keep an explicit four-digit year and the existing
+        # trailing-day-noise handling; do not admit thousands-separated runs.
+        re.compile(r"(?<![0-9A-Za-z])([0-9]{4})\s*,\s*([0-9]{1,2})\s*\.\s*([0-9]{1,3})(?![0-9])"),
+        ("num", "num", "num"),
+        ("year", "month", "day"),
+        None,
+    ),
+    (
+        re.compile(r"(?<![0-9A-Za-z])([0-9]{4})\s*\.\s*([0-9]{1,2})\s*,\s*([0-9]{1,3})(?![0-9])"),
+        ("num", "num", "num"),
+        ("year", "month", "day"),
+        None,
+    ),
+    (
         # A standalone DDMM YYYY stamp: the explicit year and whole-box
         # boundary exclude telephone numbers, copyright ranges and lot text.
         re.compile(r"\A\s*([0-9]{2})([0-9]{2})\s+(20[0-9]{2})\s*\Z"),

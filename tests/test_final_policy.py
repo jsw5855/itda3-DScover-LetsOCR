@@ -77,9 +77,11 @@ def test_d2_self_anchor_is_not_replaced_by_self_exclude(image):
     original = [box("Exp.20.09.2021", 0.78)]
     highres = [box("Prod.20.09.2020", 0.97)]
 
-    date, method, attempts = run(image, original, highres)
+    # Manufacture-only highres has no candidate. The expiry-labelled original
+    # now gets one contrast retry; a manufacture-only retry must still lose.
+    date, method, attempts = run(image, original, highres, highres)
 
-    assert attempts == ["original_512", "highres_1024"]
+    assert attempts == ["original_512", "highres_1024", "clahe"]
     assert (date, method) == ("2021-09-20", "original_512_retry_kept")
 
 
